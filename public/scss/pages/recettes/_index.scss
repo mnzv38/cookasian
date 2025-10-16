@@ -1,0 +1,190 @@
+/* === PAGE LISTE DES RECETTES === */
+/* Cookasian – Style responsive et moderne */
+
+.recettes {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #fff;
+  background-color: #1e1e24;
+
+  &__header {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 2.4rem;
+      color: #ff5757;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-family: "Quicksand", sans-serif;
+      font-size: 1.1rem;
+      color: #ddd;
+    }
+  }
+
+  /* === Liste des recettes === */
+  &__liste {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* === Carte individuelle === */
+  .carte-recette {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 4px 20px rgba(255, 87, 87, 0.4);
+    }
+
+    &__figure {
+      position: relative;
+
+      img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+      }
+
+      figcaption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 0.5rem 1rem;
+        background: rgba(0, 0, 0, 0.6);
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: #fff;
+      }
+    }
+
+    &__contenu {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1.5rem;
+
+      .carte-recette__description {
+        font-family: "Open Sans", sans-serif;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: #ccc;
+        margin-bottom: 1rem;
+      }
+
+      .carte-recette__infos {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          font-size: 0.9rem;
+          color: #aaa;
+          line-height: 1.4;
+
+          strong {
+            color: #fff;
+          }
+        }
+      }
+
+      nav {
+        margin-top: 1.5rem;
+        text-align: right;
+
+        .bouton--primaire {
+          display: inline-block;
+          font-family: "Quicksand", sans-serif;
+          font-weight: 600;
+          background-color: #ff5757;
+          color: #fff;
+          padding: 0.7rem 1.2rem;
+          border-radius: 0.5rem;
+          text-decoration: none;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: #ff3232;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* === RESPONSIVE DESIGN === */
+
+/* Tablette (jusqu’à 768px) */
+@media (max-width: 768px) {
+  .recettes {
+    padding: 1.5rem;
+
+    &__liste {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .carte-recette {
+      &__figure img {
+        height: 180px;
+      }
+      &__contenu {
+        padding: 1rem;
+      }
+    }
+  }
+}
+
+/* Mobile (jusqu’à 480px — iPhone SE) */
+@media (max-width: 480px) {
+  .recettes {
+    padding: 1rem;
+
+    &__header h1 {
+      font-size: 1.8rem;
+    }
+
+    &__header p {
+      font-size: 0.95rem;
+    }
+
+    .carte-recette {
+      &__figure img {
+        height: 160px;
+      }
+
+      &__contenu {
+        .carte-recette__description {
+          font-size: 0.9rem;
+        }
+
+        .carte-recette__infos li {
+          font-size: 0.85rem;
+        }
+
+        .bouton--primaire {
+          width: 100%;
+          text-align: center;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}

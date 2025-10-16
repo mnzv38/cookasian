@@ -1,0 +1,33 @@
+.recette {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #fff;
+
+  &__header h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #ff4040;
+  }
+
+  &__image img {
+    width: 100%;
+    border-radius: 1rem;
+  }
+
+  &__infos,
+  &__ingredients,
+  &__etapes {
+    margin-top: 2rem;
+  }
+
+  .bouton-retour {
+    display: inline-block;
+    margin-top: 2rem;
+    color: #fff;
+    background-color: #d22;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+}

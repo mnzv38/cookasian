@@ -15,6 +15,9 @@
 
 // === PAGES ===
 @use "pages/accueil/accueil";
+@use 'pages/recettes/show';
+@use 'pages/recettes/index';
+
 
 // === RESET & BASE ===
 * {

@@ -32,7 +32,24 @@ class RecettesModel
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute(['slug' => $slug]);
         $recette = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $recette ?: null;
+
+        if (!$recette) {
+            return null;
+        }
+
+        // Récupère les ingrédients associés
+        $sqlIng = "SELECT nom, quantite, ordre FROM ingredients WHERE recette_id = :id ORDER BY ordre ASC";
+        $stmtIng = $this->pdo->prepare($sqlIng);
+        $stmtIng->execute(['id' => $recette['id']]);
+        $recette['ingredients'] = $stmtIng->fetchAll(PDO::FETCH_ASSOC);
+
+        // Récupère les étapes associées
+        $sqlEtapes = "SELECT numero, description FROM etapes WHERE recette_id = :id ORDER BY numero ASC";
+        $stmtEtapes = $this->pdo->prepare($sqlEtapes);
+        $stmtEtapes->execute(['id' => $recette['id']]);
+        $recette['etapes'] = $stmtEtapes->fetchAll(PDO::FETCH_ASSOC);
+
+        return $recette;
     }
 }
 ?>
