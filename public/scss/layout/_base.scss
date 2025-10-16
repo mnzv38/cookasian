@@ -1,0 +1,50 @@
+// ========================================
+// Styles de base COOKASIAN
+// Éléments HTML génériques + utilitaires
+// ========================================
+
+// Import des dépendances
+@use "../utils/variables" as vars;
+@use "../utils/mixins" as mix;
+
+// Classe utilitaire pour cacher visuellement
+.visually-hidden {
+  @include mix.visually-hidden;
+}
+
+// Conteneur principal
+main {
+  @include mix.container;
+  min-height: calc(100vh - 200px);
+  padding-top: vars.$espacement-lg;
+  padding-bottom: vars.$espacement-lg;
+}
+
+// Titres
+h1 {
+  font-size: vars.$font-taille-h1;
+  margin-bottom: vars.$espacement-md;
+  color: vars.$couleur-secondaire;
+}
+
+h2 {
+  font-size: vars.$font-taille-h2;
+  margin-bottom: vars.$espacement-sm;
+  color: vars.$couleur-secondaire;
+}
+
+h3 {
+  font-size: vars.$font-taille-h3;
+  margin-bottom: vars.$espacement-sm;
+  color: vars.$couleur-secondaire;
+}
+
+// Paragraphes
+p {
+  margin-bottom: vars.$espacement-sm;
+}
+
+// Liens
+a {
+  @include mix.focus-visible;
+}

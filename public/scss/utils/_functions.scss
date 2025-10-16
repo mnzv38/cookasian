@@ -1,0 +1,16 @@
+@use "sass:color";
+
+/* === FUNCTION — RENDRE UNE COULEUR PLUS CLAIRE === */
+@function eclaircir($couleur, $pourcentage) {
+  @return color.adjust($couleur, $lightness: $pourcentage);
+}
+
+/* === FUNCTION — RENDRE UNE COULEUR PLUS FONCÉE === */
+@function assombrir($couleur, $pourcentage) {
+  @return color.adjust($couleur, $lightness: -$pourcentage);
+}
+
+/* === FUNCTION — GÉNÉRER UN DÉGRADÉ EN DEUX COULEURS === */
+@function degrade($couleur1, $couleur2, $angle: 45deg) {
+  @return linear-gradient($angle, $couleur1, $couleur2);
+}

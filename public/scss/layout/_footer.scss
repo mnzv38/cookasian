@@ -1,0 +1,23 @@
+@use "sass:color";
+@use "../utils/variables" as vars;
+
+footer {
+  background-color: vars.$couleur-primaire;
+  color: color.adjust(vars.$couleur-texte, $lightness: 30%);
+  padding: 2rem 0;
+  text-align: center;
+
+  a {
+    color: color.adjust(vars.$couleur-texte, $lightness: 30%);
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: color.adjust(vars.$couleur-texte, $lightness: 40%);
+    }
+  }
+
+  p {
+    margin: 0.5rem 0;
+  }
+}

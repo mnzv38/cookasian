@@ -14,12 +14,11 @@ ini_set('display_errors', 1);
 // Chargement de l'autoload Composer
 require_once __DIR__ . '/../vendor/autoload.php';
 
-// Chargement des routes
-require_once __DIR__ . '/../app/routes.php';
-
-// Lancement du routeur
 use Cookasian\Router;
 
-$router = new Router();
+// Chargement et récupération du routeur configuré
+$router = require __DIR__ . '/../app/routes.php';
+
+// Lancement du routeur
 $router->dispatch();
 ?>

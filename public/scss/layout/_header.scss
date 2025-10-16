@@ -1,0 +1,50 @@
+// ========================================
+// Header COOKASIAN
+// Navigation principale du site
+// ========================================
+
+// Import des dépendances
+@use "../utils/variables" as vars;
+@use "../utils/mixins" as mix;
+
+header[role="banner"] {
+  background-color: vars.$couleur-secondaire;
+  padding: vars.$espacement-sm vars.$padding-container;
+
+  nav {
+    @include mix.container;
+    padding: 0;
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: vars.$espacement-sm;
+      justify-content: center;
+
+      li {
+        a {
+          display: inline-block;
+          padding: vars.$espacement-xs vars.$espacement-sm;
+          color: vars.$couleur-fond;
+          font-weight: 500;
+          min-height: vars.$taille-tactile-min;
+
+          // ✅ CORRECTION : calc() pour unités mixtes
+          line-height: calc(
+            #{vars.$taille-tactile-min} - #{vars.$espacement-xs * 2}
+          );
+
+          transition: background-color 0.3s ease;
+
+          &:hover,
+          &:focus {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+          }
+
+          @include mix.focus-visible;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+──────────────────────────────
+🧠 FICHE MÉMO — COMPOSER AUTOLOAD
+Projet : Samouraï Kitchen (MVC PHP)
+──────────────────────────────
+
+🔁 Commande principale :
+composer dump-autoload
+
+💻 Terminal :
+PowerShell (VS Code)
+──────────────────────────────
+
+📦 Objectif :
+Met à jour l’autoload PSR-4 de Composer pour que PHP reconnaisse toutes les classes
+(app\Controllers, app\Models, app\Core, etc.).
+
+──────────────────────────────
+📅 QUAND L’UTILISER
+
+✅ OBLIGATOIRE quand tu :
+──────────────────────────────
+1️⃣ Crées un nouveau fichier PHP :
+   (contrôleur, modèle, classe Core)
+   → ex : New-Item -ItemType File app\Controllers\AccueilController.php
+
+2️⃣ Déplaces ou renommes un fichier/dossier :
+   → ex : tu passes un fichier de Models à Core.
+
+3️⃣ Modifies un namespace :
+   → ex : namespace SamouraiKitchen\Models → namespace SamouraiKitchen\Core
+
+4️⃣ Modifies la section "autoload" du composer.json
+
+5️⃣ Télécharges ou clones le projet sur un nouvel environnement :
+   → composer install
+   → composer dump-autoload
+
+──────────────────────────────
+🚫 PAS BESOIN quand tu :
+──────────────────────────────
+- Modifies le code interne d’un fichier existant
+- Changes une vue (views/)
+- Modifies un fichier SCSS / CSS / JS
+- Fais un simple hard refresh navigateur
+
+──────────────────────────────
+🧩 RAPPEL
+
+Après exécution :
+composer dump-autoload
+
+→ Message attendu :
+"Generated autoload files"
+
+──────────────────────────────
+📘 Bonnes pratiques :
+
+✔ Toujours exécuter avant de tester un nouveau contrôleur ou modèle.
+✔ Toujours vérifier le namespace en haut du fichier :
+  namespace SamouraiKitchen\Controllers;
+✔ Garder composer.json propre et versionné (Git).
+
+──────────────────────────────
+🪜 Emplacement :
+docs/commande_autoload.txt
+──────────────────────────────

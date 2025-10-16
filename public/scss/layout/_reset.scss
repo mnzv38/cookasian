@@ -1,0 +1,49 @@
+// ========================================
+// Reset CSS minimaliste COOKASIAN
+// Normalise les styles par défaut du navigateur
+// ========================================
+
+// Import des variables nécessaires
+@use "../utils/variables" as vars;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: vars.$font-taille-base;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: vars.$font-principale;
+  font-size: vars.$font-taille-base;
+  line-height: vars.$line-height-base;
+  color: vars.$couleur-texte;
+  background-color: vars.$couleur-fond;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}

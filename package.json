@@ -1,0 +1,15 @@
+{
+  "name": "cookasian",
+  "version": "1.0.0",
+  "description": "Blog culinaire asiatique - RNCP DWWM",
+  "author": "Mélodie Vang",
+  "license": "MIT",
+  "scripts": {
+    "sass": "sass --watch public/scss:public/assets/css --style=compressed --load-path=public/scss",
+    "watch": "npm run sass",
+    "build": "sass public/scss:public/assets/css --style=compressed --load-path=public/scss"
+  },
+  "devDependencies": {
+    "sass": "^1.77.0"
+  }
+}

@@ -1,0 +1,26 @@
+// ========================================
+// Page Liste Recettes COOKASIAN
+// Styles spécifiques à la liste des recettes
+// ========================================
+
+// Import des dépendances
+@use "../../utils/variables" as vars;
+
+section[aria-labelledby="titre-recettes"] {
+  h1 {
+    text-align: center;
+    margin-bottom: vars.$espacement-sm;
+  }
+
+  > p {
+    text-align: center;
+    font-size: 1.125rem;
+    margin-bottom: vars.$espacement-lg;
+    color: lighten(vars.$couleur-texte, 20%);
+
+    strong {
+      color: vars.$couleur-primaire;
+      font-weight: 700;
+    }
+  }
+}

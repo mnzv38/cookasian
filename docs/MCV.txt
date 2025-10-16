@@ -1,0 +1,61 @@
+Imagine que ton site web Samouraï Kitchen est une grande maison 🏠.
+Dans cette maison, tu as :
+
+Pièce	Ce qu’elle contient	Exemple concret
+🪟 views/	Ce que les visiteurs voient	Les pages HTML (Accueil, Recettes, Contact...)
+👩‍🍳 controllers/	Les personnes qui font les actions	“Va chercher les recettes !”, “Affiche cette page !”
+📚 models/	Les carnets de recettes et les bases de données	Tables MySQL : recettes, utilisateurs, favoris
+🌍 public/	La vitrine visible depuis la rue	Le site affiché dans ton navigateur
+⚙️ app/Core/	Le moteur caché de la maison	Ce qui fait fonctionner tout le reste !
+
+
+Core est le diminutif de "Core system" = le cœur du système. désigne la partie centrale, essentielle d’un système ou d’un programme.
+> Le dossier core/ contient tout ce qui fait battre le cœur de ton site MVC :
+les classes et fichiers essentiels au bon fonctionnement du projet, peu importe les pages.
+EN GROS : Contient les fichiers essentiels au fonctionnement du MVC
+
+
+🚗 Le dossier Core/ = le moteur de ta voiture
+
+Tu ne le vois pas, mais sans moteur, ta voiture (ton site) ne bouge pas.
+C’est ici que vivent les fichiers “techniques” qui font fonctionner ton MVC :
+
+Fichier dans Core	Son rôle (en image d’enfant)
+-Controller.php	Le parent des contrôleurs : il apprend à tous les enfants comment parler (rendre des vues, rediriger, etc.).
+-Model.php	Le parent des modèles : il apprend à parler avec la base de données.
+-Router.php	Le GPS 🚦 : il dit quelle route prendre quand quelqu’un tape une URL (/recettes, /utilisateur, etc.).
+-Database.php	Le téléphone 📞 : il connecte le site à MySQL pour lire ou écrire des données.
+
+💬 En gros :
+
+🔧 Le dossier Core contient le cœur de ton site, les outils essentiels que tout le monde réutilise.
+Sans lui, ton projet MVC ne saurait ni où aller, ni comment parler, ni comment se connecter à la base.
+
+🧩 Pourquoi on l’a mis dans app/
+
+Ton dossier app/ est le cerveau complet de ton site :
+
+-Core/ → les outils techniques (le moteur)
+
+-Config/ → les réglages (comme les préférences d’un jeu vidéo 🎮)
+
+-Helpers/ → les petits raccourcis (trucs malins qu’on peut réutiliser)
+
+-Migrations/ → les sauvegardes de la base (comme une carte mémoire 💾)
+
+Ainsi, ton code est bien rangé par nature :
+le moteur (Core), les réglages (Config), les modèles (Models), les vues (Views)… tout a sa place !
+
+🎓 En résumé :
+
+Le dossier Core, c’est la boîte à outils magique 🧰 de ton site Samouraï Kitchen.
+Tout le reste (controllers, models, views) utilise ses outils pour fonctionner.
+Il ne s’affiche jamais, mais sans lui, rien ne marche.
+
+
+🧩 Résumé global (pour relier tout ce qu’on a vu)
+Dossier	Métaphore de cuisine	Rôle
+Core/	Moteur / machines cachées 🔧	Fait tourner tout le restaurant
+Config/	Tableau de bord 🎛️	Gère les réglages et secrets
+Helpers/	Ustensiles magiques 🪄	Aident partout dans le code
+Migrations/	Carnet de recettes SQL 📖	Sauvegarde et rejoue l’histoire de ta base

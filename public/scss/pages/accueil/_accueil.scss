@@ -1,0 +1,45 @@
+@use "sass:color";
+@use "../../utils/variables" as vars;
+
+.page-accueil {
+  padding: 3rem 0;
+  background-color: vars.$couleur-fond;
+
+  h1 {
+    text-align: center;
+    color: vars.$couleur-primaire;
+    margin-bottom: 2rem;
+  }
+
+  .section-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    color: vars.$couleur-texte;
+    font-size: 1.1rem;
+  }
+
+  .liste-recettes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .voir-plus {
+    display: block;
+    text-align: center;
+    margin-top: 2rem;
+
+    a {
+      font-weight: 600;
+      text-decoration: none;
+      color: color.adjust(vars.$couleur-primaire, $lightness: -10%);
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: color.adjust(vars.$couleur-primaire, $lightness: 5%);
+      }
+    }
+  }
+}

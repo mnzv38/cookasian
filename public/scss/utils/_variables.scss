@@ -1,0 +1,25 @@
+@use "sass:color";
+
+/* === VARIABLES COULEURS === */
+$couleur-primaire: #c62828; // Rouge asiatique profond
+$couleur-secondaire: #fdd835; // Jaune doré
+$couleur-texte: #f5f5f5; // Presque blanc
+$couleur-fond: #1c1b1a; // Noir/brun chaud
+$couleur-accent: #ff7043; // Orange épicé
+
+/* === TYPOGRAPHIE === */
+$font-principale: "Barlow Semi Condensed", sans-serif;
+$font-titres: "Playfair Display", serif;
+
+/* === ESPACEMENTS === */
+$espace-xs: 0.5rem;
+$espace-sm: 1rem;
+$espace-md: 2rem;
+$espace-lg: 3rem;
+$espace-xl: 5rem;
+
+/* === OMBRES === */
+$ombre-carte: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+/* === BORDURES === */
+$rayon-carte: 10px;

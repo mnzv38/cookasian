@@ -1,0 +1,90 @@
+@charset "UTF-8";
+
+// === MODULES SASS ===
+@use "sass:color";
+@use "utils/variables" as vars;
+@use "utils/mixins";
+@use "utils/functions";
+
+// === LAYOUT ===
+@use "layout/footer";
+
+// === COMPONENTS ===
+@use "components/commun/bouton";
+@use "components/commun/carte-recette";
+
+// === PAGES ===
+@use "pages/accueil/accueil";
+
+// === RESET & BASE ===
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: vars.$font-principale;
+  background-color: vars.$couleur-fond;
+  color: vars.$couleur-texte;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+// === UTILITAIRES ===
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none !important;
+}
+
+// === LIENS GLOBAUX ===
+a {
+  color: color.adjust(vars.$couleur-primaire, $lightness: -10%);
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: color.adjust(vars.$couleur-primaire, $lightness: 5%);
+  }
+}
+
+// === TITRES ===
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: 2rem;
+  color: vars.$couleur-primaire;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: color.adjust(vars.$couleur-primaire, $lightness: -10%);
+}
+
+p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+// === IMAGES ===
+img {
+  max-width: 100%;
+  display: block;
+  border-radius: 4px;
+}

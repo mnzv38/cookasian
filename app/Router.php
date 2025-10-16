@@ -8,18 +8,10 @@ namespace Cookasian;
 
 class Router
 {
-    /**
-     * @var array $routes Liste des routes enregistrées
-     */
     private array $routes = [];
 
     /**
      * Enregistre une route GET
-     * 
-     * @param string $path Chemin URL (ex: /recette/{slug})
-     * @param string $controller Contrôleur à appeler
-     * @param string $method Méthode du contrôleur
-     * @return void
      */
     public function get(string $path, string $controller, string $method): void
     {
@@ -31,11 +23,6 @@ class Router
 
     /**
      * Enregistre une route POST
-     * 
-     * @param string $path Chemin URL
-     * @param string $controller Contrôleur à appeler
-     * @param string $method Méthode du contrôleur
-     * @return void
      */
     public function post(string $path, string $controller, string $method): void
     {
@@ -46,48 +33,58 @@ class Router
     }
 
     /**
-     * Dispatche la requête vers le bon contrôleur
-     * 
-     * @return void
+     * Analyse l’URL et appelle le bon contrôleur / méthode
      */
     public function dispatch(): void
     {
-        // Récupération de la méthode HTTP
         $requestMethod = $_SERVER['REQUEST_METHOD'];
-        
-        // Récupération de l'URI sans query string
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-        
-        // Recherche de la route correspondante
+
         foreach ($this->routes[$requestMethod] ?? [] as $path => $route) {
-            // Conversion du pattern en regex (ex: /recette/{slug} => /recette/([^/]+))
+            // Transformation des patterns dynamiques : /recette/{slug}
             $pattern = preg_replace('/\{[a-zA-Z]+\}/', '([^/]+)', $path);
             $pattern = '#^' . $pattern . '$#';
-            
+
             if (preg_match($pattern, $uri, $matches)) {
-                // Suppression du premier élément (URI complète)
                 array_shift($matches);
-                
-                // Instanciation du contrôleur
-                $controllerName = $route['controller'];
-                $controller = new $controllerName();
-                
-                // Appel de la méthode avec les paramètres
+
+                // 🔹 Namespace complet selon la convention PSR-4
+                $controllerClass = 'Cookasian\\Controllers\\' . $route['controller'];
+
+                if (!class_exists($controllerClass)) {
+                    echo "<h1>Erreur : contrôleur introuvable</h1>";
+                    echo "<p>Classe recherchée : <code>{$controllerClass}</code></p>";
+                    return;
+                }
+
+                $controller = new $controllerClass();
                 $method = $route['method'];
+
+                if (!method_exists($controller, $method)) {
+                    echo "<h1>Erreur : méthode non trouvée</h1>";
+                    echo "<p>Dans la classe : <code>{$controllerClass}</code></p>";
+                    return;
+                }
+
                 call_user_func_array([$controller, $method], $matches);
                 return;
             }
         }
-        
-        // Aucune route trouvée : erreur 404
+
+        // 404 si aucune route ne correspond
         http_response_code(404);
-        require_once __DIR__ . '/../views/erreurs/404.php';
+        $errorView = __DIR__ . '/../Views/erreurs/404.php';
+
+        if (file_exists($errorView)) {
+            require $errorView;
+        } else {
+            echo "<h1>Erreur 404 - Page non trouvée</h1>";
+            echo "<p>La page demandée ({$uri}) est introuvable.</p>";
+        }
     }
 
     /**
-     * Retourne toutes les routes enregistrées (utile pour les tests)
-     * 
-     * @return array
+     * Retourne toutes les routes (utile pour debug)
      */
     public function getRoutes(): array
     {

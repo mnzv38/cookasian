@@ -1,0 +1,40 @@
+@"
+# === Node & NPM ===
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# === Composer ===
+vendor/
+composer.lock
+
+# === Environnements ===
+.env
+.env.local
+.env.*.local
+
+# === Build front (Sass / JS) ===
+public/css/*.map
+public/js/*.map
+
+# === Cache & logs ===
+.cache/
+*.log
+*.tmp
+
+# === Docker ===
+/docker-compose.override.yml
+/.docker/
+.dockerignore
+
+# === IDE & Système ===
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# === Divers ===
+/tests/
+/coverage/
+/tmp/
+"@ | Out-File -Encoding UTF8 .gitignore

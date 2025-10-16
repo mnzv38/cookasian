@@ -6,16 +6,22 @@
 
 use Cookasian\Router;
 
+// Création du routeur
 $router = new Router();
 
-// Route page d'accueil
+// === ROUTES PRINCIPALES ===
+
+// Page d'accueil
 $router->get('/', 'AccueilController', 'index');
 
-// Routes à venir :
-// $router->get('/recettes', 'RecettesController', 'index');
-// $router->get('/recette/{slug}', 'RecettesController', 'show');
+// Pages recettes
+$router->get('/recettes', 'RecettesController', 'index');
+$router->get('/recette/{slug}', 'RecettesController', 'show');
+
+// === Routes futures ===
 // $router->get('/histoire', 'HistoireController', 'index');
 // $router->get('/utilisateur', 'UtilisateurController', 'connexion');
 
+// Retourne l'objet Router prêt à être lancé
 return $router;
 ?>
