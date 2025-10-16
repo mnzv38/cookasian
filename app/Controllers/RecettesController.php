@@ -1,42 +1,34 @@
 <?php
 namespace Cookasian\Controllers;
 
-use Cookasian\Controller;
 use Cookasian\Models\RecettesModel;
 
-class RecettesController extends Controller
+class RecettesController
 {
-    private RecettesModel $model;
+    private RecettesModel $recetteModel;
 
     public function __construct()
     {
-        $this->model = new RecettesModel();
+        $this->recetteModel = new RecettesModel();
     }
 
     public function index(): void
     {
-        $recettes = $this->model->getAll();
-
-        $this->render('recettes/index', [
-            'pageTitle' => 'Toutes les recettes',
-            'recettes' => $recettes
-        ]);
+        $recettes = $this->recetteModel->getAll();
+        require __DIR__ . '/../Views/recettes/index.php'; // ← corrige ici (un seul ../)
     }
 
     public function show(string $slug): void
     {
-        $recette = $this->model->getBySlug($slug);
+        $recette = $this->recetteModel->getBySlug($slug);
 
         if (!$recette) {
             http_response_code(404);
-            $this->render('erreurs/404');
+            require __DIR__ . '/../Views/erreurs/404.php'; // idem
             return;
         }
 
-        $this->render('recettes/show', [
-            'pageTitle' => $recette['titre'],
-            'recette' => $recette
-        ]);
+        require __DIR__ . '/../Views/recettes/show.php';
     }
 }
 ?>

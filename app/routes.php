@@ -15,8 +15,8 @@ $router = new Router();
 $router->get('/', 'AccueilController', 'index');
 
 // Pages recettes
-$router->get('/recettes', 'RecettesController', 'index');
-$router->get('/recette/{slug}', 'RecettesController', 'show');
+$router->get('/recettes', 'RecettesController', 'index');          // liste de toutes les recettes
+$router->get('/recettes/{slug}', 'RecettesController', 'show');    // page d'une recette unique
 
 // === Routes futures ===
 // $router->get('/histoire', 'HistoireController', 'index');

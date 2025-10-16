@@ -13,15 +13,23 @@ class RecettesModel
         $this->pdo = Database::pdo();
     }
 
+    /**
+     * Récupère toutes les recettes.
+     */
     public function getAll(): array
     {
-        $stmt = $this->pdo->query("SELECT * FROM recettes ORDER BY date_creation DESC");
+        $sql = "SELECT * FROM recettes ORDER BY date_creation DESC";
+        $stmt = $this->pdo->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Récupère une recette spécifique par son slug.
+     */
     public function getBySlug(string $slug): ?array
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM recettes WHERE slug = :slug");
+        $sql = "SELECT * FROM recettes WHERE slug = :slug";
+        $stmt = $this->pdo->prepare($sql);
         $stmt->execute(['slug' => $slug]);
         $recette = $stmt->fetch(PDO::FETCH_ASSOC);
         return $recette ?: null;
