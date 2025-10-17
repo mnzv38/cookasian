@@ -1,49 +1,187 @@
+// 🧹 C’est le balai magique.
+// Il efface tous les styles par défaut des navigateurs (car Chrome, Firefox, Safari affichent les marges et polices différemment).
+// Grâce à lui, ton site part d’une base propre, identique partout.
+
 // ========================================
-// Reset CSS minimaliste COOKASIAN
-// Normalise les styles par défaut du navigateur
+// 🔄 RESET CSS MODERNE
+// Réinitialisation des styles navigateur
 // ========================================
 
-// Import des variables nécessaires
-@use "../utils/variables" as vars;
+// Import des variables
+@use '../utils/variables' as *;
+
+// ========================================
+// 1. RESET UNIVERSEL
+// ========================================
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box; // Calcul intuitif des tailles (padding inclus)
 }
 
+// ========================================
+// 2. HTML & BODY
+// ========================================
+
 html {
-  font-size: vars.$font-taille-base;
+  // Taille de base : 16px = 1rem (pour l'accessibilité)
+  font-size: 100%;
+  
+  // Scroll fluide lors des ancres
   scroll-behavior: smooth;
+  
+  // Meilleur rendu sur tous les navigateurs
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-family: vars.$font-principale;
-  font-size: vars.$font-taille-base;
-  line-height: vars.$line-height-base;
-  color: vars.$couleur-texte;
-  background-color: vars.$couleur-fond;
+  min-height: 100vh; // Hauteur minimale = hauteur de l'écran
+  line-height: $line-height-normal; // Hauteur de ligne confortable
+  font-family: $font-principale;
+  color: $couleur-texte-principal;
+  background-color: $couleur-fond;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+// ========================================
+// 3. TYPOGRAPHIE
+// ========================================
+
+// Tous les titres
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-titre; // Police élégante pour les titres
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight; // Titres plus compacts
+  color: $couleur-secondaire;
 }
 
-ul {
-  list-style: none;
+// Paragraphes
+p {
+  margin-bottom: $espace-md;
 }
 
+// Liens
 a {
-  color: inherit;
+  color: $couleur-primaire;
   text-decoration: none;
+  transition: color $transition-rapide;
+  
+  &:hover {
+    color: $couleur-accent;
+  }
+  
+  &:focus-visible {
+    outline: 2px solid $couleur-primaire;
+    outline-offset: 2px;
+    border-radius: $rayon-sm;
+  }
 }
+
+// Texte en gras
+strong, b {
+  font-weight: $font-weight-bold;
+}
+
+// Texte en italique
+em, i {
+  font-style: italic;
+}
+
+// ========================================
+// 4. IMAGES & MÉDIAS
+// ========================================
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block; // Enlève l'espace blanc en dessous
+  max-width: 100%; // Responsive par défaut
+  height: auto; // Garde les proportions
+}
+
+// ========================================
+// 5. FORMULAIRES
+// ========================================
 
 button,
 input,
-textarea {
-  font-family: inherit;
+textarea,
+select {
+  font: inherit; // Hérite de la police du parent
+  color: inherit;
+}
+
+button {
+  cursor: pointer; // Curseur en forme de main
+  border: none;
+  background: none;
+}
+
+// Enlever l'apparence par défaut
+input,
+textarea,
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+// ========================================
+// 6. LISTES
+// ========================================
+
+ul, ol {
+  list-style: none; // Pas de puces par défaut
+}
+
+// ========================================
+// 7. TABLES
+// ========================================
+
+table {
+  border-collapse: collapse; // Bordures fusionnées
+  width: 100%;
+}
+
+// ========================================
+// 8. ACCESSIBILITÉ
+// ========================================
+
+// Cacher visuellement mais garder pour les lecteurs d'écran
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// Focus visible (pour le clavier)
+:focus-visible {
+  outline: 2px solid $couleur-primaire;
+  outline-offset: 2px;
+}
+
+// ========================================
+// 9. SÉLECTION DE TEXTE
+// ========================================
+
+::selection {
+  background-color: $couleur-primaire;
+  color: $couleur-texte-clair;
+}
+
+::-moz-selection {
+  background-color: $couleur-primaire;
+  color: $couleur-texte-clair;
 }

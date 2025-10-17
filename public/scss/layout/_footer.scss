@@ -1,23 +1,204 @@
-@use "sass:color";
-@use "../utils/variables" as vars;
+// ========================================
+// 🦶 FOOTER / PIED DE PAGE
+// Informations et liens du site
+// ========================================
 
-footer {
-  background-color: vars.$couleur-primaire;
-  color: color.adjust(vars.$couleur-texte, $lightness: 30%);
-  padding: 2rem 0;
-  text-align: center;
+// Import des variables
+@use '../utils/variables' as *;
 
-  a {
-    color: color.adjust(vars.$couleur-texte, $lightness: 30%);
-    text-decoration: none;
-    transition: color 0.3s ease;
+// ========================================
+// 1. CONTENEUR PRINCIPAL
+// ========================================
 
-    &:hover {
-      color: color.adjust(vars.$couleur-texte, $lightness: 40%);
+.footer {
+  background: linear-gradient(to bottom, $couleur-secondaire, darken($couleur-secondaire, 10%));
+  color: $couleur-texte-clair;
+  margin-top: auto; // Se place toujours en bas
+  padding-top: $espace-3xl;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.footer__conteneur {
+  max-width: $largeur-max-contenu;
+  margin: 0 auto;
+  padding: 0 $espace-md;
+  
+  // Grille responsive
+  display: grid;
+  grid-template-columns: 1fr; // 1 colonne sur mobile
+  gap: $espace-xl;
+}
+
+// ========================================
+// 2. SECTIONS DU FOOTER
+// ========================================
+
+.footer__section {
+  // Animation d'apparition en cascade
+  animation: fadeInUp 0.6s ease-out backwards;
+  
+  &:nth-child(1) { animation-delay: 0.1s; }
+  &:nth-child(2) { animation-delay: 0.2s; }
+  &:nth-child(3) { animation-delay: 0.3s; }
+  &:nth-child(4) { animation-delay: 0.4s; }
+}
+
+// ========================================
+// 3. TITRES
+// ========================================
+
+.footer__titre {
+  font-family: $font-titre;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  margin-bottom: $espace-md;
+  color: $couleur-texte-clair;
+  
+  // Barre décorative
+  position: relative;
+  padding-bottom: $espace-sm;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(to right, $couleur-primaire, $couleur-accent);
+    border-radius: $rayon-full;
+  }
+}
+
+// ========================================
+// 4. DESCRIPTION
+// ========================================
+
+.footer__description {
+  font-size: $font-size-sm;
+  line-height: $line-height-relaxed;
+  color: rgba($couleur-texte-clair, 0.8);
+  margin-bottom: 0;
+}
+
+// ========================================
+// 5. LISTES ET LIENS
+// ========================================
+
+.footer__liste {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: $espace-sm;
+}
+
+.footer__lien {
+  color: rgba($couleur-texte-clair, 0.8);
+  font-size: $font-size-sm;
+  transition: all $transition-rapide;
+  display: inline-block;
+  position: relative;
+  
+  // Flèche qui apparaît au survol
+  &::before {
+    content: '→';
+    position: absolute;
+    left: -20px;
+    opacity: 0;
+    transition: all $transition-rapide;
+  }
+  
+  &:hover {
+    color: $couleur-accent;
+    transform: translateX(8px);
+    
+    &::before {
+      opacity: 1;
+      left: -16px;
     }
   }
+  
+  &:focus-visible {
+    outline: 2px solid $couleur-accent;
+    outline-offset: 2px;
+    border-radius: $rayon-sm;
+    color: $couleur-accent;
+  }
+}
 
+// ========================================
+// 6. CONTACT
+// ========================================
+
+.footer__contact {
+  display: flex;
+  align-items: center;
+  gap: $espace-sm;
+  font-size: $font-size-sm;
+  color: rgba($couleur-texte-clair, 0.8);
+  
+  span {
+    font-size: $font-size-lg;
+  }
+}
+
+// ========================================
+// 7. BARRE DE COPYRIGHT
+// ========================================
+
+.footer__copyright {
+  margin-top: $espace-3xl;
+  padding: $espace-lg 0;
+  border-top: 1px solid rgba($couleur-texte-clair, 0.1);
+  text-align: center;
+  
+  .footer__conteneur {
+    display: flex;
+    flex-direction: column;
+    gap: $espace-xs;
+  }
+  
   p {
-    margin: 0.5rem 0;
+    font-size: $font-size-xs;
+    color: rgba($couleur-texte-clair, 0.6);
+    margin: 0;
+  }
+}
+
+.footer__credit {
+  font-style: italic;
+  
+  // Animation du coeur
+  &:hover {
+    color: rgba($couleur-texte-clair, 0.8);
+  }
+}
+
+// ========================================
+// 8. ANIMATIONS
+// ========================================
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ========================================
+// 9. ACCESSIBILITÉ
+// ========================================
+
+// Réduction des animations
+@media (prefers-reduced-motion: reduce) {
+  .footer,
+  .footer__section,
+  .footer__lien {
+    animation: none;
+    transition: none;
   }
 }

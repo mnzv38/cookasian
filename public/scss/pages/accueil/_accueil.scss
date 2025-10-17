@@ -1,45 +1,207 @@
-@use "sass:color";
-@use "../../utils/variables" as vars;
+// ========================================
+// 🏠 PAGE ACCUEIL
+// Styles spécifiques à la page d'accueil
+// ========================================
 
-.page-accueil {
-  padding: 3rem 0;
-  background-color: vars.$couleur-fond;
+// Import des variables
+@use '../../utils/variables' as *;
 
-  h1 {
-    text-align: center;
-    color: vars.$couleur-primaire;
-    margin-bottom: 2rem;
+// ========================================
+// 1. SECTION HÉRO
+// ========================================
+
+.hero {
+  position: relative;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: $espace-3xl $espace-md;
+  overflow: hidden;
+  
+  // Fond dégradé
+  background: linear-gradient(135deg, 
+    rgba($couleur-primaire, 0.95), 
+    rgba($couleur-accent, 0.95)
+  );
+  
+  // Animation d'apparition
+  animation: fadeIn 0.8s ease-out;
+}
+
+.hero__contenu {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero__titre {
+  font-family: $font-titre;
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  color: $couleur-texte-clair;
+  margin-bottom: $espace-lg;
+  line-height: $line-height-tight;
+  
+  animation: fadeInUp 0.8s ease-out 0.2s backwards;
+}
+
+.hero__sous-titre {
+  font-size: $font-size-lg;
+  color: rgba($couleur-texte-clair, 0.95);
+  line-height: $line-height-relaxed;
+  margin-bottom: $espace-2xl;
+  
+  animation: fadeInUp 0.8s ease-out 0.4s backwards;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $espace-md;
+  justify-content: center;
+  
+  animation: fadeInUp 0.8s ease-out 0.6s backwards;
+}
+
+// Bouton blanc sur fond coloré
+.hero__bouton--blanc {
+  background-color: $couleur-carte;
+  color: $couleur-primaire;
+  box-shadow: $ombre-lg;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $ombre-xl;
+    background-color: $couleur-fond;
   }
+}
 
-  .section-intro {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-    color: vars.$couleur-texte;
-    font-size: 1.1rem;
+// ========================================
+// 2. SECTION RECETTES POPULAIRES
+// ========================================
+
+.recettes-populaires {
+  padding: $espace-3xl $espace-md;
+  background-color: $couleur-fond;
+}
+
+.recettes-populaires__entete {
+  text-align: center;
+  margin-bottom: $espace-2xl;
+}
+
+.recettes-populaires__titre {
+  font-family: $font-titre;
+  font-size: $font-size-3xl;
+  color: $couleur-secondaire;
+  margin-bottom: $espace-md;
+}
+
+.recettes-populaires__description {
+  font-size: $font-size-lg;
+  color: $couleur-texte-secondaire;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.recettes-populaires__grille {
+  display: grid;
+  grid-template-columns: 1fr; // 1 colonne sur mobile
+  gap: $espace-xl;
+  margin-bottom: $espace-2xl;
+}
+
+.recettes-populaires__actions {
+  text-align: center;
+}
+
+// ========================================
+// 3. SECTION À PROPOS
+// ========================================
+
+.a-propos {
+  padding: $espace-3xl $espace-md;
+  background-color: $couleur-carte;
+}
+
+.a-propos__conteneur {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.a-propos__titre {
+  font-family: $font-titre;
+  font-size: $font-size-3xl;
+  color: $couleur-secondaire;
+  margin-bottom: $espace-lg;
+}
+
+.a-propos__texte {
+  font-size: $font-size-base;
+  color: $couleur-texte-principal;
+  line-height: $line-height-relaxed;
+  margin-bottom: $espace-md;
+  
+  &:last-of-type {
+    margin-bottom: $espace-xl;
   }
+}
 
-  .liste-recettes {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
+// ========================================
+// 4. SECTION CTA (Call To Action)
+// ========================================
+
+.cta {
+  padding: $espace-3xl $espace-md;
+  background: linear-gradient(135deg, $couleur-secondaire, darken($couleur-secondaire, 10%));
+  text-align: center;
+  color: $couleur-texte-clair;
+}
+
+.cta__titre {
+  font-family: $font-titre;
+  font-size: $font-size-3xl;
+  margin-bottom: $espace-lg;
+  color: $couleur-texte-clair;
+}
+
+.cta__description {
+  font-size: $font-size-lg;
+  margin-bottom: $espace-xl;
+  color: rgba($couleur-texte-clair, 0.9);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// ========================================
+// 5. ANIMATIONS
+// ========================================
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-  .voir-plus {
-    display: block;
-    text-align: center;
-    margin-top: 2rem;
+// ========================================
+// 6. ACCESSIBILITÉ
+// ========================================
 
-    a {
-      font-weight: 600;
-      text-decoration: none;
-      color: color.adjust(vars.$couleur-primaire, $lightness: -10%);
-      transition: color 0.3s ease;
-
-      &:hover {
-        color: color.adjust(vars.$couleur-primaire, $lightness: 5%);
-      }
-    }
+@media (prefers-reduced-motion: reduce) {
+  .hero,
+  .hero__titre,
+  .hero__sous-titre,
+  .hero__actions {
+    animation: none;
   }
 }

@@ -1,4 +1,4 @@
-cd ..\developpement-web\samourai-kitchen
+cd ..\developpement-web\cookasian
 tree /f > ("tree_" + (Get-Date -Format "yyyy-MM-dd_HH-mm-ss") + ".txt")
 tree /f > ("tree_" + (Get-Date -Format "yyyy-MM-dd_HH-mm-ss") + ".md")
 

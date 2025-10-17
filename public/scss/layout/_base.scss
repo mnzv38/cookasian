@@ -3,48 +3,260 @@
 // Éléments HTML génériques + utilitaires
 // ========================================
 
-// Import des dépendances
-@use "../utils/variables" as vars;
-@use "../utils/mixins" as mix;
+// 🎯 C’est le terrain de jeu propre après le nettoyage.
+// Tu y définis les règles générales de base :
 
-// Classe utilitaire pour cacher visuellement
-.visually-hidden {
-  @include mix.visually-hidden;
+// police par défaut du site (body { font-family: ... })
+// couleur du texte
+// couleur du fond
+// tailles de titres (h1, h2, etc.)
+// marges globales
+// 💡 En résumé : le _reset nettoie tout, et _base pose les fondations.
+
+// ========================================
+// 🏗️ STYLES DE BASE
+// Structure générale et typographie
+// ========================================
+
+// Import des variables
+@use '../utils/variables' as *;
+
+// ========================================
+// 1. CONTENEUR PRINCIPAL
+// ========================================
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; // Prend toute la hauteur de l'écran
 }
 
-// Conteneur principal
+// Main prend tout l'espace disponible
 main {
-  @include mix.container;
-  min-height: calc(100vh - 200px);
-  padding-top: vars.$espacement-lg;
-  padding-bottom: vars.$espacement-lg;
+  flex: 1; // Pousse le footer en bas
+  padding: $espace-xl $espace-md;
+  max-width: $largeur-max-contenu;
+  margin: 0 auto; // Centré horizontalement
+  width: 100%;
 }
 
-// Titres
+// ========================================
+// 2. SECTIONS
+// ========================================
+
+section {
+  margin-bottom: $espace-3xl;
+  
+  &:last-child {
+    margin-bottom: 0; // Pas de marge sur la dernière section
+  }
+}
+
+// ========================================
+// 3. TYPOGRAPHIE GLOBALE
+// ========================================
+
+// Titre principal de la page (H1)
 h1 {
-  font-size: vars.$font-taille-h1;
-  margin-bottom: vars.$espacement-md;
-  color: vars.$couleur-secondaire;
+  font-size: $font-size-4xl; // 36px
+  margin-bottom: $espace-xl;
+  color: $couleur-secondaire;
+  
+  // Animation d'apparition
+  animation: fadeInUp 0.6s ease-out;
 }
 
+// Sous-titres (H2)
 h2 {
-  font-size: vars.$font-taille-h2;
-  margin-bottom: vars.$espacement-sm;
-  color: vars.$couleur-secondaire;
+  font-size: $font-size-3xl; // 30px
+  margin-bottom: $espace-lg;
+  color: $couleur-secondaire;
+  position: relative;
+  padding-bottom: $espace-sm;
+  
+  // Barre décorative sous le titre
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, $couleur-primaire, $couleur-accent);
+    border-radius: $rayon-full;
+  }
 }
 
+// Sous-sections (H3)
 h3 {
-  font-size: vars.$font-taille-h3;
-  margin-bottom: vars.$espacement-sm;
-  color: vars.$couleur-secondaire;
+  font-size: $font-size-2xl; // 24px
+  margin-bottom: $espace-md;
+  color: $couleur-secondaire;
+}
+
+// Petits titres (H4)
+h4 {
+  font-size: $font-size-xl; // 20px
+  margin-bottom: $espace-sm;
+  color: $couleur-texte-principal;
+  font-weight: $font-weight-semibold;
 }
 
 // Paragraphes
 p {
-  margin-bottom: vars.$espacement-sm;
+  font-size: $font-size-base;
+  line-height: $line-height-relaxed;
+  color: $couleur-texte-principal;
+  max-width: $largeur-max-texte; // Limite la largeur pour la lisibilité
+  
+  // Texte de présentation (plus grand)
+  &.lead {
+    font-size: $font-size-lg;
+    color: $couleur-texte-secondaire;
+    margin-bottom: $espace-xl;
+  }
 }
 
-// Liens
-a {
-  @include mix.focus-visible;
+// ========================================
+// 4. GRILLES (pour les cartes de recettes)
+// ========================================
+
+.grille {
+  display: grid;
+  gap: $espace-lg; // Espacement entre les éléments
+  
+  // Une seule colonne sur mobile (375px)
+  grid-template-columns: 1fr;
+}
+
+// ========================================
+// 5. CONTENEUR CENTRÉ
+// ========================================
+
+.conteneur {
+  max-width: $largeur-max-contenu;
+  margin: 0 auto;
+  padding: 0 $espace-md;
+  width: 100%;
+}
+
+// ========================================
+// 6. ESPACEMENTS UTILITAIRES
+// ========================================
+
+// Marges
+.mt-sm { margin-top: $espace-sm; }
+.mt-md { margin-top: $espace-md; }
+.mt-lg { margin-top: $espace-lg; }
+.mt-xl { margin-top: $espace-xl; }
+
+.mb-sm { margin-bottom: $espace-sm; }
+.mb-md { margin-bottom: $espace-md; }
+.mb-lg { margin-bottom: $espace-lg; }
+.mb-xl { margin-bottom: $espace-xl; }
+
+// Paddings
+.p-sm { padding: $espace-sm; }
+.p-md { padding: $espace-md; }
+.p-lg { padding: $espace-lg; }
+.p-xl { padding: $espace-xl; }
+
+// ========================================
+// 7. ANIMATIONS
+// ========================================
+
+// Apparition en fondu + glissement
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Apparition simple
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Animation de chargement
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+// ========================================
+// 8. ÉTATS DE CHARGEMENT
+// ========================================
+
+.chargement {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 3px solid $couleur-bordure;
+  border-top-color: $couleur-primaire;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// ========================================
+// 9. MESSAGES (succès/erreur)
+// ========================================
+
+.message {
+  padding: $espace-md;
+  border-radius: $rayon-md;
+  margin-bottom: $espace-lg;
+  font-size: $font-size-sm;
+  animation: fadeIn 0.3s ease-out;
+  
+  &--succes {
+    background-color: rgba($couleur-succes, 0.1);
+    color: darken($couleur-succes, 20%);
+    border-left: 4px solid $couleur-succes;
+  }
+  
+  &--erreur {
+    background-color: rgba($couleur-erreur, 0.1);
+    color: darken($couleur-erreur, 20%);
+    border-left: 4px solid $couleur-erreur;
+  }
+}
+
+// ========================================
+// 10. ACCESSIBILITÉ
+// ========================================
+
+// Skip link (lien pour sauter au contenu principal)
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: $couleur-secondaire;
+  color: $couleur-texte-clair;
+  padding: $espace-sm $espace-md;
+  text-decoration: none;
+  z-index: 9999;
+  
+  &:focus {
+    top: 0;
+  }
 }

@@ -1,50 +1,248 @@
 // ========================================
-// Header COOKASIAN
+// 🎯 HEADER / EN-TÊTE
 // Navigation principale du site
 // ========================================
 
-// Import des dépendances
-@use "../utils/variables" as vars;
-@use "../utils/mixins" as mix;
+// Import des variables
+@use '../utils/variables' as *;
 
-header[role="banner"] {
-  background-color: vars.$couleur-secondaire;
-  padding: vars.$espacement-sm vars.$padding-container;
+// ========================================
+// 1. CONTENEUR PRINCIPAL
+// ========================================
 
-  nav {
-    @include mix.container;
-    padding: 0;
+.header {
+  background-color: $couleur-carte;
+  box-shadow: $ombre-sm;
+  position: sticky; // Reste visible en haut lors du scroll
+  top: 0;
+  z-index: 1000;
+  transition: box-shadow $transition-normale;
+  
+  // Ombre plus marquée lors du scroll (effet de profondeur)
+  &--scrolled {
+    box-shadow: $ombre-md;
+  }
+}
 
-    ul {
-      display: flex;
-      flex-wrap: wrap;
-      gap: vars.$espacement-sm;
-      justify-content: center;
+.header__conteneur {
+  max-width: $largeur-max-contenu;
+  margin: 0 auto;
+  padding: 0 $espace-md;
+  height: $hauteur-header;
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between; // Logo à gauche, nav à droite
+  gap: $espace-lg;
+}
 
-      li {
-        a {
-          display: inline-block;
-          padding: vars.$espacement-xs vars.$espacement-sm;
-          color: vars.$couleur-fond;
-          font-weight: 500;
-          min-height: vars.$taille-tactile-min;
+// ========================================
+// 2. LOGO
+// ========================================
 
-          // ✅ CORRECTION : calc() pour unités mixtes
-          line-height: calc(
-            #{vars.$taille-tactile-min} - #{vars.$espacement-xs * 2}
-          );
+.header__logo {
+  flex-shrink: 0; // Ne rétrécit jamais
+  
+  a {
+    display: flex;
+    align-items: center;
+    color: $couleur-secondaire;
+    font-weight: $font-weight-bold;
+    transition: transform $transition-rapide;
+    
+    &:hover {
+      transform: scale(1.05); // Légère augmentation au survol
+      color: $couleur-primaire;
+    }
+    
+    &:focus-visible {
+      outline: 2px solid $couleur-primaire;
+      outline-offset: 4px;
+      border-radius: $rayon-sm;
+    }
+  }
+}
 
-          transition: background-color 0.3s ease;
+.header__logo-texte {
+  font-family: $font-titre;
+  font-size: $font-size-2xl;
+  letter-spacing: -0.5px; // Lettres légèrement plus serrées
+  
+  // Animation du emoji au survol
+  &:hover {
+    animation: bounce 0.5s ease-in-out;
+  }
+}
 
-          &:hover,
-          &:focus {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-          }
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
 
-          @include mix.focus-visible;
-        }
+// ========================================
+// 3. NAVIGATION
+// ========================================
+
+.header__nav {
+  flex: 1; // Prend l'espace disponible
+}
+
+.header__menu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; // Aligné à droite
+  gap: $espace-xs;
+  list-style: none;
+}
+
+.header__menu-item {
+  // Pas de style spécifique, tout est dans le lien
+}
+
+// ========================================
+// 4. LIENS DE NAVIGATION
+// ========================================
+
+.header__lien {
+  display: block;
+  padding: $espace-sm $espace-md;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: $couleur-texte-principal;
+  border-radius: $rayon-md;
+  transition: all $transition-rapide;
+  position: relative;
+  
+  // Barre de soulignement animée
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(to right, $couleur-primaire, $couleur-accent);
+    border-radius: $rayon-full;
+    transition: transform $transition-normale;
+  }
+  
+  // Au survol
+  &:hover {
+    color: $couleur-primaire;
+    background-color: rgba($couleur-primaire, 0.05);
+    
+    &::after {
+      transform: translateX(-50%) scaleX(1); // La barre apparaît
+    }
+  }
+  
+  // Lien actif (page en cours)
+  &--actif {
+    color: $couleur-primaire;
+    font-weight: $font-weight-semibold;
+    
+    &::after {
+      transform: translateX(-50%) scaleX(1); // Barre toujours visible
+    }
+  }
+  
+  // Focus clavier
+  &:focus-visible {
+    outline: 2px solid $couleur-primaire;
+    outline-offset: 2px;
+    background-color: rgba($couleur-primaire, 0.05);
+  }
+  
+  // Style bouton (pour "Connexion")
+  &--bouton {
+    background: linear-gradient(135deg, $couleur-primaire, $couleur-accent);
+    color: $couleur-texte-clair;
+    font-weight: $font-weight-semibold;
+    padding: $espace-sm $espace-lg;
+    box-shadow: $ombre-primaire;
+    
+    &::after {
+      display: none; // Pas de barre pour le bouton
+    }
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $ombre-lg;
+      background: linear-gradient(135deg, darken($couleur-primaire, 5%), $couleur-accent);
+    }
+    
+    &:active {
+      transform: translateY(0);
+      box-shadow: $ombre-sm;
+    }
+  }
+}
+
+// ========================================
+// 5. ÉTATS SPÉCIAUX
+// ========================================
+
+// Loader (si besoin de montrer un chargement)
+.header__loader {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba($couleur-primaire, 0.3);
+  border-top-color: $couleur-primaire;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+// ========================================
+// 6. ANIMATIONS
+// ========================================
+
+// Apparition du header au chargement
+.header {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// ========================================
+// 7. ACCESSIBILITÉ
+// ========================================
+
+// Mode sombre (si l'utilisateur préfère)
+@media (prefers-color-scheme: dark) {
+  .header {
+    background-color: darken($couleur-secondaire, 5%);
+    
+    .header__lien {
+      color: lighten($couleur-texte-principal, 40%);
+      
+      &:hover {
+        color: $couleur-accent;
       }
     }
+  }
+}
+
+// Réduction des animations (si l'utilisateur préfère)
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .header__lien,
+  .header__logo a {
+    animation: none;
+    transition: none;
   }
 }

@@ -1,30 +1,236 @@
-@use "sass:color";
-@use "../../utils/variables" as vars;
+// ========================================
+// 🔘 BOUTONS
+// Composants boutons réutilisables
+// ========================================
+
+// Import des variables
+@use '../../utils/variables' as *;
+
+// ========================================
+// 1. BASE BOUTON
+// ========================================
 
 .bouton {
-  display: inline-block;
-  background-color: color.adjust(vars.$couleur-primaire, $lightness: -10%);
-  color: vars.$couleur-texte;
-  font-weight: 600;
-  padding: 0.8rem 1.5rem;
-  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $espace-sm;
+  
+  padding: $espace-md $espace-xl;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  font-family: $font-principale;
+  text-align: center;
+  text-decoration: none;
+  
   border: none;
+  border-radius: $rayon-lg;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: color.adjust(vars.$couleur-primaire, $lightness: -5%);
+  
+  transition: all $transition-normale;
+  
+  // Taille tactile minimum (accessibilité)
+  min-height: $taille-min-tactile;
+  min-width: $taille-min-tactile;
+  
+  // Focus visible
+  &:focus-visible {
+    outline: 2px solid $couleur-primaire;
+    outline-offset: 3px;
   }
+  
+  // État désactivé
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
 
-  &--secondaire {
-    background-color: color.adjust(vars.$couleur-secondaire, $lightness: -5%);
-    color: vars.$couleur-texte;
+// ========================================
+// 2. BOUTON PRIMAIRE (Rouge/Orange)
+// ========================================
 
-    &:hover {
-      background-color: color.adjust(
-        vars.$couleur-secondaire,
-        $lightness: -10%
-      );
-    }
+.bouton--primaire {
+  background: linear-gradient(135deg, $couleur-primaire, $couleur-accent);
+  color: $couleur-texte-clair;
+  box-shadow: $ombre-primaire;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $ombre-xl;
+    background: linear-gradient(135deg, darken($couleur-primaire, 5%), lighten($couleur-accent, 5%));
+  }
+  
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: $ombre-md;
+  }
+}
+
+// ========================================
+// 3. BOUTON SECONDAIRE (Contour)
+// ========================================
+
+.bouton--secondaire {
+  background: transparent;
+  color: $couleur-primaire;
+  border: 2px solid $couleur-primaire;
+  box-shadow: none;
+  
+  &:hover {
+    background-color: $couleur-primaire;
+    color: $couleur-texte-clair;
+    transform: translateY(-2px);
+    box-shadow: $ombre-primaire;
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// ========================================
+// 4. BOUTON FANTÔME (Fond léger)
+// ========================================
+
+.bouton--fantome {
+  background-color: rgba($couleur-primaire, 0.1);
+  color: $couleur-primaire;
+  box-shadow: none;
+  
+  &:hover {
+    background-color: rgba($couleur-primaire, 0.15);
+    transform: scale(1.05);
+  }
+  
+  &:active {
+    transform: scale(1);
+  }
+}
+
+// ========================================
+// 5. BOUTON TEXTE (Minimal)
+// ========================================
+
+.bouton--texte {
+  background: transparent;
+  color: $couleur-primaire;
+  padding: $espace-sm $espace-md;
+  box-shadow: none;
+  font-weight: $font-weight-medium;
+  
+  &:hover {
+    background-color: rgba($couleur-primaire, 0.05);
+    color: $couleur-accent;
+  }
+  
+  &:active {
+    background-color: rgba($couleur-primaire, 0.1);
+  }
+}
+
+// ========================================
+// 6. TAILLES
+// ========================================
+
+// Petit bouton
+.bouton--petit {
+  padding: $espace-sm $espace-md;
+  font-size: $font-size-sm;
+  border-radius: $rayon-md;
+}
+
+// Grand bouton
+.bouton--grand {
+  padding: $espace-lg $espace-2xl;
+  font-size: $font-size-lg;
+  border-radius: $rayon-xl;
+  font-weight: $font-weight-bold;
+}
+
+// Bouton pleine largeur
+.bouton--pleine-largeur {
+  width: 100%;
+}
+
+// ========================================
+// 7. BOUTON AVEC ICÔNE
+// ========================================
+
+.bouton__icone {
+  font-size: $font-size-xl;
+  
+  // Animation de l'icône au survol
+  .bouton:hover & {
+    animation: bounceRight 0.5s ease-in-out;
+  }
+}
+
+@keyframes bounceRight {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+}
+
+// ========================================
+// 8. GROUPE DE BOUTONS
+// ========================================
+
+.bouton-groupe {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $espace-md;
+  align-items: center;
+}
+
+// ========================================
+// 9. ÉTATS DE CHARGEMENT
+// ========================================
+
+.bouton--chargement {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+    border: 2px solid rgba($couleur-texte-clair, 0.3);
+    border-top-color: $couleur-texte-clair;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// ========================================
+// 10. ACCESSIBILITÉ
+// ========================================
+
+// Réduction des animations
+@media (prefers-reduced-motion: reduce) {
+  .bouton,
+  .bouton__icone {
+    transition: none;
+    animation: none;
+  }
+  
+  .bouton:hover {
+    transform: none;
   }
 }
