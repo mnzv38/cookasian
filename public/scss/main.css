@@ -11,7 +11,7 @@
 /* === FUNCTION — RENDRE UNE COULEUR PLUS FONCÉE === */
 /* === FUNCTION — GÉNÉRER UN DÉGRADÉ EN DEUX COULEURS === */
 footer {
-  background-color: #c62828;
+  background-color: #ff00c3;
   color: hsl(0, 0%, 126.0784313725%);
   padding: 2rem 0;
   text-align: center;
