@@ -1,5 +1,195 @@
-// Styles de la page Recette - show
-.page-recette {
-  // à compléter plus tard
-  background-color: aquamarine;
+/* === PAGE FICHE RECETTE === */
+/* Cookasian – Style harmonisé et lisible */
+
+.recette {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #1e1e24;
+  color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+
+  /* Titre */
+  .entete-recette {
+    text-align: center;
+    margin-bottom: 2rem;
+
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 2.2rem;
+      color: #ff5757;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  /* Image principale */
+  .image-recette {
+    margin-bottom: 2rem;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 0.8rem;
+      object-fit: cover;
+    }
+
+    figcaption {
+      text-align: center;
+      font-family: "Quicksand", sans-serif;
+      font-size: 1rem;
+      color: #ddd;
+      margin-top: 0.5rem;
+    }
+  }
+
+  /* Bloc d’informations pratiques */
+  .infos-recette {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.8rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+
+    h2 {
+      font-size: 1.4rem;
+      color: #ff5757;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        margin-bottom: 0.5rem;
+        font-family: "Open Sans", sans-serif;
+        color: #ddd;
+        text-align: center;
+      }
+    }
+  }
+
+  /* Description */
+  .description-recette {
+    margin-bottom: 2rem;
+
+    h2 {
+      font-size: 1.4rem;
+      color: #ff5757;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    p {
+      font-family: "Open Sans", sans-serif;
+      font-size: 1rem;
+      color: #ccc;
+      line-height: 1.6;
+      text-align: justify;
+    }
+  }
+
+  /* Ingrédients */
+  .ingredients-recette {
+    margin-bottom: 2rem;
+
+    h2 {
+      font-size: 1.4rem;
+      color: #ff5757;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      max-width: 500px;
+
+      li {
+        padding: 0.4rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+        color: #ddd;
+        font-family: "Quicksand", sans-serif;
+      }
+    }
+  }
+
+  /* Étapes de préparation */
+  .etapes-recette {
+    margin-bottom: 2rem;
+
+    h2 {
+      font-size: 1.4rem;
+      color: #ff5757;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    ol {
+      list-style: decimal inside;
+      padding-left: 0;
+      max-width: 600px;
+      margin: 0 auto;
+
+      li {
+        margin-bottom: 0.8rem;
+        line-height: 1.5;
+        color: #ddd;
+        font-family: "Open Sans", sans-serif;
+      }
+    }
+  }
+
+  /* Lien de retour */
+  .navigation-recette {
+    text-align: center;
+    margin-top: 2rem;
+
+    .bouton-retour {
+      display: inline-block;
+      font-family: "Quicksand", sans-serif;
+      font-weight: 600;
+      color: #fff;
+      background-color: #ff5757;
+      padding: 0.8rem 1.5rem;
+      border-radius: 0.6rem;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #ff3232;
+      }
+    }
+  }
+}
+
+/* === RESPONSIVE DESIGN === */
+
+/* Tablette */
+@media (max-width: 768px) {
+  .recette {
+    padding: 1.5rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .recette {
+    padding: 1rem;
+
+    .entete-recette h1 {
+      font-size: 1.8rem;
+    }
+
+    .infos-recette h2,
+    .description-recette h2,
+    .ingredients-recette h2,
+    .etapes-recette h2 {
+      font-size: 1.2rem;
+    }
+  }
 }

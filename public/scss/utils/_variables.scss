@@ -1,120 +1,66 @@
-// 🎨 C’est la boîte à couleurs et à chiffres magiques.
-// Tu y ranges toutes les valeurs réutilisables du site
-
 // ========================================
-// 🎨 DESIGN SYSTEM COOKASIAN
-// Variables globales du projet
+// 🎨 DESIGN SYSTEM COOKASIAN (version simplifiée)
 // ========================================
 
-// ========================================
+// ----------------------------------------
 // 🎨 COULEURS
-// ========================================
+// ----------------------------------------
 
-// Palette principale (inspirée de l'Asie : rouge, noir, or)
-$couleur-primaire: #d32f2f;      // Rouge asiatique (boutons, accents)
-$couleur-secondaire: #1a1a1a;    // Noir profond (textes, header)
-$couleur-accent: #ffa726;        // Orange/or (hover, highlights)
+$couleur-primaire: #ff5757;      // Rouge asiatique principal
+$couleur-secondaire: #1e1e24;    // Noir bleuté (fond principal)
+$couleur-accent: #ffa726;        // Doré/orangé pour les détails
 
-// Couleurs neutres
-$couleur-fond: #fafafa;          // Fond clair (gris très léger)
-$couleur-carte: #ffffff;         // Fond des cartes
-$couleur-bordure: #e0e0e0;       // Bordures subtiles
+$couleur-texte: #ffffff;         // Texte clair par défaut
+$couleur-texte-secondaire: #cccccc; // Texte gris clair secondaire
 
-// Textes
-$couleur-texte-principal: #212121;   // Texte principal (noir)
-$couleur-texte-secondaire: #757575;  // Texte secondaire (gris)
-$couleur-texte-clair: #ffffff;       // Texte sur fond foncé
+$couleur-fond: #1e1e24;          // Fond général du site
+$couleur-carte: rgba(255, 255, 255, 0.05); // Fond des cartes
 
-// États
-$couleur-succes: #4caf50;        // Vert (messages de succès)
-$couleur-erreur: #f44336;        // Rouge (erreurs)
+// ----------------------------------------
+// ✍️ TYPOGRAPHIE
+// ----------------------------------------
 
-// ========================================
-// 📏 TYPOGRAPHIE
-// ========================================
+$font-principale: 'Quicksand', sans-serif;
+$font-titre: 'Playfair Display', serif;
 
-// Polices
-$font-principale: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-$font-titre: 'Playfair Display', Georgia, serif; // Pour les titres élégants
-
-// Tailles (en rem pour l'accessibilité)
-$font-size-xs: 0.75rem;   // 12px
-$font-size-sm: 0.875rem;  // 14px
-$font-size-base: 1rem;     // 16px (taille de base)
-$font-size-lg: 1.125rem;   // 18px
-$font-size-xl: 1.25rem;    // 20px
-$font-size-2xl: 1.5rem;    // 24px
-$font-size-3xl: 1.875rem;  // 30px
-$font-size-4xl: 2.25rem;   // 36px
+$font-size-base: 1rem;   // 16px
+$font-size-lg: 1.2rem;   // 19px
+$font-size-xl: 1.5rem;   // 24px
 
 // Poids
 $font-weight-normal: 400;
 $font-weight-medium: 500;
-$font-weight-semibold: 600;
 $font-weight-bold: 700;
 
-// Hauteur de ligne
-$line-height-tight: 1.25;
-$line-height-normal: 1.5;
-$line-height-relaxed: 1.75;
-
-// ========================================
-// 📐 ESPACEMENTS
-// ========================================
+// ----------------------------------------
+// 📏 ESPACEMENTS
+// ----------------------------------------
 
 $espace-xs: 0.25rem;   // 4px
 $espace-sm: 0.5rem;    // 8px
 $espace-md: 1rem;      // 16px
 $espace-lg: 1.5rem;    // 24px
 $espace-xl: 2rem;      // 32px
-$espace-2xl: 3rem;     // 48px
-$espace-3xl: 4rem;     // 64px
 
-// ========================================
-// 🎭 EFFETS VISUELS
-// ========================================
+// ----------------------------------------
+// 🟦 FORMES ET OMBRES
+// ----------------------------------------
 
-// Ombres (pour la profondeur)
-$ombre-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-$ombre-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-$ombre-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-$ombre-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+$rayon-md: 0.5rem;    // 8px
+$rayon-lg: 1rem;      // 16px
 
-// Ombres colorées (pour les boutons)
-$ombre-primaire: 0 4px 14px rgba(211, 47, 47, 0.25);
-$ombre-accent: 0 4px 14px rgba(255, 167, 38, 0.25);
+$ombre: 0 0 12px rgba(0, 0, 0, 0.5);
 
-// Rayons de bordure
-$rayon-sm: 0.25rem;    // 4px
-$rayon-md: 0.5rem;     // 8px
-$rayon-lg: 0.75rem;    // 12px
-$rayon-xl: 1rem;       // 16px
-$rayon-full: 9999px;   // Complètement arrondi
+// ----------------------------------------
+// ⏱️ TRANSITIONS
+// ----------------------------------------
 
-// Transitions
-$transition-rapide: 150ms ease-in-out;
-$transition-normale: 300ms ease-in-out;
-$transition-lente: 500ms ease-in-out;
+$transition: 0.3s ease;
 
-// ========================================
-// 📱 BREAKPOINTS (pour plus tard)
-// ========================================
+// ----------------------------------------
+// 📱 BREAKPOINTS
+// ----------------------------------------
 
-$breakpoint-mobile: 375px;  // iPhone SE
-$breakpoint-tablet: 768px;
-$breakpoint-desktop: 1024px;
-
-// ========================================
-// 🎯 DIMENSIONS
-// ========================================
-
-// Largeur maximale du contenu
-$largeur-max-contenu: 1200px;
-$largeur-max-texte: 65ch; // 65 caractères (lisibilité)
-
-// Hauteurs
-$hauteur-header: 64px;
-$hauteur-footer: 200px;
-
-// Taille tactile minimum (accessibilité)
-$taille-min-tactile: 44px;
+$mobile: 480px;  
+$tablette: 768px;
+$desktop: 1200px;

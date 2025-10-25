@@ -1,288 +1,126 @@
-// ========================================
-// 🎴 CARTE RECETTE
-// Composant carte pour afficher les recettes
-// ========================================
-
-// Import des variables
-@use '../../utils/variables' as *;
-
-// ========================================
-// 1. CONTENEUR DE LA CARTE
-// ========================================
+/* === CARTE RECETTE === */
+/* Cookasian – version simplifiée et humanisée */
 
 .carte-recette {
-  background-color: $couleur-carte;
-  border-radius: $rayon-xl;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
   overflow: hidden;
-  box-shadow: $ombre-md;
-  transition: all $transition-normale;
-  height: 100%;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
-  
-  // Animation d'apparition
-  animation: fadeInUp 0.6s ease-out backwards;
-  
-  // Effet au survol
+  height: 100%;
+
   &:hover {
-    transform: translateY(-8px);
-    box-shadow: $ombre-xl;
-  }
-  
-  // Focus pour l'accessibilité
-  &:focus-within {
-    outline: 2px solid $couleur-primaire;
-    outline-offset: 4px;
+    transform: translateY(-6px);
+    box-shadow: 0 4px 20px rgba(255, 87, 87, 0.4);
   }
 }
 
-// ========================================
-// 2. IMAGE DE LA RECETTE
-// ========================================
-
-.carte-recette__image-conteneur {
+/* Image */
+.image-recette {
   position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  background-color: $couleur-bordure;
-}
 
-.carte-recette__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform $transition-lente;
-  
-  // Zoom au survol de la carte
-  .carte-recette:hover & {
-    transform: scale(1.1);
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+
+  figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    font-family: "Quicksand", sans-serif;
+    font-size: 1rem;
   }
 }
 
-// Badge sur l'image (ex: "Nouveau", "Populaire")
-.carte-recette__badge {
+/* Badge (ex: Nouveau) */
+.badge-nouveau {
   position: absolute;
-  top: $espace-md;
-  right: $espace-md;
-  padding: $espace-xs $espace-md;
-  background: linear-gradient(135deg, $couleur-primaire, $couleur-accent);
-  color: $couleur-texte-clair;
-  font-size: $font-size-xs;
-  font-weight: $font-weight-bold;
+  top: 1rem;
+  right: 1rem;
+  background-color: #ff5757;
+  color: #fff;
+  font-family: "Quicksand", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  border-radius: $rayon-full;
-  box-shadow: $ombre-md;
+  padding: 0.4rem 0.7rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-// ========================================
-// 3. CONTENU DE LA CARTE
-// ========================================
-
-.carte-recette__contenu {
-  padding: $espace-lg;
+/* Contenu texte */
+.contenu-recette {
+  padding: 1.5rem;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: $espace-md;
-  flex: 1;
-}
-
-// ========================================
-// 4. TITRE
-// ========================================
-
-.carte-recette__titre {
-  font-family: $font-titre;
-  font-size: $font-size-xl;
-  font-weight: $font-weight-bold;
-  color: $couleur-secondaire;
-  line-height: $line-height-tight;
-  margin: 0;
-  
-  a {
-    color: inherit;
-    text-decoration: none;
-    transition: color $transition-rapide;
-    
-    &:hover {
-      color: $couleur-primaire;
-    }
-    
-    &:focus-visible {
-      outline: 2px solid $couleur-primaire;
-      outline-offset: 2px;
-      border-radius: $rayon-sm;
-    }
-  }
-}
-
-// ========================================
-// 5. DESCRIPTION
-// ========================================
-
-.carte-recette__description {
-  font-size: $font-size-sm;
-  color: $couleur-texte-secondaire;
-  line-height: $line-height-relaxed;
-  margin: 0;
-  
-  // Limite à 3 lignes avec points de suspension
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-// ========================================
-// 6. MÉTADONNÉES (temps, difficulté, etc.)
-// ========================================
-
-.carte-recette__meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: $espace-md;
-  align-items: center;
-  font-size: $font-size-xs;
-  color: $couleur-texte-secondaire;
-  margin-top: auto; // Pousse en bas de la carte
-}
-
-.carte-recette__meta-item {
-  display: flex;
-  align-items: center;
-  gap: $espace-xs;
-  
-  // Icône emoji
-  span {
-    font-size: $font-size-base;
-  }
-}
-
-// ========================================
-// 7. TAGS/CATÉGORIES
-// ========================================
-
-.carte-recette__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: $espace-xs;
-}
-
-.carte-recette__tag {
-  display: inline-block;
-  padding: $espace-xs $espace-sm;
-  background-color: rgba($couleur-primaire, 0.1);
-  color: $couleur-primaire;
-  font-size: $font-size-xs;
-  font-weight: $font-weight-medium;
-  border-radius: $rayon-md;
-  transition: all $transition-rapide;
-  
-  &:hover {
-    background-color: rgba($couleur-primaire, 0.15);
-    transform: scale(1.05);
-  }
-}
-
-// ========================================
-// 8. PIED DE CARTE (CTA)
-// ========================================
-
-.carte-recette__footer {
-  padding: $espace-md $espace-lg;
-  border-top: 1px solid $couleur-bordure;
-  background-color: rgba($couleur-fond, 0.5);
-}
-
-.carte-recette__lien {
-  display: flex;
-  align-items: center;
   justify-content: space-between;
-  width: 100%;
-  color: $couleur-primaire;
-  font-weight: $font-weight-semibold;
-  font-size: $font-size-sm;
-  text-decoration: none;
-  transition: all $transition-rapide;
-  
-  &::after {
-    content: '→';
-    font-size: $font-size-lg;
-    transition: transform $transition-rapide;
+
+  h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.3rem;
+    color: #ff5757;
+    margin-bottom: 0.5rem;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
-  
-  &:hover {
-    color: $couleur-accent;
-    
-    &::after {
-      transform: translateX(4px);
+
+  p {
+    font-family: "Open Sans", sans-serif;
+    color: #ccc;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .infos-recette {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: "Quicksand", sans-serif;
+    font-size: 0.9rem;
+    color: #aaa;
+
+    li {
+      margin-bottom: 0.4rem;
     }
   }
 }
 
-// ========================================
-// 9. VARIANTES
-// ========================================
+/* Bas de carte */
+.bas-carte {
+  padding: 1rem 1.5rem;
+  text-align: right;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 
-// Carte horizontale (si besoin plus tard)
-.carte-recette--horizontale {
-  flex-direction: row;
-  
-  .carte-recette__image-conteneur {
-    width: 40%;
-    height: auto;
-  }
-}
+  .lien-recette {
+    display: inline-block;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 600;
+    background-color: #ff5757;
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
 
-// Carte en vedette (plus grande)
-.carte-recette--vedette {
-  .carte-recette__image-conteneur {
-    height: 300px;
-  }
-  
-  .carte-recette__titre {
-    font-size: $font-size-3xl;
-  }
-}
-
-// ========================================
-// 10. ANIMATIONS
-// ========================================
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-// Animation en cascade pour les cartes
-.carte-recette {
-  &:nth-child(1) { animation-delay: 0.1s; }
-  &:nth-child(2) { animation-delay: 0.2s; }
-  &:nth-child(3) { animation-delay: 0.3s; }
-  &:nth-child(4) { animation-delay: 0.4s; }
-  &:nth-child(5) { animation-delay: 0.5s; }
-  &:nth-child(6) { animation-delay: 0.6s; }
-}
-
-// ========================================
-// 11. ACCESSIBILITÉ
-// ========================================
-
-@media (prefers-reduced-motion: reduce) {
-  .carte-recette,
-  .carte-recette__image {
-    animation: none;
-    transition: none;
-  }
-  
-  .carte-recette:hover {
-    transform: none;
+    &:hover {
+      background-color: #ff3232;
+    }
   }
 }

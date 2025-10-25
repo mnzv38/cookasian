@@ -6,7 +6,12 @@
 @use "utils/mixins";
 @use "utils/functions";
 
+// === RESET & BASE ===
+@use "layout/reset";
+@use "layout/base";
+
 // === LAYOUT ===
+@use "layout/header";
 @use "layout/footer";
 
 // === COMPONENTS ===
@@ -15,10 +20,10 @@
 
 // === PAGES ===
 @use "pages/accueil/accueil";
-@use 'pages/recettes/index';
+@use "pages/recettes/index";
+@use "pages/recettes/show";
 
-
-// === RESET & BASE ===
+// === STYLES GLOBAUX ===
 * {
   margin: 0;
   padding: 0;

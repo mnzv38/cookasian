@@ -1,14 +1,15 @@
 /* === PAGE LISTE DES RECETTES === */
-/* Cookasian – Style responsive et moderne */
+/* Cookasian – Style humanisé, responsive et lisible */
 
-.recettes {
+.section-recettes {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  color: #fff;
   background-color: #1e1e24;
+  color: #fff;
 
-  &__header {
+  /* En-tête */
+  .entete-recettes {
     text-align: center;
     margin-bottom: 3rem;
 
@@ -26,8 +27,8 @@
     }
   }
 
-  /* === Liste des recettes === */
-  &__liste {
+  /* Liste des recettes */
+  .liste-recettes {
     list-style: none;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -36,7 +37,7 @@
     padding: 0;
   }
 
-  /* === Carte individuelle === */
+  /* Carte recette */
   .carte-recette {
     display: flex;
     flex-direction: column;
@@ -51,7 +52,8 @@
       box-shadow: 0 4px 20px rgba(255, 87, 87, 0.4);
     }
 
-    &__figure {
+    /* Image */
+    .image-recette {
       position: relative;
 
       img {
@@ -68,20 +70,22 @@
         right: 0;
         padding: 0.5rem 1rem;
         background: rgba(0, 0, 0, 0.6);
+        font-family: "Quicksand", sans-serif;
         font-weight: 600;
         font-size: 1.1rem;
         color: #fff;
       }
     }
 
-    &__contenu {
+    /* Contenu texte */
+    .contenu-recette {
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       padding: 1.5rem;
 
-      .carte-recette__description {
+      p {
         font-family: "Open Sans", sans-serif;
         font-size: 0.95rem;
         line-height: 1.5;
@@ -89,7 +93,7 @@
         margin-bottom: 1rem;
       }
 
-      .carte-recette__infos {
+      .infos-recette {
         list-style: none;
         margin: 0;
         padding: 0;
@@ -98,34 +102,33 @@
           font-size: 0.9rem;
           color: #aaa;
           line-height: 1.4;
-
-          strong {
-            color: #fff;
-          }
         }
       }
 
-      nav {
-        margin-top: 1.5rem;
-        text-align: right;
+      .lien-recette {
+        display: inline-block;
+        align-self: flex-end;
+        font-family: "Quicksand", sans-serif;
+        font-weight: 600;
+        background-color: #ff5757;
+        color: #fff;
+        padding: 0.7rem 1.2rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
 
-        .bouton--primaire {
-          display: inline-block;
-          font-family: "Quicksand", sans-serif;
-          font-weight: 600;
-          background-color: #ff5757;
-          color: #fff;
-          padding: 0.7rem 1.2rem;
-          border-radius: 0.5rem;
-          text-decoration: none;
-          transition: background-color 0.3s ease;
-
-          &:hover {
-            background-color: #ff3232;
-          }
+        &:hover {
+          background-color: #ff3232;
         }
       }
     }
+  }
+
+  /* Aucune recette disponible */
+  p {
+    text-align: center;
+    color: #bbb;
+    margin-top: 2rem;
   }
 }
 
@@ -133,19 +136,19 @@
 
 /* Tablette (jusqu’à 768px) */
 @media (max-width: 768px) {
-  .recettes {
+  .section-recettes {
     padding: 1.5rem;
 
-    &__liste {
+    .liste-recettes {
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1.5rem;
     }
 
     .carte-recette {
-      &__figure img {
+      .image-recette img {
         height: 180px;
       }
-      &__contenu {
+      .contenu-recette {
         padding: 1rem;
       }
     }
@@ -154,32 +157,33 @@
 
 /* Mobile (jusqu’à 480px — iPhone SE) */
 @media (max-width: 480px) {
-  .recettes {
+  .section-recettes {
     padding: 1rem;
 
-    &__header h1 {
-      font-size: 1.8rem;
-    }
-
-    &__header p {
-      font-size: 0.95rem;
+    .entete-recettes {
+      h1 {
+        font-size: 1.8rem;
+      }
+      p {
+        font-size: 0.95rem;
+      }
     }
 
     .carte-recette {
-      &__figure img {
+      .image-recette img {
         height: 160px;
       }
 
-      &__contenu {
-        .carte-recette__description {
+      .contenu-recette {
+        p {
           font-size: 0.9rem;
         }
 
-        .carte-recette__infos li {
+        .infos-recette li {
           font-size: 0.85rem;
         }
 
-        .bouton--primaire {
+        .lien-recette {
           width: 100%;
           text-align: center;
           font-size: 0.9rem;

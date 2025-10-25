@@ -1,60 +1,51 @@
 </main>
-    
-    <!-- Pied de page -->
-    <footer class="footer" role="contentinfo">
-        <div class="footer__conteneur">
-            
-            <!-- Section 1 : À propos -->
-            <div class="footer__section">
-                <h3 class="footer__titre">🥢 Cookasian</h3>
-                <p class="footer__description">
-                    Découvrez l'authenticité des saveurs asiatiques à travers nos recettes traditionnelles et modernes.
-                </p>
-            </div>
-            
-            <!-- Section 2 : Navigation -->
-            <div class="footer__section">
-                <h4 class="footer__titre">Navigation</h4>
-                <ul class="footer__liste">
-                    <li><a href="/" class="footer__lien">Accueil</a></li>
-                    <li><a href="/recettes" class="footer__lien">Recettes</a></li>
-                    <li><a href="/histoire" class="footer__lien">Notre Histoire</a></li>
-                    <li><a href="/utilisateur" class="footer__lien">Mon Compte</a></li>
-                </ul>
-            </div>
-            
-            <!-- Section 3 : Légal -->
-            <div class="footer__section">
-                <h4 class="footer__titre">Informations légales</h4>
-                <ul class="footer__liste">
-                    <li><a href="/mentions-legales" class="footer__lien">Mentions légales</a></li>
-                    <li><a href="/politique-confidentialite" class="footer__lien">Politique de confidentialité</a></li>
-                </ul>
-            </div>
-            
-            <!-- Section 4 : Contact -->
-            <div class="footer__section">
-                <h4 class="footer__titre">Contact</h4>
-                <ul class="footer__liste">
-                    <li class="footer__contact">
-                        <span aria-label="Email">📧</span>
-                        <a href="mailto:contact@cookasian.fr" class="footer__lien">contact@cookasian.fr</a>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-        
-        <!-- Barre de copyright -->
-        <div class="footer__copyright">
-            <div class="footer__conteneur">
-                <p>© <?= date('Y') ?> Cookasian. Tous droits réservés.</p>
-                <p class="footer__credit">
-                    Développé avec ❤️ dans le cadre du Titre Professionnel DWWM
-                </p>
-            </div>
-        </div>
-    </footer>
-    
+
+<!-- Pied de page -->
+<footer class="pied-site">
+
+    <!-- À propos -->
+    <section class="bloc-footer">
+        <h3 class="titre-footer">🥢 Cookasian</h3>
+        <p class="texte-footer">
+            Découvrez l'authenticité des saveurs asiatiques à travers nos recettes traditionnelles et modernes.
+        </p>
+    </section>
+
+    <!-- Navigation -->
+    <nav class="bloc-footer">
+        <h4 class="titre-footer">Navigation</h4>
+        <ul class="liste-footer">
+            <li><a href="/" class="lien-footer">Accueil</a></li>
+            <li><a href="/recettes" class="lien-footer">Recettes</a></li>
+            <li><a href="/histoire" class="lien-footer">Notre histoire</a></li>
+            <li><a href="/utilisateur" class="lien-footer">Mon compte</a></li>
+        </ul>
+    </nav>
+
+    <!-- Informations légales -->
+    <section class="bloc-footer">
+        <h4 class="titre-footer">Informations légales</h4>
+        <ul class="liste-footer">
+            <li><a href="/mentions-legales" class="lien-footer">Mentions légales</a></li>
+            <li><a href="/politique-confidentialite" class="lien-footer">Politique de confidentialité</a></li>
+        </ul>
+    </section>
+
+    <!-- Contact -->
+    <section class="bloc-footer">
+        <h4 class="titre-footer">Contact</h4>
+        <p class="texte-footer">
+            📧 <a href="mailto:contact@cookasian.fr" class="lien-footer">contact@cookasian.fr</a>
+        </p>
+    </section>
+
+    <!-- Bas de page -->
+    <div class="bas-page">
+        <p>© <?= date('Y') ?> Cookasian. Tous droits réservés.</p>
+        <p>Développé dans le cadre du Titre Professionnel DWWM.</p>
+    </div>
+
+</footer>
+
 </body>
 </html>

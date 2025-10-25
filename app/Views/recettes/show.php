@@ -1,68 +1,67 @@
 <?php include __DIR__ . '/../layout/header.php'; ?>
 
-<main id="contenu-principal">
-    <article class="recette" itemscope itemtype="https://schema.org/Recipe">
+<article class="recette">
 
-        <!-- 🏷️ Titre principal -->
-        <header class="recette__header">
-            <h1 itemprop="name"><?= htmlspecialchars($recette['titre']) ?></h1>
-        </header>
+    <!-- Titre principal -->
+    <header class="entete-recette">
+        <h1><?= htmlspecialchars($recette['titre']) ?></h1>
+    </header>
 
-        <!-- 🖼️ Image principale -->
-        <figure class="recette__image">
-            <img src="<?= htmlspecialchars($recette['image_url']) ?>"
-                 alt="Photo de <?= htmlspecialchars($recette['titre']) ?>"
-                 itemprop="image">
-            <figcaption>Recette <?= htmlspecialchars($recette['titre']) ?> — <?= htmlspecialchars($recette['pays_origine']) ?></figcaption>
-        </figure>
+    <!-- Image principale -->
+    <figure class="image-recette">
+        <img 
+            src="<?= htmlspecialchars($recette['image_url']) ?>" 
+            alt="<?= htmlspecialchars($recette['titre']) ?>">
+        <figcaption>
+            Recette <?= htmlspecialchars($recette['titre']) ?> (<?= htmlspecialchars($recette['pays_origine']) ?>)
+        </figcaption>
+    </figure>
 
-        <!-- 🕒 Informations pratiques -->
-        <section class="recette__infos" aria-labelledby="infos-recette">
-            <h2 id="infos-recette">Informations</h2>
-            <ul>
-                <li><strong>Pays d’origine :</strong> <span itemprop="recipeCuisine"><?= htmlspecialchars($recette['pays_origine']) ?></span></li>
-                <li><strong>Difficulté :</strong> <span itemprop="difficulty"><?= htmlspecialchars($recette['difficulte']) ?></span></li>
-                <li><strong>Préparation :</strong> <time itemprop="prepTime" datetime="PT<?= htmlspecialchars($recette['temps_preparation']) ?>M"><?= htmlspecialchars($recette['temps_preparation']) ?> min</time></li>
-                <li><strong>Cuisson :</strong> <time itemprop="cookTime" datetime="PT<?= htmlspecialchars($recette['temps_cuisson']) ?>M"><?= htmlspecialchars($recette['temps_cuisson']) ?> min</time></li>
-                <li><strong>Portions :</strong> <span itemprop="recipeYield"><?= htmlspecialchars($recette['nombre_personnes']) ?> personnes</span></li>
-            </ul>
-        </section>
+    <!-- Informations pratiques -->
+    <section class="infos-recette">
+        <h2>Informations</h2>
+        <ul>
+            <li>Pays d’origine : <?= htmlspecialchars($recette['pays_origine']) ?></li>
+            <li>Difficulté : <?= htmlspecialchars($recette['difficulte']) ?></li>
+            <li>Préparation : <?= htmlspecialchars($recette['temps_preparation']) ?> min</li>
+            <li>Cuisson : <?= htmlspecialchars($recette['temps_cuisson']) ?> min</li>
+            <li>Portions : <?= htmlspecialchars($recette['nombre_personnes']) ?> personnes</li>
+        </ul>
+    </section>
 
-        <!-- 🧾 Description -->
-        <section class="recette__description" aria-labelledby="desc-recette">
-            <h2 id="desc-recette">Description</h2>
-            <p itemprop="description"><?= nl2br(htmlspecialchars($recette['description'])) ?></p>
-        </section>
+    <!-- Description -->
+    <section class="description-recette">
+        <h2>Description</h2>
+        <p><?= nl2br(htmlspecialchars($recette['description'])) ?></p>
+    </section>
 
-        <!-- 🧂 Liste des ingrédients -->
-        <section class="recette__ingredients" aria-labelledby="ingredients-recette">
-            <h2 id="ingredients-recette">Ingrédients</h2>
-            <ul itemprop="recipeIngredient">
-                <?php foreach ($recette['ingredients'] as $ingredient): ?>
-                    <li>
-                        <span class="quantite"><?= htmlspecialchars($ingredient['quantite']) ?></span>
-                        <span class="nom"><?= htmlspecialchars($ingredient['nom']) ?></span>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        </section>
+    <!-- Ingrédients -->
+    <section class="ingredients-recette">
+        <h2>Ingrédients</h2>
+        <ul>
+            <?php foreach ($recette['ingredients'] as $ingredient): ?>
+                <li>
+                    <?= htmlspecialchars($ingredient['quantite']) ?> <?= htmlspecialchars($ingredient['nom']) ?>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </section>
 
-        <!-- 🍳 Étapes de préparation -->
-        <section class="recette__etapes" aria-labelledby="etapes-recette">
-            <h2 id="etapes-recette">Préparation</h2>
-            <ol itemprop="recipeInstructions">
-                <?php foreach ($recette['etapes'] as $etape): ?>
-                    <li><?= htmlspecialchars($etape['description']) ?></li>
-                <?php endforeach; ?>
-            </ol>
-        </section>
+    <!-- Étapes de préparation -->
+    <section class="etapes-recette">
+        <h2>Préparation</h2>
+        <ol>
+            <?php foreach ($recette['etapes'] as $etape): ?>
+                <li><?= htmlspecialchars($etape['description']) ?></li>
+            <?php endforeach; ?>
+        </ol>
+    </section>
 
-        <!-- 🔙 Lien de retour -->
-        <nav class="recette__navigation" aria-label="Navigation secondaire">
-            <a href="/recettes" class="bouton-retour">← Retour à la liste des recettes</a>
-        </nav>
+    <!-- Lien de retour -->
+    <nav class="navigation-recette">
+        <a href="/recettes" class="bouton-retour">← Retour à la liste des recettes</a>
+    </nav>
 
-    </article>
-</main>
+</article>
 
 <?php include __DIR__ . '/../layout/footer.php'; ?>
