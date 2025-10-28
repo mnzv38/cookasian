@@ -1,9 +1,16 @@
-/* === RESET MODERNE COOKASIAN === */
-/* On efface les styles par défaut des navigateurs pour repartir d'une base propre. */
+// ========================================
+// 🔄 RESET CSS MODERNE — COOKASIAN
+// Égalise le rendu sur tous les navigateurs
+// ========================================
 
+// Import des variables globales
 @use "../utils/variables" as *;
 
-/* 1. Réinitialisation universelle */
+// ========================================
+// 1. BASES UNIVERSELLES
+// ========================================
+
+// Supprime marges et padding par défaut
 *,
 *::before,
 *::after {
@@ -12,60 +19,85 @@
   box-sizing: border-box;
 }
 
-/* 2. Structure de base */
+// ========================================
+// 2. HTML & BODY
+// ========================================
+
 html {
-  font-size: 100%;
+  font-size: 100%; // 1rem = 16px
+  -webkit-text-size-adjust: 100%; // empêche le zoom automatique sur mobile
   scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
 }
 
 body {
   min-height: 100vh;
-  font-family: $font-principale;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background-color: $couleur-fond;
   color: $couleur-texte;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
-/* 3. Typographie de base */
-h1, h2, h3, h4, h5, h6 {
-  font-family: $font-titre;
-  font-weight: 700;
+// ========================================
+// 3. TYPOGRAPHIE
+// ========================================
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  font-weight: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   line-height: 1.3;
-  color: $couleur-primaire;
 }
 
 p {
-  margin-bottom: 1rem;
+  line-height: 1.6;
 }
 
-/* 4. Liens */
+// ========================================
+// 4. LIENS, LISTES, TABLES
+// ========================================
+
 a {
-  color: inherit;
   text-decoration: none;
+  color: inherit;
 }
 
-/* 5. Médias */
-img, picture, video, canvas, svg {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-/* 6. Listes */
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
-/* 7. Boutons et formulaires */
-button,
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// ========================================
+// 5. FORMULAIRES
+// ========================================
+
 input,
+button,
 textarea,
 select {
   font: inherit;
   color: inherit;
-  background: none;
   border: none;
+  background: none;
   outline: none;
 }
 
@@ -73,20 +105,70 @@ button {
   cursor: pointer;
 }
 
-/* 8. Tables */
-table {
-  border-collapse: collapse;
-  width: 100%;
+// Supprime les styles spécifiques à Safari / iOS
+input[type="search"] {
+  -webkit-appearance: none;
+  outline-offset: -2px;
 }
 
-/* 9. Sélection de texte */
-::selection {
-  background-color: $couleur-primaire;
-  color: $couleur-texte;
+textarea {
+  resize: vertical;
 }
 
-/* 10. Accessibilité minimale */
-:focus-visible {
+// ========================================
+// 6. IMAGES & MÉDIAS
+// ========================================
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// ========================================
+// 7. AUTRES ÉLÉMENTS
+// ========================================
+
+blockquote,
+figure {
+  margin: 0;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin: $espace-md 0;
+}
+
+// ========================================
+// 8. ACCESSIBILITÉ
+// ========================================
+
+// Permet le focus clavier visible
+:focus {
   outline: 2px solid $couleur-primaire;
-  outline-offset: 2px;
+  outline-offset: 3px;
+}
+
+// Désactive les animations pour les utilisateurs qui préfèrent les interfaces calmes
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

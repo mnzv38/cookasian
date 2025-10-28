@@ -1,151 +1,46 @@
-/* === PIED DE PAGE === */
-/* Cookasian – version humanisée et cohérente */
+// ========================================
+// 🦶 PIED DE PAGE — COOKASIAN
+// ========================================
 
-.pied-site {
-  background: linear-gradient(to bottom, #1e1e24, #141418);
-  color: #fff;
-  padding: 3rem 1.5rem 2rem;
-  animation: fadeIn 0.5s ease-out;
-}
+@use "../utils/variables" as *;
 
-/* Sections du footer */
-.bloc-footer {
-  max-width: 1200px;
-  margin: 0 auto 2rem;
+.footer-site {
+  background-color: $couleur-secondaire;
+  color: $couleur-texte-clair;
+  padding: $espace-2xl $espace-md;
   text-align: center;
-
-  h3,
-  h4 {
-    font-family: "Playfair Display", serif;
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    position: relative;
-
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: -0.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 40px;
-      height: 2px;
-      background: linear-gradient(to right, #ff5757, #ffa726);
-      border-radius: 2px;
-    }
-  }
-
-  p,
-  a {
-    font-family: "Quicksand", sans-serif;
-    font-size: 0.95rem;
-    color: #ddd;
-    line-height: 1.6;
-  }
-
-  .liste-footer {
-    list-style: none;
-    padding: 0;
-    margin: 0.5rem 0 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-
-    .lien-footer {
-      color: #ccc;
-      text-decoration: none;
-      transition: color 0.3s ease, transform 0.2s ease;
-      position: relative;
-
-      &::before {
-        content: "→";
-        position: absolute;
-        left: -20px;
-        opacity: 0;
-        transition: all 0.3s ease;
-      }
-
-      &:hover {
-        color: #ffa726;
-        transform: translateX(8px);
-
-        &::before {
-          opacity: 1;
-          left: -16px;
-        }
-      }
-    }
-  }
-}
-
-/* Contact */
-.texte-footer {
-  font-family: "Quicksand", sans-serif;
-  font-size: 0.95rem;
-  color: #ccc;
-  margin-bottom: 1rem;
-}
-
-/* Bas de page */
-.bas-page {
+  font-size: $font-size-sm;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 1.5rem;
-  text-align: center;
-
-  p {
-    font-family: "Quicksand", sans-serif;
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.6);
-    margin: 0.2rem 0;
-  }
-
-  p:hover {
-    color: #fff;
-  }
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.footer-site a {
+  color: $couleur-primaire;
+  text-decoration: none;
 }
 
-/* Accessibilité : réduction des animations */
-@media (prefers-reduced-motion: reduce) {
-  .pied-site,
-  .bloc-footer,
-  .lien-footer {
-    animation: none;
-    transition: none;
-  }
+.footer-site a:hover {
+  text-decoration: underline;
 }
 
-/* Responsive tablette */
-@media (max-width: 768px) {
-  .bloc-footer {
-    margin-bottom: 2rem;
-  }
+.footer-site p {
+  margin-top: $espace-sm;
+  margin-bottom: $espace-sm;
 }
 
-/* Mobile (iPhone SE) */
-@media (max-width: 480px) {
-  .pied-site {
-    padding: 2rem 1rem 1rem;
+.footer-site nav ul {
+  display: flex;
+  justify-content: center;
+  gap: $espace-md;
+  list-style: none;
+  padding: 0;
+}
+
+@media (max-width: $tablette) {
+  .footer-site {
+    padding: $espace-xl $espace-md;
   }
 
-  .bloc-footer h3,
-  .bloc-footer h4 {
-    font-size: 1.1rem;
-  }
-
-  .liste-footer .lien-footer {
-    font-size: 0.9rem;
-  }
-
-  .bas-page p {
-    font-size: 0.8rem;
+  .footer-site nav ul {
+    flex-direction: column;
   }
 }

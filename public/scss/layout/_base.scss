@@ -1,153 +1,215 @@
-/* === BASE GLOBALE DU SITE COOKASIAN === */
-/* Styles de fondation : typographie, couleurs, structure */
+// ========================================
+// 🧱 BASE GLOBALE
+// Styles fondamentaux partagés sur tout le site
+// ========================================
 
+// Import des variables
 @use "../utils/variables" as *;
+@use "sass:color";
 
-/* 1. Structure principale */
+// ========================================
+// 1. STRUCTURE DE PAGE
+// ========================================
+
+html {
+  font-size: 100%; // 1rem = 16px pour une base accessible
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   font-family: $font-principale;
+  color: $couleur-texte-principal;
   background-color: $couleur-fond;
-  color: $couleur-texte;
-  line-height: 1.6;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  margin: 0;
+  line-height: $line-height-normal;
+  font-weight: $font-weight-normal;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-main {
-  flex: 1;
-  padding: 2rem 1.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
+// ========================================
+// 2. TEXTES GÉNÉRAUX
+// ========================================
+
+p {
+  margin-bottom: $espace-md;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  color: $couleur-texte-principal;
 }
 
-/* 2. Sections */
-section {
-  margin-bottom: 3rem;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
-
-/* 3. Typographie globale */
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5,
+h6 {
   font-family: $font-titre;
   color: $couleur-primaire;
-  line-height: 1.3;
-  margin-bottom: 1rem;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  margin-bottom: $espace-md;
 }
 
 h1 {
-  font-size: 2rem;
-  text-align: center;
+  font-size: $font-size-4xl;
 }
 
 h2 {
-  font-size: 1.6rem;
+  font-size: $font-size-3xl;
+  color: color.adjust($couleur-primaire, $lightness: -10%);
 }
 
 h3 {
-  font-size: 1.3rem;
+  font-size: $font-size-2xl;
 }
 
 h4 {
-  font-size: 1.1rem;
+  font-size: $font-size-xl;
 }
 
-p {
-  font-family: $font-principale;
-  font-size: 1rem;
+small {
+  font-size: $font-size-sm;
   color: $couleur-texte-secondaire;
-  margin-bottom: 1rem;
 }
 
-/* 4. Liens */
+// ========================================
+// 3. LIENS & BOUTONS
+// ========================================
+
 a {
-  color: $couleur-primaire;
+  color: color.adjust($couleur-primaire, $lightness: -10%);
   text-decoration: none;
   transition: color $transition;
 
+  &:hover,
+  &:focus {
+    color: color.adjust($couleur-primaire, $lightness: 5%);
+    text-decoration: underline;
+  }
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  transition: background-color $transition, transform $transition;
+
   &:hover {
-    color: $couleur-accent;
+    transform: translateY(-2px);
   }
-}
-
-/* 5. Conteneurs et grilles */
-.conteneur {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-  width: 100%;
-}
-
-.grille {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: 1fr;
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  }
-}
-
-/* 6. Messages de statut */
-.message {
-  padding: 1rem;
-  border-radius: 0.5rem;
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
-
-  &.succes {
-    background-color: rgba(76, 175, 80, 0.15);
-    color: #4caf50;
-    border-left: 4px solid #4caf50;
-  }
-
-  &.erreur {
-    background-color: rgba(244, 67, 54, 0.15);
-    color: #f44336;
-    border-left: 4px solid #f44336;
-  }
-}
-
-/* 7. Lien d’accès rapide (accessibilité) */
-.lien-contenu {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  background-color: $couleur-primaire;
-  color: $couleur-texte;
-  padding: 0.5rem 1rem;
-  z-index: 1000;
-  transition: top 0.3s ease;
 
   &:focus {
-    top: 0;
+    outline: 2px solid $couleur-primaire;
+    outline-offset: 2px;
   }
 }
 
-/* 8. Animations globales */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+// ========================================
+// 4. IMAGES & MÉDIAS
+// ========================================
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 0;
+}
+
+// ========================================
+// 5. FORMULAIRES DE BASE
+// ========================================
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: 1rem;
+  color: $couleur-texte-principal;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: $rayon-md;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 0.75rem 1rem;
+  transition: border-color $transition, background-color $transition;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: $couleur-primaire;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+::placeholder {
+  color: $couleur-texte-secondaire;
+}
+
+// ========================================
+// 6. LISTES & TABLES
+// ========================================
+
+ul,
+ol {
+  list-style-position: inside;
+  margin-bottom: $espace-md;
+  padding-left: $espace-md;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: $espace-lg;
+  color: $couleur-texte-principal;
+
+  th,
+  td {
+    padding: 0.75rem;
+    text-align: left;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  th {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.03);
   }
 }
 
-/* Réduction des animations pour accessibilité */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
-  }
+// ========================================
+// 7. UTILITAIRES
+// ========================================
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.bold {
+  font-weight: $font-weight-bold;
+}
+
+.light {
+  font-weight: $font-weight-normal;
 }

@@ -1,0 +1,88 @@
+@use "../../utils/variables" as *;
+@use "sass:color";
+
+.page-auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background: linear-gradient(
+    180deg,
+    color.adjust($couleur-secondaire, $lightness: 5%),
+    color.adjust($couleur-secondaire, $lightness: -5%)
+  );
+  color: $couleur-texte;
+}
+
+.carte-auth {
+  background-color: $couleur-carte;
+  padding: $espace-2xl;
+  border-radius: $rayon-lg;
+  box-shadow: $ombre;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+}
+
+.titre-page {
+  font-family: $font-titre;
+  margin-bottom: $espace-lg;
+  color: $couleur-primaire;
+}
+
+.formulaire-auth {
+  display: flex;
+  flex-direction: column;
+  gap: $espace-md;
+  margin-bottom: $espace-md;
+
+  label {
+    text-align: left;
+    color: rgba($couleur-texte, 0.8);
+  }
+
+  input {
+    padding: $espace-sm;
+    border-radius: $rayon-md;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: $couleur-texte;
+
+    &:focus {
+      outline: 1px solid $couleur-primaire;
+    }
+  }
+
+  .bouton {
+    background-color: $couleur-primaire;
+    color: $couleur-texte;
+    border: none;
+    border-radius: $rayon-md;
+    padding: $espace-sm;
+    cursor: pointer;
+    transition: background-color $transition;
+
+    &:hover {
+      background-color: color.adjust($couleur-primaire, $lightness: -10%);
+    }
+  }
+}
+
+.lien-alternatif {
+  font-size: $font-size-base;
+  a {
+    color: $couleur-primaire;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.message-erreur {
+  color: #ff7b7b;
+  background-color: rgba(255, 0, 0, 0.1);
+  border-radius: $rayon-md;
+  padding: $espace-sm;
+  margin-bottom: $espace-md;
+}

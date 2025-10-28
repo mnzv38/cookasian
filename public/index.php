@@ -7,11 +7,24 @@
  * @version 1.0.0
  */
 
-// Activation des erreurs en développement
+// ========================================
+// ⚙️ CONFIGURATION GLOBALE
+// ========================================
+
+// Activation des erreurs (en environnement de dev)
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Chargement de l'autoload Composer
+// Démarrage de la session PHP
+// (obligatoire pour la connexion, la déconnexion et le menu dynamique)
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// ========================================
+// 🚀 CHARGEMENT DE L'AUTOLAOD ET DU ROUTEUR
+// ========================================
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use Cookasian\Router;

@@ -1,134 +1,114 @@
-/* === EN-TÊTE DU SITE === */
-/* Cookasian – Version humanisée et cohérente */
+// ========================================
+// 🧭 EN-TÊTE DU SITE COOKASIAN
+// Barre de navigation principale
+// ========================================
+
+// Import des variables
+@use "../utils/variables" as *;
+@use "sass:color";
+
+// ========================================
+// 1. STRUCTURE GLOBALE
+// ========================================
 
 .entete-site {
-  background-color: #1e1e24;
-  color: #fff;
+  background-color: $couleur-secondaire;
+  color: $couleur-texte-clair;
+  padding: $espace-md 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   position: sticky;
   top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  padding: 1rem 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  animation: slideDown 0.3s ease-out;
+  z-index: 100;
 }
 
-/* Logo */
-.logo-site a {
-  font-family: "Playfair Display", serif;
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #ff5757;
-  text-decoration: none;
-  transition: transform 0.3s ease;
+// ========================================
+// 2. LOGO
+// ========================================
 
-  &:hover {
-    transform: scale(1.05);
+.logo-site {
+  text-align: center;
+  margin-bottom: $espace-sm;
+
+  .lien-logo {
+    font-family: $font-titre;
+    font-size: $font-size-xl;
+    color: $couleur-primaire;
+    letter-spacing: 0.5px;
+    transition: color $transition;
+
+    &:hover {
+      color: color.adjust($couleur-primaire, $lightness: 10%);
+    }
   }
 }
 
-/* Navigation principale */
+// ========================================
+// 3. MENU PRINCIPAL
+// ========================================
+
 .menu-principal {
-  ul {
+  text-align: center;
+
+  .liste-nav {
     display: flex;
-    align-items: center;
-    gap: 1rem;
-    list-style: none;
-    margin: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $espace-md;
     padding: 0;
+    margin: 0;
   }
 
   .lien-nav {
-    font-family: "Quicksand", sans-serif;
-    font-size: 1rem;
-    color: #fff;
+    color: $couleur-texte-clair;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 0.4rem 0.8rem;
+    border-radius: $rayon-md;
+    transition: background-color $transition, color $transition;
 
     &:hover {
-      background-color: rgba(255, 87, 87, 0.1);
-      color: #ff5757;
+      background-color: rgba(255, 255, 255, 0.08);
+      color: $couleur-primaire;
     }
 
     &.actif {
-      color: #ff5757;
-      background-color: rgba(255, 87, 87, 0.15);
-      font-weight: 600;
-    }
-
-    &.bouton {
-      background-color: #ff5757;
-      color: #fff;
-      padding: 0.6rem 1.2rem;
-      border-radius: 0.6rem;
-      font-weight: 600;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-
-      &:hover {
-        background-color: #ff3232;
-        transform: translateY(-2px);
-      }
+      background-color: rgba(255, 255, 255, 0.1);
+      color: $couleur-primaire;
     }
   }
-}
 
-/* Animation d’apparition */
-@keyframes slideDown {
-  from {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
+  // Bouton "Connexion" ou "Déconnexion"
+  .bouton {
+    background-color: $couleur-primaire;
+    color: #fff;
+    border-radius: $rayon-md;
+    padding: 0.5rem 1rem;
+    transition: background-color $transition, transform $transition;
 
-/* Accessibilité : réduction des animations */
-@media (prefers-reduced-motion: reduce) {
-  .entete-site {
-    animation: none;
-    transition: none;
-  }
-  .lien-nav {
-    transition: none;
+    &:hover {
+      background-color: color.adjust($couleur-primaire, $lightness: 10%);
+      transform: translateY(-2px);
+    }
+
+    &.actif {
+      background-color: color.adjust($couleur-primaire, $lightness: -10%);
+    }
   }
 }
 
-/* Responsive tablette */
-@media (max-width: 768px) {
-  .entete-site {
+// ========================================
+// 4. RESPONSIVE
+// ========================================
+
+@media (max-width: $tablette) {
+  .menu-principal .liste-nav {
     flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
+    align-items: center;
+    gap: $espace-sm;
   }
 
-  .menu-principal ul {
-    flex-wrap: wrap;
-    gap: 0.8rem;
-  }
-}
-
-/* Mobile (iPhone SE) */
-@media (max-width: 480px) {
-  .entete-site {
-    padding: 0.8rem;
-  }
-
-  .logo-site a {
-    font-size: 1.5rem;
-  }
-
-  .menu-principal ul {
-    gap: 0.6rem;
-  }
-
-  .lien-nav {
-    font-size: 0.9rem;
-    padding: 0.4rem 0.8rem;
+  .logo-site {
+    margin-bottom: $espace-md;
   }
 }
