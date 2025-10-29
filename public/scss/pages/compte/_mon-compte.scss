@@ -1,0 +1,90 @@
+@use "../../utils/variables" as *;
+@use "sass:color";
+
+.page-compte {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: $espace-3xl $espace-md;
+  background: linear-gradient(
+    180deg,
+    color.adjust($couleur-secondaire, $lightness: 5%),
+    color.adjust($couleur-secondaire, $lightness: -5%)
+  );
+  color: $couleur-texte;
+}
+
+.carte-compte {
+  background-color: $couleur-carte;
+  padding: $espace-2xl;
+  border-radius: $rayon-lg;
+  box-shadow: $ombre;
+  max-width: 760px;
+  width: 100%;
+}
+
+.titre-page {
+  font-family: $font-titre;
+  color: $couleur-primaire;
+  margin-bottom: $espace-md;
+}
+
+.titre-section {
+  font-family: $font-titre;
+  color: $couleur-primaire;
+  margin-top: $espace-xl;
+  margin-bottom: $espace-sm;
+}
+
+.texte-compte {
+  color: rgba($couleur-texte, 0.9);
+  line-height: 1.7;
+}
+
+.liste-actions {
+  list-style: none;
+  display: flex;
+  gap: $espace-md;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: $espace-sm 0 $espace-lg 0;
+
+  .bouton {
+    background-color: $couleur-primaire;
+    color: $couleur-texte;
+    text-decoration: none;
+    padding: $espace-sm $espace-lg;
+    border-radius: $rayon-md;
+    transition: background-color $transition;
+
+    &:hover {
+      background-color: color.adjust($couleur-primaire, $lightness: -10%);
+    }
+  }
+}
+
+.liste-favoris {
+  list-style: none;
+  padding: 0;
+  margin: $espace-md 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $espace-xl;
+
+  li {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (min-width: $tablette) {
+  .liste-favoris {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: $desktop) {
+  .liste-favoris {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -3,6 +3,7 @@ namespace Cookasian\Controllers;
 
 use Cookasian\Controller;
 use Cookasian\Models\UsersModel;
+use Cookasian\Database;
 
 class AuthController extends Controller
 {
@@ -16,14 +17,20 @@ class AuthController extends Controller
             $email = trim($_POST['email'] ?? '');
             $motDePasse = $_POST['mot_de_passe'] ?? '';
 
-            $usersModel = new UsersModel();
-            $utilisateur = $usersModel->trouverParEmail($email);
+            // ✅ Connexion à la base
+            $db = new Database();
+            $pdo = Database::pdo();
+            $usersModel = new UsersModel($pdo);
 
-            if ($utilisateur && password_verify($motDePasse, $utilisateur['mot_de_passe'])) {
-                $_SESSION['utilisateur'] = [
-                    'id' => $utilisateur['id'],
-                    'email' => $utilisateur['email']
-                ];
+            // ⚠️ corriger le nom de la méthode si besoin
+            $utilisateur = $usersModel->findByEmail($email);
+
+            if ($utilisateur && password_verify($motDePasse, $utilisateur['password_hash'])) {
+            $_SESSION['utilisateur'] = [
+                'id' => $utilisateur['id'],
+                'email' => $utilisateur['email'],
+                'name' => $utilisateur['name']
+            ];
                 $this->redirect('/');
                 return;
             }
@@ -49,24 +56,24 @@ class AuthController extends Controller
             $email = trim($_POST['email'] ?? '');
             $motDePasse = $_POST['mot_de_passe'] ?? '';
 
-            if ($email && $motDePasse) {
-                $usersModel = new UsersModel();
-                $existant = $usersModel->trouverParEmail($email);
+            // ✅ Connexion à la base
+            $db = new Database();
+            $pdo = Database::pdo();
+            $usersModel = new UsersModel($pdo);
 
-                if ($existant) {
-                    $erreur = "Un compte existe déjà avec cet email.";
-                } else {
-                    $hash = password_hash($motDePasse, PASSWORD_DEFAULT);
-                    $usersModel->ajouter($email, $hash);
+            $existant = $usersModel->findByEmail($email);
 
-                    $_SESSION['utilisateur'] = [
-                        'email' => $email
-                    ];
-                    $this->redirect('/');
-                    return;
-                }
+            if ($existant) {
+                $erreur = "Un compte existe déjà avec cet email.";
             } else {
-                $erreur = "Tous les champs sont requis.";
+                $hash = password_hash($motDePasse, PASSWORD_DEFAULT);
+                $usersModel->create('Nom par défaut', $email, $hash);
+
+                $_SESSION['utilisateur'] = [
+                    'email' => $email
+                ];
+                $this->redirect('/');
+                return;
             }
         }
 

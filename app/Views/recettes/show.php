@@ -1,5 +1,3 @@
-<?php include __DIR__ . '/../layout/header.php'; ?>
-
 <article class="recette">
 
     <!-- Titre principal -->
@@ -35,6 +33,20 @@
         <p><?= nl2br(htmlspecialchars($recette['description'])) ?></p>
     </section>
 
+    <!-- Favori (variante mixte) -->
+    <section class="favori-recette">
+        <?php if (!empty($_SESSION['utilisateur']) && !empty($recette['id'])): ?>
+            <footer class="actions-recette">
+                <a class="bouton" href="/favoris/ajouter/<?= (int)$recette['id'] ?>">Ajouter aux favoris</a>
+            </footer>
+        <?php else: ?>
+            <p class="texte-intro">
+                Connecte-toi pour ajouter cette recette à tes favoris.
+                <a class="bouton" href="/connexion">Se connecter</a>
+            </p>
+        <?php endif; ?>
+    </section>
+
     <!-- Ingrédients -->
     <section class="ingredients-recette">
         <h2>Ingrédients</h2>
@@ -63,5 +75,3 @@
     </nav>
 
 </article>
-
-<?php include __DIR__ . '/../layout/footer.php'; ?>

@@ -6,10 +6,7 @@
 
 use Cookasian\Router;
 
-// Création du routeur
 $router = new Router();
-
-// === ROUTES PRINCIPALES ===
 
 // Accueil
 $router->get('/', 'AccueilController', 'index');
@@ -21,11 +18,19 @@ $router->get('/recettes/{slug}', 'RecettesController', 'show');
 // Notre histoire
 $router->get('/notre-histoire', 'HistoireController', 'index');
 
-// Connexion / Inscription (on les préparera ensuite)
+// Authentification
 $router->get('/connexion', 'AuthController', 'connexion');
+$router->post('/connexion', 'AuthController', 'connexion');
 $router->get('/inscription', 'AuthController', 'inscription');
+$router->post('/inscription', 'AuthController', 'inscription');
 $router->get('/deconnexion', 'AuthController', 'deconnexion');
 
+// Mon compte (zone réservée)
+$router->get('/mon-compte', 'CompteController', 'index');
+
+// Favoris (actions réservées)
+$router->get('/favoris/ajouter/{id}', 'FavorisController', 'ajouter');
+$router->get('/favoris/supprimer/{id}', 'FavorisController', 'supprimer');
 
 // Retourne l'objet Router
 return $router;

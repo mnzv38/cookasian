@@ -1,14 +1,12 @@
 // ========================================
 // 🧭 EN-TÊTE DU SITE COOKASIAN
-// Barre de navigation principale
 // ========================================
 
-// Import des variables
 @use "../utils/variables" as *;
 @use "sass:color";
 
 // ========================================
-// 1. STRUCTURE GLOBALE
+// 1) STRUCTURE GLOBALE
 // ========================================
 
 .entete-site {
@@ -22,7 +20,7 @@
 }
 
 // ========================================
-// 2. LOGO
+// 2) LOGO (ligne 1 : centré)
 // ========================================
 
 .logo-site {
@@ -34,6 +32,7 @@
     font-size: $font-size-xl;
     color: $couleur-primaire;
     letter-spacing: 0.5px;
+    text-decoration: none;
     transition: color $transition;
 
     &:hover {
@@ -43,19 +42,31 @@
 }
 
 // ========================================
-// 3. MENU PRINCIPAL
+// 3) BARRE NAV (ligne 2)
+//    - conteneur centré, ancre la zone utilisateur à droite
+// ========================================
+
+.barre-nav {
+  position: relative;        // <- ancrage pour .zone-utilisateur
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;   // centre le menu
+  align-items: flex-start;   // pour coller le bouton sous le nom
+}
+
+// ========================================
+// 4) MENU PRINCIPAL (centré)
 // ========================================
 
 .menu-principal {
-  text-align: center;
-
   .liste-nav {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     gap: $espace-md;
     padding: 0;
     margin: 0;
+    list-style: none;
+    justify-content: center;
   }
 
   .lien-nav {
@@ -77,38 +88,69 @@
       color: $couleur-primaire;
     }
   }
+}
 
-  // Bouton "Connexion" ou "Déconnexion"
-  .bouton {
+// ========================================
+// 5) UTILISATEUR (collé à droite)
+//     - nom au-dessus, bouton en dessous
+// ========================================
+
+.zone-utilisateur {
+  position: absolute;   // ancré au conteneur .barre-nav
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;   // nom au-dessus, bouton dessous
+  align-items: flex-end;    // aligné à droite
+  gap: 0.35rem;
+  font-family: $font-principale;   // ✅ remplacé $font-texte
+  font-size: $font-size-base;
+  color: $couleur-texte-clair;
+
+  .nom-utilisateur {
+    margin: 0;
+    font-weight: $font-weight-medium; // ✅ plus sûr que *-semibold
+  }
+
+  .btn-deconnexion,
+  .btn-connexion {
     background-color: $couleur-primaire;
     color: #fff;
+    text-decoration: none;
+    padding: 0.45rem 0.9rem;
     border-radius: $rayon-md;
-    padding: 0.5rem 1rem;
     transition: background-color $transition, transform $transition;
 
     &:hover {
       background-color: color.adjust($couleur-primaire, $lightness: 10%);
       transform: translateY(-2px);
     }
-
-    &.actif {
-      background-color: color.adjust($couleur-primaire, $lightness: -10%);
-    }
   }
 }
 
 // ========================================
-// 4. RESPONSIVE
+// 6) RESPONSIVE
 // ========================================
 
 @media (max-width: $tablette) {
+  .barre-nav {
+    justify-content: center;
+  }
+
   .menu-principal .liste-nav {
     flex-direction: column;
     align-items: center;
     gap: $espace-sm;
   }
 
+  .zone-utilisateur {
+    position: static;      // plus d'absolu sur mobile
+    align-items: center;
+    margin-top: $espace-sm;
+  }
+
   .logo-site {
     margin-bottom: $espace-md;
   }
 }
+
