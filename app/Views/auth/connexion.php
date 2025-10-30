@@ -7,11 +7,23 @@
         <?php endif; ?>
 
         <form method="post" class="formulaire-auth">
-            <label for="email">Adresse e-mail</label>
-            <input type="email" name="email" required placeholder="exemple@mail.com">
+            <label class="bloc-champ">
+                <span class="label-texte">Adresse e-mail</span>
+                <input class="champ" type="email" name="email" required placeholder="exemple@mail.com">
+            </label>
 
-            <label for="mot_de_passe">Mot de passe</label>
-            <input type="password" name="mot_de_passe" required placeholder="Ton mot de passe">
+            <label class="bloc-champ">
+                <span class="label-texte">Mot de passe</span>
+                <div class="groupe-champ">
+                    <input class="champ champ-mdp" type="password" name="mot_de_passe" required placeholder="Ton mot de passe" autocomplete="current-password">
+                    <button type="button" class="btn-oeil">👁️</button>
+                </div>
+            </label>
+
+            <label class="bloc-choix">
+                <input class="case" type="checkbox" name="se_souvenir" value="1">
+                <span class="texte-choix">Se souvenir de moi</span>
+            </label>
 
             <button type="submit" class="bouton">Se connecter</button>
         </form>
@@ -21,3 +33,6 @@
         </footer>
     </article>
 </section>
+
+<!-- JS local pour oeil et mini validations -->
+<script src="/assets/js/auth.js"></script>

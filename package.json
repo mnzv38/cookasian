@@ -5,9 +5,9 @@
   "author": "Mélodie Vang",
   "license": "MIT",
   "scripts": {
-    "sass": "sass --watch public/scss:public/assets/css --style=compressed --load-path=public/scss",
+    "sass": "sass --watch src/main.scss:public/assets/css/main.css --style expanded --load-path=src",
     "watch": "npm run sass",
-    "build": "sass public/scss:public/assets/css --style=compressed --load-path=public/scss"
+    "build": "sass src/main.scss:public/assets/css/main.css --style compressed --load-path=src"
   },
   "devDependencies": {
     "sass": "^1.77.0"

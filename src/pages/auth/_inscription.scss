@@ -36,12 +36,18 @@
   gap: $espace-md;
   margin-bottom: $espace-md;
 
-  label {
+  .bloc-champ {
+    display: flex;
+    flex-direction: column;
+    gap: $espace-xs;
+  }
+
+  .label-texte {
     text-align: left;
     color: rgba($couleur-texte, 0.8);
   }
 
-  input {
+  .champ {
     padding: $espace-sm;
     border-radius: $rayon-md;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -50,6 +56,46 @@
 
     &:focus {
       outline: 1px solid $couleur-primaire;
+    }
+  }
+
+  .groupe-champ {
+    display: flex;
+    align-items: center;
+    gap: $espace-xs;
+
+    .champ {
+      flex: 1;
+    }
+
+    .btn-oeil {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: $couleur-texte;
+      padding: 0 $espace-sm;
+      border-radius: $rayon-md;
+      cursor: pointer;
+    }
+  }
+
+  .aide {
+    display: block;
+    margin-top: $espace-2xs;
+    color: rgba($couleur-texte, 0.7);
+    font-size: 0.9rem;
+  }
+
+  .bloc-choix {
+    display: flex;
+    align-items: center;
+    gap: $espace-xs;
+
+    .case {
+      width: 1rem;
+      height: 1rem;
+    }
+    .texte-choix {
+      text-align: left;
     }
   }
 

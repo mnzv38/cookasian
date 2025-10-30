@@ -14,6 +14,13 @@ composer.lock
 .env.*.local
 
 # === Build front (Sass / JS) ===
+# Fichiers générés automatiquement par Sass
+public/assets/css/*.map
+public/assets/css/main.css.map
+
+# Si tu veux ignorer aussi le CSS compilé (optionnel)
+# public/assets/css/main.css
+
 public/css/*.map
 public/js/*.map
 
@@ -35,6 +42,6 @@ Thumbs.db
 
 # === Divers ===
 /tests/
-/coverage/
-/tmp/
+ /coverage/
+ /tmp/
 "@ | Out-File -Encoding UTF8 .gitignore

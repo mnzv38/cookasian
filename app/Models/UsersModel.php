@@ -24,7 +24,7 @@ class UsersModel
      */
     public function findByEmail(string $email): ?array
     {
-        $sql = 'SELECT id, name, email, password_hash FROM users WHERE email = :email LIMIT 1';
+        $sql = 'SELECT id, name, email, password_hash, remember_token FROM users WHERE email = :email LIMIT 1';
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute(['email' => $email]);
         $resultat = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -42,7 +42,7 @@ class UsersModel
      */
     public function create(string $name, string $email, string $passwordHash): int
     {
-        $sql = 'INSERT INTO users (name, email, password_hash) VALUES (:name, :email, :password_hash)';
+        $sql = 'INSERT INTO users (name, email, password_hash, created_at) VALUES (:name, :email, :password_hash, NOW())';
         $stmt = $this->pdo->prepare($sql);
 
         $stmt->execute([
@@ -52,6 +52,28 @@ class UsersModel
         ]);
 
         return (int)$this->pdo->lastInsertId();
+    }
+
+    /**
+     * Enregistre ou supprime le remember_token (selector:hashedValidator)
+     */
+    public function saveRememberToken(int $userId, ?string $token): void
+    {
+        $sql = 'UPDATE users SET remember_token = :t WHERE id = :id';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(['t' => $token, 'id' => $userId]);
+    }
+
+    /**
+     * Retrouve un utilisateur par selector (partie avant les deux-points)
+     */
+    public function findByRememberSelector(string $selector): ?array
+    {
+        $sql = 'SELECT id, name, email, password_hash, remember_token FROM users WHERE remember_token LIKE :pfx LIMIT 1';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(['pfx' => $selector . ':%']);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row ?: null;
     }
 }
 ?>
