@@ -63,8 +63,5 @@
         <p class="texte-intro">
             Que tu sois passionné ou débutant, Cookasian t’accompagne pour faire voyager tes papilles et ton cœur.
         </p>
-        <footer class="actions-section">
-            <a href="/recettes" class="bouton clair">Découvrir les recettes</a>
-        </footer>
     </article>
 </section>

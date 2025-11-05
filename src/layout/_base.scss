@@ -11,6 +11,35 @@
 // 1. STRUCTURE DE PAGE
 // ========================================
 
+// ✅ Gestion de la structure globale (body + main + footer)
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main.contenu-principal {
+  flex: 1 0 auto; // Le contenu principal prend la hauteur dispo
+}
+
+.footer-site {
+  flex-shrink: 0; // Empêche le footer de se compresser
+}
+
+/* ✅ Espace universel avant le footer */
+main.contenu-principal > section:last-of-type {
+  margin-bottom: $espace-3xl; // 64px d’air avant le pied de page
+}
+
+// ========================================
+// 1B. RÈGLES GÉNÉRALES DE STRUCTURE
+// ========================================
+
 html {
   font-size: 100%; // 1rem = 16px pour une base accessible
   scroll-behavior: smooth;
@@ -26,6 +55,22 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+// ========================================
+// STRUCTURE GLOBALE DU CONTENU
+// ========================================
+
+main.contenu-principal {
+  display: flex;
+  flex-direction: column;
+  align-items: center; // centre horizontalement tout le contenu
+  width: 100%;
+}
+
+section {
+  width: 100%;
+  display: block;
 }
 
 // ========================================

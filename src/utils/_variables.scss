@@ -33,8 +33,8 @@ $font-size-lg: 1.25rem;   // 20px
 $font-size-xl: 1.5rem;    // 24px
 $font-size-2xl: 2rem;     // 32px
 $font-size-3xl: 2.5rem;   // 40px
-$font-size-4xl: 3rem;     // 48px ✅ nécessaire pour .hero__titre
-$font-size-5xl: 3.5rem;   // 56px (titres hero éventuels)
+$font-size-4xl: 3rem;     // 48px
+$font-size-5xl: 3.5rem;   // 56px
 
 // Interlignes
 $line-height-tight: 1.1;      // compact
@@ -48,22 +48,28 @@ $font-weight-bold: 700;
 
 // ----------------------------------------
 // 📏 ESPACEMENTS
+// (ajout des tailles manquantes pour éviter les erreurs)
 // ----------------------------------------
 
-$espace-xs: 0.25rem;   // 4px
-$espace-sm: 0.5rem;    // 8px
-$espace-md: 1rem;      // 16px
-$espace-lg: 1.5rem;    // 24px
-$espace-xl: 2rem;      // 32px
-$espace-2xl: 3rem;     // 48px
-$espace-3xl: 4rem;     // 64px
+// Ultra petit (manquant précédemment)
+$espace-2xs: 0.125rem;  // 2px ✅ ajouté
+
+$espace-xs: 0.25rem;    // 4px
+$espace-sm: 0.5rem;     // 8px
+$espace-md: 1rem;       // 16px
+$espace-lg: 1.5rem;     // 24px
+$espace-xl: 2rem;       // 32px
+$espace-2xl: 3rem;      // 48px
+$espace-3xl: 4rem;      // 64px
 
 // ----------------------------------------
 // 🟦 FORMES ET OMBRES
+// (ajout de $rayon-sm pour les fichiers qui l'utilisent)
 // ----------------------------------------
 
-$rayon-md: 0.5rem;    // 8px
-$rayon-lg: 1rem;      // 16px
+$rayon-sm: 0.25rem;     // 4px ✅ ajouté
+$rayon-md: 0.5rem;      // 8px
+$rayon-lg: 1rem;        // 16px
 
 // Ombres par niveau
 $ombre: 0 0 12px rgba(0, 0, 0, 0.5);

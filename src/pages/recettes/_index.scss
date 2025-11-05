@@ -192,3 +192,12 @@
     }
   }
 }
+
+/* === ESPACEMENT AVANT LE PIED DE PAGE === */
+.section-recettes {
+  margin-bottom: 4rem; // espace sous le contenu (≈64px)
+  
+  @media (max-width: 768px) {
+    margin-bottom: 3rem; // un peu réduit sur tablette/mobile
+  }
+}

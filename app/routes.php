@@ -32,6 +32,10 @@ $router->get('/mon-compte', 'CompteController', 'index');
 $router->get('/favoris/ajouter/{id}', 'FavorisController', 'ajouter');
 $router->get('/favoris/supprimer/{id}', 'FavorisController', 'supprimer');
 
+// Contact (route dédiée au traitement du formulaire depuis "Notre histoire")
+$router->get('/contact', 'ContactController', 'index');   // Optionnel (si tu veux une page dédiée plus tard)
+$router->post('/contact', 'ContactController', 'index');
+
 // Retourne l'objet Router
 return $router;
 ?>
