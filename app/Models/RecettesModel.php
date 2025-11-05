@@ -4,10 +4,6 @@ namespace Cookasian\Models;
 use Cookasian\Database;
 use PDO;
 
-/**
- * Modèle RecettesModel
- * Gère toutes les opérations liées aux recettes (lecture, recherche, populaires…)
- */
 class RecettesModel
 {
     private PDO $pdo;
@@ -18,18 +14,28 @@ class RecettesModel
     }
 
     /**
-     * Récupère toutes les recettes classées par date de création (les plus récentes en premier).
+     * Récupère toutes les recettes selon le type de tri choisi
      */
-    public function getAll(): array
+    public function getAll(string $tri = 'pays'): array
     {
-        $sql = "SELECT * FROM recettes ORDER BY date_creation DESC";
+        // 🔹 Dictionnaire des tris autorisés
+        $tris = [
+            'pays' => 'pays_origine ASC, titre ASC',
+            'titre' => 'titre ASC',
+            'difficulte' => 'difficulte ASC',
+            'preparation' => 'temps_preparation ASC',
+            'cuisson' => 'temps_cuisson ASC',
+            'recentes' => 'date_creation DESC'
+        ];
+
+        // 🔹 Si le paramètre n’est pas valide, on revient au tri par pays
+        $ordre = $tris[$tri] ?? $tris['pays'];
+
+        $sql = "SELECT * FROM recettes ORDER BY $ordre";
         $stmt = $this->pdo->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    /**
-     * Récupère une recette spécifique à partir de son slug.
-     */
     public function getBySlug(string $slug): ?array
     {
         $sql = "SELECT * FROM recettes WHERE slug = :slug";
@@ -62,15 +68,8 @@ class RecettesModel
         return $recette;
     }
 
-    /**
-     * Récupère un nombre limité de recettes populaires
-     *
-     * @param int $limite
-     * @return array
-     */
     public function getRecettesPopulaires(int $limite = 3): array
     {
-        // On sélectionne seulement les colonnes existantes
         $sql = "SELECT id, titre, description, slug
                 FROM recettes
                 ORDER BY date_creation DESC

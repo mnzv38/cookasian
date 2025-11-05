@@ -25,15 +25,41 @@ body {
 
 main.contenu-principal {
   flex: 1 0 auto; // Le contenu principal prend la hauteur dispo
+  padding-bottom: $espace-3xl; // air avant le footer
+  background-color: $couleur-fond; // unifie le fond
+  position: relative; // pour le cache-joint
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
+
+main.contenu-principal::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px; // descend d’un pixel sous le main
+  height: 2px;  // recouvre complètement la jonction
+  background-color: $couleur-fond;
+  z-index: 2;
+  pointer-events: none;
+}
+
 
 .footer-site {
   flex-shrink: 0; // Empêche le footer de se compresser
 }
 
-/* ✅ Espace universel avant le footer */
+/* ✅ Uniformisation de l’espace avant le footer sur toutes les pages */
 main.contenu-principal > section:last-of-type {
-  margin-bottom: $espace-3xl; // 64px d’air avant le pied de page
+  margin-bottom: $espace-4xl; // espace harmonisé (équiv. ~64px)
+}
+
+@media (max-width: $tablette) {
+  main.contenu-principal > section:last-of-type {
+    margin-bottom: $espace-3xl; // un peu réduit sur tablette/mobile
+  }
 }
 
 // ========================================
@@ -55,17 +81,6 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-// ========================================
-// STRUCTURE GLOBALE DU CONTENU
-// ========================================
-
-main.contenu-principal {
-  display: flex;
-  flex-direction: column;
-  align-items: center; // centre horizontalement tout le contenu
-  width: 100%;
 }
 
 section {
@@ -97,22 +112,15 @@ h6 {
   margin-bottom: $espace-md;
 }
 
-h1 {
-  font-size: $font-size-4xl;
-}
+h1 { font-size: $font-size-4xl; }
 
 h2 {
   font-size: $font-size-3xl;
   color: color.adjust($couleur-primaire, $lightness: -10%);
 }
 
-h3 {
-  font-size: $font-size-2xl;
-}
-
-h4 {
-  font-size: $font-size-xl;
-}
+h3 { font-size: $font-size-2xl; }
+h4 { font-size: $font-size-xl; }
 
 small {
   font-size: $font-size-sm;
@@ -141,9 +149,7 @@ button {
   border: none;
   transition: background-color $transition, transform $transition;
 
-  &:hover {
-    transform: translateY(-2px);
-  }
+  &:hover { transform: translateY(-2px); }
 
   &:focus {
     outline: 2px solid $couleur-primaire;
@@ -191,15 +197,12 @@ select:focus {
   background-color: rgba(255, 255, 255, 0.08);
 }
 
-::placeholder {
-  color: $couleur-texte-secondaire;
-}
+::placeholder { color: $couleur-texte-secondaire; }
 
 // ========================================
-// 6. LISTES & BLOCS D’INFORMATIONS HUMANISÉS
+// 6. LISTES & BLOCS D’INFORMATIONS
 // ========================================
 
-// ✅ Listes classiques
 ul,
 ol {
   list-style: none;
@@ -212,9 +215,6 @@ li {
   font-family: $font-principale;
   color: $couleur-texte-principal;
 }
-
-// ✅ Blocs d’infos façon "table" mais humains
-// Exemple : <ul class="bloc-infos"><li><span class="etiquette">Pays</span><span class="valeur">Japon</span></li></ul>
 
 .bloc-infos {
   display: flex;
@@ -235,9 +235,7 @@ li {
     border-radius: $rayon-sm;
     transition: background-color $transition;
 
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.06);
-    }
+    &:hover { background-color: rgba(255, 255, 255, 0.06); }
 
     .etiquette {
       font-family: $font-titre;
@@ -278,26 +276,9 @@ li {
 // 7. UTILITAIRES
 // ========================================
 
-.text-center {
-  text-align: center;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.text-left {
-  text-align: left;
-}
-
-.uppercase {
-  text-transform: uppercase;
-}
-
-.bold {
-  font-weight: $font-weight-bold;
-}
-
-.light {
-  font-weight: $font-weight-normal;
-}
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+.text-left   { text-align: left; }
+.uppercase   { text-transform: uppercase; }
+.bold        { font-weight: $font-weight-bold; }
+.light       { font-weight: $font-weight-normal; }

@@ -4,36 +4,78 @@
 
 @use "../utils/variables" as *;
 
+// ========================================
+// 1. STYLE GÉNÉRAL DU FOOTER
+// ========================================
+
 .footer-site {
-  background-color: $couleur-secondaire;
+  background-color: $couleur-fond; // identique au fond du main
   color: $couleur-texte-clair;
   padding: $espace-2xl $espace-md;
   text-align: center;
   font-size: $font-size-sm;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: none; // supprime tout trait parasite
+  margin-top: 0;
+  position: relative; // permet le cache-joint
+  z-index: 1; // évite les superpositions indésirables
+  width: 100%;
+  box-shadow: none; // désactive les ombres éventuelles
 }
+
+.footer-site::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -2px; // chevauche légèrement le main
+  height: 2px;
+  background-color: $couleur-fond;
+  z-index: 3;
+}
+
+// ========================================
+// 2. LIENS
+// ========================================
 
 .footer-site a {
   color: $couleur-primaire;
   text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    text-decoration: underline;
+    color: lighten($couleur-primaire, 10%);
+  }
 }
 
-.footer-site a:hover {
-  text-decoration: underline;
-}
+// ========================================
+// 3. TEXTE
+// ========================================
 
 .footer-site p {
   margin-top: $espace-sm;
   margin-bottom: $espace-sm;
+  color: $couleur-texte-principal;
 }
+
+// ========================================
+// 4. NAVIGATION DU FOOTER
+// ========================================
 
 .footer-site nav ul {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   gap: $espace-md;
   list-style: none;
   padding: 0;
+  margin: $espace-sm 0 0 0;
 }
+
+// ========================================
+// 5. RESPONSIVE
+// ========================================
 
 @media (max-width: $tablette) {
   .footer-site {
@@ -42,5 +84,6 @@
 
   .footer-site nav ul {
     flex-direction: column;
+    gap: $espace-sm;
   }
 }

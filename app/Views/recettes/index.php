@@ -1,12 +1,21 @@
-<?php include __DIR__ . '/../layout/header.php'; ?>
-
 <section class="section-recettes">
     <header class="entete-recettes">
         <h1>Toutes les recettes</h1>
         <p>
-            Découvrez nos spécialités asiatiques classées par pays :
-            Japon, Thaïlande, Vietnam, Chine et Corée.
+            Découvrez nos spécialités asiatiques classées selon votre préférence de tri.
         </p>
+
+        <form method="get" class="form-tri-recettes">
+            <label for="tri">Trier par :</label>
+            <select name="tri" id="tri" onchange="this.form.submit()">
+                <option value="pays" <?= ($_GET['tri'] ?? '') === 'pays' ? 'selected' : '' ?>>Pays d’origine (A–Z)</option>
+                <option value="titre" <?= ($_GET['tri'] ?? '') === 'titre' ? 'selected' : '' ?>>Nom de la recette (A–Z)</option>
+                <option value="difficulte" <?= ($_GET['tri'] ?? '') === 'difficulte' ? 'selected' : '' ?>>Difficulté</option>
+                <option value="preparation" <?= ($_GET['tri'] ?? '') === 'preparation' ? 'selected' : '' ?>>Temps de préparation</option>
+                <option value="cuisson" <?= ($_GET['tri'] ?? '') === 'cuisson' ? 'selected' : '' ?>>Temps de cuisson</option>
+                <option value="recentes" <?= ($_GET['tri'] ?? '') === 'recentes' ? 'selected' : '' ?>>Les plus récentes</option>
+            </select>
+        </form>
     </header>
 
     <?php if (!empty($recettes)): ?>
@@ -48,4 +57,3 @@
     <?php endif; ?>
 </section>
 
-<?php include __DIR__ . '/../layout/footer.php'; ?>

@@ -26,12 +26,10 @@
 <body>
 
 <header class="entete-site">
-    <!-- Ligne 1 : logo centré -->
     <figure class="logo-site">
         <a href="<?= $baseUrl ?>/" class="lien-logo">🥢 Cookasian</a>
     </figure>
 
-    <!-- Ligne 2 : menu centré + zone utilisateur à droite -->
     <div class="barre-nav">
         <nav class="menu-principal">
             <ul class="liste-nav">
@@ -56,4 +54,5 @@
     </div>
 </header>
 
+<!-- ✅ Contenu principal -->
 <main class="contenu-principal">
