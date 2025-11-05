@@ -196,38 +196,81 @@ select:focus {
 }
 
 // ========================================
-// 6. LISTES & TABLES
+// 6. LISTES & BLOCS D’INFORMATIONS HUMANISÉS
 // ========================================
 
+// ✅ Listes classiques
 ul,
 ol {
-  list-style-position: inside;
-  margin-bottom: $espace-md;
-  padding-left: $espace-md;
+  list-style: none;
+  margin: 0 0 $espace-md 0;
+  padding: 0;
 }
 
 li {
   margin-bottom: 0.5rem;
+  font-family: $font-principale;
+  color: $couleur-texte-principal;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
+// ✅ Blocs d’infos façon "table" mais humains
+// Exemple : <ul class="bloc-infos"><li><span class="etiquette">Pays</span><span class="valeur">Japon</span></li></ul>
+
+.bloc-infos {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
   margin-bottom: $espace-lg;
-  color: $couleur-texte-principal;
+  padding: 1.5rem;
+  background-color: $couleur-carte;
+  border-radius: $rayon-md;
+  box-shadow: $ombre-sm;
 
-  th,
-  td {
-    padding: 0.75rem;
-    text-align: left;
-  }
-
-  th {
-    background-color: rgba(255, 255, 255, 0.08);
-  }
-
-  tr:nth-child(even) {
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0.8rem;
     background-color: rgba(255, 255, 255, 0.03);
+    border-radius: $rayon-sm;
+    transition: background-color $transition;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.06);
+    }
+
+    .etiquette {
+      font-family: $font-titre;
+      font-size: $font-size-base;
+      color: $couleur-primaire;
+    }
+
+    .valeur {
+      font-family: $font-principale;
+      color: $couleur-texte-secondaire;
+      font-size: $font-size-sm;
+      text-align: right;
+    }
+  }
+}
+
+// ✅ Variante compacte (utile pour mobile ou petits blocs)
+.bloc-infos.compacte {
+  padding: 1rem;
+
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .etiquette {
+      margin-bottom: 0.2rem;
+      font-size: $font-size-sm;
+    }
+
+    .valeur {
+      font-size: $font-size-sm;
+      color: $couleur-texte-principal;
+    }
   }
 }
 
