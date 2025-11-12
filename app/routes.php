@@ -34,12 +34,12 @@ $router->post('/inscription', 'AuthController', 'inscription');
 $router->get('/deconnexion', 'AuthController', 'deconnexion');
 
 // ==============================
-// 👤 Mon compte (infos + favoris)
+// 👤 Mon compte
 // ==============================
 $router->get('/mon-compte', 'CompteController', 'index');
 
 // ==============================
-// ❤️ Favoris (actions utilisateur)
+// ❤️ Favoris
 // ==============================
 $router->get('/favoris/ajouter/{id}', 'FavorisController', 'ajouter');
 $router->get('/favoris/supprimer/{id}', 'FavorisController', 'supprimer');

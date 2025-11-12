@@ -1,0 +1,28 @@
+.flash-message {
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ff5757;
+  color: #fff;
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.6rem;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 200;
+  animation: fadeOut 3s ease forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    top: 0;
+  }
+}
