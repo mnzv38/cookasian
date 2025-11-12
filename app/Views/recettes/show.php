@@ -1,3 +1,20 @@
+<?php
+use Cookasian\Models\FavorisModel;
+
+// Vérifie si l’utilisateur est connecté
+$estConnecte = !empty($_SESSION['utilisateur']['id'] ?? null);
+$estFavori = false;
+
+// Si connecté et recette valide, on vérifie si elle est en favoris
+if ($estConnecte && !empty($recette['id'])) {
+    $favorisModel = new FavorisModel();
+    $estFavori = $favorisModel->estFavori(
+        (int)$_SESSION['utilisateur']['id'],
+        (int)$recette['id']
+    );
+}
+?>
+
 <article class="recette">
 
     <!-- Titre principal -->
@@ -33,11 +50,15 @@
         <p><?= nl2br(htmlspecialchars($recette['description'])) ?></p>
     </section>
 
-    <!-- Favori (variante mixte) -->
+    <!-- Favori -->
     <section class="favori-recette">
-        <?php if (!empty($_SESSION['utilisateur']) && !empty($recette['id'])): ?>
+        <?php if ($estConnecte && !empty($recette['id'])): ?>
             <footer class="actions-recette">
-                <a class="bouton" href="/favoris/ajouter/<?= (int)$recette['id'] ?>">Ajouter aux favoris</a>
+                <?php if ($estFavori): ?>
+                    <a class="bouton clair" href="/favoris/supprimer/<?= (int)$recette['id'] ?>">💔 Retirer des favoris</a>
+                <?php else: ?>
+                    <a class="bouton primaire" href="/favoris/ajouter/<?= (int)$recette['id'] ?>">❤️ Ajouter aux favoris</a>
+                <?php endif; ?>
             </footer>
         <?php else: ?>
             <p class="texte-intro">

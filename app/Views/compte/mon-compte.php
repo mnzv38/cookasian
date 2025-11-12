@@ -1,3 +1,20 @@
+<?php
+use Cookasian\Models\FavorisModel;
+use Cookasian\Models\UsersModel;
+
+/** Fallback : charger $favoris si le contrôleur ne l'a pas passé */
+if (!isset($favoris) && !empty($_SESSION['utilisateur']['email'])) {
+    $users = new UsersModel();
+    $u = $users->trouverParEmail($_SESSION['utilisateur']['email']);
+    if (!empty($u['id'])) {
+        $favorisModel = new FavorisModel();
+        $favoris = $favorisModel->listerPourUtilisateur((int)$u['id']);
+    } else {
+        $favoris = [];
+    }
+}
+?>
+
 <section class="page-compte">
     <article class="carte-compte">
         <h1 class="titre-page">Mon compte</h1>
@@ -27,7 +44,7 @@
                         <li>
                             <article class="carte-recette">
                                 <figure>
-                                    <img class="image-recette" src="/assets/images/placeholder.jpg" alt="<?= htmlspecialchars($r['titre']) ?>">
+                                    <img class="image-recette" src="<?= htmlspecialchars($r['image_url'] ?? '/assets/images/placeholder.jpg') ?>" alt="<?= htmlspecialchars($r['titre']) ?>">
                                     <figcaption><?= htmlspecialchars($r['titre']) ?></figcaption>
                                 </figure>
                                 <p class="contenu-recette">
