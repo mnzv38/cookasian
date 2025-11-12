@@ -37,22 +37,24 @@
             <li><a href="<?= $baseUrl ?>/" class="lien-nav <?= (isset($pageActive) && $pageActive === 'accueil') ? 'actif' : '' ?>">Accueil</a></li>
             <li><a href="<?= $baseUrl ?>/recettes" class="lien-nav <?= (isset($pageActive) && $pageActive === 'recettes') ? 'actif' : '' ?>">Recettes</a></li>
             <li><a href="<?= $baseUrl ?>/notre-histoire" class="lien-nav <?= (isset($pageActive) && $pageActive === 'histoire') ? 'actif' : '' ?>">Notre histoire</a></li>
+
+            <?php if (!empty($_SESSION['utilisateur'])): ?>
+                <li><a href="<?= $baseUrl ?>/mon-compte" class="lien-nav <?= (isset($pageActive) && $pageActive === 'compte') ? 'actif' : '' ?>">Mon compte</a></li>
+            <?php endif; ?>
         </ul>
     </nav>
 
     <!-- Zone utilisateur -->
-    <?php if (!empty($_SESSION['utilisateur'])): ?>
-        <div class="zone-utilisateur">
+    <div class="zone-utilisateur">
+        <?php if (!empty($_SESSION['utilisateur'])): ?>
             <p class="nom-utilisateur">
                 <?= htmlspecialchars($_SESSION['utilisateur']['name'] ?? 'Utilisateur') ?> 👋
             </p>
             <a class="btn-deconnexion" href="<?= $baseUrl ?>/deconnexion">Déconnexion</a>
-        </div>
-    <?php else: ?>
-        <div class="zone-utilisateur">
+        <?php else: ?>
             <a class="btn-connexion" href="<?= $baseUrl ?>/connexion">Connexion</a>
-        </div>
-    <?php endif; ?>
+        <?php endif; ?>
+    </div>
 </header>
 
 <!-- ✅ Contenu principal -->

@@ -88,6 +88,7 @@
     margin-bottom: 1rem;
   }
 
+  /* Liste d'infos (Pays, Difficulté, etc.) */
   .infos-recette {
     list-style: none;
     margin: 0;
@@ -100,14 +101,8 @@
       margin-bottom: 0.4rem;
     }
   }
-}
 
-/* Bas de carte */
-.bas-carte {
-  padding: 1rem 1.5rem;
-  text-align: right;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-
+  /* ✅ Centrer le bouton "Voir la recette" lorsqu'il est dans contenu-recette */
   .lien-recette {
     display: inline-block;
     font-family: "Quicksand", sans-serif;
@@ -118,9 +113,38 @@
     border-radius: 0.5rem;
     text-decoration: none;
     transition: background-color 0.3s ease;
+    text-align: center;
+
+    /* ❤️ Le vrai centrage */
+    margin: 1rem auto 0 auto;
 
     &:hover {
       background-color: #ff3232;
     }
+  }
+}
+
+/* Bas de carte (si utilisé ailleurs, ex: page favoris) */
+.bas-carte {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+  .lien-recette {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+/* ✅ Cas des favoris : footer avec actions */
+footer.infos-recette {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+
+  .bouton,
+  .lien-recette {
+    display: inline-block;
+    text-align: center;
   }
 }

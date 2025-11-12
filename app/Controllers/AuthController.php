@@ -65,7 +65,8 @@ class AuthController extends Controller
                     }
                 }
 
-                $this->redirect('/');
+                // ✅ Redirection vers l’espace personnel (et non plus /mes-favoris)
+                $this->redirect('/mon-compte');
                 return;
             }
 
@@ -148,7 +149,8 @@ class AuthController extends Controller
                     'name'  => $name
                 ];
 
-                $this->redirect('/');
+                // ✅ Redirection directe vers /mon-compte
+                $this->redirect('/mon-compte');
                 return;
             } else {
                 $erreur = implode(' ', $erreurs);
@@ -185,6 +187,7 @@ class AuthController extends Controller
         $_SESSION = [];
         session_destroy();
 
+        // ✅ Redirection vers la page d’accueil après déconnexion
         $this->redirect('/');
     }
 }

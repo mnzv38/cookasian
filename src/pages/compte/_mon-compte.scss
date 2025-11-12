@@ -3,88 +3,80 @@
 
 .page-compte {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: $espace-3xl $espace-md;
-  background: linear-gradient(
-    180deg,
-    color.adjust($couleur-secondaire, $lightness: 5%),
-    color.adjust($couleur-secondaire, $lightness: -5%)
-  );
-  color: $couleur-texte;
-}
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1rem;
+  color: #fff;
+  text-align: center;
 
-.carte-compte {
-  background-color: $couleur-carte;
-  padding: $espace-2xl;
-  border-radius: $rayon-lg;
-  box-shadow: $ombre;
-  max-width: 760px;
-  width: 100%;
-}
+  .titre-page {
+    font-family: "Playfair Display", serif;
+    color: #ff5757;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
 
-.titre-page {
-  font-family: $font-titre;
-  color: $couleur-primaire;
-  margin-bottom: $espace-md;
-}
+  .infos-utilisateur {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    margin-bottom: 3rem;
 
-.titre-section {
-  font-family: $font-titre;
-  color: $couleur-primaire;
-  margin-top: $espace-xl;
-  margin-bottom: $espace-sm;
-}
+    h2 {
+      color: #ff5757;
+      margin-bottom: 1rem;
+    }
 
-.texte-compte {
-  color: rgba($couleur-texte, 0.9);
-  line-height: 1.7;
-}
+    p {
+      margin: 0.5rem 0;
+    }
 
-.liste-actions {
-  list-style: none;
-  display: flex;
-  gap: $espace-md;
-  flex-wrap: wrap;
-  padding: 0;
-  margin: $espace-sm 0 $espace-lg 0;
-
-  .bouton {
-    background-color: $couleur-primaire;
-    color: $couleur-texte;
-    text-decoration: none;
-    padding: $espace-sm $espace-lg;
-    border-radius: $rayon-md;
-    transition: background-color $transition;
-
-    &:hover {
-      background-color: color.adjust($couleur-primaire, $lightness: -10%);
+    .bouton {
+      margin-top: 1rem;
     }
   }
-}
 
-.liste-favoris {
-  list-style: none;
-  padding: 0;
-  margin: $espace-md 0;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: $espace-xl;
+  .favoris-utilisateur {
+    width: 100%;
+    max-width: 1000px;
 
-  li {
-    display: flex;
-    justify-content: center;
-  }
-}
+    h2 {
+      color: #ff5757;
+      margin-bottom: 1.5rem;
+      font-family: "Playfair Display", serif;
+    }
 
-@media (min-width: $tablette) {
-  .liste-favoris {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+    .liste-favoris {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
 
-@media (min-width: $desktop) {
-  .liste-favoris {
-    grid-template-columns: repeat(3, 1fr);
+      .carte-recette {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 1rem;
+        padding: 1rem;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+
+        img {
+          width: 100%;
+          border-radius: 0.5rem;
+        }
+
+        figcaption {
+          margin-top: 0.5rem;
+          font-weight: 600;
+        }
+
+        .bouton {
+          display: inline-block;
+          margin: 0.5rem;
+        }
+      }
+    }
   }
 }

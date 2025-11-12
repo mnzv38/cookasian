@@ -55,7 +55,10 @@ if ($estConnecte && !empty($recette['id'])) {
         <?php if ($estConnecte && !empty($recette['id'])): ?>
             <footer class="actions-recette">
                 <?php if ($estFavori): ?>
-                    <a class="bouton clair" href="/favoris/supprimer/<?= (int)$recette['id'] ?>">💔 Retirer des favoris</a>
+                    <div class="boutons-favoris">
+                        <a class="bouton clair" href="/favoris/supprimer/<?= (int)$recette['id'] ?>">💔 Retirer des favoris</a>
+                        <a class="bouton secondaire" href="/mes-favoris">⭐ Voir mes favoris</a>
+                    </div>
                 <?php else: ?>
                     <a class="bouton primaire" href="/favoris/ajouter/<?= (int)$recette['id'] ?>">❤️ Ajouter aux favoris</a>
                 <?php endif; ?>

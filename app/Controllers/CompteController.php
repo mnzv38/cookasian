@@ -4,24 +4,27 @@ namespace Cookasian\Controllers;
 use Cookasian\Controller;
 use Cookasian\Models\UsersModel;
 use Cookasian\Models\FavorisModel;
+use Cookasian\Database;
 
 class CompteController extends Controller
 {
+    /** ✅ Espace personnel complet */
     public function index(): void
     {
         $this->requireLogin();
 
-        $pageTitle = 'Mon compte — Cookasian';
-        $pageDescription = 'Gère tes informations et retrouve tes actions récentes.';
-        $pageActive = 'connexion';
+        $pageTitle = 'Mon espace personnel — Cookasian';
+        $pageDescription = 'Gère ton profil et retrouve tes recettes favorites.';
+        $pageActive = 'compte';
 
         $email = $_SESSION['utilisateur']['email'] ?? null;
         $utilisateur = null;
         $favoris = [];
 
         if ($email) {
-            $users = new UsersModel();
-            $users->trouverParEmail($email);
+            $pdo = Database::pdo();
+            $users = new UsersModel($pdo);
+            $utilisateur = $users->findByEmail($email);
 
             if (!empty($utilisateur['id'])) {
                 $favModel = new FavorisModel();

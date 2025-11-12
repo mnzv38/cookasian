@@ -1,6 +1,7 @@
 <?php
 namespace Cookasian\Models;
 
+use Cookasian\Database;
 use PDO;
 
 /**
@@ -11,16 +12,13 @@ class UsersModel
 {
     private PDO $pdo;
 
-    public function __construct(PDO $pdo)
+    public function __construct()
     {
-        $this->pdo = $pdo;
+        $this->pdo = Database::pdo();
     }
 
     /**
      * Recherche un utilisateur à partir de son adresse e-mail
-     *
-     * @param string $email
-     * @return array|null
      */
     public function findByEmail(string $email): ?array
     {
@@ -33,18 +31,20 @@ class UsersModel
     }
 
     /**
+     * Alias de compatibilité pour les anciens contrôleurs
+     */
+    public function trouverParEmail(string $email): ?array
+    {
+        return $this->findByEmail($email);
+    }
+
+    /**
      * Crée un nouvel utilisateur dans la base de données
-     *
-     * @param string $name
-     * @param string $email
-     * @param string $passwordHash
-     * @return int ID du nouvel utilisateur
      */
     public function create(string $name, string $email, string $passwordHash): int
     {
         $sql = 'INSERT INTO users (name, email, password_hash, created_at) VALUES (:name, :email, :password_hash, NOW())';
         $stmt = $this->pdo->prepare($sql);
-
         $stmt->execute([
             'name' => $name,
             'email' => $email,
@@ -55,7 +55,7 @@ class UsersModel
     }
 
     /**
-     * Enregistre ou supprime le remember_token (selector:hashedValidator)
+     * Enregistre ou supprime le remember_token
      */
     public function saveRememberToken(int $userId, ?string $token): void
     {
@@ -65,7 +65,7 @@ class UsersModel
     }
 
     /**
-     * Retrouve un utilisateur par selector (partie avant les deux-points)
+     * Retrouve un utilisateur par selector
      */
     public function findByRememberSelector(string $selector): ?array
     {

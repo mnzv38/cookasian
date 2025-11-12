@@ -58,5 +58,16 @@ abstract class Controller
         header('Location: ' . $url);
         exit;
     }
+
+    /**
+     * ✅ Vérifie qu’un utilisateur est connecté
+     * Redirige vers /connexion sinon
+     */
+    protected function requireLogin(): void
+    {
+        if (empty($_SESSION['utilisateur']['email'])) {
+            $this->redirect('/connexion');
+        }
+    }
 }
 ?>

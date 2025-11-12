@@ -1,0 +1,131 @@
+/* === PAGE MES FAVORIS === */
+/* Cookasian – style centré et lisible */
+
+.page-favoris {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  min-height: 70vh;
+  padding: 3rem 1rem;
+  color: #fff;
+
+  .contenu-favoris {
+    width: 100%;
+    max-width: 900px; /* ✅ limite la largeur pour centrage harmonieux */
+  }
+
+  .titre-page {
+    font-size: 2rem;
+    font-family: "Playfair Display", serif;
+    color: #ff5757;
+    margin-bottom: 1rem;
+  }
+
+  .texte-intro {
+    font-family: "Quicksand", sans-serif;
+    color: #ccc;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+  }
+
+  /* ✅ Bloc vide (aucun favori) */
+  .bloc-aucun-favori {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 2rem auto;
+    max-width: 600px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+    .texte-compte {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .bouton {
+      display: inline-block;
+      background-color: #ff5757;
+      color: #fff;
+      font-weight: 600;
+      padding: 0.8rem 1.4rem;
+      border-radius: 0.6rem;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #ff3232;
+      }
+    }
+  }
+
+  /* ✅ Liste des favoris (quand elle existe) */
+  .liste-favoris {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 2rem;
+
+    li {
+      list-style: none;
+    }
+
+    .carte-recette {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 1rem;
+      padding: 1rem;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: translateY(-4px);
+      }
+
+      img {
+        width: 100%;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .contenu-recette {
+        text-align: center;
+      }
+
+      .infos-recette {
+        text-align: center;
+        margin: 0.5rem 0 1rem 0;
+      }
+
+      .bouton {
+        display: inline-block;
+        background-color: #ff5757;
+        color: #fff;
+        padding: 0.6rem 1.2rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #ff3232;
+        }
+      }
+    }
+  }
+}
+
+/* ✅ Responsive iPhone SE (375px) */
+@media (max-width: 400px) {
+  .page-favoris {
+    padding: 2rem 1rem;
+
+    .titre-page {
+      font-size: 1.6rem;
+    }
+
+    .texte-intro {
+      font-size: 1rem;
+    }
+  }
+}
