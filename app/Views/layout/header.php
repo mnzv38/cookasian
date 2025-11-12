@@ -26,32 +26,33 @@
 <body>
 
 <header class="entete-site">
+    <!-- Logo -->
     <figure class="logo-site">
         <a href="<?= $baseUrl ?>/" class="lien-logo">🥢 Cookasian</a>
     </figure>
 
-    <div class="barre-nav">
-        <nav class="menu-principal">
-            <ul class="liste-nav">
-                <li><a href="<?= $baseUrl ?>/" class="lien-nav <?= (isset($pageActive) && $pageActive === 'accueil') ? 'actif' : '' ?>">Accueil</a></li>
-                <li><a href="<?= $baseUrl ?>/recettes" class="lien-nav <?= (isset($pageActive) && $pageActive === 'recettes') ? 'actif' : '' ?>">Recettes</a></li>
-                <li><a href="<?= $baseUrl ?>/notre-histoire" class="lien-nav <?= (isset($pageActive) && $pageActive === 'histoire') ? 'actif' : '' ?>">Notre histoire</a></li>
-            </ul>
-        </nav>
+    <!-- Menu principal -->
+    <nav class="menu-principal">
+        <ul class="liste-nav">
+            <li><a href="<?= $baseUrl ?>/" class="lien-nav <?= (isset($pageActive) && $pageActive === 'accueil') ? 'actif' : '' ?>">Accueil</a></li>
+            <li><a href="<?= $baseUrl ?>/recettes" class="lien-nav <?= (isset($pageActive) && $pageActive === 'recettes') ? 'actif' : '' ?>">Recettes</a></li>
+            <li><a href="<?= $baseUrl ?>/notre-histoire" class="lien-nav <?= (isset($pageActive) && $pageActive === 'histoire') ? 'actif' : '' ?>">Notre histoire</a></li>
+        </ul>
+    </nav>
 
-        <?php if (!empty($_SESSION['utilisateur'])): ?>
-            <div class="zone-utilisateur">
-                <p class="nom-utilisateur">
-                    <?= htmlspecialchars($_SESSION['utilisateur']['name'] ?? 'Utilisateur') ?> 👋
-                </p>
-                <a class="btn-deconnexion" href="<?= $baseUrl ?>/deconnexion">Déconnexion</a>
-            </div>
-        <?php else: ?>
-            <div class="zone-utilisateur">
-                <a class="btn-connexion" href="<?= $baseUrl ?>/connexion">Connexion</a>
-            </div>
-        <?php endif; ?>
-    </div>
+    <!-- Zone utilisateur -->
+    <?php if (!empty($_SESSION['utilisateur'])): ?>
+        <div class="zone-utilisateur">
+            <p class="nom-utilisateur">
+                <?= htmlspecialchars($_SESSION['utilisateur']['name'] ?? 'Utilisateur') ?> 👋
+            </p>
+            <a class="btn-deconnexion" href="<?= $baseUrl ?>/deconnexion">Déconnexion</a>
+        </div>
+    <?php else: ?>
+        <div class="zone-utilisateur">
+            <a class="btn-connexion" href="<?= $baseUrl ?>/connexion">Connexion</a>
+        </div>
+    <?php endif; ?>
 </header>
 
 <!-- ✅ Contenu principal -->

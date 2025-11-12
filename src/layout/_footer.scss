@@ -3,6 +3,8 @@
 // ========================================
 
 @use "../utils/variables" as *;
+@use "sass:color";
+
 
 // ========================================
 // 1. STYLE GÉNÉRAL DU FOOTER
@@ -44,7 +46,7 @@
 
   &:hover {
     text-decoration: underline;
-    color: lighten($couleur-primaire, 10%);
+    color: color.adjust($couleur-primaire, $lightness: 10%);
   }
 }
 

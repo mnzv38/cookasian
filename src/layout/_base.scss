@@ -53,7 +53,7 @@ main.contenu-principal::after {
 
 /* ✅ Uniformisation de l’espace avant le footer sur toutes les pages */
 main.contenu-principal > section:last-of-type {
-  margin-bottom: $espace-4xl; // espace harmonisé (équiv. ~64px)
+  margin-bottom: $espace-3xl; // espace harmonisé (équiv. ~64px)
 }
 
 @media (max-width: $tablette) {

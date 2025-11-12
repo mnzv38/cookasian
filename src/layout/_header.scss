@@ -5,33 +5,31 @@
 @use "../utils/variables" as *;
 @use "sass:color";
 
-// ========================================
-// 1) STRUCTURE GLOBALE
-// ========================================
-
 .entete-site {
   background-color: $couleur-secondaire;
   color: $couleur-texte-clair;
-  padding: $espace-md 0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  /* Suppression de la hauteur fixe */
+  padding: 1.5rem 2rem; // 🔹 plus d'espace vertical (environ 24px haut et bas)
+  display: flex;
+  justify-content: space-between;
+  align-items: center; // ✅ centrage vertical
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 // ========================================
-// 2) LOGO (ligne 1 : centré)
+// Logo
 // ========================================
 
 .logo-site {
-  text-align: center;
-  margin-bottom: $espace-sm;
+  margin: 0;
 
   .lien-logo {
     font-family: $font-titre;
     font-size: $font-size-xl;
     color: $couleur-primaire;
-    letter-spacing: 0.5px;
     text-decoration: none;
     transition: color $transition;
 
@@ -42,74 +40,53 @@
 }
 
 // ========================================
-// 3) BARRE NAV (ligne 2)
-//    - conteneur centré, ancre la zone utilisateur à droite
+// Menu principal
 // ========================================
 
-.barre-nav {
-  position: relative;        // <- ancrage pour .zone-utilisateur
-  width: 90%;
-  margin: 0 auto;
+.menu-principal .liste-nav {
   display: flex;
-  justify-content: center;   // centre le menu
-  align-items: flex-start;   // pour coller le bouton sous le nom
+  gap: $espace-md;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-// ========================================
-// 4) MENU PRINCIPAL (centré)
-// ========================================
+.lien-nav {
+  color: $couleur-texte-clair;
+  font-size: $font-size-base;
+  text-decoration: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: $rayon-md;
+  transition: background-color $transition, color $transition;
 
-.menu-principal {
-  .liste-nav {
-    display: flex;
-    gap: $espace-md;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    justify-content: center;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: $couleur-primaire;
   }
 
-  .lien-nav {
-    color: $couleur-texte-clair;
-    font-size: $font-size-base;
-    font-weight: $font-weight-medium;
-    text-decoration: none;
-    padding: 0.4rem 0.8rem;
-    border-radius: $rayon-md;
-    transition: background-color $transition, color $transition;
-
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.08);
-      color: $couleur-primaire;
-    }
-
-    &.actif {
-      background-color: rgba(255, 255, 255, 0.1);
-      color: $couleur-primaire;
-    }
+  &.actif {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: $couleur-primaire;
   }
 }
 
 // ========================================
-// 5) UTILISATEUR (collé à droite)
-//     - nom au-dessus, bouton en dessous
+// Zone utilisateur (centrée verticalement)
 // ========================================
 
 .zone-utilisateur {
-  position: absolute;   // ancré au conteneur .barre-nav
-  top: 0;
-  right: 0;
   display: flex;
-  flex-direction: column;   // nom au-dessus, bouton dessous
-  align-items: flex-end;    // aligné à droite
-  gap: 0.35rem;
-  font-family: $font-principale;   // ✅ remplacé $font-texte
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center; // ✅ centrage vertical parfait
+  gap: 0.3rem;
+  font-family: $font-principale;
   font-size: $font-size-base;
   color: $couleur-texte-clair;
 
   .nom-utilisateur {
     margin: 0;
-    font-weight: $font-weight-medium; // ✅ plus sûr que *-semibold
+    font-weight: $font-weight-medium;
   }
 
   .btn-deconnexion,
@@ -129,28 +106,17 @@
 }
 
 // ========================================
-// 6) RESPONSIVE
+// Responsive
 // ========================================
 
 @media (max-width: $tablette) {
-  .barre-nav {
-    justify-content: center;
-  }
-
-  .menu-principal .liste-nav {
+  .entete-site {
     flex-direction: column;
-    align-items: center;
+    padding: $espace-md;
     gap: $espace-sm;
   }
 
   .zone-utilisateur {
-    position: static;      // plus d'absolu sur mobile
     align-items: center;
-    margin-top: $espace-sm;
-  }
-
-  .logo-site {
-    margin-bottom: $espace-md;
   }
 }
-
