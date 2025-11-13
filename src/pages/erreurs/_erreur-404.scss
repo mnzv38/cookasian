@@ -1,0 +1,68 @@
+@use "../../utils/variables" as *;
+@use "sass:color";
+
+.page-404 {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $espace-xl;
+  background-color: $couleur-fond;
+}
+
+.carte-404 {
+  background-color: #ffffff;
+  color: #1e1e1e;
+  padding: $espace-2xl $espace-xl;
+  border-radius: $rayon-lg;
+  box-shadow: $ombre-lg;
+  max-width: 420px;
+  text-align: center;
+  animation: fadeIn 0.4s ease;
+}
+
+.carte-404 h1 {
+  font-family: $font-titre;
+  color: $couleur-primaire;
+  font-size: $font-size-2xl;
+  margin-bottom: $espace-md;
+}
+
+.carte-404 p {
+  font-size: $font-size-base;
+  color: #333;
+  margin-bottom: $espace-xl;
+  line-height: $line-height-relaxed;
+}
+
+.illustration-404 img {
+  width: 200px;
+  margin: 0 auto $espace-xl auto;
+  border-radius: $rayon-md;
+  box-shadow: $ombre-sm;
+}
+
+.bouton-retour {
+  display: inline-block;
+  background-color: $couleur-primaire;
+  color: #fff;
+  padding: $espace-sm $espace-lg;
+  border-radius: $rayon-md;
+  font-weight: $font-weight-medium;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: color.adjust($couleur-primaire, $lightness: -10%);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

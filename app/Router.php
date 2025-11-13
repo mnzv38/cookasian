@@ -37,18 +37,20 @@ class Router
      */
     public function dispatch(): void
     {
-        $requestMethod = $_SERVER['REQUEST_METHOD'];
+        $requestMethod = $_SERVER['REQUEST_METHOD'] ?? 'GET';
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
         foreach ($this->routes[$requestMethod] ?? [] as $path => $route) {
-            // Transformation des patterns dynamiques : /recette/{slug}
+
+            // Transformation : /recettes/{slug}
             $pattern = preg_replace('/\{[a-zA-Z]+\}/', '([^/]+)', $path);
             $pattern = '#^' . $pattern . '$#';
 
             if (preg_match($pattern, $uri, $matches)) {
+
                 array_shift($matches);
 
-                // 🔹 Namespace complet selon la convention PSR-4
+                // Namespace complet PSR-4
                 $controllerClass = 'Cookasian\\Controllers\\' . $route['controller'];
 
                 if (!class_exists($controllerClass)) {
@@ -71,16 +73,23 @@ class Router
             }
         }
 
-        // 404 si aucune route ne correspond
+        // ==========================
+        // 🔥 PAGE 404 PERSONNALISÉE
+        // ==========================
+
         http_response_code(404);
-        $errorView = __DIR__ . '/../Views/erreurs/404.php';
+
+        $errorView = __DIR__ . '/../Views/erreurs/erreur-404.php';
 
         if (file_exists($errorView)) {
             require $errorView;
-        } else {
-            echo "<h1>Erreur 404 - Page non trouvée</h1>";
-            echo "<p>La page demandée ({$uri}) est introuvable.</p>";
+            exit;     // ❗ essentiel
         }
+
+        // Fallback si la vue n'existe pas
+        echo "<h1>Erreur 404 - Page non trouvée</h1>";
+        echo "<p>La page demandée ({$uri}) est introuvable.</p>";
+        exit;
     }
 
     /**
@@ -91,4 +100,3 @@ class Router
         return $this->routes;
     }
 }
-?>

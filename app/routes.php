@@ -29,8 +29,10 @@ $router->get('/notre-histoire', 'HistoireController', 'index');
 // ==============================
 $router->get('/connexion', 'AuthController', 'connexion');
 $router->post('/connexion', 'AuthController', 'connexion');
+
 $router->get('/inscription', 'AuthController', 'inscription');
 $router->post('/inscription', 'AuthController', 'inscription');
+
 $router->get('/deconnexion', 'AuthController', 'deconnexion');
 
 // ==============================
@@ -38,7 +40,7 @@ $router->get('/deconnexion', 'AuthController', 'deconnexion');
 // ==============================
 $router->get('/mon-compte', 'CompteController', 'index');
 
-// ➕ AJOUT : Modifier compte
+// Modifier compte
 $router->get('/mon-compte/modifier', 'CompteController', 'modifier');
 $router->post('/mon-compte/modifier', 'CompteController', 'modifier');
 
@@ -58,4 +60,3 @@ $router->post('/contact', 'ContactController', 'index');
 // 🔁 Retourne l'objet Router
 // ==============================
 return $router;
-?>
