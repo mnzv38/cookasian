@@ -1,7 +1,6 @@
 <?php
 use Cookasian\Models\FavorisModel;
 
-// Vérifie si l’utilisateur est connecté
 $estConnecte = !empty($_SESSION['utilisateur']['id'] ?? null);
 $estFavori = false;
 
@@ -13,6 +12,12 @@ if ($estConnecte && !empty($recette['id'])) {
         (int)$recette['id']
     );
 }
+
+// normalisation du chemin image
+$image = $recette['image_url'];
+if (!str_starts_with($image, '/assets/')) {
+    $image = '/assets/images/recettes/' . $image;
+}
 ?>
 
 <article class="recette">
@@ -23,7 +28,7 @@ if ($estConnecte && !empty($recette['id'])) {
 
     <figure class="image-recette">
         <img 
-            src="<?= htmlspecialchars($recette['image_url']) ?>" 
+            src="<?= htmlspecialchars($image) ?>" 
             alt="<?= htmlspecialchars($recette['titre']) ?>">
         <figcaption>
             Recette <?= htmlspecialchars($recette['titre']) ?> (<?= htmlspecialchars($recette['pays_origine']) ?>)
@@ -46,16 +51,14 @@ if ($estConnecte && !empty($recette['id'])) {
         <p><?= nl2br(htmlspecialchars($recette['description'])) ?></p>
     </section>
 
-    <!-- Favori -->
     <section class="favori-recette">
         <?php if ($estConnecte && !empty($recette['id'])): ?>
             <footer class="actions-recette">
 
-                <!-- SI DEJA FAVORI -->
                 <?php if ($estFavori): ?>
                     <div class="boutons-favoris">
                         <a class="bouton clair" 
-                            href="/favoris/supprimer/<?= (int)$recette['id'] ?>">
+                           href="/favoris/supprimer/<?= (int)$recette['id'] ?>">
                             💔 Retirer des favoris
                         </a>
                         <a class="bouton secondaire" href="/mon-compte">
@@ -63,11 +66,10 @@ if ($estConnecte && !empty($recette['id'])) {
                         </a>
                     </div>
 
-                <!-- SINON : AJOUTER + VOIR MES FAVORIS -->
                 <?php else: ?>
                     <div class="boutons-favoris">
                         <a class="bouton primaire" 
-                            href="/favoris/ajouter/<?= (int)$recette['id'] ?>">
+                           href="/favoris/ajouter/<?= (int)$recette['id'] ?>">
                             ❤️ Ajouter aux favoris
                         </a>
                         <a class="bouton secondaire" href="/mon-compte">
@@ -83,12 +85,10 @@ if ($estConnecte && !empty($recette['id'])) {
                 <p class="texte-connexion">
                     Connecte-toi pour ajouter cette recette à tes favoris.
                 </p>
-        <a class="bouton primaire bouton-connexion" href="/connexion">
-            Se connecter
-        </a>
-</div>
-
-
+                <a class="bouton primaire bouton-connexion" href="/connexion">
+                    Se connecter
+                </a>
+            </div>
         <?php endif; ?>
     </section>
 

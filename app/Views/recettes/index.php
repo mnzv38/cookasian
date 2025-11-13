@@ -6,8 +6,8 @@
         </p>
 
         <form method="get" class="form-tri-recettes">
-            <label for="tri">Trier par :</label>
-            <select name="tri" id="tri" onchange="this.form.submit()">
+            <label>Trier par :</label>
+            <select name="tri" onchange="this.form.submit()">
                 <option value="pays" <?= ($_GET['tri'] ?? '') === 'pays' ? 'selected' : '' ?>>Pays d’origine (A–Z)</option>
                 <option value="titre" <?= ($_GET['tri'] ?? '') === 'titre' ? 'selected' : '' ?>>Nom de la recette (A–Z)</option>
                 <option value="difficulte" <?= ($_GET['tri'] ?? '') === 'difficulte' ? 'selected' : '' ?>>Difficulté</option>
@@ -21,13 +21,22 @@
     <?php if (!empty($recettes)): ?>
         <ul class="liste-recettes">
             <?php foreach ($recettes as $recette): ?>
+
+                <?php
+                // normalisation du chemin image
+                $image = $recette['image_url'];
+                if (!str_starts_with($image, '/assets/')) {
+                    $image = '/assets/images/recettes/' . $image;
+                }
+                ?>
+
                 <li class="item-recette">
                     <article class="carte-recette">
 
                         <figure class="image-recette">
                             <a href="/recettes/<?= htmlspecialchars($recette['slug']) ?>">
                                 <img 
-                                    src="<?= htmlspecialchars($recette['image_url']) ?>" 
+                                    src="<?= htmlspecialchars($image) ?>" 
                                     alt="<?= htmlspecialchars($recette['titre']) ?>">
                             </a>
                             <figcaption><?= htmlspecialchars($recette['titre']) ?></figcaption>
@@ -56,4 +65,3 @@
         <p>Aucune recette disponible pour le moment.</p>
     <?php endif; ?>
 </section>
-
