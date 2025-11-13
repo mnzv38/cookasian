@@ -9,7 +9,7 @@ class ContactController
             session_start();
         }
 
-        // Variables de session pour les messages flash
+        // Récupération des messages flash
         $contactSuccess = $_SESSION['contact_success'] ?? null;
         $contactErrors  = $_SESSION['contact_errors'] ?? [];
         $contactValues  = $_SESSION['contact_values'] ?? [
@@ -18,10 +18,10 @@ class ContactController
             'message' => ''
         ];
 
-        // Nettoyage après lecture
+        // Nettoyage après affichage
         unset($_SESSION['contact_success'], $_SESSION['contact_errors']);
 
-        // Si le formulaire est envoyé
+        // Traitement du formulaire
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nom     = trim($_POST['nom'] ?? '');
             $email   = trim($_POST['email'] ?? '');
@@ -45,11 +45,13 @@ class ContactController
             }
         }
 
-        // Variables de la vue
-        $title = "Contact - Cookasian";
+        // 🔥 Titre propre (le header ajoutera automatiquement " - Cookasian")
+        $title = "Contact";
+
+        // Meta description SEO
         $metaDescription = "Contactez Cookasian pour toute question, suggestion ou partenariat.";
 
-        // ✅ On charge uniquement la vue complète (qui inclut déjà header et footer)
+        // Charge la vue complète (header inclus dans la vue)
         require __DIR__ . "/../Views/contact/contact.php";
     }
 }

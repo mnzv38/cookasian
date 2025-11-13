@@ -12,7 +12,10 @@ class AccueilController extends Controller
 {
     public function index(): void
     {
-        $pageTitle = 'Accueil - COOKASIAN | Blog de recettes asiatiques';
+        // 🔥 Titre propre pour SEO (le header ajoutera automatiquement " - Cookasian")
+        $pageTitle = 'Accueil';
+
+        // Meta description SEO
         $pageDescription = 'Découvrez les meilleures recettes de cuisine asiatique : ramen, sushi, pad thaï et bien plus encore.';
 
         // Le modèle gère sa propre connexion à la base
@@ -21,8 +24,8 @@ class AccueilController extends Controller
 
         // Envoi des données à la vue
         $this->render('accueil/accueil', [
-            'pageTitle' => $pageTitle,
-            'pageDescription' => $pageDescription,
+            'pageTitle'      => $pageTitle,
+            'pageDescription'=> $pageDescription,
             'recettesPopulaires' => $recettesPopulaires
         ]);
     }

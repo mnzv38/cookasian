@@ -12,7 +12,9 @@ class AuthController extends Controller
      */
     public function connexion(): void
     {
-        $pageTitle = 'Connexion — Cookasian';
+        // 🔥 Titre propre (le header ajoutera " - Cookasian")
+        $pageTitle = 'Connexion';
+
         $pageDescription = 'Connecte-toi à ton espace personnel pour accéder à tes recettes préférées.';
         $pageActive = 'connexion';
 
@@ -36,7 +38,7 @@ class AuthController extends Controller
                     'name' => $utilisateur['name']
                 ];
 
-                // ✅ Option "Se souvenir de moi"
+                // Option "Se souvenir de moi"
                 if ($remember) {
                     $selector = bin2hex(random_bytes(8));
                     $validator = bin2hex(random_bytes(32));
@@ -59,13 +61,14 @@ class AuthController extends Controller
                         ]
                     );
                 } else {
+                    // Suppression du token si l’option n’est pas activée
                     $usersModel->saveRememberToken((int)$utilisateur['id'], null);
                     if (isset($_COOKIE['rememberme'])) {
                         setcookie('rememberme', '', time() - 3600, '/');
                     }
                 }
 
-                // ✅ Redirection vers l’espace personnel (et non plus /mes-favoris)
+                // Redirection vers l’espace personnel
                 $this->redirect('/mon-compte');
                 return;
             }
@@ -86,7 +89,9 @@ class AuthController extends Controller
      */
     public function inscription(): void
     {
-        $pageTitle = 'Inscription — Cookasian';
+        // 🔥 Titre propre
+        $pageTitle = 'Inscription';
+
         $pageDescription = 'Crée ton compte pour enregistrer tes recettes préférées.';
         $pageActive = 'connexion';
 
@@ -107,7 +112,7 @@ class AuthController extends Controller
                 $erreurs[] = "Le nom est obligatoire.";
             }
 
-            // 🔒 Vérifications de sécurité du mot de passe
+            // Vérifications de sécurité du mot de passe
             $ok = true;
             if (strlen($motDePasse) < 8) $ok = false;
             if (!preg_match('/[A-Z]/', $motDePasse)) $ok = false;
@@ -139,17 +144,17 @@ class AuthController extends Controller
             if (empty($erreurs)) {
                 $hash = password_hash($motDePasse, PASSWORD_DEFAULT);
 
-                // 🔹 Crée l’utilisateur avec son vrai nom
+                // Création du compte
                 $userId = $usersModel->create($name, $email, $hash);
 
-                // ✅ Connexion automatique
+                // Connexion automatique
                 $_SESSION['utilisateur'] = [
                     'id'    => $userId,
                     'email' => $email,
                     'name'  => $name
                 ];
 
-                // ✅ Redirection directe vers /mon-compte
+                // Redirection vers /mon-compte
                 $this->redirect('/mon-compte');
                 return;
             } else {
@@ -187,7 +192,6 @@ class AuthController extends Controller
         $_SESSION = [];
         session_destroy();
 
-        // ✅ Redirection vers la page d’accueil après déconnexion
         $this->redirect('/');
     }
 }

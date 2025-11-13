@@ -13,7 +13,9 @@ class CompteController extends Controller
     {
         $this->requireLogin();
 
-        $pageTitle = 'Mon espace personnel — Cookasian';
+        // 🔥 Titre propre (le header ajoutera automatiquement " - Cookasian")
+        $pageTitle = 'Mon espace personnel';
+
         $pageDescription = 'Gère ton profil et retrouve tes recettes favorites.';
         $pageActive = 'compte';
 
@@ -41,7 +43,7 @@ class CompteController extends Controller
         ]);
     }
 
-    /** ➕ NOUVEAU : Modifier les infos du compte */
+    /** ➕ Modifier les infos du compte */
     public function modifier(): void
     {
         $this->requireLogin();
@@ -83,7 +85,8 @@ class CompteController extends Controller
         }
 
         $this->render('compte/modifier-compte', [
-            'title' => 'Modifier mon compte — Cookasian',
+            // 🔥 Titre propre sans Cookasian
+            'title' => 'Modifier mon compte',
             'metaDescription' => 'Modification de ton profil Cookasian.',
             'pageActive' => 'compte',
             'utilisateur' => $utilisateur,
