@@ -13,12 +13,8 @@ class RecettesModel
         $this->pdo = Database::pdo();
     }
 
-    /**
-     * Récupère toutes les recettes selon le type de tri choisi
-     */
     public function getAll(string $tri = 'pays'): array
     {
-        // 🔹 Dictionnaire des tris autorisés
         $tris = [
             'pays' => 'pays_origine ASC, titre ASC',
             'titre' => 'titre ASC',
@@ -28,7 +24,6 @@ class RecettesModel
             'recentes' => 'date_creation DESC'
         ];
 
-        // 🔹 Si le paramètre n’est pas valide, on revient au tri par pays
         $ordre = $tris[$tri] ?? $tris['pays'];
 
         $sql = "SELECT * FROM recettes ORDER BY $ordre";
@@ -47,7 +42,6 @@ class RecettesModel
             return null;
         }
 
-        // Ingrédients associés
         $sqlIng = "SELECT nom, quantite, ordre 
                    FROM ingredients 
                    WHERE recette_id = :id 
@@ -56,7 +50,6 @@ class RecettesModel
         $stmtIng->execute(['id' => $recette['id']]);
         $recette['ingredients'] = $stmtIng->fetchAll(PDO::FETCH_ASSOC);
 
-        // Étapes associées
         $sqlEtapes = "SELECT numero, description 
                       FROM etapes 
                       WHERE recette_id = :id 
@@ -68,9 +61,12 @@ class RecettesModel
         return $recette;
     }
 
+    /**
+     * Recettes populaires pour la page d'accueil
+     */
     public function getRecettesPopulaires(int $limite = 3): array
     {
-        $sql = "SELECT id, titre, description, slug
+        $sql = "SELECT id, titre, description, slug, image_url
                 FROM recettes
                 ORDER BY date_creation DESC
                 LIMIT :limite";

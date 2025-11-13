@@ -27,7 +27,7 @@
                         <figure>
                             <img
                                 class="image-recette"
-                                src="/assets/images/placeholder.jpg"
+                                src="<?php echo htmlspecialchars($recette['image_url']); ?>"
                                 alt="<?php echo htmlspecialchars($recette['titre']); ?>">
                             <figcaption><?php echo htmlspecialchars($recette['titre']); ?></figcaption>
                         </figure>
