@@ -22,7 +22,7 @@
         <li>
             <article class="carte-valeur">
                 <figure>
-                    <img class="image-valeur" src="/assets/images/partage.jpg" alt="Table asiatique partagée entre amis">
+                    <img class="image-valeur" src="/assets/images/accueil/partage.webp" alt="Table asiatique partagée entre amis">
                     <figcaption>Le partage</figcaption>
                 </figure>
                 <p class="texte-valeur">
@@ -34,7 +34,7 @@
         <li>
             <article class="carte-valeur">
                 <figure>
-                    <img class="image-valeur" src="/assets/images/simplicite.jpg" alt="Bol de riz et baguettes en bois sur une table claire">
+                    <img class="image-valeur" src="/assets/images/accueil/simplicite.webp" alt="Bol de riz et baguettes en bois sur une table claire">
                     <figcaption>La simplicité</figcaption>
                 </figure>
                 <p class="texte-valeur">
@@ -46,7 +46,7 @@
         <li>
             <article class="carte-valeur">
                 <figure>
-                    <img class="image-valeur" src="/assets/images/authenticite.jpg" alt="Cuisine asiatique traditionnelle au wok">
+                    <img class="image-valeur" src="/assets/images/accueil/authenticite.webp" alt="Cuisine asiatique traditionnelle au wok">
                     <figcaption>L’authenticité</figcaption>
                 </figure>
                 <p class="texte-valeur">
