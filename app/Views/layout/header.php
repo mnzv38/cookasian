@@ -9,7 +9,7 @@
     $meta = isset($metaDescription) ? (string)$metaDescription : "Cookasian - Blog de recettes asiatiques authentiques";
 
     // Titre complet envoyé par les contrôleurs
-    // On harmonise ici automatiquement : "Nom de page - Cookasian"
+    // On harmonise automatiquement : "Nom de page - Cookasian"
     $pageName = isset($title) ? (string)$title : "Accueil";
     $ttl = $pageName . " - Cookasian";
 
@@ -20,11 +20,17 @@
     <!-- Meta SEO -->
     <meta name="description" content="<?= htmlspecialchars($meta) ?>">
 
-    <!-- 🥢 Titre unifié et homogène -->
-    <title>🥢 <?= htmlspecialchars($ttl) ?></title>
+    <!-- Titre SEO (sans emoji pour éviter le double 🥢) -->
+    <title><?= htmlspecialchars($ttl) ?></title>
 
-    <!-- Favicon PNG -->
-    <link rel="icon" type="image/png" href="<?= $baseUrl ?>/assets/images/favicon.png">
+    <!-- 🥢 Favicon emoji en SVG -->
+    <link 
+        rel="icon"
+        href="data:image/svg+xml,
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+            <text y='0.9em' font-size='80'>🥢</text>
+        </svg>"
+    >
 
     <!-- Polices Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

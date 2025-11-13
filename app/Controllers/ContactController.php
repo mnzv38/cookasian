@@ -1,6 +1,8 @@
 <?php
 namespace Cookasian\Controllers;
 
+use Cookasian\Models\ContactModel;
+
 class ContactController
 {
     public function index(): void
@@ -18,10 +20,10 @@ class ContactController
             'message' => ''
         ];
 
-        // Nettoyage après affichage
+        // Nettoyage une fois lus
         unset($_SESSION['contact_success'], $_SESSION['contact_errors']);
 
-        // Traitement du formulaire
+        // 📩 Traitement du formulaire
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nom     = trim($_POST['nom'] ?? '');
             $email   = trim($_POST['email'] ?? '');
@@ -34,24 +36,27 @@ class ContactController
             if ($message === '') $errors['message'] = "Le message ne peut pas être vide.";
 
             if (empty($errors)) {
+
+                // ✨ Enregistrement BDD
+                $model = new ContactModel();
+                $model->enregistrerMessage($nom, $email, $message);
+
                 $_SESSION['contact_success'] = "Merci pour ton message ! Nous te répondrons rapidement 🌸";
                 header('Location: /contact');
                 exit;
-            } else {
-                $_SESSION['contact_errors'] = $errors;
-                $_SESSION['contact_values'] = compact('nom', 'email', 'message');
-                header('Location: /contact');
-                exit;
-            }
+            } 
+
+            // Erreurs → retour formulaire
+            $_SESSION['contact_errors'] = $errors;
+            $_SESSION['contact_values'] = compact('nom', 'email', 'message');
+            header('Location: /contact');
+            exit;
         }
 
-        // 🔥 Titre propre (le header ajoutera automatiquement " - Cookasian")
+        // 🔥 Titre & meta
         $title = "Contact";
-
-        // Meta description SEO
         $metaDescription = "Contactez Cookasian pour toute question, suggestion ou partenariat.";
 
-        // Charge la vue complète (header inclus dans la vue)
         require __DIR__ . "/../Views/contact/contact.php";
     }
 }
