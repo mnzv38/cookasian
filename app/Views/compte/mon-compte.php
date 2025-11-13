@@ -8,7 +8,7 @@
                 <p>Nom : <strong><?= htmlspecialchars($utilisateur['name']) ?></strong></p>
                 <p>Email : <strong><?= htmlspecialchars($utilisateur['email']) ?></strong></p>
 
-                <a class="bouton secondaire" href="#">Modifier mes informations</a>
+                <a class="bouton secondaire" href="/mon-compte/modifier">Modifier mes informations</a>
             </section>
         <?php endif; ?>
 

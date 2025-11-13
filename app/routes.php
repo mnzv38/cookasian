@@ -38,6 +38,10 @@ $router->get('/deconnexion', 'AuthController', 'deconnexion');
 // ==============================
 $router->get('/mon-compte', 'CompteController', 'index');
 
+// ➕ AJOUT : Modifier compte
+$router->get('/mon-compte/modifier', 'CompteController', 'modifier');
+$router->post('/mon-compte/modifier', 'CompteController', 'modifier');
+
 // ==============================
 // ❤️ Favoris
 // ==============================

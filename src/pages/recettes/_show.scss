@@ -1,5 +1,4 @@
 /* === PAGE RECETTE (show.php) === */
-/* Cookasian – version centrée et humanisée */
 
 /* --- Structure générale --- */
 .recette {
@@ -78,6 +77,41 @@
       color: #ccc;
       font-size: 1rem;
       line-height: 1.5;
+    }
+  }
+
+  /* --- 🔥 Nouveau : encadré connexion --- */
+  .bloc-connexion-recette {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 100%;
+    max-width: 700px;
+    margin: 2rem auto;
+
+    .texte-connexion {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      color: #ddd;
+    }
+
+    .bouton-connexion,
+    .bouton-connexion-recette {
+      display: inline-block;
+      background-color: #ff5757;
+      color: #fff;
+      font-weight: 600;
+      padding: 0.8rem 1.4rem;
+      border-radius: 0.6rem;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #ff3232;
+        transform: translateY(-2px);
+      }
     }
   }
 

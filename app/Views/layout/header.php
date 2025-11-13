@@ -12,7 +12,6 @@
     <meta name="description" content="<?= htmlspecialchars($meta) ?>">
     <title><?= htmlspecialchars($ttl) ?></title>
 
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="<?= $baseUrl ?>/assets/images/favicon.png">
 
     <!-- Polices -->
@@ -20,18 +19,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- CSS principal -->
+    <!-- CSS -->
     <link rel="stylesheet" href="<?= $baseUrl ?>/assets/css/main.css">
 </head>
+
 <body>
 
+<!-- 🔥 BANNIÈRE DE NOTIFICATION (TOP ABSOLU, NE BOUGE PAS LE MENU) -->
+<?php if (!empty($_SESSION['flash_message'])): ?>
+    <div class="flash-message">
+        <?= htmlspecialchars($_SESSION['flash_message']) ?>
+    </div>
+    <?php unset($_SESSION['flash_message']); ?>
+<?php endif; ?>
+
 <header class="entete-site">
-    <!-- Logo -->
+
     <figure class="logo-site">
         <a href="<?= $baseUrl ?>/" class="lien-logo">🥢 Cookasian</a>
     </figure>
 
-    <!-- Menu principal -->
     <nav class="menu-principal">
         <ul class="liste-nav">
             <li><a href="<?= $baseUrl ?>/" class="lien-nav <?= (isset($pageActive) && $pageActive === 'accueil') ? 'actif' : '' ?>">Accueil</a></li>
@@ -44,7 +51,6 @@
         </ul>
     </nav>
 
-    <!-- Zone utilisateur -->
     <div class="zone-utilisateur">
         <?php if (!empty($_SESSION['utilisateur'])): ?>
             <p class="nom-utilisateur">
@@ -57,5 +63,4 @@
     </div>
 </header>
 
-<!-- ✅ Contenu principal -->
 <main class="contenu-principal">

@@ -29,6 +29,7 @@
 
 @use "components/commun/bouton";
 @use "components/commun/carte-recette";
+@use "components/commun/flash";   // ✅ AJOUT OBLIGATOIRE
 
 // ========================================
 // 📄 PAGES
@@ -43,8 +44,8 @@
 
 // Mon compte
 @use "pages/compte/mon-compte";
+@use "pages/compte/modifier-compte";
 @use "pages/compte/mes-favoris";
-
 
 // Notre histoire
 @use "pages/notre-histoire/notre-histoire";

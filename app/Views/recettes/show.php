@@ -5,7 +5,7 @@ use Cookasian\Models\FavorisModel;
 $estConnecte = !empty($_SESSION['utilisateur']['id'] ?? null);
 $estFavori = false;
 
-// Si connecté et recette valide, on vérifie si elle est en favoris
+// Vérifie si la recette est en favoris
 if ($estConnecte && !empty($recette['id'])) {
     $favorisModel = new FavorisModel();
     $estFavori = $favorisModel->estFavori(
@@ -17,12 +17,10 @@ if ($estConnecte && !empty($recette['id'])) {
 
 <article class="recette">
 
-    <!-- Titre principal -->
     <header class="entete-recette">
         <h1><?= htmlspecialchars($recette['titre']) ?></h1>
     </header>
 
-    <!-- Image principale -->
     <figure class="image-recette">
         <img 
             src="<?= htmlspecialchars($recette['image_url']) ?>" 
@@ -32,7 +30,6 @@ if ($estConnecte && !empty($recette['id'])) {
         </figcaption>
     </figure>
 
-    <!-- Informations pratiques -->
     <section class="infos-recette">
         <h2>Informations</h2>
         <ul>
@@ -44,7 +41,6 @@ if ($estConnecte && !empty($recette['id'])) {
         </ul>
     </section>
 
-    <!-- Description -->
     <section class="description-recette">
         <h2>Description</h2>
         <p><?= nl2br(htmlspecialchars($recette['description'])) ?></p>
@@ -54,24 +50,48 @@ if ($estConnecte && !empty($recette['id'])) {
     <section class="favori-recette">
         <?php if ($estConnecte && !empty($recette['id'])): ?>
             <footer class="actions-recette">
+
+                <!-- SI DEJA FAVORI -->
                 <?php if ($estFavori): ?>
                     <div class="boutons-favoris">
-                        <a class="bouton clair" href="/favoris/supprimer/<?= (int)$recette['id'] ?>">💔 Retirer des favoris</a>
-                        <a class="bouton secondaire" href="/mes-favoris">⭐ Voir mes favoris</a>
+                        <a class="bouton clair" 
+                            href="/favoris/supprimer/<?= (int)$recette['id'] ?>">
+                            💔 Retirer des favoris
+                        </a>
+                        <a class="bouton secondaire" href="/mon-compte">
+                            ⭐ Voir mes favoris
+                        </a>
                     </div>
+
+                <!-- SINON : AJOUTER + VOIR MES FAVORIS -->
                 <?php else: ?>
-                    <a class="bouton primaire" href="/favoris/ajouter/<?= (int)$recette['id'] ?>">❤️ Ajouter aux favoris</a>
+                    <div class="boutons-favoris">
+                        <a class="bouton primaire" 
+                            href="/favoris/ajouter/<?= (int)$recette['id'] ?>">
+                            ❤️ Ajouter aux favoris
+                        </a>
+                        <a class="bouton secondaire" href="/mon-compte">
+                            ⭐ Voir mes favoris
+                        </a>
+                    </div>
                 <?php endif; ?>
+
             </footer>
+
         <?php else: ?>
-            <p class="texte-intro">
-                Connecte-toi pour ajouter cette recette à tes favoris.
-                <a class="bouton" href="/connexion">Se connecter</a>
-            </p>
+            <div class="bloc-connexion-recette">
+                <p class="texte-connexion">
+                    Connecte-toi pour ajouter cette recette à tes favoris.
+                </p>
+        <a class="bouton primaire bouton-connexion" href="/connexion">
+            Se connecter
+        </a>
+</div>
+
+
         <?php endif; ?>
     </section>
 
-    <!-- Ingrédients -->
     <section class="ingredients-recette">
         <h2>Ingrédients</h2>
         <ul>
@@ -83,7 +103,6 @@ if ($estConnecte && !empty($recette['id'])) {
         </ul>
     </section>
 
-    <!-- Étapes de préparation -->
     <section class="etapes-recette">
         <h2>Préparation</h2>
         <ol>
@@ -93,7 +112,6 @@ if ($estConnecte && !empty($recette['id'])) {
         </ol>
     </section>
 
-    <!-- Lien de retour -->
     <nav class="navigation-recette">
         <a href="/recettes" class="bouton-retour">← Retour à la liste des recettes</a>
     </nav>

@@ -1,112 +1,130 @@
 @use "../../utils/variables" as *;
 
+/* =================================================
+   PAGE : MODIFIER MON COMPTE
+   ================================================= */
 .page-modif-compte {
-  min-height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
   padding: 3rem 1rem;
   color: #fff;
+  text-align: center;
+}
 
-  .carte-modif {
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 2rem 2.5rem;
-    border-radius: 1rem;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
-    width: 100%;
-    max-width: 700px;
-    text-align: center;
+/* 🟢 Bloc principal centré */
+.page-modif-compte .contenu-modif-compte {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 2rem 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+
+  max-width: 600px;
+  margin: 0 auto;   /* 💥 centre horizontalement */
+}
+
+/* ===========================
+   En-tête
+   =========================== */
+.entete-modif {
+  margin-bottom: 1.5rem;
+}
+
+.entete-modif .titre-page {
+  font-family: "Playfair Display", serif;
+  font-size: 2.2rem;
+  color: $couleur-primaire;
+  margin-bottom: 1rem;
+}
+
+.entete-modif .message-succes {
+  color: #4ef8a2;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.entete-modif .liste-erreurs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.entete-modif .liste-erreurs .message-erreur {
+  color: #ffb3b3;
+  font-weight: 600;
+  margin: 0.4rem 0;
+}
+
+/* ===========================
+   Formulaire
+   =========================== */
+.formulaire-modif {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.formulaire-modif .champ {
+  width: 100%;
+  text-align: left;
+}
+
+.formulaire-modif .champ .etiquette {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.formulaire-modif .champ input {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.6rem;
+  padding: 0.8rem 1rem;
+  font-family: "Quicksand", sans-serif;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.formulaire-modif .champ input:focus {
+  outline: none;
+  border-color: #ff5757;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.actions-formulaire {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ===========================
+   Conseils
+   =========================== */
+.texte-conseil {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-top: 1rem;
+  font-family: "Quicksand", sans-serif;
+}
+
+/* ===========================
+   Mobile
+   =========================== */
+@media (max-width: 600px) {
+  .page-modif-compte .contenu-modif-compte {
+    padding: 1.5rem;
   }
 
-  .entete-modif {
-    margin-bottom: 1.5rem;
-
-    .titre-page {
-      font-family: "Playfair Display", serif;
-      font-size: 2.2rem;
-      color: $couleur-primaire;
-      margin-bottom: 1rem;
-    }
-
-    .message-succes {
-      color: #4ef8a2;
-      font-weight: 600;
-      margin-bottom: 0.8rem;
-    }
-
-    .message-erreur {
-      color: #ffb3b3;
-      font-weight: 600;
-      margin-bottom: 0.8rem;
-    }
+  .entete-modif .titre-page {
+    font-size: 1.8rem;
   }
 
-  .formulaire-modif {
-    display: flex;
+  .actions-formulaire {
     flex-direction: column;
-    gap: 1.2rem;
-    margin-bottom: 2rem;
-
-    .champ {
-      display: flex;
-      flex-direction: column;
-      text-align: left;
-
-      .etiquette {
-        font-weight: 600;
-        margin-bottom: 0.4rem;
-      }
-
-      input {
-        background-color: rgba(255, 255, 255, 0.05);
-        color: #fff;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 0.6rem;
-        padding: 0.8rem 1rem;
-        font-family: "Quicksand", sans-serif;
-        transition: border-color 0.3s ease, background-color 0.3s ease;
-
-        &:focus {
-          outline: none;
-          border-color: #ff5757;
-          background-color: rgba(255, 255, 255, 0.08);
-        }
-      }
-    }
-
-    .actions-formulaire {
-      display: flex;
-      justify-content: center; /* ✅ centre les boutons */
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 1.5rem;
-    }
   }
 
-  .texte-conseil {
-    font-size: 0.95rem;
-    color: #ccc;
-    margin-top: 1rem;
-    text-align: center;
-    font-family: "Quicksand", sans-serif;
-  }
-
-  @media (max-width: 600px) {
-    .carte-modif {
-      padding: 1.5rem;
-    }
-
-    .entete-modif .titre-page {
-      font-size: 1.8rem;
-    }
-
-    .actions-formulaire {
-      flex-direction: column;
-    }
-
-    .bouton {
-      width: 100%;
-    }
+  .actions-formulaire .bouton {
+    width: 100%;
   }
 }
