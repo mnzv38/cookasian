@@ -1,0 +1,3 @@
+A taper dans le Terminal :
+
+php vendor/bin/phpunit --testdox tests
