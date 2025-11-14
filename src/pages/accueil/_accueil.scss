@@ -103,7 +103,6 @@
   }
 }
 
-/* === Harmonisation desktop === */
 @media (min-width: 1024px) {
   .liste-recettes {
     grid-template-columns: repeat(3, minmax(300px, 1fr));

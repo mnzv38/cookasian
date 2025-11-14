@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Page non trouvée - Cookasian">
-    <title>🥢 Page introuvable | Cookasian</title>
+    <title> Page introuvable | Cookasian</title>
+
+    <!-- Favicon emoji 🥢 -->
+    <link rel="icon" href="data:image/svg+xml,
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+        <text y='0.9em' font-size='90'>🥢</text>
+    </svg>">
 
     <!-- Feuille de style globale -->
     <link rel="stylesheet" href="/assets/css/main.css">
