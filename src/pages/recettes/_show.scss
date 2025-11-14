@@ -80,7 +80,7 @@
     }
   }
 
-  /* --- 🔥 Nouveau : encadré connexion --- */
+  /* --- Encadré connexion --- */
   .bloc-connexion-recette {
     background-color: rgba(255, 255, 255, 0.05);
     padding: 1.5rem;
@@ -130,125 +130,91 @@
       width: 100%;
       max-width: 700px;
     }
-
-    .boutons-favoris {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1rem;
-
-      .bouton {
-        min-width: 180px;
-        text-align: center;
-        font-family: "Quicksand", sans-serif;
-        font-weight: 600;
-        border-radius: 0.6rem;
-        padding: 0.8rem 1.4rem;
-        text-decoration: none;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-
-        &.clair {
-          background-color: #fff;
-          color: #ff5757;
-
-          &:hover {
-            background-color: #ffeaea;
-            transform: translateY(-2px);
-          }
-        }
-
-        &.secondaire {
-          border: 2px solid #ff5757;
-          color: #ff5757;
-          background: transparent;
-
-          &:hover {
-            background-color: #ff5757;
-            color: #fff;
-            transform: translateY(-2px);
-          }
-        }
-
-        &.primaire {
-          background-color: #ff5757;
-          color: #fff;
-
-          &:hover {
-            background-color: #ff3232;
-            transform: translateY(-2px);
-          }
-        }
-      }
-    }
   }
 
-  /* --- Ingrédients & étapes --- */
-  .ingredients-recette,
-  .etapes-recette {
-    margin-bottom: 2rem;
+  /* --- LES BOUTONS (STANDARD) --- */
+  .boutons-favoris,
+  .actions-recette {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
 
-    h2 {
+    .bouton {
+      min-width: 180px;
       text-align: center;
-      font-family: "Playfair Display", serif;
-      color: #ff5757;
-      margin-bottom: 1rem;
-    }
-
-    ul,
-    ol {
-      list-style: none;
-      padding: 0;
-      margin: 0 auto;
-      max-width: 600px;
-      text-align: center;
-      color: #ccc;
-
-      li {
-        margin-bottom: 0.6rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        padding-bottom: 0.4rem;
-      }
-    }
-  }
-
-  /* --- Bouton retour --- */
-  .navigation-recette {
-    text-align: center;
-    margin-top: 2rem;
-
-    .bouton-retour {
-      display: inline-block;
-      background-color: #ff5757;
-      color: #fff;
       font-weight: 600;
       padding: 0.8rem 1.4rem;
       border-radius: 0.6rem;
       text-decoration: none;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.2s ease;
 
-      &:hover {
-        background-color: #ff3232;
+      &.clair {
+        background-color: #fff;
+        color: #ff5757;
+
+        &:hover {
+          background-color: #ffeaea;
+          transform: translateY(-2px);
+        }
+      }
+
+      &.secondaire {
+        border: 2px solid #ff5757;
+        color: #ff5757;
+        background: transparent;
+
+        &:hover {
+          background-color: #ff5757;
+          color: #fff;
+          transform: translateY(-2px);
+        }
+      }
+
+      &.primaire {
+        background-color: #ff5757;
+        color: #fff;
+
+        &:hover {
+          background-color: #ff3232;
+          transform: translateY(-2px);
+        }
       }
     }
   }
 }
 
-/* --- Responsive iPhone SE --- */
+/* === GESTION RÉELLE DES BOUTONS MOBILE / DESKTOP === */
+
+/* 🔥 Desktop par défaut */
+.desktop-only {
+  display: inline-flex;
+}
+
+.mobile-only {
+  display: none;
+}
+
+/* 🔥 Tablette + Mobile */
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+  .mobile-only {
+    display: inline-flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.9rem 1.2rem;
+    width: 100%;
+    font-size: 1rem;
+  }
+}
+
+/* === Responsive iPhone SE === */
 @media (max-width: 400px) {
-  .recette {
-    padding: 1.5rem 1rem;
-
-    .actions-recette {
-      padding: 1rem;
-    }
-
-    .boutons-favoris {
-      flex-direction: column;
-
-      .bouton {
-        width: 100%;
-      }
-    }
+  .mobile-only {
+    font-size: 0.95rem;
+    padding: 0.8rem 1.1rem;
   }
 }
