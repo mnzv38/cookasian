@@ -44,26 +44,43 @@
   gap: $espace-md;
 }
 
+/* ----------------------------------------
+   🛑 ON SUPPRIME LA REDÉFINITION GLOBALE
+   Utiliser uniquement la variante claire/sombre ci-dessous
+---------------------------------------- */
+
 .bouton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: $espace-sm $espace-lg;
   border-radius: $rayon-md;
-  border: none;
-  cursor: pointer;
   text-decoration: none;
   font-size: $font-size-base;
-  transition: background-color $transition, transform $transition;
-  display: inline-block;
+  cursor: pointer;
+  transition: background-color $transition, transform $transition, color $transition;
 
   &:hover {
     transform: translateY(-2px);
   }
 }
 
+/* ----------------------------------------
+   🌟 VARIANTE CLAIRE — forcer le blanc réel
+---------------------------------------- */
 .bouton.clair {
-  background-color: $couleur-carte;
-  color: $couleur-primaire;
+  background-color: #ffffff; // vrai blanc
+  color: #ff5757; // rouge lisible
+
+  &:hover {
+    background-color: #fff5f5; // fade subtil
+    color: #ff3232; // lisibilité accrue
+  }
 }
 
+/* ----------------------------------------
+   VARIANTE SOMBRE (inchangée)
+---------------------------------------- */
 .bouton.sombre {
   background-color: $couleur-secondaire;
   color: $couleur-texte;
@@ -170,11 +187,9 @@
   padding: $espace-3xl $espace-md;
   text-align: center;
 
-  /* ✅ Suppression des effets parasites */
   box-shadow: none;
   border: none;
 
-  /* ✅ Fait fusionner la section avec le footer */
   position: relative;
 
   &::after {

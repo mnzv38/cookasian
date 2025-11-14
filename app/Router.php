@@ -79,7 +79,7 @@ class Router
 
         http_response_code(404);
 
-        $errorView = __DIR__ . '/../Views/erreurs/erreur-404.php';
+        $errorView = __DIR__ . '/Views/erreurs/erreur-404.php';
 
         if (file_exists($errorView)) {
             require $errorView;

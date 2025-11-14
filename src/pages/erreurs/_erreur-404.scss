@@ -12,7 +12,6 @@
 
 .carte-404 {
   background-color: #ffffff;
-  color: #1e1e1e;
   padding: $espace-2xl $espace-xl;
   border-radius: $rayon-lg;
   box-shadow: $ombre-lg;
@@ -28,11 +27,23 @@
   margin-bottom: $espace-md;
 }
 
+/* Paragraphe générique */
 .carte-404 p {
   font-size: $font-size-base;
-  color: #333;
-  margin-bottom: $espace-xl;
   line-height: $line-height-relaxed;
+}
+
+/* 🔥 Phrase principale en gras et très lisible */
+.texte-principale-404 {
+  color: #222222;
+  font-weight: 700; /* gras réel */
+  margin-bottom: $espace-sm;
+}
+
+/* 🌙 Phrase secondaire plus douce */
+.texte-secondaire-404 {
+  color: #555555;
+  margin-bottom: $espace-xl;
 }
 
 .illustration-404 img {
@@ -42,6 +53,7 @@
   box-shadow: $ombre-sm;
 }
 
+/* 🔥 Bouton clairement lisible au hover */
 .bouton-retour {
   display: inline-block;
   background-color: $couleur-primaire;
@@ -52,7 +64,8 @@
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: color.adjust($couleur-primaire, $lightness: -10%);
+    background-color: color.adjust($couleur-primaire, $lightness: 8%); /* plus clair = plus lisible */
+    color: #fff; /* garde le blanc */
   }
 }
 

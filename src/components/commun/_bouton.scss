@@ -10,7 +10,7 @@
   border-radius: 0.6rem;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
 
   &.primaire {
     background-color: #ff5757;
@@ -34,12 +34,15 @@
     }
   }
 
+  /* 🌟 Variante claire : bouton blanc lisible dès le départ */
   &.clair {
-    background-color: #fff;
+    background-color: #ffffff;
     color: #ff5757;
 
+    /* Suppression underline + hover lisible */
     &:hover {
-      background-color: #ffeaea;
+      background-color: #fff5f5; /* très léger fade, reste blanc mais contrasté */
+      color: #ff3232;            /* un poil plus foncé pour un vrai feedback visuel */
     }
   }
 
