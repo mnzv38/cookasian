@@ -5,48 +5,41 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: $couleur-secondaire;
-  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.3);
-  z-index: 200;
-  display: none; /* ✔ masqué par défaut (desktop) */
+  background-color: #fafafa;
+  border-top: 1px solid #dcdcdc;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.12);
+  display: none;
+  z-index: 300;
 }
 
 .nav-mobile-liste {
   list-style: none;
+  padding: 0.6rem 0.3rem;
   margin: 0;
-  padding: 0.6rem 0.4rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
 .nav-mobile-lien {
-  color: $couleur-texte-clair;
   text-decoration: none;
-  text-align: center;
+  color: #222;
   font-size: 1.4rem;
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
+  text-align: center;
 }
 
 .nav-mobile-texte {
   font-size: 0.75rem;
-  font-family: $font-principale;
 }
 
 .nav-mobile-lien.actif {
   color: $couleur-primaire;
 }
 
-/* MOBILE ONLY */
 @media (max-width: 480px) {
   .nav-mobile {
     display: block;
-  }
-
-  /* On masque le menu du header sur mobile */
-  .menu-principal {
-    display: none;
   }
 }

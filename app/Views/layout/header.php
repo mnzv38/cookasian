@@ -12,7 +12,7 @@
     ?>
 
     <meta name="description" content="<?= htmlspecialchars($meta) ?>">
-    <title><?= htmlspecialchars($ttl) ?>"></title>
+    <title><?= htmlspecialchars($ttl) ?></title>
 
     <link 
         rel="icon"
@@ -24,9 +24,6 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Quicksand:wght@400;600;700&display=swap" as="style">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
 
     <link rel="preload" href="<?= $baseUrl ?>/assets/css/main.css" as="style">
     <link rel="stylesheet" href="<?= $baseUrl ?>/assets/css/main.css">
