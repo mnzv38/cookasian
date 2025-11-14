@@ -1,7 +1,7 @@
     </main> <!-- ✅ ferme le <main> ouvert dans header.php -->
 
     <footer class="footer-site">
-        <p>© <?= date('Y') ?> Cookasian — Tous droits réservés.</p>
+        <p>© <?= date('Y') ?> Cookasian | Tous droits réservés.</p>
         <nav>
             <ul>
                 <li><a href="/">Accueil</a></li>

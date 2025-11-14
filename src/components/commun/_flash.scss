@@ -1,36 +1,28 @@
 .flash-message {
   position: fixed;
-  top: -80px;                    // démarre au-dessus de l’écran
+  top: 2rem;
   left: 50%;
   transform: translateX(-50%);
   background-color: #ff5757;
   color: #fff;
-  padding: 1rem 1.8rem;
-  border-radius: 0.8rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.6rem;
   font-family: "Quicksand", sans-serif;
   font-weight: 600;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
-  z-index: 99999;
-
-  opacity: 0;
-  animation: bannerSlide 2.8s ease forwards;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 200;
+  animation: fadeOut 3s ease forwards;
 }
 
-@keyframes bannerSlide {
+@keyframes fadeOut {
   0% {
-    opacity: 0;
-    top: -80px;
-  }
-  20% {
     opacity: 1;
-    top: 20px;                 // position visible sous le haut de l'écran
   }
-  70% {
+  80% {
     opacity: 1;
-    top: 20px;
   }
   100% {
     opacity: 0;
-    top: -80px;                // repart vers le haut en fondu
+    top: 0;
   }
 }

@@ -5,9 +5,7 @@
 @use "../../utils/variables" as *;
 @use "sass:color";
 
-// ========================================
 // 1. BANDEAU D’ACCUEIL (Hero)
-// ========================================
 
 .bandeau-accueil {
   background: linear-gradient(135deg, $couleur-primaire, $couleur-accent);
@@ -26,13 +24,13 @@
 
 .titre-hero {
   font-family: $font-titre;
-  font-size: $font-size-xl * 2;
+  font-size: clamp(1.5rem, 5vw, 2.8rem); /* ✔ mobile friendly */
   margin-bottom: $espace-md;
   color: rgba($couleur-texte, 0.95);
 }
 
 .texte-hero {
-  font-size: $font-size-lg;
+  font-size: clamp(0.95rem, 3.5vw, 1.2rem); /* ✔ mobile friendly */
   margin-bottom: $espace-xl;
   color: rgba($couleur-texte, 0.9);
 }
@@ -41,53 +39,26 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: $espace-md;
+  gap: 1rem;   /* ✔ réduit */
+  padding: 0 1rem; /* ✔ mobile padding */
 }
 
-/* ----------------------------------------
-   🛑 SUPPRESSION DE LA REDÉFINITION GLOBALE
-   On garde uniquement les variantes locales
----------------------------------------- */
-
-.bouton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: $espace-sm $espace-lg;
-  border-radius: $rayon-md;
-  text-decoration: none;
-  font-size: $font-size-base;
-  cursor: pointer;
-  transition: background-color $transition, transform $transition, color $transition;
-
-  &:hover {
-    transform: translateY(-2px);
-  }
-}
-
-/* ----------------------------------------
-   🌟 VARIANTE CLAIRE — blanc réel et lisible
----------------------------------------- */
+/* Variantes boutons */
 
 .bouton.clair {
-  background-color: #ffffff; // vrai blanc
-  color: #ff5757; // rouge lisible
+  background-color: #ffffff;
+  color: #ff5757;
 
   &:hover {
-    background-color: #fff5f5; // léger fade
-    color: #ff3232;            // lisibilité renforcée
+    background-color: #fff5f5;
+    color: #ff3232;
   }
 }
-
-/* ----------------------------------------
-   VARIANTE SOMBRE
----------------------------------------- */
 
 .bouton.sombre {
   background-color: $couleur-secondaire;
   color: $couleur-texte;
 }
-
 
 // ========================================
 // 2. RECETTES POPULAIRES
@@ -132,53 +103,8 @@
   }
 }
 
-.carte-recette {
-  background-color: $couleur-carte;
-  padding: $espace-lg;
-  border-radius: $rayon-md;
-  text-align: center;
-  max-width: 320px;
-  box-shadow: $ombre;
-  transition: transform $transition;
-
-  &:hover {
-    transform: translateY(-5px);
-  }
-
-  figure {
-    margin-bottom: $espace-md;
-  }
-
-  .image-recette {
-    border-radius: $rayon-md;
-    width: 100%;
-    height: auto;
-  }
-
-  figcaption {
-    margin-top: $espace-sm;
-    font-weight: $font-weight-medium;
-  }
-
-  .contenu-recette {
-    font-size: $font-size-base;
-    margin-top: $espace-sm;
-    margin-bottom: $espace-lg;
-    color: rgba($couleur-texte, 0.9);
-  }
-
-  .infos-recette {
-    margin-top: auto;
-  }
-}
-
-.actions-section {
-  margin-top: $espace-lg;
-}
-
-
 // ========================================
-// 3. À PROPOS — VARIANTE SOMBRE DOUCE
+// 3. À PROPOS
 // ========================================
 
 .a-propos {
@@ -191,11 +117,6 @@
   padding: $espace-3xl $espace-md;
   text-align: center;
 
-  box-shadow: none;
-  border: none;
-
-  position: relative;
-
   &::after {
     content: "";
     position: absolute;
@@ -206,40 +127,6 @@
     background-color: $couleur-fond;
   }
 }
-
-.bloc-texte {
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.a-propos .titre-section {
-  color: $couleur-primaire;
-  margin-bottom: $espace-md;
-  font-family: $font-titre;
-}
-
-.a-propos .texte-intro {
-  margin-bottom: $espace-md;
-  color: rgba($couleur-texte, 0.9);
-  line-height: 1.7;
-}
-
-.a-propos .actions-section {
-  margin-top: $espace-lg;
-
-  .bouton {
-    background-color: rgba($couleur-primaire, 0.15);
-    color: $couleur-primaire;
-    border: 1px solid rgba($couleur-primaire, 0.4);
-
-    &:hover {
-      background-color: $couleur-primaire;
-      color: $couleur-texte;
-      transform: translateY(-2px);
-    }
-  }
-}
-
 
 // ========================================
 // 4. RESPONSIVE
@@ -254,9 +141,5 @@
 @media (min-width: $desktop) {
   .liste-recettes {
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  .titre-hero {
-    font-size: $font-size-xl * 2.2;
   }
 }

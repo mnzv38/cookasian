@@ -4,64 +4,61 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.8rem 1.6rem;
+  padding: 0.7rem 1.2rem; /* ✔ mobile-friendly */
   font-family: "Quicksand", sans-serif;
   font-weight: 600;
   border-radius: 0.6rem;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 
-  &.primaire {
-    background-color: #ff5757;
-    color: #fff;
-
-    &:hover {
-      background-color: #ff3232;
-      transform: translateY(-2px);
-    }
-  }
-
-  &.secondaire {
-    border: 2px solid #ff5757;
-    color: #ff5757;
-    background: transparent;
-
-    &:hover {
-      background-color: #ff5757;
-      color: #fff;
-      transform: translateY(-2px);
-    }
-  }
-
-  /* 🌟 Variante claire : bouton blanc lisible dès le départ */
-  &.clair {
-    background-color: #ffffff;
-    color: #ff5757;
-
-    /* Suppression underline + hover lisible */
-    &:hover {
-      background-color: #fff5f5; /* très léger fade, reste blanc mais contrasté */
-      color: #ff3232;            /* un poil plus foncé pour un vrai feedback visuel */
-    }
-  }
-
-  &.grand {
-    font-size: 1.1rem;
-    padding: 1rem 2rem;
-  }
-
-  &.pleine-largeur {
-    width: 100%;
+  &:hover {
+    transform: translateY(-2px);
   }
 }
 
-/* Icônes */
+.bouton.primaire {
+  background-color: #ff5757;
+  color: #fff;
+
+  &:hover {
+    background-color: #ff3232;
+  }
+}
+
+.bouton.secondaire {
+  border: 2px solid #ff5757;
+  color: #ff5757;
+  background: transparent;
+
+  &:hover {
+    background-color: #ff5757;
+    color: #fff;
+  }
+}
+
+.bouton.clair {
+  background-color: #fff;
+  color: #ff5757;
+
+  &:hover {
+    background-color: #ffeaea;
+  }
+}
+
+.bouton.grand {
+  font-size: 1.1rem;
+  padding: 1rem 2rem;
+}
+
+.bouton.pleine-largeur {
+  width: 100%;
+}
+
 .bouton-icone {
   margin-left: 0.4rem;
 }
 
-/* Réduction des animations pour accessibilité */
 @media (prefers-reduced-motion: reduce) {
   .bouton {
     transition: none;
