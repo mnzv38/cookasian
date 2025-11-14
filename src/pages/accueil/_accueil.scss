@@ -45,8 +45,8 @@
 }
 
 /* ----------------------------------------
-   🛑 ON SUPPRIME LA REDÉFINITION GLOBALE
-   Utiliser uniquement la variante claire/sombre ci-dessous
+   🛑 SUPPRESSION DE LA REDÉFINITION GLOBALE
+   On garde uniquement les variantes locales
 ---------------------------------------- */
 
 .bouton {
@@ -66,25 +66,28 @@
 }
 
 /* ----------------------------------------
-   🌟 VARIANTE CLAIRE — forcer le blanc réel
+   🌟 VARIANTE CLAIRE — blanc réel et lisible
 ---------------------------------------- */
+
 .bouton.clair {
   background-color: #ffffff; // vrai blanc
   color: #ff5757; // rouge lisible
 
   &:hover {
-    background-color: #fff5f5; // fade subtil
-    color: #ff3232; // lisibilité accrue
+    background-color: #fff5f5; // léger fade
+    color: #ff3232;            // lisibilité renforcée
   }
 }
 
 /* ----------------------------------------
-   VARIANTE SOMBRE (inchangée)
+   VARIANTE SOMBRE
 ---------------------------------------- */
+
 .bouton.sombre {
   background-color: $couleur-secondaire;
   color: $couleur-texte;
 }
+
 
 // ========================================
 // 2. RECETTES POPULAIRES
@@ -173,6 +176,7 @@
   margin-top: $espace-lg;
 }
 
+
 // ========================================
 // 3. À PROPOS — VARIANTE SOMBRE DOUCE
 // ========================================
@@ -235,6 +239,7 @@
     }
   }
 }
+
 
 // ========================================
 // 4. RESPONSIVE
