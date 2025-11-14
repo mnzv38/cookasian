@@ -18,31 +18,47 @@
 }
 
 .bouton.primaire {
-  background-color: #ff5757;
-  color: #fff;
+  background-color: #c62828;
+  color: #ffffff;
 
   &:hover {
-    background-color: #ff3232;
+    background-color: #a60000;
   }
 }
 
 .bouton.secondaire {
-  border: 2px solid #ff5757;
-  color: #ff5757;
+  border: 2px solid #c62828;
+  color: #c62828;
   background: transparent;
 
   &:hover {
-    background-color: #ff5757;
-    color: #fff;
+    background-color: #c62828;
+    color: #ffffff;
   }
 }
 
 .bouton.clair {
-  background-color: #fff;
-  color: #ff5757;
+  background-color: #ffffff;
+  color: #9c1f1f; 
 
   &:hover {
-    background-color: #ffeaea;
+    background-color: #ffe5e5;
+    color: #7a0d0d;
+  }
+}
+
+/* Bouton Connexion dans le header */
+.btn-connexion {
+  background-color: #ffffff;
+  color: #9c1f1f;
+  padding: 0.6rem 1rem;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #ffe5e5;
+    color: #7a0d0d;
   }
 }
 
@@ -53,10 +69,6 @@
 
 .bouton.pleine-largeur {
   width: 100%;
-}
-
-.bouton-icone {
-  margin-left: 0.4rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

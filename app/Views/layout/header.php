@@ -2,25 +2,25 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <?php
-    // Description SEO
+    // SEO : description
     $meta = isset($metaDescription) ? (string)$metaDescription : "Cookasian - Blog de recettes asiatiques authentiques";
 
-    // Titre complet envoyé par les contrôleurs
-    // On harmonise automatiquement : "Nom de page - Cookasian"
+    // Titre "Nom de page - Cookasian"
     $pageName = isset($title) ? (string)$title : "Accueil";
     $ttl = $pageName . " - Cookasian";
 
-    // URL base
+    // Base URL
     $baseUrl = "http://cookasian.localhost:8080";
     ?>
 
     <!-- Meta SEO -->
     <meta name="description" content="<?= htmlspecialchars($meta) ?>">
 
-    <!-- Titre SEO (sans emoji pour éviter le double 🥢) -->
+    <!-- Titre -->
     <title><?= htmlspecialchars($ttl) ?></title>
 
     <!-- 🥢 Favicon emoji en SVG -->
@@ -32,12 +32,18 @@
         </svg>"
     >
 
-    <!-- Polices Google -->
+    <!-- Fonts optimisées (preconnect + crossOrigin + swap) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Préchargement crucial pour la performance -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Quicksand:wght@400;600;700&display=swap" as="style">
+
+    <!-- Polices Google optimisées -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- CSS principal -->
+    <!-- CSS principal (préchargé + caché long terme via Nginx) -->
+    <link rel="preload" href="<?= $baseUrl ?>/assets/css/main.css" as="style">
     <link rel="stylesheet" href="<?= $baseUrl ?>/assets/css/main.css">
 </head>
 
@@ -60,9 +66,7 @@
     <nav class="menu-principal">
         <ul class="liste-nav">
             <li><a href="<?= $baseUrl ?>/" class="lien-nav <?= (isset($pageActive) && $pageActive === 'accueil') ? 'actif' : '' ?>">Accueil</a></li>
-
             <li><a href="<?= $baseUrl ?>/recettes" class="lien-nav <?= (isset($pageActive) && $pageActive === 'recettes') ? 'actif' : '' ?>">Recettes</a></li>
-
             <li><a href="<?= $baseUrl ?>/notre-histoire" class="lien-nav <?= (isset($pageActive) && $pageActive === 'histoire') ? 'actif' : '' ?>">Notre histoire</a></li>
 
             <?php if (!empty($_SESSION['utilisateur'])): ?>

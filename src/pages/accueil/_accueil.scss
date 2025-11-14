@@ -1,7 +1,3 @@
-// ========================================
-// 🏠 PAGE D’ACCUEIL — COOKASIAN
-// ========================================
-
 @use "../../utils/variables" as *;
 @use "sass:color";
 
@@ -28,13 +24,13 @@
   font-family: $font-titre;
   font-size: clamp(1.5rem, 5vw, 2.8rem);
   margin-bottom: $espace-md;
-  color: rgba($couleur-texte, 0.95);
+  color: rgba($couleur-texte, 0.98);
 }
 
 .texte-hero {
   font-size: clamp(0.95rem, 3.5vw, 1.2rem);
   margin-bottom: $espace-xl;
-  color: rgba($couleur-texte, 0.9);
+  color: rgba($couleur-texte, 0.92);
 }
 
 .actions-hero {
@@ -45,19 +41,24 @@
   padding: 0 1rem;
 }
 
+/* CONTRASTE HERO — bouton clair */
 .bouton.clair {
   background-color: #ffffff;
-  color: #ff5757;
+  color: #9c1f1f;
 
   &:hover {
     background-color: #fff5f5;
-    color: #ff3232;
+    color: #7a0d0d;
   }
 }
 
 .bouton.sombre {
   background-color: $couleur-secondaire;
   color: $couleur-texte;
+
+  &:hover {
+    background-color: color.adjust($couleur-secondaire, $lightness: 10%);
+  }
 }
 
 // ========================================
@@ -66,7 +67,7 @@
 
 .recettes-populaires {
   background-color: $couleur-fond;
-  color: $couleur-texte;
+  color: #f5f5f5;
   padding: $espace-3xl $espace-md;
   text-align: center;
 }
@@ -82,11 +83,34 @@
   margin-bottom: $espace-sm;
 }
 
+/* CONTRASTE DU TEXTE INTRO */
 .texte-intro {
-  color: rgba($couleur-texte-secondaire, 0.9);
+  color: #e9e9e9;
   font-size: $font-size-base;
   max-width: 600px;
   margin: 0 auto;
+}
+
+.carte-recette {
+  background-color: rgba(255, 255, 255, 0.09); 
+  border-radius: $rayon-md;
+  padding: $espace-md;
+  box-shadow: $ombre-sm;
+}
+
+.carte-recette figcaption {
+  margin-top: $espace-sm;
+  font-weight: 600;
+  color: #ffffff; 
+}
+
+.carte-recette .contenu-recette {
+  margin-top: $espace-sm;
+  color: #dcdcdc;
+}
+
+.carte-recette .bouton {
+  margin-top: $espace-sm;
 }
 
 .liste-recettes {
@@ -113,20 +137,7 @@
   .liste-recettes .carte-recette {
     max-width: 340px;
   }
-
-  .liste-recettes .image-recette img {
-    max-height: 210px;
-  }
-
-  .liste-recettes h3 {
-    font-size: 1.25rem;
-    margin-top: 0.5rem;
-  }
 }
-
-// ========================================
-// 3. À PROPOS
-// ========================================
 
 .a-propos {
   background: linear-gradient(
@@ -137,30 +148,4 @@
   color: $couleur-texte;
   padding: $espace-3xl $espace-md;
   text-align: center;
-
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 2px;
-    background-color: $couleur-fond;
-  }
-}
-
-// ========================================
-// 4. RESPONSIVE
-// ========================================
-
-@media (min-width: $tablette) {
-  .liste-recettes {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: $desktop) {
-  .liste-recettes {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }

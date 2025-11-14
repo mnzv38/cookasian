@@ -21,23 +21,32 @@
 
     <?php if (!empty($recettesPopulaires)): ?>
         <ul class="liste-recettes">
-            <?php foreach ($recettesPopulaires as $recette): ?>
+            <?php foreach ($recettesPopulaires as $index => $recette): ?>
                 <li>
                     <article class="carte-recette">
                         <figure>
                             <img
                                 class="image-recette"
-                                src="<?php echo htmlspecialchars($recette['image_url']); ?>"
-                                alt="<?php echo htmlspecialchars($recette['titre']); ?>">
-                            <figcaption><?php echo htmlspecialchars($recette['titre']); ?></figcaption>
+                                src="<?= htmlspecialchars($recette['image_url']); ?>"
+                                alt="<?= htmlspecialchars($recette['titre']); ?>"
+                                width="600"
+                                height="400"
+                                <?php if ($index === 0): ?>
+                                    loading="eager"
+                                    fetchpriority="high"
+                                <?php else: ?>
+                                    loading="lazy"
+                                <?php endif; ?>
+                            >
+                            <figcaption><?= htmlspecialchars($recette['titre']); ?></figcaption>
                         </figure>
 
                         <p class="contenu-recette">
-                            <?php echo htmlspecialchars($recette['description']); ?>
+                            <?= htmlspecialchars($recette['description']); ?>
                         </p>
 
                         <footer class="infos-recette">
-                            <a href="/recettes/<?php echo htmlspecialchars($recette['slug']); ?>" class="bouton">
+                            <a href="/recettes/<?= htmlspecialchars($recette['slug']); ?>" class="bouton sombre">
                                 Découvrir
                             </a>
                         </footer>
