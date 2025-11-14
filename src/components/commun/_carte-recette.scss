@@ -10,8 +10,6 @@
   display: flex;
   flex-direction: column;
   padding-bottom: 2.8rem;
-
-  /* 🟢 desktop propre */
   margin-bottom: 2rem;
 
   &:hover {
@@ -49,11 +47,57 @@
   padding: 1.25rem;
   flex: 1;
 
+  /* ❤️ CORRECTION : centrage global */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   p {
     font-family: "Open Sans", sans-serif;
     color: #ccc;
     font-size: clamp(0.85rem, 2.5vw, 0.95rem);
     margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .infos-recette {
+    margin-bottom: 1.2rem;
+    text-align: center;
+
+    li {
+      margin-bottom: 0.3rem;
+      font-family: "Open Sans", sans-serif;
+      color: #ccc;
+      font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+    }
+  }
+
+  .lien-recette {
+    margin-top: 1.2rem;
+
+    /* ❤️ Centrage bouton */
+    display: inline-flex;
+    justify-content: center;
+
+    background-color: #b71c1c;
+    color: #ffffff;
+    padding: 0.7rem 1.4rem;
+    border-radius: 0.6rem;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+      background-color: #8b0000;
+      transform: translateY(-2px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid #ff5757;
+      outline-offset: 3px;
+    }
   }
 }
 
@@ -69,7 +113,7 @@ footer.infos-recette {
 /* MOBILE + TABLETTE */
 @media (max-width: 1024px) {
   .carte-recette {
-    margin-bottom: 6rem; /* 🟢 nav-mobile */
+    margin-bottom: 6rem;
   }
 
   footer.infos-recette .bouton {

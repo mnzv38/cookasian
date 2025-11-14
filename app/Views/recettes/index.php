@@ -23,7 +23,6 @@
             <?php foreach ($recettes as $recette): ?>
 
                 <?php
-                // normalisation du chemin image
                 $image = $recette['image_url'];
                 if (!str_starts_with($image, '/assets/')) {
                     $image = '/assets/images/recettes/' . $image;
@@ -65,3 +64,4 @@
         <p>Aucune recette disponible pour le moment.</p>
     <?php endif; ?>
 </section>
+?>

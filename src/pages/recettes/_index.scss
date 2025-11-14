@@ -1,5 +1,4 @@
 /* === PAGE LISTE DES RECETTES === */
-/* Cookasian – Style humanisé, responsive et lisible */
 
 .section-recettes {
   max-width: 1200px;
@@ -43,8 +42,8 @@
 
       select {
         appearance: none;
-        background-color: #2c2c35; /* fond du select */
-        color: #d9d9d9; /* ✅ texte plus foncé et bien lisible */
+        background-color: #2c2c35;
+        color: #d9d9d9;
         border: 1px solid #ff5757;
         border-radius: 0.5rem;
         padding: 0.45rem 1rem;
@@ -63,10 +62,9 @@
           box-shadow: 0 0 6px rgba(255, 167, 38, 0.5);
         }
 
-        /* ✅ Options lisibles : texte encore plus foncé */
         option {
           background-color: #f4f4f4;
-          color: #111; /* texte noir/gris très foncé */
+          color: #111;
           font-weight: 500;
         }
 
@@ -158,8 +156,12 @@
       }
 
       .lien-recette {
-        display: inline-block;
-        align-self: flex-end;
+        display: flex;                
+        justify-content: center;      
+        align-items: center;          
+        margin-top: 1.2rem;
+        width: 100%;                
+
         font-family: "Quicksand", sans-serif;
         font-weight: 600;
         background-color: #ff5757;
@@ -186,7 +188,7 @@
 
 /* === RESPONSIVE DESIGN === */
 
-/* Tablette (jusqu’à 768px) */
+/* Tablette */
 @media (max-width: 768px) {
   .section-recettes {
     padding: 1.5rem;
@@ -214,7 +216,7 @@
   }
 }
 
-/* Mobile (jusqu’à 480px — iPhone SE) */
+/* Mobile iPhone SE */
 @media (max-width: 480px) {
   .section-recettes {
     padding: 1rem;
@@ -268,9 +270,9 @@
 
 /* === ESPACEMENT AVANT LE PIED DE PAGE === */
 .section-recettes {
-  margin-bottom: 4rem; // espace sous le contenu (≈64px)
+  margin-bottom: 4rem;
   
   @media (max-width: 768px) {
-    margin-bottom: 3rem; // un peu réduit sur tablette/mobile
+    margin-bottom: 3rem;
   }
 }
