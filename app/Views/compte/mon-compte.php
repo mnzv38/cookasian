@@ -31,28 +31,49 @@
                     <?php foreach ($favoris as $recette): ?>
                         <li>
                             <article class="carte-recette">
-                                <figure>
+
+                                <!-- IMAGE + TITRE -->
+                                <figure class="image-recette">
                                     <img 
-                                        class="image-recette"
                                         src="<?= htmlspecialchars($recette['image_url'] ?? '/assets/images/placeholder.jpg') ?>"
                                         alt="<?= htmlspecialchars($recette['titre']) ?>"
                                     >
                                     <figcaption><?= htmlspecialchars($recette['titre']) ?></figcaption>
                                 </figure>
 
+                                <!-- DESCRIPTION -->
                                 <p class="contenu-recette">
                                     <?= htmlspecialchars($recette['description'] ?? 'Recette enregistrée dans tes favoris.') ?>
                                 </p>
 
+                                <!-- ACTIONS FAVORIS -->
                                 <footer class="infos-recette">
-                                    <a class="bouton primaire" href="/recettes/<?= htmlspecialchars($recette['slug']) ?>">
+
+                                    <!-- DESKTOP VERSION -->
+                                    <a class="bouton primaire desktop-only"
+                                       href="/recettes/<?= htmlspecialchars($recette['slug']) ?>">
                                         Voir la recette
                                     </a>
 
-                                    <a class="bouton secondaire" href="/favoris/supprimer/<?= (int)$recette['id'] ?>">
+                                    <a class="bouton secondaire desktop-only"
+                                       href="/favoris/supprimer/<?= (int)$recette['id'] ?>">
                                         Retirer
                                     </a>
+
+
+                                    <!-- MOBILE/TABLET EMOJI VERSION -->
+                                    <a class="bouton primaire mobile-only"
+                                       href="/recettes/<?= htmlspecialchars($recette['slug']) ?>">
+                                        📃 Voir
+                                    </a>
+
+                                    <a class="bouton secondaire mobile-only"
+                                       href="/favoris/supprimer/<?= (int)$recette['id'] ?>">
+                                        💔 Retirer
+                                    </a>
+
                                 </footer>
+
                             </article>
                         </li>
                     <?php endforeach; ?>

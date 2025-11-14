@@ -27,9 +27,7 @@ if (!str_starts_with($image, '/assets/')) {
     </header>
 
     <figure class="image-recette">
-        <img 
-            src="<?= htmlspecialchars($image) ?>" 
-            alt="<?= htmlspecialchars($recette['titre']) ?>">
+        <img src="<?= htmlspecialchars($image) ?>" alt="<?= htmlspecialchars($recette['titre']) ?>">
         <figcaption>
             Recette <?= htmlspecialchars($recette['titre']) ?> (<?= htmlspecialchars($recette['pays_origine']) ?>)
         </figcaption>
@@ -51,54 +49,82 @@ if (!str_starts_with($image, '/assets/')) {
         <p><?= nl2br(htmlspecialchars($recette['description'])) ?></p>
     </section>
 
+    <!-- ⭐ FAVORIS -->
     <section class="favori-recette">
-        <?php if ($estConnecte && !empty($recette['id'])): ?>
-            <footer class="actions-recette">
 
-                <?php if ($estFavori): ?>
-                    <div class="boutons-favoris">
-                        <a class="bouton clair" 
-                           href="/favoris/supprimer/<?= (int)$recette['id'] ?>">
-                            💔 Retirer des favoris
-                        </a>
-                        <a class="bouton secondaire" href="/mon-compte">
-                            ⭐ Voir mes favoris
-                        </a>
-                    </div>
+        <?php if ($estConnecte): ?>
+        <footer class="actions-recette">
 
-                <?php else: ?>
-                    <div class="boutons-favoris">
-                        <a class="bouton primaire" 
-                           href="/favoris/ajouter/<?= (int)$recette['id'] ?>">
-                            ❤️ Ajouter aux favoris
-                        </a>
-                        <a class="bouton secondaire" href="/mon-compte">
-                            ⭐ Voir mes favoris
-                        </a>
-                    </div>
-                <?php endif; ?>
+            <?php if ($estFavori): ?>
 
-            </footer>
+                <!-- DESKTOP -->
+                <a class="bouton clair desktop-only"
+                   href="/favoris/supprimer/<?= (int)$recette['id'] ?>">
+                    Retirer des favoris
+                </a>
+
+                <a class="bouton secondaire desktop-only" 
+                   href="/mon-compte">
+                    Voir mes favoris
+                </a>
+
+                <!-- MOBILE -->
+                <a class="bouton clair mobile-only"
+                   href="/favoris/supprimer/<?= (int)$recette['id'] ?>">
+                    💔 Retirer
+                </a>
+
+                <a class="bouton secondaire mobile-only" 
+                   href="/mon-compte">
+                    ⭐ Mes favoris
+                </a>
+
+            <?php else: ?>
+
+                <!-- DESKTOP -->
+                <a class="bouton primaire desktop-only"
+                   href="/favoris/ajouter/<?= (int)$recette['id'] ?>">
+                    Ajouter aux favoris
+                </a>
+
+                <a class="bouton secondaire desktop-only" 
+                   href="/mon-compte">
+                    Voir mes favoris
+                </a>
+
+                <!-- MOBILE -->
+                <a class="bouton primaire mobile-only"
+                   href="/favoris/ajouter/<?= (int)$recette['id'] ?>">
+                    ❤️ Ajouter
+                </a>
+
+                <a class="bouton secondaire mobile-only" 
+                   href="/mon-compte">
+                    ⭐ Mes favoris
+                </a>
+
+            <?php endif; ?>
+
+        </footer>
 
         <?php else: ?>
-            <div class="bloc-connexion-recette">
-                <p class="texte-connexion">
-                    Connecte-toi pour ajouter cette recette à tes favoris.
-                </p>
-                <a class="bouton primaire bouton-connexion" href="/connexion">
-                    Se connecter
-                </a>
-            </div>
+        <div class="bloc-connexion-recette">
+            <p class="texte-connexion">
+                Connecte-toi pour ajouter cette recette à tes favoris.
+            </p>
+            <a class="bouton primaire bouton-connexion" href="/connexion">
+                Se connecter
+            </a>
+        </div>
         <?php endif; ?>
+
     </section>
 
     <section class="ingredients-recette">
         <h2>Ingrédients</h2>
         <ul>
             <?php foreach ($recette['ingredients'] as $ingredient): ?>
-                <li>
-                    <?= htmlspecialchars($ingredient['quantite']) ?> <?= htmlspecialchars($ingredient['nom']) ?>
-                </li>
+                <li><?= htmlspecialchars($ingredient['quantite']) ?> <?= htmlspecialchars($ingredient['nom']) ?></li>
             <?php endforeach; ?>
         </ul>
     </section>

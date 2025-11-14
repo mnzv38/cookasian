@@ -38,19 +38,6 @@
     gap: 0.5rem;
     margin-bottom: 1rem;
     font-size: 1.1rem;
-
-    .label {
-      font-weight: 600;
-      color: rgba(#fff, 0.85);
-    }
-
-    .valeur {
-      color: #fff;
-    }
-  }
-
-  .bouton {
-    margin-top: 1rem;
   }
 }
 
@@ -70,40 +57,59 @@
   grid-template-columns: 1fr;
   gap: 2rem;
   justify-items: center;
+  align-items: start; /* 🔥 harmonisation des hauteurs */
 }
 
 /* =========================================
-   🃏 CARTE FAVORI — VERSION AGRANDIE
+   🃏 CARTE FAVORITE 
 ========================================= */
 
 .page-compte .carte-recette {
   max-width: 420px;
   width: 100%;
-  margin: 0 auto;
-  padding-bottom: 1.8rem;
+  padding-bottom: 2.5rem;
   border-radius: 1.2rem;
+  background-color: #2b2b33;
+  overflow: visible;
+  min-height: 540px; /* 🔥 hauteur harmonisée */
 }
 
-.page-compte .carte-recette .image-recette img {
-  max-height: 220px;
+/* =============================
+   BUTTONS VISIBILITY RULES
+============================= */
+
+.desktop-only {
+  display: inline-flex !important;
 }
 
-.page-compte .carte-recette h3 {
-  font-size: 1.4rem;
-  margin-top: 0.5rem;
+.mobile-only {
+  display: none !important;
 }
 
-.page-compte .carte-recette .contenu-recette {
-  font-size: 1.05rem;
-  line-height: 1.55;
-  padding: 1.5rem 2rem;
+@media (max-width: 1024px) {
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: inline-flex !important;
+  }
 }
 
+/* --- FOOTER DES ACTIONS --- */
 .page-compte .carte-recette footer.infos-recette {
-  margin-top: 1.5rem;
+  margin-top: auto;
   display: flex;
   justify-content: center;
   gap: 1.4rem;
+  width: 100%;
+}
+
+.page-compte .carte-recette footer.infos-recette .bouton {
+  white-space: nowrap;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* =========================================
@@ -113,37 +119,21 @@
 @media (min-width: 1024px) {
   .liste-favoris {
     grid-template-columns: repeat(3, minmax(280px, 1fr));
-    justify-items: center;
   }
 
   .page-compte .carte-recette {
     max-width: 360px;
-  }
-
-  .page-compte .carte-recette .image-recette img {
-    max-height: 220px;
+    margin-bottom: 2rem;
   }
 }
 
 /* =========================================
-   📱 MOBILE
+   📱 MOBILE + TABLETTE
 ========================================= */
 
-@media (max-width: 480px) {
-  .infos-utilisateur {
-    padding: 1.5rem;
-  }
-
-  .info-ligne {
-    flex-direction: column;
-    gap: 0.2rem;
-  }
+@media (max-width: 1024px) {
 
   .page-compte .carte-recette {
     max-width: 360px;
-  }
-
-  .page-compte .carte-recette .image-recette img {
-    max-height: 200px;
   }
 }
