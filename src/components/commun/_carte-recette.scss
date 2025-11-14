@@ -22,8 +22,8 @@
 
   img {
     width: 100%;
-    height: auto;         /* ✔ responsive */
-    max-height: 220px;    /* ✔ légère contrainte */
+    height: auto;
+    max-height: 220px;
     object-fit: cover;
     display: block;
   }
@@ -37,7 +37,7 @@
     color: #fff;
     padding: 0.55rem 1rem;
     font-family: "Quicksand", sans-serif;
-    font-size: clamp(0.8rem, 2.5vw, 1rem); /* ✔ mobile friendly */
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
   }
 }
 
@@ -100,7 +100,6 @@
     }
   }
 
-  /* Bon bouton interne, sans doublon */
   .lien-recette {
     display: inline-block;
     font-family: "Quicksand", sans-serif;

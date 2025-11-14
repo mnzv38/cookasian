@@ -5,7 +5,9 @@
 @use "../../utils/variables" as *;
 @use "sass:color";
 
+// ========================================
 // 1. BANDEAU D’ACCUEIL (Hero)
+// ========================================
 
 .bandeau-accueil {
   background: linear-gradient(135deg, $couleur-primaire, $couleur-accent);
@@ -24,13 +26,13 @@
 
 .titre-hero {
   font-family: $font-titre;
-  font-size: clamp(1.5rem, 5vw, 2.8rem); /* ✔ mobile friendly */
+  font-size: clamp(1.5rem, 5vw, 2.8rem);
   margin-bottom: $espace-md;
   color: rgba($couleur-texte, 0.95);
 }
 
 .texte-hero {
-  font-size: clamp(0.95rem, 3.5vw, 1.2rem); /* ✔ mobile friendly */
+  font-size: clamp(0.95rem, 3.5vw, 1.2rem);
   margin-bottom: $espace-xl;
   color: rgba($couleur-texte, 0.9);
 }
@@ -39,11 +41,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;   /* ✔ réduit */
-  padding: 0 1rem; /* ✔ mobile padding */
+  gap: 1rem;
+  padding: 0 1rem;
 }
-
-/* Variantes boutons */
 
 .bouton.clair {
   background-color: #ffffff;
@@ -61,7 +61,7 @@
 }
 
 // ========================================
-// 2. RECETTES POPULAIRES
+// 2. RECETTES POPULAIRES 
 // ========================================
 
 .recettes-populaires {
@@ -100,6 +100,20 @@
   li {
     display: flex;
     justify-content: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .liste-recettes .carte-recette {
+    max-width: 280px;
+  }
+
+  .liste-recettes .image-recette img {
+    max-height: 180px;
+  }
+
+  .liste-recettes h3 {
+    font-size: 1.15rem;
   }
 }
 

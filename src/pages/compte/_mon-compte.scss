@@ -1,5 +1,9 @@
 @use "../../utils/variables" as *;
 
+/* =========================================
+   🧍 PAGE MON COMPTE
+========================================= */
+
 .page-compte {
   display: flex;
   flex-direction: column;
@@ -9,16 +13,132 @@
   text-align: center;
 }
 
-.contenu-compte {
+/* =========================================
+   📋 INFOS UTILISATEUR
+========================================= */
+
+.infos-utilisateur {
+  background-color: #2b2b33;
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 520px;
   width: 100%;
-  max-width: 1200px;
-  display: flex;
-  flex-direction: column;
+  margin: 0 auto 2.5rem auto;
+
+  h2 {
+    font-size: 1.9rem;
+    margin-bottom: 1.5rem;
+    color: $couleur-primaire;
+    font-family: $font-titre;
+  }
+
+  /* Ligne d'info : Nom / Email */
+  .info-ligne {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+
+    .label {
+      font-weight: 600;
+      color: rgba(#fff, 0.85);
+    }
+
+    .valeur {
+      color: #fff;
+    }
+  }
+
+  .bouton {
+    margin-top: 1rem;
+  }
+}
+
+/* =========================================
+   ⭐ SECTION FAVORIS UTILISATEUR
+========================================= */
+
+.favoris-utilisateur {
+  margin-top: 1rem;
+
+  h2 {
+    font-family: $font-titre;
+    font-size: 1.9rem;
+    color: $couleur-primaire;
+    margin-bottom: 1.5rem;
+  }
 }
 
 .liste-favoris {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
-  justify-items: center; /* ✔ centrage iPhone SE */
+  gap: 2rem;
+  justify-items: center;
+}
+
+/* =========================================
+   🃏 CARTE FAVORI — VERSION RÉDUITE
+========================================= */
+
+.page-compte .carte-recette {
+  max-width: 420px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 1.2rem;
+}
+
+.page-compte .carte-recette .image-recette img {
+  max-height: 260px;
+}
+
+.page-compte .carte-recette figcaption {
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.page-compte .carte-recette h3 {
+  font-size: 1.4rem;
+  margin-top: 0.5rem;
+}
+
+.page-compte .carte-recette .contenu-recette {
+  font-size: 1rem;
+  line-height: 1.55;
+  padding: 1.25rem 1.8rem;
+}
+
+.page-compte .carte-recette footer.infos-recette {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* =========================================
+   📱 RESPONSIVE : IPHONE SE
+========================================= */
+
+@media (max-width: 480px) {
+  .infos-utilisateur {
+    padding: 1.5rem;
+  }
+
+  .info-ligne {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .page-compte .carte-recette {
+    max-width: 360px;
+  }
+
+  .page-compte .carte-recette .image-recette img {
+    max-height: 200px;
+  }
+
+  .favoris-utilisateur h2 {
+    font-size: 1.7rem;
+  }
 }
