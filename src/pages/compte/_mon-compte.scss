@@ -32,7 +32,6 @@
     font-family: $font-titre;
   }
 
-  /* Ligne d'info : Nom / Email */
   .info-ligne {
     display: flex;
     justify-content: center;
@@ -56,18 +55,14 @@
 }
 
 /* =========================================
-   ⭐ SECTION FAVORIS UTILISATEUR
+   ⭐ FAVORIS UTILISATEUR
 ========================================= */
 
-.favoris-utilisateur {
-  margin-top: 1rem;
-
-  h2 {
-    font-family: $font-titre;
-    font-size: 1.9rem;
-    color: $couleur-primaire;
-    margin-bottom: 1.5rem;
-  }
+.favoris-utilisateur h2 {
+  font-family: $font-titre;
+  font-size: 1.9rem;
+  color: $couleur-primaire;
+  margin-bottom: 1.5rem;
 }
 
 .liste-favoris {
@@ -78,24 +73,19 @@
 }
 
 /* =========================================
-   🃏 CARTE FAVORI — VERSION RÉDUITE
+   🃏 CARTE FAVORI — VERSION AGRANDIE
 ========================================= */
 
 .page-compte .carte-recette {
   max-width: 420px;
   width: 100%;
   margin: 0 auto;
+  padding-bottom: 1.8rem;
   border-radius: 1.2rem;
 }
 
 .page-compte .carte-recette .image-recette img {
-  max-height: 260px;
-}
-
-.page-compte .carte-recette figcaption {
-  font-size: 1.15rem;
-  font-weight: 600;
-  text-align: center;
+  max-height: 220px;
 }
 
 .page-compte .carte-recette h3 {
@@ -104,20 +94,39 @@
 }
 
 .page-compte .carte-recette .contenu-recette {
-  font-size: 1rem;
+  font-size: 1.05rem;
   line-height: 1.55;
-  padding: 1.25rem 1.8rem;
+  padding: 1.5rem 2rem;
 }
 
 .page-compte .carte-recette footer.infos-recette {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.4rem;
 }
 
 /* =========================================
-   📱 RESPONSIVE : IPHONE SE
+   🖥️ DESKTOP FAVORIS : 3 PAR LIGNE
+========================================= */
+
+@media (min-width: 1024px) {
+  .liste-favoris {
+    grid-template-columns: repeat(3, minmax(280px, 1fr));
+    justify-items: center;
+  }
+
+  .page-compte .carte-recette {
+    max-width: 360px;
+  }
+
+  .page-compte .carte-recette .image-recette img {
+    max-height: 220px;
+  }
+}
+
+/* =========================================
+   📱 MOBILE
 ========================================= */
 
 @media (max-width: 480px) {
@@ -136,9 +145,5 @@
 
   .page-compte .carte-recette .image-recette img {
     max-height: 200px;
-  }
-
-  .favoris-utilisateur h2 {
-    font-size: 1.7rem;
   }
 }

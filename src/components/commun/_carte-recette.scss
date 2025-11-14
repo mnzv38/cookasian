@@ -41,23 +41,7 @@
   }
 }
 
-/* Badge */
-.badge-nouveau {
-  position: absolute;
-  top: 0.8rem;
-  right: 0.8rem;
-  background-color: #ff5757;
-  color: #fff;
-  font-family: "Quicksand", sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  padding: 0.35rem 0.7rem;
-  border-radius: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-/* Contenu texte */
+/* Contenu */
 .contenu-recette {
   padding: 1.25rem;
   flex: 1;
@@ -87,19 +71,6 @@
     margin-bottom: 0.9rem;
   }
 
-  .infos-recette {
-    list-style: none;
-    margin: 0 0 1rem 0;
-    padding: 0;
-    font-family: "Quicksand", sans-serif;
-    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
-    color: #aaa;
-
-    li {
-      margin-bottom: 0.35rem;
-    }
-  }
-
   .lien-recette {
     display: inline-block;
     font-family: "Quicksand", sans-serif;
@@ -117,28 +88,5 @@
     &:hover {
       background-color: #ff3232;
     }
-  }
-}
-
-.bas-carte {
-  padding: 1rem 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-
-  .lien-recette {
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-  }
-}
-
-footer.infos-recette {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-
-  .bouton,
-  .lien-recette {
-    display: inline-block;
-    text-align: center;
   }
 }

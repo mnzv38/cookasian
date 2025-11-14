@@ -61,7 +61,7 @@
 }
 
 // ========================================
-// 2. RECETTES POPULAIRES 
+// 2. RECETTES POPULAIRES
 // ========================================
 
 .recettes-populaires {
@@ -103,17 +103,25 @@
   }
 }
 
+/* === Harmonisation desktop === */
 @media (min-width: 1024px) {
+  .liste-recettes {
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    justify-items: center;
+    gap: 2rem;
+  }
+
   .liste-recettes .carte-recette {
-    max-width: 280px;
+    max-width: 340px;
   }
 
   .liste-recettes .image-recette img {
-    max-height: 180px;
+    max-height: 210px;
   }
 
   .liste-recettes h3 {
-    font-size: 1.15rem;
+    font-size: 1.25rem;
+    margin-top: 0.5rem;
   }
 }
 
