@@ -2,28 +2,18 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <?php
-    // SEO : description
     $meta = isset($metaDescription) ? (string)$metaDescription : "Cookasian - Blog de recettes asiatiques authentiques";
-
-    // Titre "Nom de page - Cookasian"
     $pageName = isset($title) ? (string)$title : "Accueil";
     $ttl = $pageName . " - Cookasian";
-
-    // Base URL
     $baseUrl = "http://cookasian.localhost:8080";
     ?>
 
-    <!-- Meta SEO -->
     <meta name="description" content="<?= htmlspecialchars($meta) ?>">
+    <title><?= htmlspecialchars($ttl) ?>"></title>
 
-    <!-- Titre -->
-    <title><?= htmlspecialchars($ttl) ?></title>
-
-    <!-- 🥢 Favicon emoji en SVG -->
     <link 
         rel="icon"
         href="data:image/svg+xml,
@@ -32,24 +22,18 @@
         </svg>"
     >
 
-    <!-- Fonts optimisées (preconnect + crossOrigin + swap) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Préchargement crucial pour la performance -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Quicksand:wght@400;600;700&display=swap" as="style">
-
-    <!-- Polices Google optimisées -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- CSS principal (préchargé + caché long terme via Nginx) -->
     <link rel="preload" href="<?= $baseUrl ?>/assets/css/main.css" as="style">
     <link rel="stylesheet" href="<?= $baseUrl ?>/assets/css/main.css">
 </head>
 
 <body>
 
-<!-- 🔔 Message flash -->
 <?php if (!empty($_SESSION['flash_message'])): ?>
     <div class="flash-message">
         <?= htmlspecialchars($_SESSION['flash_message']) ?>
@@ -65,12 +49,12 @@
 
     <nav class="menu-principal">
         <ul class="liste-nav">
-            <li><a href="<?= $baseUrl ?>/" class="lien-nav <?= (isset($pageActive) && $pageActive === 'accueil') ? 'actif' : '' ?>">Accueil</a></li>
-            <li><a href="<?= $baseUrl ?>/recettes" class="lien-nav <?= (isset($pageActive) && $pageActive === 'recettes') ? 'actif' : '' ?>">Recettes</a></li>
-            <li><a href="<?= $baseUrl ?>/notre-histoire" class="lien-nav <?= (isset($pageActive) && $pageActive === 'histoire') ? 'actif' : '' ?>">Notre histoire</a></li>
+            <li><a href="<?= $baseUrl ?>/" class="lien-nav <?= ($pageActive ?? '') === 'accueil' ? 'actif' : '' ?>">Accueil</a></li>
+            <li><a href="<?= $baseUrl ?>/recettes" class="lien-nav <?= ($pageActive ?? '') === 'recettes' ? 'actif' : '' ?>">Recettes</a></li>
+            <li><a href="<?= $baseUrl ?>/notre-histoire" class="lien-nav <?= ($pageActive ?? '') === 'histoire' ? 'actif' : '' ?>">Notre histoire</a></li>
 
             <?php if (!empty($_SESSION['utilisateur'])): ?>
-                <li><a href="<?= $baseUrl ?>/mon-compte" class="lien-nav <?= (isset($pageActive) && $pageActive === 'compte') ? 'actif' : '' ?>">Mon compte</a></li>
+                <li><a href="<?= $baseUrl ?>/mon-compte" class="lien-nav <?= ($pageActive ?? '') === 'compte' ? 'actif' : '' ?>">Mon compte</a></li>
             <?php endif; ?>
         </ul>
     </nav>
@@ -78,7 +62,7 @@
     <div class="zone-utilisateur">
         <?php if (!empty($_SESSION['utilisateur'])): ?>
             <p class="nom-utilisateur">
-                <?= htmlspecialchars($_SESSION['utilisateur']['name'] ?? 'Utilisateur') ?> 👋
+                <?= htmlspecialchars($_SESSION['utilisateur']['name']) ?> 👋
             </p>
             <a class="btn-deconnexion" href="<?= $baseUrl ?>/deconnexion">Déconnexion</a>
         <?php else: ?>
@@ -88,3 +72,10 @@
 </header>
 
 <main class="contenu-principal">
+
+</main>
+
+<?php require __DIR__ . '/nav-mobile.php'; ?>
+
+</body>
+</html>

@@ -22,6 +22,8 @@
 
 @use "layout/header";
 @use "layout/footer";
+@use "layout/nav-mobile";
+
 
 // ========================================
 // 🎨 COMPONENTS
@@ -114,7 +116,13 @@ a {
   &:hover {
     color: color.adjust($couleur-primaire, $lightness: 5%);
   }
+
+  &:focus-visible {
+    outline: 2px solid $couleur-primaire;
+    outline-offset: 3px;
+  }
 }
+
 
 // ========================================
 // 🧭 TITRES & TEXTES

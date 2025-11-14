@@ -15,50 +15,87 @@
   &:hover {
     transform: translateY(-2px);
   }
+
+  &:focus-visible {
+    outline: 2px solid #ff5757;
+    outline-offset: 3px;
+    transform: none;
+  }
 }
 
 .bouton.primaire {
-  background-color: #c62828;
+  background-color: #b71c1c;  /* plus sombre = meilleur contraste */
   color: #ffffff;
 
   &:hover {
-    background-color: #a60000;
+    background-color: #8b0000;
   }
 }
 
 .bouton.secondaire {
-  border: 2px solid #c62828;
-  color: #c62828;
+  border: 2px solid #b71c1c;
+  color: #b71c1c;
   background: transparent;
 
   &:hover {
-    background-color: #c62828;
+    background-color: #b71c1c;
     color: #ffffff;
   }
 }
 
 .bouton.clair {
   background-color: #ffffff;
-  color: #9c1f1f; 
+  color: #7a0d0d;   /* contraste AA */
 
   &:hover {
-    background-color: #ffe5e5;
-    color: #7a0d0d;
+    background-color: #f8dcdc;
+    color: #5c0000;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #ff5757;
+    outline-offset: 3px;
   }
 }
 
 /* Bouton Connexion dans le header */
 .btn-connexion {
   background-color: #ffffff;
-  color: #9c1f1f;
+  color: #7a0d0d;
   padding: 0.6rem 1rem;
   border-radius: 0.6rem;
   font-weight: 600;
   text-decoration: none;
 
   &:hover {
-    background-color: #ffe5e5;
-    color: #7a0d0d;
+    background-color: #f8dcdc;
+    color: #5c0000;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #ff5757;
+    outline-offset: 3px;
+  }
+}
+
+/* Bouton Déconnexion – très lisible sur fond sombre */
+.btn-deconnexion {
+  background-color: transparent;
+  color: #ffffff;
+  padding: 0.6rem 1rem;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid #ffffff;
+
+  &:hover {
+    background-color: #ffffff;
+    color: #5c0000;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #ff5757;
+    outline-offset: 3px;
   }
 }
 
