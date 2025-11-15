@@ -24,13 +24,14 @@ body {
 }
 
 main.contenu-principal {
-  flex: 1 0 auto; // Le contenu principal prend la hauteur dispo
-  padding-bottom: $espace-3xl; // air avant le footer
-  background-color: $couleur-fond; // unifie le fond
-  position: relative; // pour le cache-joint
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex: 1 0 auto;                   // Le contenu principal occupe tout l’espace disponible
+  padding-bottom: $espace-3xl;      // Air avant le footer
+  background-color: $couleur-fond;  // Unifie le fond
+  position: relative;               // Pour le cache-joint
+
+  /* 🔧 Correction : on retire le mode Flex qui écrasait la page inscription */
+  display: block;                   // Laisse les sections vivre naturellement
+
   width: 100%;
 }
 
@@ -52,7 +53,7 @@ main.contenu-principal::after {
 
 /* ✅ Uniformisation de l’espace avant le footer sur toutes les pages */
 main.contenu-principal > section:last-of-type {
-  margin-bottom: $espace-3xl; // espace harmonisé (équiv. ~64px)
+  margin-bottom: $espace-3xl; // espace harmonisé (~64px)
 }
 
 // ========================================

@@ -68,11 +68,4 @@
     </div>
 </header>
 
-<main class="contenu-principal">
-
-</main>
-
 <?php require __DIR__ . '/nav-mobile.php'; ?>
-
-</body>
-</html>

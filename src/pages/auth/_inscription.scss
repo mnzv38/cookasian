@@ -6,6 +6,7 @@
   justify-content: center;
   align-items: center;
   min-height: 80vh;
+  padding: $espace-3xl $espace-md; // 🔹 Ajout : espace au-dessus et en dessous pour ne pas passer sous le header
   background: linear-gradient(
     180deg,
     color.adjust($couleur-secondaire, $lightness: 5%),
