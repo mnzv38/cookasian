@@ -86,7 +86,7 @@
   display: none !important;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .desktop-only {
     display: none !important;
   }
@@ -132,7 +132,7 @@
    📱 MOBILE + TABLETTE
 ========================================= */
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .page-compte .carte-recette {
     max-width: 360px;
   }
