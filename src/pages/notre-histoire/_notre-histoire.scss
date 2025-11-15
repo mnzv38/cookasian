@@ -25,6 +25,7 @@
   font-family: $font-titre;
   font-size: $font-size-xl * 1.8;
   margin-bottom: $espace-md;
+  color: $couleur-texte;
 }
 
 .texte-intro {
@@ -85,7 +86,10 @@
 
   figcaption {
     margin-top: $espace-sm;
-    font-weight: $font-weight-medium;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-base * 1.1;
+    color: $couleur-primaire;
+    letter-spacing: 0.5px;
   }
 
   .texte-valeur {
@@ -136,14 +140,12 @@
 // 4. RESPONSIVE
 // ========================================
 
-// 👉 1 colonne → 2 colonnes dès 768px pour un meilleur rendu
 @media (min-width: 768px) {
   .liste-valeurs {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-// 👉 3 colonnes sur grand écran (desktop DS)
 @media (min-width: $desktop) {
   .liste-valeurs {
     grid-template-columns: repeat(3, 1fr);
