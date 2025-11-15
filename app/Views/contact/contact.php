@@ -1,4 +1,4 @@
-<?php include __DIR__ . '/../layout/header.php'; ?>
+<?php include __DIR__ . '/../layout/header.php'; ?> 
 
 <section class="page-contact">
     <article class="contenu-contact">
@@ -20,7 +20,7 @@
         <?php endif; ?>
 
         <div class="bloc-contact">
-            <!-- 📨 Formulaire -->
+            <!-- Formulaire de contact -->
             <form class="formulaire-contact" method="post" action="/contact">
                 <div class="champ">
                     <label class="etiquette">Nom</label>
@@ -44,14 +44,27 @@
                 </div>
             </form>
 
-            <!-- 📍 Coordonnées -->
+            <!-- Coordonnées de contact (version compacte) -->
             <aside class="coordonnees-contact">
                 <h2 class="titre-section">Coordonnées</h2>
-                <p class="texte-coordonnees">
-                    <strong>Cookasian</strong><br>
-                    6 rue Elysium<br>
-                    69970 Marennes<br><br>
-                    ☎️ 04 78 34 90 22<br>
+
+                <p class="texte-coordonnees texte-coordonnees-nom">
+                    Cookasian
+                </p>
+
+                <p class="texte-coordonnees texte-coordonnees-adresse">
+                    6 rue Elysium
+                </p>
+
+                <p class="texte-coordonnees texte-coordonnees-adresse">
+                    69970 Marennes
+                </p>
+
+                <p class="texte-coordonnees texte-coordonnees-tel">
+                    ☎️ 04 78 34 90 22
+                </p>
+
+                <p class="texte-coordonnees texte-coordonnees-mail">
                     ✉️ <a href="mailto:info@cookasian.fr">info@cookasian.fr</a>
                 </p>
             </aside>
@@ -60,3 +73,4 @@
 </section>
 
 <?php include __DIR__ . '/../layout/footer.php'; ?>
+?>

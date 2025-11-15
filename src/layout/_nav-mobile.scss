@@ -1,4 +1,5 @@
-@use "../utils/variables" as *;   /* ✅ AJOUT OBLIGATOIRE */
+@use "../utils/variables" as *;
+@use "sass:color";
 
 .nav-mobile {
   position: fixed;
@@ -19,42 +20,41 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  width: 100%;
 }
 
 .nav-mobile-lien {
+  flex: 1;            /* empêche tout débordement */
+  min-width: 0;       /* évite l’étirement */
   text-decoration: none;
   color: #222;
   display: flex;
   flex-direction: column;
+  align-items: center;
   text-align: center;
-  font-size: 1.35rem;
+  font-size: 1.2rem;  /* légèrement réduit */
 }
 
 .nav-mobile-texte {
-  font-size: 0.75rem;
+  font-size: 0.70rem;
+  margin-top: 0.2rem;
 }
 
 .nav-mobile-lien.actif {
   color: $couleur-primaire;
 }
 
-/* ===============================
-   RESPONSIVE MOBILE (375px)
-   =============================== */
-@media (max-width: $mobile) {
+@media (max-width: 480px) {
 
   .nav-mobile {
     display: block;
   }
 
-  /* Masquer le menu du header */
   .menu-principal,
   .zone-utilisateur {
     display: none !important;
   }
 
-  /* Masquer uniquement le footer global
-     (les footers internes doivent rester visibles) */
   footer.footer-site {
     display: none !important;
   }

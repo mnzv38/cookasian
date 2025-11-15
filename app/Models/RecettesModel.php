@@ -13,8 +13,12 @@ class RecettesModel
         $this->pdo = Database::pdo();
     }
 
+    /**
+     * Récupère toutes les recettes selon le type de tri choisi
+     */
     public function getAll(string $tri = 'pays'): array
     {
+        // Je garde ici les tris autorisés pour éviter les erreurs côté SQL
         $tris = [
             'pays' => 'pays_origine ASC, titre ASC',
             'titre' => 'titre ASC',
@@ -42,18 +46,22 @@ class RecettesModel
             return null;
         }
 
-        $sqlIng = "SELECT nom, quantite, ordre 
-                   FROM ingredients 
-                   WHERE recette_id = :id 
+        // Ingrédients associés
+        $sqlIng = "SELECT nom, quantite, ordre
+                   FROM ingredients
+                   WHERE recette_id = :id
                    ORDER BY ordre ASC";
+
         $stmtIng = $this->pdo->prepare($sqlIng);
         $stmtIng->execute(['id' => $recette['id']]);
         $recette['ingredients'] = $stmtIng->fetchAll(PDO::FETCH_ASSOC);
 
-        $sqlEtapes = "SELECT numero, description 
-                      FROM etapes 
-                      WHERE recette_id = :id 
+        // Étapes associées
+        $sqlEtapes = "SELECT numero, description
+                      FROM etapes
+                      WHERE recette_id = :id
                       ORDER BY numero ASC";
+
         $stmtEtapes = $this->pdo->prepare($sqlEtapes);
         $stmtEtapes->execute(['id' => $recette['id']]);
         $recette['etapes'] = $stmtEtapes->fetchAll(PDO::FETCH_ASSOC);
@@ -62,7 +70,7 @@ class RecettesModel
     }
 
     /**
-     * Recettes populaires pour la page d'accueil
+     * Récupère les recettes affichées en page d'accueil
      */
     public function getRecettesPopulaires(int $limite = 3): array
     {

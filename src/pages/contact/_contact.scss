@@ -25,7 +25,9 @@
     margin-bottom: $espace-2xl;
   }
 
-  /* Bloc global : formulaire + coordonnées */
+  /* ======================================================
+     BLOC GLOBAL : FORMULAIRE + COORDONNÉES
+     ====================================================== */
   .bloc-contact {
     display: flex;
     justify-content: space-between;
@@ -34,13 +36,17 @@
 
     @media (max-width: $mobile) {
       flex-direction: column;
-      align-items: center;
-      text-align: center;
+      width: 100%;
       gap: $espace-xl;
+      align-items: stretch;
+      text-align: center;
+      padding-bottom: 6rem; 
     }
   }
 
-  /* FORMULAIRE */
+  /* ======================================================
+     FORMULAIRE
+     ====================================================== */
   .formulaire-contact {
     flex: 2;
     background-color: color.adjust($couleur-secondaire, $lightness: 5%);
@@ -49,6 +55,12 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     width: 100%;
     max-width: 600px;
+    margin: 0 auto;
+
+    @media (max-width: $mobile) {
+      padding: $espace-lg;
+      max-width: 100%;
+    }
   }
 
   .champ {
@@ -83,6 +95,10 @@
   .actions-formulaire {
     text-align: right;
 
+    @media (max-width: $mobile) {
+      text-align: center;
+    }
+
     .bouton {
       background-color: $couleur-primaire;
       color: #fff;
@@ -98,35 +114,40 @@
     }
   }
 
-  /* COORDONNÉES */
+  /* ======================================================
+     COORDONNÉES — VERSION COMPACTE
+     ====================================================== */
   .coordonnees-contact {
     flex: 1;
     background-color: color.adjust($couleur-secondaire, $lightness: 8%);
-    padding: $espace-xl;
+    padding: $espace-lg;
     border-radius: $rayon-md;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     max-width: 350px;
+    margin: 0 auto;
 
+    /* --- MOBILE */
     @media (max-width: $mobile) {
+      width: 100%;             
+      max-width: 100%;         
+      flex: none;               
+      padding: $espace-md;     
+      margin: 0;               
       text-align: center;
-      max-width: 100%;
     }
 
     .titre-section {
       color: $couleur-primaire;
-      font-size: $font-size-xl;
-      margin-bottom: $espace-md;
-      text-align: left;
-
-      @media (max-width: $mobile) {
-        text-align: center;
-      }
+      font-size: $font-size-lg;
+      margin-bottom: $espace-sm;
+      text-align: center;
     }
 
     .texte-coordonnees {
-      line-height: 1.7;
-      font-size: $font-size-base;
+      line-height: 1.6;
+      font-size: $font-size-sm;
       color: $couleur-texte-secondaire;
+      margin: 0.15rem 0;
 
       a {
         color: $couleur-primaire;
@@ -137,9 +158,16 @@
         }
       }
     }
+
+    .texte-coordonnees-nom {
+      font-weight: 600;
+    }
   }
 
-  /* MESSAGES */
+
+  /* ======================================================
+     MESSAGES
+     ====================================================== */
   .message-succes {
     text-align: center;
     color: #4ef8a2;
