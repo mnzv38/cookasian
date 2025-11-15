@@ -16,7 +16,6 @@
 <section class="recettes-populaires">
     <header class="entete-recettes">
         <h2 class="titre-section">Recettes populaires</h2>
-
         <p class="texte-intro">
             Quelques idées pour commencer ton voyage gustatif.
         </p>
@@ -28,18 +27,19 @@
             <?php foreach ($recettesPopulaires as $index => $recette): ?>
 
                 <?php
-                $image = $recette['image_url'] ?? '';
-                if (!str_starts_with($image, '/assets/')) {
-                    $image = '/assets/images/recettes/' . $image;
-                }
+                    $image = $recette['image_url'] ?? '';
+                    if (!str_starts_with($image, '/assets/')) {
+                        $image = '/assets/images/recettes/' . $image;
+                    }
                 ?>
 
                 <li>
                     <article class="carte-recette">
 
-                        <!-- L'image est cliquable -->
-                        <a href="/recettes/<?= htmlspecialchars($recette['slug']); ?>" class="lien-image-recette">
-                            <figure class="image-recette">
+                        <figure class="image-recette">
+
+                            <!-- L’image seule est cliquable -->
+                            <a href="/recettes/<?= htmlspecialchars($recette['slug']); ?>" class="lien-image-recette">
                                 <img
                                     src="<?= htmlspecialchars($image); ?>"
                                     alt="<?= htmlspecialchars($recette['titre']); ?>"
@@ -47,9 +47,11 @@
                                     height="400"
                                     <?= $index === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"' ?>
                                 >
-                                <figcaption><?= htmlspecialchars($recette['titre']); ?></figcaption>
-                            </figure>
-                        </a>
+                            </a>
+
+                            <!-- Le titre n'est plus un lien -->
+                            <figcaption><?= htmlspecialchars($recette['titre']); ?></figcaption>
+                        </figure>
 
                         <p class="contenu-recette">
                             <?= htmlspecialchars($recette['description']); ?>
@@ -60,10 +62,12 @@
                                 Découvrir
                             </a>
                         </footer>
+
                     </article>
                 </li>
 
             <?php endforeach; ?>
+
         </ul>
 
     <?php else: ?>
@@ -93,3 +97,4 @@
         </footer>
     </article>
 </section>
+?>
