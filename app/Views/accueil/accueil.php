@@ -37,16 +37,19 @@
                 <li>
                     <article class="carte-recette">
 
-                        <figure class="image-recette">
-                            <img
-                                src="<?= htmlspecialchars($image); ?>"
-                                alt="<?= htmlspecialchars($recette['titre']); ?>"
-                                width="600"
-                                height="400"
-                                <?= $index === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"' ?>
-                            >
-                            <figcaption><?= htmlspecialchars($recette['titre']); ?></figcaption>
-                        </figure>
+                        <!-- L'image est cliquable -->
+                        <a href="/recettes/<?= htmlspecialchars($recette['slug']); ?>" class="lien-image-recette">
+                            <figure class="image-recette">
+                                <img
+                                    src="<?= htmlspecialchars($image); ?>"
+                                    alt="<?= htmlspecialchars($recette['titre']); ?>"
+                                    width="600"
+                                    height="400"
+                                    <?= $index === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"' ?>
+                                >
+                                <figcaption><?= htmlspecialchars($recette['titre']); ?></figcaption>
+                            </figure>
+                        </a>
 
                         <p class="contenu-recette">
                             <?= htmlspecialchars($recette['description']); ?>

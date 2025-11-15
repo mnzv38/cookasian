@@ -1,4 +1,4 @@
-@use "../../utils/variables" as *;  
+@use "utils/variables" as *;
 @use "sass:color";
 
 /* ========================================
@@ -107,28 +107,26 @@
   }
 }
 
-/* image */
 .liste-recettes .carte-recette img {
-  border-radius: $rayon-md;
+  border-radius: $rayon-md $rayon-md 0 0;
   width: 100%;
   height: auto;
   display: block;
-  margin-bottom: $espace-md;
+  margin-bottom: 0;
 }
 
-/* figcaption aligné aux valeurs */
 .liste-recettes .carte-recette figcaption {
-  margin-top: $espace-sm;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  text-align: center;
+  padding: 0.6rem 1rem;
+  margin-top: 0;
+  border-radius: 0 0 $rayon-md $rayon-md;
   font-weight: $font-weight-bold;
   font-size: $font-size-base * 1.1;
-  color: $couleur-primaire;
   letter-spacing: 0.5px;
-  background: none;
-  position: static;
-  padding: 0;
 }
 
-/* texte recette */
 .liste-recettes .carte-recette .contenu-recette {
   color: rgba($couleur-texte, 0.9);
   font-size: $font-size-base;
@@ -136,7 +134,34 @@
   margin-top: $espace-md;
 }
 
-/* grille */
+.liste-recettes .carte-recette .bouton.sombre {
+  background-color: #b71c1c;
+  color: #ffffff;
+  padding: 0.7rem 1.4rem;
+  border-radius: 0.6rem;
+  font-weight: 600;
+
+  &:hover {
+    background-color: #8b0000;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #ff5757;
+    outline-offset: 3px;
+  }
+}
+
+.lien-image-recette {
+  text-decoration: none;
+  color: inherit;
+}
+
+.lien-image-recette figcaption,
+.lien-image-recette:hover figcaption {
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
 .liste-recettes {
   list-style: none;
   display: grid;
@@ -151,7 +176,6 @@
   }
 }
 
-/* Desktop 3 colonnes */
 @media (min-width: 1024px) {
   .liste-recettes {
     grid-template-columns: repeat(3, minmax(350px, 1fr));
@@ -160,9 +184,6 @@
   }
 }
 
-/* ========================================
-   MOBILE iPhone SE
-   ======================================== */
 @media (max-width: $mobile) {
   .liste-recettes {
     grid-template-columns: 1fr;
@@ -174,7 +195,6 @@
   }
 }
 
-/* SECTION À PROPOS */
 .a-propos {
   background: linear-gradient(
     180deg,
