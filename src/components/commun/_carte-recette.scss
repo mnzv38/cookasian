@@ -20,7 +20,7 @@
 
 /* image */
 .image-recette {
-  /* je laisse le figure simple, plus besoin de positionnement spécial ici */
+
 
   img {
     width: 100%;
@@ -30,13 +30,14 @@
   }
 
   figcaption {
-    /* le bandeau titre vient maintenant sous l’image, sans la recouvrir */
+    /* bandeau sous l’image */
     background: rgba(0, 0, 0, 0.85);
     color: #fff;
     padding: 0.55rem 1rem;
     font-family: "Quicksand", sans-serif;
     font-size: clamp(0.8rem, 2.5vw, 1rem);
     text-align: center;
+    border-radius: 0 0 1rem 1rem;
   }
 }
 
