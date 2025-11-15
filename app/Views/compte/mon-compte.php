@@ -29,13 +29,19 @@
             <?php if (!empty($favoris)): ?>
                 <ul class="liste-favoris">
                     <?php foreach ($favoris as $recette): ?>
+
+                        <?php 
+                        // URL complète et fiable de l'image
+                        $imageFavori = $baseUrl . '/assets/images/recettes/' . ltrim($recette['image_url'], '/');
+                        ?>
+
                         <li>
                             <article class="carte-recette">
 
                                 <!-- IMAGE + TITRE -->
                                 <figure class="image-recette">
                                     <img 
-                                        src="<?= htmlspecialchars($recette['image_url'] ?? '/assets/images/placeholder.jpg') ?>"
+                                        src="<?= htmlspecialchars($imageFavori) ?>"
                                         alt="<?= htmlspecialchars($recette['titre']) ?>"
                                     >
                                     <figcaption><?= htmlspecialchars($recette['titre']) ?></figcaption>
@@ -60,8 +66,7 @@
                                         Retirer
                                     </a>
 
-
-                                    <!-- MOBILE/TABLET EMOJI VERSION -->
+                                    <!-- MOBILE VERSION -->
                                     <a class="bouton primaire mobile-only"
                                        href="/recettes/<?= htmlspecialchars($recette['slug']) ?>">
                                         📃 Voir

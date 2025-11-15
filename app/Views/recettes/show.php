@@ -15,8 +15,13 @@ if ($estConnecte && !empty($recette['id'])) {
     );
 }
 
-// Construction propre du chemin image (toujours fiable)
-$image = '/assets/images/recettes/' . ltrim($recette['image_url'], '/');
+/**
+ * Construction propre de l'URL de l'image
+ * On part de l'URL de base définie dans header.php
+ * Exemple final :
+ * http://cookasian.localhost:8080/assets/images/recettes/ramen-shoyu.webp
+ */
+$image = $baseUrl . '/assets/images/recettes/' . ltrim($recette['image_url'], '/');
 
 ?>
 
@@ -134,5 +139,3 @@ $image = '/assets/images/recettes/' . ltrim($recette['image_url'], '/');
     </nav>
 
 </article>
-
-?>
