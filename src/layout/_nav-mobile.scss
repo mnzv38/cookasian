@@ -51,8 +51,8 @@
     display: none !important;
   }
 
-  /* Masquer footer complet */
-  footer {
+  /* Masquer UNIQUEMENT le footer global */
+  footer.footer-site {
     display: none !important;
   }
 }

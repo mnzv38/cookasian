@@ -57,7 +57,7 @@
   grid-template-columns: 1fr;
   gap: 2rem;
   justify-items: center;
-  align-items: start; /* 🔥 harmonisation des hauteurs */
+  align-items: start;
 }
 
 /* =========================================
@@ -67,11 +67,11 @@
 .page-compte .carte-recette {
   max-width: 420px;
   width: 100%;
-  padding-bottom: 2.5rem;
+  padding-bottom: 3.5rem; 
   border-radius: 1.2rem;
   background-color: #2b2b33;
   overflow: visible;
-  min-height: 540px; /* 🔥 hauteur harmonisée */
+  min-height: 600px; 
 }
 
 /* =============================
@@ -98,13 +98,14 @@
 
 /* --- FOOTER DES ACTIONS --- */
 .page-compte .carte-recette footer.infos-recette {
-  margin-top: auto;
   display: flex;
   justify-content: center;
   gap: 1.4rem;
   width: 100%;
+  padding-bottom: 1rem;
 }
 
+/* Boutons */
 .page-compte .carte-recette footer.infos-recette .bouton {
   white-space: nowrap;
   display: inline-flex;
@@ -132,7 +133,6 @@
 ========================================= */
 
 @media (max-width: 1024px) {
-
   .page-compte .carte-recette {
     max-width: 360px;
   }

@@ -29,19 +29,13 @@
             <?php if (!empty($favoris)): ?>
                 <ul class="liste-favoris">
                     <?php foreach ($favoris as $recette): ?>
-
-                        <?php 
-                        // URL complète et fiable de l'image
-                        $imageFavori = $baseUrl . '/assets/images/recettes/' . ltrim($recette['image_url'], '/');
-                        ?>
-
                         <li>
                             <article class="carte-recette">
 
                                 <!-- IMAGE + TITRE -->
                                 <figure class="image-recette">
                                     <img 
-                                        src="<?= htmlspecialchars($imageFavori) ?>"
+                                        src="<?= htmlspecialchars($baseUrl . '/assets/images/recettes/' . ltrim($recette['image_url'], '/')) ?>"
                                         alt="<?= htmlspecialchars($recette['titre']) ?>"
                                     >
                                     <figcaption><?= htmlspecialchars($recette['titre']) ?></figcaption>
@@ -49,7 +43,7 @@
 
                                 <!-- DESCRIPTION -->
                                 <p class="contenu-recette">
-                                    <?= htmlspecialchars($recette['description'] ?? 'Recette enregistrée dans tes favoris.') ?>
+                                    <?= htmlspecialchars($recette['description']) ?>
                                 </p>
 
                                 <!-- ACTIONS FAVORIS -->
