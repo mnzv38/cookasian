@@ -1,7 +1,8 @@
-@use "../../utils/variables" as *;
+@use "../../utils/variables" as *;   
+@use "sass:color";
 
 /* =========================================
-   🧍 PAGE MON COMPTE
+   PAGE MON COMPTE
 ========================================= */
 
 .page-compte {
@@ -14,7 +15,7 @@
 }
 
 /* =========================================
-   📋 INFOS UTILISATEUR
+   INFOS UTILISATEUR
 ========================================= */
 
 .infos-utilisateur {
@@ -42,7 +43,7 @@
 }
 
 /* =========================================
-   ⭐ FAVORIS UTILISATEUR
+   FAVORIS UTILISATEUR
 ========================================= */
 
 .favoris-utilisateur h2 {
@@ -61,22 +62,22 @@
 }
 
 /* =========================================
-   🃏 CARTE FAVORITE 
+   CARTE FAVORITE
 ========================================= */
 
 .page-compte .carte-recette {
   max-width: 420px;
   width: 100%;
-  padding-bottom: 3.5rem; 
+  padding-bottom: 3.5rem;
   border-radius: 1.2rem;
   background-color: #2b2b33;
   overflow: visible;
-  min-height: 600px; 
+  min-height: 600px;
 }
 
-/* =============================
-   BUTTONS VISIBILITY RULES
-============================= */
+/* =========================================
+   VISIBILITE DES BOUTONS
+========================================= */
 
 .desktop-only {
   display: inline-flex !important;
@@ -86,7 +87,8 @@
   display: none !important;
 }
 
-@media (max-width: 768px) {
+/* Responsive mobile (375px) */
+@media (max-width: $mobile) {
   .desktop-only {
     display: none !important;
   }
@@ -96,7 +98,10 @@
   }
 }
 
-/* --- FOOTER DES ACTIONS --- */
+/* =========================================
+   FOOTER DES ACTIONS
+========================================= */
+
 .page-compte .carte-recette footer.infos-recette {
   display: flex;
   justify-content: center;
@@ -105,7 +110,6 @@
   padding-bottom: 1rem;
 }
 
-/* Boutons */
 .page-compte .carte-recette footer.infos-recette .bouton {
   white-space: nowrap;
   display: inline-flex;
@@ -114,10 +118,10 @@
 }
 
 /* =========================================
-   🖥️ DESKTOP FAVORIS : 3 PAR LIGNE
+   DESKTOP — 3 FAVORIS PAR LIGNE
 ========================================= */
 
-@media (min-width: 1024px) {
+@media (min-width: $desktop) {
   .liste-favoris {
     grid-template-columns: repeat(3, minmax(280px, 1fr));
   }
@@ -129,10 +133,10 @@
 }
 
 /* =========================================
-   📱 MOBILE + TABLETTE
+   MOBILE — LARGEUR MAX DES CARTES
 ========================================= */
 
-@media (max-width: 768px) {
+@media (max-width: $mobile) {
   .page-compte .carte-recette {
     max-width: 360px;
   }

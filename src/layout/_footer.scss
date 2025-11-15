@@ -1,27 +1,26 @@
 // ========================================
-// 🦶 PIED DE PAGE — COOKASIAN
+// PIED DE PAGE — COOKASIAN
 // ========================================
 
-@use "../utils/variables" as *;
+@use "../utils/variables" as *;   /* ✅ AJOUT NECESSAIRE */
 @use "sass:color";
 
-
 // ========================================
-// 1. STYLE GÉNÉRAL DU FOOTER
+// 1. STYLE GENERAL DU FOOTER
 // ========================================
 
 .footer-site {
-  background-color: $couleur-fond; // identique au fond du main
+  background-color: $couleur-fond;
   color: $couleur-texte-clair;
   padding: $espace-2xl $espace-md;
   text-align: center;
   font-size: $font-size-sm;
-  border-top: none; // supprime tout trait parasite
+  border-top: none;
   margin-top: 0;
-  position: relative; // permet le cache-joint
-  z-index: 1; // évite les superpositions indésirables
+  position: relative;
+  z-index: 1;
   width: 100%;
-  box-shadow: none; // désactive les ombres éventuelles
+  box-shadow: none;
 }
 
 .footer-site::before {
@@ -29,7 +28,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: -2px; // chevauche légèrement le main
+  top: -2px;
   height: 2px;
   background-color: $couleur-fond;
   z-index: 3;
@@ -76,10 +75,10 @@
 }
 
 // ========================================
-// 5. RESPONSIVE
+// 5. RESPONSIVE MOBILE
 // ========================================
 
-@media (max-width: $tablette) {
+@media (max-width: $mobile) {
   .footer-site {
     padding: $espace-xl $espace-md;
   }

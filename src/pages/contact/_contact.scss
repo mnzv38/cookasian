@@ -25,14 +25,14 @@
     margin-bottom: $espace-2xl;
   }
 
-  // --- FORMULAIRE + COORDONNÉES ---
+  /* Bloc global : formulaire + coordonnées */
   .bloc-contact {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: $espace-3xl;
 
-    @media (max-width: $tablette) {
+    @media (max-width: $mobile) {
       flex-direction: column;
       align-items: center;
       text-align: center;
@@ -40,7 +40,7 @@
     }
   }
 
-  // --- FORMULAIRE ---
+  /* FORMULAIRE */
   .formulaire-contact {
     flex: 2;
     background-color: color.adjust($couleur-secondaire, $lightness: 5%);
@@ -98,7 +98,7 @@
     }
   }
 
-  // --- COORDONNÉES ---
+  /* COORDONNÉES */
   .coordonnees-contact {
     flex: 1;
     background-color: color.adjust($couleur-secondaire, $lightness: 8%);
@@ -107,7 +107,7 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     max-width: 350px;
 
-    @media (max-width: $tablette) {
+    @media (max-width: $mobile) {
       text-align: center;
       max-width: 100%;
     }
@@ -118,7 +118,7 @@
       margin-bottom: $espace-md;
       text-align: left;
 
-      @media (max-width: $tablette) {
+      @media (max-width: $mobile) {
         text-align: center;
       }
     }
@@ -139,7 +139,7 @@
     }
   }
 
-  // --- MESSAGES ---
+  /* MESSAGES */
   .message-succes {
     text-align: center;
     color: #4ef8a2;

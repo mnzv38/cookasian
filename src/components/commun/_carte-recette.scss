@@ -47,7 +47,6 @@
   padding: 1.25rem;
   flex: 1;
 
-  /* ❤️ CORRECTION : centrage global */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -76,7 +75,6 @@
   .lien-recette {
     margin-top: 1.2rem;
 
-    /* ❤️ Centrage bouton */
     display: inline-flex;
     justify-content: center;
 
@@ -110,7 +108,7 @@ footer.infos-recette {
   margin-top: 0.8rem;
 }
 
-/* MOBILE + TABLETTE */
+/* MOBILE */
 @media (max-width: 768px) {
   .carte-recette {
     margin-bottom: 6rem;

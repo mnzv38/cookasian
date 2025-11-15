@@ -1,3 +1,6 @@
+@use "../../utils/variables" as *;  
+@use "sass:color";
+
 /* === PAGE LISTE DES RECETTES === */
 
 .section-recettes {
@@ -26,7 +29,6 @@
       margin-bottom: 1.2rem;
     }
 
-    /* 🔹 Menu déroulant de tri */
     .form-tri-recettes {
       display: flex;
       justify-content: center;
@@ -102,7 +104,6 @@
       box-shadow: 0 4px 20px rgba(255, 87, 87, 0.4);
     }
 
-    /* Image */
     .image-recette {
       position: relative;
 
@@ -127,7 +128,6 @@
       }
     }
 
-    /* Contenu texte */
     .contenu-recette {
       flex: 1;
       display: flex;
@@ -145,8 +145,6 @@
 
       .infos-recette {
         list-style: none;
-        margin: 0;
-        padding: 0;
 
         li {
           font-size: 0.9rem;
@@ -159,10 +157,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 1.2rem auto 0 auto;   
-        width: auto;                  
-        max-width: 200px;           
-        padding: 0.6rem 1.4rem;       
+        margin: 1.2rem auto 0 auto;
+        max-width: 200px;
+        padding: 0.6rem 1.4rem;
 
         font-family: "Quicksand", sans-serif;
         font-weight: 600;
@@ -187,9 +184,11 @@
   }
 }
 
-/* === RESPONSIVE DESIGN === */
+/* =========================================
+   RESPONSIVE
+========================================= */
 
-/* Tablette */
+/* ⭐ Breakpoint intermédiaire (ex-tablette) */
 @media (max-width: 768px) {
   .section-recettes {
     padding: 1.5rem;
@@ -217,8 +216,8 @@
   }
 }
 
-/* Mobile iPhone SE */
-@media (max-width: 480px) {
+/* ⭐ Mobile iPhone SE */
+@media (max-width: $mobile) {
   .section-recettes {
     padding: 1rem;
 
@@ -269,10 +268,13 @@
   }
 }
 
-/* === ESPACEMENT AVANT LE PIED DE PAGE === */
+/* =========================================
+   ESPACEMENT AVANT LE FOOTER
+========================================= */
+
 .section-recettes {
   margin-bottom: 4rem;
-  
+
   @media (max-width: 768px) {
     margin-bottom: 3rem;
   }

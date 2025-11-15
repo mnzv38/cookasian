@@ -1,3 +1,5 @@
+@use "../../utils/variables" as *;
+
 /* === PAGE MES FAVORIS === */
 
 .page-favoris {
@@ -56,7 +58,7 @@
   }
 
   /* ======================================================
-     ✅ Liste des favoris avec 3 colonnes MAX — DÉFINITIF
+     Liste des favoris avec 3 colonnes MAX — layout desktop
      ====================================================== */
   .liste-favoris {
     display: grid !important;
@@ -111,26 +113,25 @@
         text-decoration: none;
 
         &:hover { background-color: #ff3232; }
-
         &:not(:last-child) { margin-right: .5rem; }
       }
     }
   }
 
-  /* Tablette */
-  @media (max-width: 850px) {
-    .liste-favoris {
-      grid-template-columns: repeat(2, 1fr) !important;
-    }
-  }
-
-  /* Mobile iPhone SE */
-  @media (max-width: 400px) {
+  /* ==========================
+     Responsive mobile iPhone SE
+     ========================== */
+  @media (max-width: $mobile) {
     .liste-favoris {
       grid-template-columns: 1fr !important;
     }
 
-    .titre-page { font-size: 1.6rem; }
-    .texte-intro { font-size: 1rem; }
+    .titre-page {
+      font-size: 1.6rem;
+    }
+
+    .texte-intro {
+      font-size: 1rem;
+    }
   }
 }

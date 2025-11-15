@@ -2,7 +2,7 @@
 // 🧭 EN-TÊTE DU SITE COOKASIAN
 // ========================================
 
-@use "../utils/variables" as *;
+@use "../utils/variables" as *;   // ✅ AJOUT INDISPENSABLE
 @use "sass:color";
 
 .entete-site {

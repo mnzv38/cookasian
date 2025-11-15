@@ -5,7 +5,10 @@
 @use "../../utils/variables" as *;
 @use "sass:color";
 
-// 1. INTRO
+// ========================================
+// 1. INTRODUCTION
+// ========================================
+
 .histoire-intro {
   background: linear-gradient(135deg, $couleur-primaire, $couleur-accent);
   color: $couleur-texte;
@@ -31,7 +34,10 @@
   line-height: 1.7;
 }
 
+// ========================================
 // 2. VALEURS
+// ========================================
+
 .histoire-valeurs {
   background-color: $couleur-fond;
   color: $couleur-texte;
@@ -89,7 +95,10 @@
   }
 }
 
+// ========================================
 // 3. CONCLUSION
+// ========================================
+
 .histoire-conclusion {
   background: linear-gradient(
     180deg,
@@ -99,9 +108,8 @@
   color: $couleur-texte;
   padding: $espace-3xl $espace-md;
   text-align: center;
-  box-shadow: none; 
+  box-shadow: none;
 }
-
 
 .bloc-conclusion {
   max-width: 700px;
@@ -124,13 +132,18 @@
   }
 }
 
+// ========================================
 // 4. RESPONSIVE
-@media (min-width: $tablette) {
+// ========================================
+
+// 👉 1 colonne → 2 colonnes dès 768px pour un meilleur rendu
+@media (min-width: 768px) {
   .liste-valeurs {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
+// 👉 3 colonnes sur grand écran (desktop DS)
 @media (min-width: $desktop) {
   .liste-valeurs {
     grid-template-columns: repeat(3, 1fr);

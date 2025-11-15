@@ -46,7 +46,6 @@ main.contenu-principal::after {
   pointer-events: none;
 }
 
-
 .footer-site {
   flex-shrink: 0; // Empêche le footer de se compresser
 }
@@ -54,12 +53,6 @@ main.contenu-principal::after {
 /* ✅ Uniformisation de l’espace avant le footer sur toutes les pages */
 main.contenu-principal > section:last-of-type {
   margin-bottom: $espace-3xl; // espace harmonisé (équiv. ~64px)
-}
-
-@media (max-width: $tablette) {
-  main.contenu-principal > section:last-of-type {
-    margin-bottom: $espace-3xl; // un peu réduit sur tablette/mobile
-  }
 }
 
 // ========================================
@@ -252,7 +245,7 @@ li {
   }
 }
 
-// ✅ Variante compacte (utile pour mobile ou petits blocs)
+// Variante compacte
 .bloc-infos.compacte {
   padding: 1rem;
 

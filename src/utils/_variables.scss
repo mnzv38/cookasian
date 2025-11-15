@@ -1,5 +1,5 @@
 // ========================================
-// 🎨 DESIGN SYSTEM COOKASIAN (version complète et cohérente)
+// 🎨 DESIGN SYSTEM COOKASIAN (version complete et coherente)
 // ========================================
 
 // ----------------------------------------
@@ -7,23 +7,23 @@
 // ----------------------------------------
 
 $couleur-primaire: #ff5757;      // Rouge asiatique principal
-$couleur-secondaire: #1e1e24;    // Noir bleuté (fond principal)
-$couleur-accent: #ffa726;        // Doré/orangé pour les détails
+$couleur-secondaire: #1e1e24;    // Noir bleute (fond principal)
+$couleur-accent: #ffa726;        // Dore/orange pour les details
 
-$couleur-texte: #ffffff;               // Texte clair par défaut
+$couleur-texte: #ffffff;               // Texte clair par defaut
 $couleur-texte-secondaire: #cccccc;    // Texte gris clair secondaire
 $couleur-texte-principal: #e6e6e6;     // Texte lisible sur fond sombre
-$couleur-texte-clair: #ffffff;         // Alias pratique pour textes sur fond coloré
+$couleur-texte-clair: #ffffff;         // Alias pratique pour textes sur fond colore
 
-$couleur-fond: #1e1e24;                // Fond général du site
+$couleur-fond: #1e1e24;                // Fond general du site
 $couleur-carte: rgba(255, 255, 255, 0.05); // Fond semi-transparent des cartes
 
 // ----------------------------------------
 // ✍️ TYPOGRAPHIE
 // ----------------------------------------
 
-$font-principale: 'Quicksand', sans-serif;
-$font-titre: 'Playfair Display', serif;
+$font-principale: "Quicksand", sans-serif;
+$font-titre: "Playfair Display", serif;
 
 // Tailles de texte (mobile-first)
 $font-size-xs: 0.75rem;   // 12px
@@ -39,7 +39,7 @@ $font-size-5xl: 3.5rem;   // 56px
 // Interlignes
 $line-height-tight: 1.1;      // compact
 $line-height-normal: 1.5;     // standard
-$line-height-relaxed: 1.8;    // plus aéré
+$line-height-relaxed: 1.8;    // plus aere
 
 // Poids
 $font-weight-normal: 400;
@@ -48,12 +48,9 @@ $font-weight-bold: 700;
 
 // ----------------------------------------
 // 📏 ESPACEMENTS
-// (ajout des tailles manquantes pour éviter les erreurs)
 // ----------------------------------------
 
-// Ultra petit (manquant précédemment)
-$espace-2xs: 0.125rem;  // 2px ✅ ajouté
-
+$espace-2xs: 0.125rem;  // 2px
 $espace-xs: 0.25rem;    // 4px
 $espace-sm: 0.5rem;     // 8px
 $espace-md: 1rem;       // 16px
@@ -64,14 +61,12 @@ $espace-3xl: 4rem;      // 64px
 
 // ----------------------------------------
 // 🟦 FORMES ET OMBRES
-// (ajout de $rayon-sm pour les fichiers qui l'utilisent)
 // ----------------------------------------
 
-$rayon-sm: 0.25rem;     // 4px ✅ ajouté
-$rayon-md: 0.5rem;      // 8px
-$rayon-lg: 1rem;        // 16px
+$rayon-sm: 0.25rem;  // 4px
+$rayon-md: 0.5rem;   // 8px
+$rayon-lg: 1rem;     // 16px
 
-// Ombres par niveau
 $ombre: 0 0 12px rgba(0, 0, 0, 0.5);
 $ombre-sm: 0 2px 4px rgba(0, 0, 0, 0.25);
 $ombre-md: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -88,6 +83,5 @@ $transition: 0.3s ease;
 // 📱 BREAKPOINTS
 // ----------------------------------------
 
-$mobile: 480px;
-$tablette: 768px;
-$desktop: 1200px;
+$mobile: 375px;     // iPhone SE — breakpoint officiel du projet
+$desktop: 1200px;   // Largeur desktop standard

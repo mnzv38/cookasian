@@ -1,4 +1,4 @@
-@use "../utils/variables" as *;
+@use "../utils/variables" as *;   /* ✅ AJOUT OBLIGATOIRE */
 
 .nav-mobile {
   position: fixed;
@@ -38,20 +38,23 @@
   color: $couleur-primaire;
 }
 
-/* MOBILE + TABLETTE */
-@media (max-width: 768px) {
+/* ===============================
+   RESPONSIVE MOBILE (375px)
+   =============================== */
+@media (max-width: $mobile) {
 
   .nav-mobile {
     display: block;
   }
 
-  /* Masquer menu du header */
+  /* Masquer le menu du header */
   .menu-principal,
   .zone-utilisateur {
     display: none !important;
   }
 
-  /* Masquer UNIQUEMENT le footer global */
+  /* Masquer uniquement le footer global
+     (les footers internes doivent rester visibles) */
   footer.footer-site {
     display: none !important;
   }
