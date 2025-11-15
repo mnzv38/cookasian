@@ -1,7 +1,8 @@
 CONSIGNES à respecter impérativement :
 
- Dis moi de quels fichiers tu as besoin, je te l'enverrais
- Tu m'ajouteras uniquement la modification ou la suppression de code qu'il faut
- Ensuite tu me renvois le code intégrale modifié
- Le code doit être humanisé et respect de la sémantique
- S'il y a des commentaires dans le code, ils doivent être comme si c'était moi qui l'avait écrit donc humanisé
+➡️ Fies-toi à mon Tree, n'invente pas des fichiers ou dossiers qui n'existent pas
+➡️ Dis moi de quels fichiers tu as besoin, je te l'enverrais
+➡️ Tu m'ajouteras uniquement la modification ou la suppression de code qu'il faut
+➡️ Ensuite tu me renvois le code intégrale modifié
+➡️ Le code doit être humanisé et respect de la sémantique
+➡️ S'il y a des commentaires dans le code, ils doivent être comme si c'était moi qui l'avait écrit donc humanisé

@@ -4,7 +4,8 @@
     <article class="contenu-contact">
         <h1 class="titre-page">Nous contacter</h1>
         <p class="texte-intro">
-            Une question, une suggestion ou un partenariat ? Écris-nous, on lit tout avec attention 💌
+            Une question, une suggestion ou un partenariat ? <br>
+             Écris-nous, on lit tout avec attention 💌
         </p>
 
         <?php if (!empty($contactSuccess)): ?>
@@ -20,23 +21,27 @@
         <?php endif; ?>
 
         <div class="bloc-contact">
-            <!-- Formulaire de contact -->
+
+            <!-- FORMULAIRE -->
             <form class="formulaire-contact" method="post" action="/contact">
                 <div class="champ">
                     <label class="etiquette">Nom</label>
-                    <input class="controle" type="text" name="nom" placeholder="Votre nom"
-                        value="<?= htmlspecialchars($contactValues['nom']) ?>">
+                    <input class="controle" type="text" name="nom"
+                        value="<?= htmlspecialchars($contactValues['nom']) ?>"
+                        placeholder="Votre nom">
                 </div>
 
                 <div class="champ">
                     <label class="etiquette">E-mail</label>
-                    <input class="controle" type="email" name="email" placeholder="votre.email@example.com"
-                        value="<?= htmlspecialchars($contactValues['email']) ?>">
+                    <input class="controle" type="email" name="email"
+                        value="<?= htmlspecialchars($contactValues['email']) ?>"
+                        placeholder="votre.email@example.com">
                 </div>
 
                 <div class="champ">
                     <label class="etiquette">Message</label>
-                    <textarea class="controle zone-texte" name="message" rows="6" placeholder="Votre message..."><?= htmlspecialchars($contactValues['message']) ?></textarea>
+                    <textarea class="controle zone-texte" name="message" rows="6"
+                        placeholder="Votre message..."><?= htmlspecialchars($contactValues['message']) ?></textarea>
                 </div>
 
                 <div class="actions-formulaire">
@@ -44,33 +49,21 @@
                 </div>
             </form>
 
-            <!-- Coordonnées de contact (version compacte) -->
+            <!-- COORDONNÉES EXACTEMENT COMME TU VEUX -->
             <aside class="coordonnees-contact">
                 <h2 class="titre-section">Coordonnées</h2>
 
-                <p class="texte-coordonnees texte-coordonnees-nom">
-                    Cookasian
-                </p>
+                <p class="nom-structure">Cookasian</p>
 
-                <p class="texte-coordonnees texte-coordonnees-adresse">
-                    6 rue Elysium
-                </p>
-
-                <p class="texte-coordonnees texte-coordonnees-adresse">
-                    69970 Marennes
-                </p>
-
-                <p class="texte-coordonnees texte-coordonnees-tel">
-                    ☎️ 04 78 34 90 22
-                </p>
-
-                <p class="texte-coordonnees texte-coordonnees-mail">
-                    ✉️ <a href="mailto:info@cookasian.fr">info@cookasian.fr</a>
-                </p>
+                <ul class="liste-coordonnees">
+                    <li>📍  6 rue Elysium – 69970 Marennes</li>
+                    <li>☎️  04 78 34 90 22</li>
+                    <li>✉️  <a href="mailto:info@cookasian.fr">info@cookasian.fr</a></li>
+                </ul>
             </aside>
+
         </div>
     </article>
 </section>
 
 <?php include __DIR__ . '/../layout/footer.php'; ?>
-?>
