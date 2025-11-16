@@ -24,20 +24,21 @@
 }
 
 .nav-mobile-lien {
-  flex: 1;            /* empêche tout débordement */
-  min-width: 0;       /* évite l’étirement */
+  flex: 1;
+  min-width: 0;
   text-decoration: none;
   color: #222;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  font-size: 1.2rem;  /* légèrement réduit */
+  font-size: 1.2rem;
 }
 
 .nav-mobile-texte {
   font-size: 0.70rem;
   margin-top: 0.2rem;
+  color: #8a8a8a; /* ✔ Contraste corrigé WCAG */
 }
 
 .nav-mobile-lien.actif {

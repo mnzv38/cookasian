@@ -34,8 +34,8 @@
 
 .bouton.secondaire {
   border: 2px solid #b71c1c;
-  color: #b71c1c;
-  background: transparent;
+  color: #ffffff; /* ✔ Correction contraste */
+  background-color: rgba(183, 28, 28, 0.22); /* ✔ WCAG compatible */
 
   &:hover {
     background-color: #b71c1c;
@@ -115,13 +115,12 @@
   }
 }
 
-/* === Boutons mobile – petit ajustement pour qu’ils soient propres et espacés === */
-/* Ici je mets juste un conteneur simple pour que l’affichage soit fluide */
+/* === Boutons mobile === */
 .boutons-mobile a {
-  width: 100%;           /* plein largeur pour avoir la même taille */
-  margin-bottom: 0.6rem; /* petit espace entre les deux */
+  width: 100%;
+  margin-bottom: 0.6rem;
 }
 
 .boutons-mobile a:last-child {
-  margin-bottom: 0;      /* pas d’espace en dessous du dernier */
+  margin-bottom: 0;
 }
