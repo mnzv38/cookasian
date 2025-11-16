@@ -15,12 +15,7 @@ if ($estConnecte && !empty($recette['id'])) {
     );
 }
 
-/**
- * Construction propre de l'URL de l'image
- * On part de l'URL de base définie dans header.php
- * Exemple final :
- * http://cookasian.localhost:8080/assets/images/recettes/ramen-shoyu.webp
- */
+// Construction URL de l'image
 $image = $baseUrl . '/assets/images/recettes/' . ltrim($recette['image_url'], '/');
 
 ?>
@@ -32,11 +27,18 @@ $image = $baseUrl . '/assets/images/recettes/' . ltrim($recette['image_url'], '/
     </header>
 
     <figure class="image-recette">
-        <img src="<?= htmlspecialchars($image) ?>" alt="<?= htmlspecialchars($recette['titre']) ?>">
-        <figcaption>
-            Recette <?= htmlspecialchars($recette['titre']) ?> (<?= htmlspecialchars($recette['pays_origine']) ?>)
-        </figcaption>
+        <img 
+            class="image-zoomable"
+            src="<?= htmlspecialchars($image) ?>" 
+            alt="Photographie de la recette : <?= htmlspecialchars($recette['titre']) ?> – <?= htmlspecialchars($recette['description']) ?>"
+        >
     </figure>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Fermer l’aperçu">✖</button>
+        <img id="lightboxImg" src="" alt="">
+    </div>
 
     <section class="infos-recette">
         <h2>Informations</h2>
@@ -139,3 +141,5 @@ $image = $baseUrl . '/assets/images/recettes/' . ltrim($recette['image_url'], '/
     </nav>
 
 </article>
+
+?>

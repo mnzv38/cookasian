@@ -27,6 +27,10 @@
 
     <link rel="preload" href="<?= $baseUrl ?>/assets/css/main.css" as="style">
     <link rel="stylesheet" href="<?= $baseUrl ?>/assets/css/main.css">
+
+    <script src="/assets/js/lightbox.js" defer></script>
+
+
 </head>
 
 <body>
