@@ -20,20 +20,27 @@
   }
 
   .image-recette {
+    /* je centre le bloc image pour qu’il ait la même largeur que les autres cards */
+    max-width: 700px;
+    margin: 0 auto 2rem auto;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     text-align: center;
-    margin-bottom: 2rem;
 
     img {
       width: 100%;
-      max-width: 800px;
-      border-radius: 1rem;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+      display: block;
+      /* plus besoin de max-width ni de border-radius ici,
+         c’est le conteneur qui découpe proprement */
     }
 
     figcaption {
-      margin-top: 0.5rem;
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 0.6rem 1rem;
       font-size: 0.9rem;
       color: #ccc;
+      text-align: center;
     }
   }
 
@@ -41,7 +48,9 @@
     background-color: rgba(255, 255, 255, 0.05);
     padding: 1.5rem;
     border-radius: 1rem;
-    margin-bottom: 2rem;
+    /* même largeur que le bloc de connexion pour un rendu homogène */
+    max-width: 700px;
+    margin: 0 auto 2rem auto;
 
     h2 {
       font-family: "Playfair Display", serif;
@@ -80,7 +89,7 @@
     }
   }
 
-  /* --- 🔥 Nouveau : encadré connexion --- */
+  /* --- Encadré connexion --- */
   .bloc-connexion-recette {
     background-color: rgba(255, 255, 255, 0.05);
     padding: 1.5rem;

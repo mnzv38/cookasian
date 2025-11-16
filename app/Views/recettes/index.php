@@ -64,4 +64,4 @@
         <p>Aucune recette disponible pour le moment.</p>
     <?php endif; ?>
 </section>
-?>
+
