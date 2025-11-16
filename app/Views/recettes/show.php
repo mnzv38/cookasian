@@ -79,7 +79,7 @@ $image = $baseUrl . '/assets/images/recettes/' . ltrim($recette['image_url'], '/
                         💔 Retirer
                     </a>
                     <a class="bouton secondaire" href="/mon-compte">
-                        📃 Voir
+                        ⭐ Mes favoris
                     </a>
                 </nav>
 
