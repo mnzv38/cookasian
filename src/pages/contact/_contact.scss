@@ -24,25 +24,22 @@
     margin-bottom: $espace-2xl;
   }
 
-  /* ======================================================
-     BLOC CONTACT FORM + COORDONNEES
-     ====================================================== */
   .bloc-contact {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: $espace-3xl;
 
-    @media (max-width: $mobile) {
+    /* 📱 Correction ciblée iPhone SE */
+    @media (max-width: 480px) {
       flex-direction: column;
       gap: $espace-xl;
-      padding-bottom: 6rem;
+      padding-bottom: 5rem; /* la nav apparaît tout de suite */
+      width: 100%;
+      overflow-x: hidden; /* empêche tout débordement */
     }
   }
 
-  /* ======================================================
-     FORMULAIRE
-     ====================================================== */
   .formulaire-contact {
     flex: 2;
     background-color: color.adjust($couleur-secondaire, $lightness: 5%);
@@ -53,9 +50,11 @@
     max-width: 600px;
     margin: 0 auto;
 
-    @media (max-width: $mobile) {
-      padding: $espace-lg;
+    /* 📱 Empêcher débordement en 375px */
+    @media (max-width: 480px) {
       max-width: 100%;
+      width: 100%;
+      padding: $espace-lg;
     }
   }
 
@@ -91,14 +90,11 @@
   .actions-formulaire {
     text-align: right;
 
-    @media (max-width: $mobile) {
+    @media (max-width: 480px) {
       text-align: center;
     }
   }
 
-  /* ======================================================
-     COORDONNÉES — Titre centré + contenu aligné gauche
-     ====================================================== */
   .coordonnees-contact {
     flex: 1;
     background-color: color.adjust($couleur-secondaire, $lightness: 8%);
@@ -108,7 +104,12 @@
     max-width: 350px;
     margin: 0 auto;
 
-    /* SEULEMENT le titre est centré */
+    /* 📱 Correction anti-débordement mobile */
+    @media (max-width: 480px) {
+      max-width: 100%;
+      width: 100%;
+    }
+
     .titre-section {
       color: $couleur-primaire;
       font-size: $font-size-lg;
@@ -116,7 +117,6 @@
       text-align: center;
     }
 
-    /* TOUT LE RESTE aligné à gauche */
     text-align: left;
 
     .nom-structure {
@@ -147,9 +147,6 @@
     }
   }
 
-  /* ======================================================
-     MESSAGE SUCCÈS + ERREURS
-     ====================================================== */
   .message-succes {
     text-align: center;
     color: #4ef8a2;
