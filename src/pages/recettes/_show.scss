@@ -14,8 +14,9 @@
 
     h1 {
       font-family: "Playfair Display", serif;
-      color: #ff5757;
+      color: #ff6b6b; /* contraste légèrement renforcé */
       font-size: 2rem;
+      line-height: 1.35; /* meilleure lisibilité */
     }
   }
 
@@ -37,7 +38,7 @@
   }
 
   .infos-recette {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.06); /* contraste légèrement renforcé */
     padding: 1.5rem;
     border-radius: 1rem;
     max-width: 700px;
@@ -45,9 +46,10 @@
 
     h2 {
       font-family: "Playfair Display", serif;
-      color: #ff5757;
+      color: #ff6b6b;
       margin-bottom: 1rem;
       text-align: center;
+      line-height: 1.3;
     }
 
     ul {
@@ -57,8 +59,10 @@
       text-align: center;
 
       li {
-        margin-bottom: 0.4rem;
-        color: #ddd;
+        margin-bottom: 0.5rem;
+        color: #e6e6e6; /* lisibilité renforcée */
+        font-size: 1.05rem;
+        line-height: 1.5;
       }
     }
   }
@@ -69,20 +73,23 @@
 
     h2 {
       font-family: "Playfair Display", serif;
-      color: #ff5757;
+      color: #ff6b6b;
       margin-bottom: 1rem;
+      line-height: 1.35;
     }
 
     p {
-      color: #ccc;
-      font-size: 1rem;
-      line-height: 1.5;
+      color: #ddd;
+      font-size: 1.05rem;
+      line-height: 1.6; /* meilleure lisibilité */
+      max-width: 700px;
+      margin: 0 auto;
     }
   }
 
   /* --- Encadré connexion --- */
   .bloc-connexion-recette {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.06);
     padding: 1.5rem;
     border-radius: 1rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -93,8 +100,9 @@
 
     .texte-connexion {
       margin-bottom: 1rem;
-      font-size: 1.1rem;
-      color: #ddd;
+      font-size: 1.15rem; /* lisibilité renforcée */
+      color: #e6e6e6;
+      line-height: 1.55;
     }
   }
 
@@ -120,17 +128,23 @@
     max-width: 700px;
     width: 100%;
     margin: 2rem auto;
-    padding: 1.2rem;
+    padding: 1.4rem;
 
-    /* ⛔ Avant : display:flex → cela l'affichait en desktop */
-    display: none; /* je masque volontairement en desktop */
+    display: none;
 
     flex-direction: row;
     justify-content: center;
-    gap: 1rem;
-    background-color: rgba(255, 255, 255, 0.05);
+    gap: 1.1rem;
+    background-color: rgba(255, 255, 255, 0.06);
     border-radius: 1rem;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+
+    button,
+    a {
+      padding: 1rem 1.2rem; /* zones tactiles plus larges */
+      font-size: 1.05rem;
+      border-radius: 0.7rem;
+    }
   }
 
   /* --- Ingrédients & étapes --- */
@@ -141,8 +155,9 @@
     h2 {
       text-align: center;
       font-family: "Playfair Display", serif;
-      color: #ff5757;
+      color: #ff6b6b;
       margin-bottom: 1rem;
+      line-height: 1.35;
     }
 
     ul,
@@ -152,12 +167,14 @@
       margin: 0 auto;
       max-width: 600px;
       text-align: center;
-      color: #ccc;
+      color: #e6e6e6;
+      line-height: 1.6;
 
       li {
-        margin-bottom: 0.6rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        padding-bottom: 0.4rem;
+        margin-bottom: 0.7rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        padding-bottom: 0.5rem;
+        font-size: 1.05rem;
       }
     }
   }
@@ -169,25 +186,24 @@
 
     .bouton-retour {
       display: inline-block;
-      background-color: #ff5757;
+      background-color: #ff6b6b;
       color: #fff;
       font-weight: 600;
-      padding: 0.8rem 1.4rem;
-      border-radius: 0.6rem;
+      padding: 1rem 1.6rem; /* zone tactile agrandie */
+      border-radius: 0.7rem;
       text-decoration: none;
       transition: background-color 0.3s ease;
+      font-size: 1.05rem;
 
       &:hover {
-        background-color: #ff3232;
+        background-color: #ff3f3f;
       }
     }
   }
 }
 
 /* -------------------------------------------------------------------
-   Gestion du comportement Desktop / Mobile pour les boutons favoris
-   Je garde l’affichage classique en desktop, et je bascule tout
-   proprement sur mobile. Code simple et clair.
+   Gestion Desktop / Mobile (favoris)
 -------------------------------------------------------------------- */
 
 /* affichage par défaut */
@@ -202,11 +218,30 @@
 /* version mobile (iPhone SE) */
 @media (max-width: 480px) {
   .desktop-only {
-    display: none !important; /* je cache les boutons desktop */
+    display: none !important;
   }
 
   .mobile-only {
-    display: flex !important; /* j'affiche uniquement les boutons pensés pour mobile */
+    display: flex !important;
+  }
+
+  /* image optimisée mobile */
+  .recette .image-recette img {
+    height: 260px; /* meilleure expérience mobile */
+  }
+
+  /* padding mobile */
+  .recette {
+    padding: 1.6rem 1rem;
+  }
+
+  /* titres */
+  .recette h1 {
+    font-size: 1.6rem;
+  }
+
+  .recette h2 {
+    font-size: 1.35rem;
   }
 }
 
@@ -252,9 +287,9 @@
   background: #ff3232;
 }
 
-/* --- Responsive iPhone SE --- */
+/* --- Responsive iPhone SE ultra petit (≤ 400px) --- */
 @media (max-width: 400px) {
   .recette {
-    padding: 1.5rem 1rem;
+    padding: 1.4rem 0.9rem;
   }
 }
