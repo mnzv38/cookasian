@@ -115,21 +115,23 @@
     }
   }
 
-  /* --- Boutons favoris (mobile) — bloc indépendant --- */
-    .actions-recette-mobile {
+  /* --- Boutons favoris version mobile --- */
+  .actions-recette-mobile {
     max-width: 700px;
     width: 100%;
     margin: 2rem auto;
     padding: 1.2rem;
-    display: flex;
-    flex-direction: row;     /* boutons côte à côte */
-    justify-content: center; /* centrage horizontal */
-    gap: 1rem;               /* espace entre les deux */
+
+    /* ⛔ Avant : display:flex → cela l'affichait en desktop */
+    display: none; /* je masque volontairement en desktop */
+
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 1rem;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   }
-
 
   /* --- Ingrédients & étapes --- */
   .ingredients-recette,
@@ -179,6 +181,32 @@
         background-color: #ff3232;
       }
     }
+  }
+}
+
+/* -------------------------------------------------------------------
+   Gestion du comportement Desktop / Mobile pour les boutons favoris
+   Je garde l’affichage classique en desktop, et je bascule tout
+   proprement sur mobile. Code simple et clair.
+-------------------------------------------------------------------- */
+
+/* affichage par défaut */
+.desktop-only {
+  display: block;
+}
+
+.mobile-only {
+  display: none;
+}
+
+/* version mobile (iPhone SE) */
+@media (max-width: 480px) {
+  .desktop-only {
+    display: none !important; /* je cache les boutons desktop */
+  }
+
+  .mobile-only {
+    display: flex !important; /* j'affiche uniquement les boutons pensés pour mobile */
   }
 }
 
