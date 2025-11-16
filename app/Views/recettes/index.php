@@ -30,8 +30,6 @@
                 </select>
             </label>
         </form>
-
-
     </header>
 
     <?php if (!empty($recettes)): ?>
@@ -39,10 +37,14 @@
             <?php foreach ($recettes as $recette): ?>
 
                 <?php
-                $image = $recette['image_url'];
-                if (!str_starts_with($image, '/assets/')) {
-                    $image = '/assets/images/recettes/' . $image;
-                }
+                $filename = htmlspecialchars($recette['image_url']);
+
+                $img400  = "/assets/images/recettes/400/{$filename}";
+                $img800  = "/assets/images/recettes/800/{$filename}";
+                $img1200 = "/assets/images/recettes/1200/{$filename}";
+
+                // fallback = version classique
+                $imgFallback = "/assets/images/recettes/{$filename}";
                 ?>
 
                 <li class="item-recette">
@@ -50,9 +52,18 @@
 
                         <figure class="image-recette">
                             <a href="/recettes/<?= htmlspecialchars($recette['slug']) ?>">
-                                <img 
-                                    src="<?= htmlspecialchars($image) ?>" 
-                                    alt="<?= htmlspecialchars($recette['titre']) ?>">
+                                <img
+                                    src="<?= $imgFallback ?>"
+                                    srcset="
+                                        <?= $img400 ?> 400w,
+                                        <?= $img800 ?> 800w,
+                                        <?= $img1200 ?> 1200w
+                                    "
+                                    sizes="(max-width: 480px) 354px,
+                                           (max-width: 900px) 700px,
+                                           1200px"
+                                    alt="<?= htmlspecialchars($recette['titre']) ?>"
+                                >
                             </a>
                             <figcaption><?= htmlspecialchars($recette['titre']) ?></figcaption>
                         </figure>
@@ -80,4 +91,3 @@
         <p>Aucune recette disponible pour le moment.</p>
     <?php endif; ?>
 </section>
-

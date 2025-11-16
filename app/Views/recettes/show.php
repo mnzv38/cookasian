@@ -15,8 +15,13 @@ if ($estConnecte && !empty($recette['id'])) {
     );
 }
 
-// Construction URL de l'image
-$image = $baseUrl . '/assets/images/recettes/' . ltrim($recette['image_url'], '/');
+// Construction URL de l'image principale
+$filename = ltrim($recette['image_url'], '/');
+
+$img400  = $baseUrl . "/assets/images/recettes/400/{$filename}";
+$img800  = $baseUrl . "/assets/images/recettes/800/{$filename}";
+$img1200 = $baseUrl . "/assets/images/recettes/1200/{$filename}";
+$imgFallback = $baseUrl . "/assets/images/recettes/{$filename}";
 
 ?>
 
@@ -27,9 +32,18 @@ $image = $baseUrl . '/assets/images/recettes/' . ltrim($recette['image_url'], '/
     </header>
 
     <figure class="image-recette">
-        <img 
+        <img
             class="image-zoomable"
-            src="<?= htmlspecialchars($image) ?>" 
+            src="<?= $imgFallback ?>"
+            srcset="
+                <?= $img400 ?> 400w,
+                <?= $img800 ?> 800w,
+                <?= $img1200 ?> 1200w
+            "
+            sizes="(max-width: 480px) 700px,
+                   (max-width: 900px) 900px,
+                   1200px"
+            fetchpriority="high"
             alt="Photographie de la recette : <?= htmlspecialchars($recette['titre']) ?> – <?= htmlspecialchars($recette['description']) ?>"
         >
     </figure>
