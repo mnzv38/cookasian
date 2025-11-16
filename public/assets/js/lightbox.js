@@ -1,35 +1,38 @@
-// Lightbox pour l’image des recettes
-
-document.addEventListener("DOMContentLoaded", () => {
+// Lightbox pour afficher l'image en grand
+document.addEventListener("DOMContentLoaded", function () {
+  // Je récupère les éléments dont j'ai besoin
   const image = document.querySelector(".image-zoomable");
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightboxImg");
-  const lightboxClose = document.getElementById("lightboxClose");
+  const closeBtn = document.getElementById("lightboxClose");
 
-  if (!image || !lightbox) return;
+  // Si jamais l'image n'existe pas, je ne fais rien
+  if (!image) {
+    return;
+  }
 
-  // OUVERTURE
-  image.addEventListener("click", () => {
-    lightbox.classList.add("lightbox-active");
+  // Quand on clique sur l'image, j'affiche la lightbox
+  image.addEventListener("click", function () {
     lightboxImg.src = image.src;
     lightboxImg.alt = image.alt;
-    lightboxClose.focus();
+    lightbox.classList.add("lightbox-active");
+    closeBtn.focus(); // pour l’accessibilité
   });
 
-  // FERMETURE PAR BOUTON
-  lightboxClose.addEventListener("click", () => {
+  // Bouton pour fermer
+  closeBtn.addEventListener("click", function () {
     lightbox.classList.remove("lightbox-active");
   });
 
-  // FERMETURE PAR CLIC FOND
-  lightbox.addEventListener("click", (e) => {
+  // Clic à l'extérieur de l'image → ferme aussi
+  lightbox.addEventListener("click", function (e) {
     if (e.target === lightbox) {
       lightbox.classList.remove("lightbox-active");
     }
   });
 
-  // FERMETURE PAR TOUCHE ESC
-  document.addEventListener("keydown", (e) => {
+  // Touche Escape → ferme la lightbox
+  document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") {
       lightbox.classList.remove("lightbox-active");
     }

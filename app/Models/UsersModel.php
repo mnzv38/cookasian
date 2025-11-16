@@ -75,5 +75,25 @@ class UsersModel
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         return $row ?: null;
     }
+
+    /**
+     * Met à jour les informations d’un utilisateur
+     * (name + email)
+     *
+     * J’ai fait simple et clair : on met juste à jour les champs envoyés.
+     */
+    public function updateUser(int $userId, array $donnees): void
+    {
+        // je prépare juste ce dont on a vraiment besoin
+        $sql = 'UPDATE users SET name = :name, email = :email WHERE id = :id';
+
+        $stmt = $this->pdo->prepare($sql);
+
+        $stmt->execute([
+            'name' => $donnees['name'],
+            'email' => $donnees['email'],
+            'id' => $userId
+        ]);
+    }
 }
 ?>
