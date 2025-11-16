@@ -6,16 +6,32 @@
         </p>
 
         <form method="get" class="form-tri-recettes">
-            <label>Trier par :</label>
-            <select name="tri" onchange="this.form.submit()">
-                <option value="pays" <?= ($_GET['tri'] ?? '') === 'pays' ? 'selected' : '' ?>>Pays d’origine (A–Z)</option>
-                <option value="titre" <?= ($_GET['tri'] ?? '') === 'titre' ? 'selected' : '' ?>>Nom de la recette (A–Z)</option>
-                <option value="difficulte" <?= ($_GET['tri'] ?? '') === 'difficulte' ? 'selected' : '' ?>>Difficulté</option>
-                <option value="preparation" <?= ($_GET['tri'] ?? '') === 'preparation' ? 'selected' : '' ?>>Temps de préparation</option>
-                <option value="cuisson" <?= ($_GET['tri'] ?? '') === 'cuisson' ? 'selected' : '' ?>>Temps de cuisson</option>
-                <option value="recentes" <?= ($_GET['tri'] ?? '') === 'recentes' ? 'selected' : '' ?>>Les plus récentes</option>
-            </select>
+            <label class="label-tri-recettes">
+                Trier par :
+                <select name="tri" class="select-tri-recettes" onchange="this.form.submit()">
+                    <option value="pays" <?= ($_GET['tri'] ?? '') === 'pays' ? 'selected' : '' ?>>
+                        Pays d’origine (A–Z)
+                    </option>
+                    <option value="titre" <?= ($_GET['tri'] ?? '') === 'titre' ? 'selected' : '' ?>>
+                        Nom de la recette (A–Z)
+                    </option>
+                    <option value="difficulte" <?= ($_GET['tri'] ?? '') === 'difficulte' ? 'selected' : '' ?>>
+                        Difficulté
+                    </option>
+                    <option value="preparation" <?= ($_GET['tri'] ?? '') === 'preparation' ? 'selected' : '' ?>>
+                        Temps de préparation
+                    </option>
+                    <option value="cuisson" <?= ($_GET['tri'] ?? '') === 'cuisson' ? 'selected' : '' ?>>
+                        Temps de cuisson
+                    </option>
+                    <option value="recentes" <?= ($_GET['tri'] ?? '') === 'recentes' ? 'selected' : '' ?>>
+                        Les plus récentes
+                    </option>
+                </select>
+            </label>
         </form>
+
+
     </header>
 
     <?php if (!empty($recettes)): ?>

@@ -145,5 +145,3 @@ $image = $baseUrl . '/assets/images/recettes/' . ltrim($recette['image_url'], '/
     </nav>
 
 </article>
-
-?>

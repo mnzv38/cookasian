@@ -2,12 +2,12 @@
 // 🧭 EN-TÊTE DU SITE COOKASIAN
 // ========================================
 
-@use "../utils/variables" as *;   // ✅ AJOUT INDISPENSABLE
+@use "../utils/variables" as *;
 @use "sass:color";
 
 .entete-site {
   background-color: $couleur-secondaire;
-  color: $couleur-texte-clair;
+  color: #ffffff;
   padding: 1.5rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -26,6 +26,11 @@
   font-family: $font-titre;
   font-size: $font-size-xl;
   color: $couleur-primaire;
+  text-decoration: none;
+}
+
+.logo-site .lien-logo:hover {
+  text-decoration: none;
 }
 
 // ========================================
@@ -41,7 +46,7 @@
 }
 
 .lien-nav {
-  color: $couleur-texte-clair;
+  color: #ffffff;
   font-size: $font-size-base;
   text-decoration: none;
   padding: 0.4rem 0.8rem;
@@ -54,8 +59,10 @@
   }
 
   &.actif {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: $couleur-primaire;
+    background-color: rgba(255, 255, 255, 0.12);
+    color: #e53935;
+    font-weight: 700;
+    text-decoration: underline;
   }
 }
 
@@ -92,7 +99,6 @@
     font-size: $font-size-lg;
   }
 
-  /* Masque la nav desktop uniquement sur mobile */
   .menu-principal,
   .zone-utilisateur {
     display: none;
