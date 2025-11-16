@@ -85,3 +85,34 @@ $transition: 0.3s ease;
 
 $mobile: 375px;     // iPhone SE — breakpoint officiel du projet
 $desktop: 1200px;   // Largeur desktop standard
+
+
+// ========================================
+// 📱 AFFICHAGE MOBILE / DESKTOP — COOKASIAN
+// (Ajout utile pour afficher/cacher proprement ce qu'il faut)
+// ========================================
+
+// Par défaut : tout ce qui est mobile-only est caché en desktop
+.mobile-only {
+  display: none;
+}
+
+// Par défaut : tout ce qui est desktop-only apparaît
+.desktop-only {
+  display: inline-flex;
+}
+
+// iPhone SE + tous écrans ≤ 480px
+@media (max-width: 480px) {
+
+  // Sur mobile on affiche ce qui est prévu pour mobile
+  .mobile-only {
+    display: inline-flex;
+  }
+
+  // Et on cache le contenu prévu uniquement pour desktop
+  .desktop-only {
+    display: none;
+  }
+}
+

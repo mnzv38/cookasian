@@ -36,7 +36,7 @@ $image = $baseUrl . '/assets/images/recettes/' . ltrim($recette['image_url'], '/
 
     <!-- LIGHTBOX -->
     <div class="lightbox" id="lightbox">
-        <button class="lightbox-close" id="lightboxClose" aria-label="Fermer l’aperçu">✖</button>
+        <button class="lightbox-close" id="lightboxClose">✖</button>
         <img id="lightboxImg" src="" alt="">
     </div>
 
@@ -65,7 +65,7 @@ $image = $baseUrl . '/assets/images/recettes/' . ltrim($recette['image_url'], '/
 
                 <?php if ($estFavori): ?>
 
-                    <!-- DESKTOP -->
+                    <!-- BOUTONS DESKTOP -->
                     <a class="bouton clair desktop-only" href="/favoris/supprimer/<?= (int)$recette['id'] ?>">
                         Retirer des favoris
                     </a>
@@ -73,17 +73,19 @@ $image = $baseUrl . '/assets/images/recettes/' . ltrim($recette['image_url'], '/
                         Voir mes favoris
                     </a>
 
-                    <!-- MOBILE -->
-                    <a class="bouton clair mobile-only" href="/favoris/supprimer/<?= (int)$recette['id'] ?>">
-                        💔 Retirer
-                    </a>
-                    <a class="bouton secondaire mobile-only" href="/mon-compte">
-                        ⭐ Mes favoris
-                    </a>
+                    <!-- BOUTONS MOBILE -->
+                    <nav class="boutons-mobile mobile-only">
+                        <a class="bouton clair" href="/favoris/supprimer/<?= (int)$recette['id'] ?>">
+                            💔 Retirer
+                        </a>
+                        <a class="bouton secondaire" href="/mon-compte">
+                            📃 Voir
+                        </a>
+                    </nav>
 
                 <?php else: ?>
 
-                    <!-- DESKTOP -->
+                    <!-- BOUTONS DESKTOP -->
                     <a class="bouton primaire desktop-only" href="/favoris/ajouter/<?= (int)$recette['id'] ?>">
                         Ajouter aux favoris
                     </a>
@@ -91,13 +93,15 @@ $image = $baseUrl . '/assets/images/recettes/' . ltrim($recette['image_url'], '/
                         Voir mes favoris
                     </a>
 
-                    <!-- MOBILE -->
-                    <a class="bouton primaire mobile-only" href="/favoris/ajouter/<?= (int)$recette['id'] ?>">
-                        ❤️ Ajouter
-                    </a>
-                    <a class="bouton secondaire mobile-only" href="/mon-compte">
-                        ⭐ Mes favoris
-                    </a>
+                    <!-- BOUTONS MOBILE -->
+                    <nav class="boutons-mobile mobile-only">
+                        <a class="bouton primaire" href="/favoris/ajouter/<?= (int)$recette['id'] ?>">
+                            ❤️ Ajouter
+                        </a>
+                        <a class="bouton secondaire" href="/mon-compte">
+                            ⭐ Mes favoris
+                        </a>
+                    </nav>
 
                 <?php endif; ?>
 

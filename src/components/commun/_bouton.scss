@@ -24,7 +24,7 @@
 }
 
 .bouton.primaire {
-  background-color: #b71c1c;  /* plus sombre = meilleur contraste */
+  background-color: #b71c1c;
   color: #ffffff;
 
   &:hover {
@@ -45,7 +45,7 @@
 
 .bouton.clair {
   background-color: #ffffff;
-  color: #7a0d0d;   /* contraste AA */
+  color: #7a0d0d;
 
   &:hover {
     background-color: #f8dcdc;
@@ -78,7 +78,7 @@
   }
 }
 
-/* Bouton Déconnexion – très lisible sur fond sombre */
+/* Bouton Déconnexion */
 .btn-deconnexion {
   background-color: transparent;
   color: #ffffff;
@@ -113,4 +113,15 @@
     transition: none;
     transform: none;
   }
+}
+
+/* === Boutons mobile – petit ajustement pour qu’ils soient propres et espacés === */
+/* Ici je mets juste un conteneur simple pour que l’affichage soit fluide */
+.boutons-mobile a {
+  width: 100%;           /* plein largeur pour avoir la même taille */
+  margin-bottom: 0.6rem; /* petit espace entre les deux */
+}
+
+.boutons-mobile a:last-child {
+  margin-bottom: 0;      /* pas d’espace en dessous du dernier */
 }
