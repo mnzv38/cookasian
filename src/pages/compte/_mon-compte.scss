@@ -68,26 +68,52 @@
 .page-compte .carte-recette {
   max-width: 420px;
   width: 100%;
-  padding-bottom: 3.5rem;
+  padding-bottom: 3rem;
   border-radius: 1.2rem;
   background-color: #2b2b33;
-  overflow: visible;
   min-height: 600px;
+  overflow: hidden;
 }
 
 /* =========================================
-   VISIBILITE DES BOUTONS
+   BOUTONS — VERSION DESKTOP
+========================================= */
+
+.page-compte .carte-recette footer.infos-recette {
+  display: flex;
+  justify-content: center;
+  gap: 1.4rem;
+  width: 100%;
+  padding-bottom: 1.5rem;
+}
+
+/* =========================================
+   BOUTONS — VERSION MOBILE
+========================================= */
+
+.infos-recette-mobile {
+  max-width: 420px;
+  width: 100%;
+  margin: 1rem auto 0 auto;
+  padding: 0.6rem 0;
+
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* =========================================
+   VISIBILITÉ RESPONSIVE
 ========================================= */
 
 .desktop-only {
-  display: inline-flex !important;
+  display: inline-flex;
 }
 
 .mobile-only {
-  display: none !important;
+  display: none;
 }
 
-/* Responsive mobile (375px) */
 @media (max-width: $mobile) {
   .desktop-only {
     display: none !important;
@@ -99,26 +125,7 @@
 }
 
 /* =========================================
-   FOOTER DES ACTIONS
-========================================= */
-
-.page-compte .carte-recette footer.infos-recette {
-  display: flex;
-  justify-content: center;
-  gap: 1.4rem;
-  width: 100%;
-  padding-bottom: 1rem;
-}
-
-.page-compte .carte-recette footer.infos-recette .bouton {
-  white-space: nowrap;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* =========================================
-   DESKTOP — 3 FAVORIS PAR LIGNE
+   RESPONSIVE — 3 COLONNES DESKTOP
 ========================================= */
 
 @media (min-width: $desktop) {
@@ -133,7 +140,7 @@
 }
 
 /* =========================================
-   MOBILE — LARGEUR MAX DES CARTES
+   MOBILE — TAILLE MAX
 ========================================= */
 
 @media (max-width: $mobile) {

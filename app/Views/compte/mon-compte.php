@@ -46,42 +46,54 @@
                                     <?= htmlspecialchars($recette['description']) ?>
                                 </p>
 
-                                <!-- ACTIONS FAVORIS -->
-                                <footer class="infos-recette">
+                                <!-- ========================= -->
+                                <!--   ACTIONS FAVORIS — DESKTOP -->
+                                <!-- ========================= -->
+                                <footer class="infos-recette desktop-only">
 
-                                    <!-- DESKTOP VERSION -->
-                                    <a class="bouton primaire desktop-only"
-                                       href="/recettes/<?= htmlspecialchars($recette['slug']) ?>">
+                                    <a class="bouton primaire"
+                                    href="/recettes/<?= htmlspecialchars($recette['slug']) ?>">
                                         Voir la recette
                                     </a>
 
-                                    <a class="bouton secondaire desktop-only"
+                                    <a class="bouton secondaire"
                                        href="/favoris/supprimer/<?= (int)$recette['id'] ?>">
                                         Retirer
                                     </a>
 
-                                    <!-- MOBILE VERSION -->
-                                    <a class="bouton primaire mobile-only"
-                                       href="/recettes/<?= htmlspecialchars($recette['slug']) ?>">
+                                </footer>
+
+                                <!-- ========================= -->
+                                <!--   ACTIONS FAVORIS — MOBILE -->
+                                <!-- ========================= -->
+                                <nav class="infos-recette-mobile mobile-only">
+
+                                    <a class="bouton primaire"
+                                    href="/recettes/<?= htmlspecialchars($recette['slug']) ?>">
                                         📃 Voir
                                     </a>
 
-                                    <a class="bouton secondaire mobile-only"
-                                       href="/favoris/supprimer/<?= (int)$recette['id'] ?>">
+                                    <a class="bouton secondaire"
+                                    href="/favoris/supprimer/<?= (int)$recette['id'] ?>">
                                         💔 Retirer
                                     </a>
 
-                                </footer>
+                                </nav>
 
                             </article>
                         </li>
                     <?php endforeach; ?>
                 </ul>
+
             <?php else: ?>
+
                 <p class="texte-compte">Tu n’as encore rien ajouté à tes favoris 💔</p>
                 <a class="bouton primaire" href="/recettes">Découvrir les recettes</a>
+
             <?php endif; ?>
         </section>
 
     </article>
 </section>
+
+?>

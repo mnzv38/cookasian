@@ -98,7 +98,7 @@
     }
   }
 
-  /* --- Boutons favoris --- */
+  /* --- Boutons favoris (desktop) --- */
   .favori-recette {
     display: flex;
     justify-content: center;
@@ -114,6 +114,22 @@
       max-width: 700px;
     }
   }
+
+  /* --- Boutons favoris (mobile) — bloc indépendant --- */
+    .actions-recette-mobile {
+    max-width: 700px;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: row;     /* boutons côte à côte */
+    justify-content: center; /* centrage horizontal */
+    gap: 1rem;               /* espace entre les deux */
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
 
   /* --- Ingrédients & étapes --- */
   .ingredients-recette,

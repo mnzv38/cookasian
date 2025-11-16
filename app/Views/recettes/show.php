@@ -61,51 +61,51 @@ $image = $baseUrl . '/assets/images/recettes/' . ltrim($recette['image_url'], '/
 
         <?php if ($estConnecte): ?>
 
-            <footer class="actions-recette">
+            <?php if ($estFavori): ?>
 
-                <?php if ($estFavori): ?>
-
-                    <!-- BOUTONS DESKTOP -->
-                    <a class="bouton clair desktop-only" href="/favoris/supprimer/<?= (int)$recette['id'] ?>">
+                <!-- VERSION DESKTOP -->
+                <footer class="actions-recette desktop-only">
+                    <a class="bouton clair" href="/favoris/supprimer/<?= (int)$recette['id'] ?>">
                         Retirer des favoris
                     </a>
-                    <a class="bouton secondaire desktop-only" href="/mon-compte">
+                    <a class="bouton secondaire" href="/mon-compte">
                         Voir mes favoris
                     </a>
+                </footer>
 
-                    <!-- BOUTONS MOBILE -->
-                    <nav class="boutons-mobile mobile-only">
-                        <a class="bouton clair" href="/favoris/supprimer/<?= (int)$recette['id'] ?>">
-                            💔 Retirer
-                        </a>
-                        <a class="bouton secondaire" href="/mon-compte">
-                            📃 Voir
-                        </a>
-                    </nav>
+                <!-- VERSION MOBILE -->
+                <nav class="actions-recette-mobile mobile-only">
+                    <a class="bouton clair" href="/favoris/supprimer/<?= (int)$recette['id'] ?>">
+                        💔 Retirer
+                    </a>
+                    <a class="bouton secondaire" href="/mon-compte">
+                        📃 Voir
+                    </a>
+                </nav>
 
-                <?php else: ?>
+            <?php else: ?>
 
-                    <!-- BOUTONS DESKTOP -->
-                    <a class="bouton primaire desktop-only" href="/favoris/ajouter/<?= (int)$recette['id'] ?>">
+                <!-- VERSION DESKTOP -->
+                <footer class="actions-recette desktop-only">
+                    <a class="bouton primaire" href="/favoris/ajouter/<?= (int)$recette['id'] ?>">
                         Ajouter aux favoris
                     </a>
-                    <a class="bouton secondaire desktop-only" href="/mon-compte">
+                    <a class="bouton secondaire" href="/mon-compte">
                         Voir mes favoris
                     </a>
+                </footer>
 
-                    <!-- BOUTONS MOBILE -->
-                    <nav class="boutons-mobile mobile-only">
-                        <a class="bouton primaire" href="/favoris/ajouter/<?= (int)$recette['id'] ?>">
-                            ❤️ Ajouter
-                        </a>
-                        <a class="bouton secondaire" href="/mon-compte">
-                            ⭐ Mes favoris
-                        </a>
-                    </nav>
+                <!-- VERSION MOBILE -->
+                <nav class="actions-recette-mobile mobile-only">
+                    <a class="bouton primaire" href="/favoris/ajouter/<?= (int)$recette['id'] ?>">
+                        ❤️ Ajouter
+                    </a>
+                    <a class="bouton secondaire" href="/mon-compte">
+                        ⭐ Mes favoris
+                    </a>
+                </nav>
 
-                <?php endif; ?>
-
-            </footer>
+            <?php endif; ?>
 
         <?php else: ?>
 
