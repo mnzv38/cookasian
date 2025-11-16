@@ -26,12 +26,13 @@
         </header>
 
         <p class="texte-principale-404">
-            La page demandée n’existe pas ou plus.
+            La page demandée n’existe <span class="mobile-break"><br></span>pas ou plus.
         </p>
 
         <p class="texte-secondaire-404">
-            Le bol de ramen a dérapé… et cette page aussi.
+            Le bol de ramen a dérapé…<span class="mobile-break"><br></span>et cette page aussi.
         </p>
+
 
         <figure class="illustration-404">
             <img 
@@ -50,4 +51,3 @@
 
 </body>
 </html>
-?>

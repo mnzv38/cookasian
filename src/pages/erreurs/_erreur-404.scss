@@ -79,3 +79,14 @@
     transform: translateY(0);
   }
 }
+
+/* 📱 Le retour à la ligne visible seulement sur mobile */
+.mobile-break {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .mobile-break {
+    display: inline;
+  }
+}
