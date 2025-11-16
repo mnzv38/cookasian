@@ -43,6 +43,31 @@
 }
 
 /* =========================================
+   BOUTON DÉCONNEXION — MOBILE SEULEMENT
+========================================= */
+
+.infos-utilisateur .bouton.secondaire.bouton-deconnexion-mobile {
+  margin: 1rem auto 0 auto;     /* centré + espace au-dessus */
+  padding:0.6rem 1.4rem;           /* taille réduite */
+  width: auto;
+  min-width: 120px;
+  max-width: 170px;
+  background-color: #fff;
+  color: $couleur-primaire;
+  border: 1px solid #fff;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  display: none;                  /* caché en desktop */
+  justify-content: center;
+}
+
+.infos-utilisateur .bouton.secondaire.bouton-deconnexion-mobile:hover {
+  background-color: #fff;
+  color: $couleur-primaire;
+  text-decoration: underline;
+}
+
+/* =========================================
    FAVORIS UTILISATEUR
 ========================================= */
 
@@ -121,6 +146,11 @@
 
   .mobile-only {
     display: inline-flex !important;
+  }
+
+  /* Bouton déconnexion visible uniquement en mobile */
+  .infos-utilisateur .bouton.secondaire.bouton-deconnexion-mobile {
+    display: inline-flex;
   }
 }
 

@@ -20,6 +20,12 @@
                 <a class="bouton secondaire" href="/mon-compte/modifier">
                     Modifier mes informations
                 </a>
+
+                <!-- Bouton uniquement en mobile pour permettre de se déconnecter facilement -->
+                <a class="bouton secondaire mobile-only bouton-deconnexion-mobile" href="/logout">
+                    Déconnexion
+                </a>
+
             </section>
         <?php endif; ?>
 
@@ -32,7 +38,6 @@
                         <li>
                             <article class="carte-recette">
 
-                                <!-- IMAGE + TITRE -->
                                 <figure class="image-recette">
                                     <img 
                                         src="<?= htmlspecialchars($baseUrl . '/assets/images/recettes/' . ltrim($recette['image_url'], '/')) ?>"
@@ -41,14 +46,10 @@
                                     <figcaption><?= htmlspecialchars($recette['titre']) ?></figcaption>
                                 </figure>
 
-                                <!-- DESCRIPTION -->
                                 <p class="contenu-recette">
                                     <?= htmlspecialchars($recette['description']) ?>
                                 </p>
 
-                                <!-- ========================= -->
-                                <!--   ACTIONS FAVORIS — DESKTOP -->
-                                <!-- ========================= -->
                                 <footer class="infos-recette desktop-only">
 
                                     <a class="bouton primaire"
@@ -63,9 +64,6 @@
 
                                 </footer>
 
-                                <!-- ========================= -->
-                                <!--   ACTIONS FAVORIS — MOBILE -->
-                                <!-- ========================= -->
                                 <nav class="infos-recette-mobile mobile-only">
 
                                     <a class="bouton primaire"
@@ -95,4 +93,4 @@
 
     </article>
 </section>
-
+?>
