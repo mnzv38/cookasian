@@ -22,9 +22,10 @@
                 </a>
 
                 <!-- Bouton uniquement en mobile pour permettre de se déconnecter facilement -->
-                <a class="bouton secondaire mobile-only bouton-deconnexion-mobile" href="/logout">
+                <a class="bouton secondaire bouton-deconnexion-mobile mobile-only" href="/deconnexion">
                     Déconnexion
                 </a>
+
 
             </section>
         <?php endif; ?>
