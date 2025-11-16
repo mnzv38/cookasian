@@ -19,41 +19,98 @@
     </header>
 
     <ul class="liste-valeurs">
+
+        <!-- VALEUR 1 : PARTAGE -->
         <li>
             <article class="carte-valeur">
                 <figure>
-                    <img class="image-valeur" src="/assets/images/accueil/partage.webp" alt="Table asiatique partagée entre amis">
+
+                    <?php
+                        $img = "partage.webp";
+                        $base = "/assets/images/accueil";
+                    ?>
+
+                    <img 
+                        class="image-valeur"
+                        src="<?= $base ?>/<?= $img ?>"
+                        srcset="
+                            <?= $base ?>/400/<?= $img ?> 400w,
+                            <?= $base ?>/800/<?= $img ?> 800w,
+                            <?= $base ?>/1200/<?= $img ?> 1200w
+                        "
+                        sizes="(max-width: 480px) 322px,
+                               (max-width: 900px) 600px,
+                               1200px"
+                        fetchpriority="high"
+                        alt="Table asiatique partagée entre amis">
+                    
                     <figcaption>Le partage</figcaption>
                 </figure>
+
                 <p class="texte-valeur">
                     Cuisiner, c’est rassembler. Nous croyons que la cuisine rapproche les gens, peu importe leurs origines.
                 </p>
             </article>
         </li>
 
+        <!-- VALEUR 2 : SIMPLICITÉ -->
         <li>
             <article class="carte-valeur">
                 <figure>
-                    <img class="image-valeur" src="/assets/images/accueil/simplicite.webp" alt="Bol de riz et baguettes en bois sur une table claire">
+                    <?php $img = "simplicite.webp"; ?>
+
+                    <img 
+                        class="image-valeur"
+                        src="<?= $base ?>/<?= $img ?>"
+                        srcset="
+                            <?= $base ?>/400/<?= $img ?> 400w,
+                            <?= $base ?>/800/<?= $img ?> 800w,
+                            <?= $base ?>/1200/<?= $img ?> 1200w
+                        "
+                        sizes="(max-width: 480px) 322px,
+                               (max-width: 900px) 600px,
+                               1200px"
+                        loading="lazy"
+                        alt="Bol de riz et baguettes en bois sur une table claire">
+
                     <figcaption>La simplicité</figcaption>
                 </figure>
+
                 <p class="texte-valeur">
                     Pas besoin de techniques compliquées : la beauté d’un plat réside dans la sincérité de ses ingrédients.
                 </p>
             </article>
         </li>
 
+        <!-- VALEUR 3 : AUTHENTICITÉ -->
         <li>
             <article class="carte-valeur">
                 <figure>
-                    <img class="image-valeur" src="/assets/images/accueil/authenticite.webp" alt="Cuisine asiatique traditionnelle au wok">
+                    <?php $img = "authenticite.webp"; ?>
+
+                    <img 
+                        class="image-valeur"
+                        src="<?= $base ?>/<?= $img ?>"
+                        srcset="
+                            <?= $base ?>/400/<?= $img ?> 400w,
+                            <?= $base ?>/800/<?= $img ?> 800w,
+                            <?= $base ?>/1200/<?= $img ?> 1200w
+                        "
+                        sizes="(max-width: 480px) 322px,
+                               (max-width: 900px) 600px,
+                               1200px"
+                        loading="lazy"
+                        alt="Cuisine asiatique traditionnelle au wok">
+
                     <figcaption>L’authenticité</figcaption>
                 </figure>
+
                 <p class="texte-valeur">
                     Nous restons fidèles aux traditions tout en les adaptant aux cuisines modernes et à la vie quotidienne.
                 </p>
             </article>
         </li>
+
     </ul>
 </section>
 
