@@ -1,6 +1,8 @@
 @use "../utils/variables" as *;
 @use "sass:color";
 
+/* === MENU MOBILE === */
+
 .nav-mobile {
   position: fixed;
   bottom: 0;
@@ -35,16 +37,44 @@
   font-size: 1.2rem;
 }
 
+/* Texte sous l'icône */
 .nav-mobile-texte {
   font-size: 0.70rem;
   margin-top: 0.2rem;
-  color: #8a8a8a; /* ✔ Contraste corrigé WCAG */
+  color: #8a8a8a; /* ✔ Contraste correct */
 }
 
+/* Lien actif */
 .nav-mobile-lien.actif {
   color: $couleur-primaire;
+
+  .icone-nav {
+    stroke: $couleur-primaire;
+  }
 }
 
+/* === ICÔNES SVG INLINE === */
+/* Base alignée */
+.icone-nav {
+  width: 26px;
+  height: 26px;
+  stroke: #222;
+  display: block;
+  margin: 0 auto 0.30rem auto;
+  transform: translateY(1px); /* équilibre général */
+}
+
+/* Icône Histoire (SVG plus haut visuellement) */
+.icone-nav.book-open {
+  transform: translateY(3px); /* descend légèrement l’icône */
+}
+
+/* Icône Recettes (trop basse visuellement) */
+.icone-nav.soup-icon {
+  transform: translateY(-1px); /* remonte légèrement */
+}
+
+/* === RESPONSIVE : iPhone SE et petits écrans === */
 @media (max-width: 480px) {
 
   .nav-mobile {
@@ -58,5 +88,26 @@
 
   footer.footer-site {
     display: none !important;
+  }
+}
+
+/* iPhone SE spécifiquement (375px) */
+@media (max-width: 375px) {
+  .icone-nav {
+    width: 22px;
+    height: 22px;
+    transform: translateY(1px);
+  }
+
+  .icone-nav.book-open {
+    transform: translateY(3px);
+  }
+
+  .icone-nav.soup-icon {
+    transform: translateY(-1px);
+  }
+
+  .nav-mobile-texte {
+    font-size: 0.68rem;
   }
 }

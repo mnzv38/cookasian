@@ -14,9 +14,9 @@
 
     h1 {
       font-family: "Playfair Display", serif;
-      color: #ff6b6b; /* contraste légèrement renforcé */
+      color: #ff6b6b;
       font-size: 2rem;
-      line-height: 1.35; /* meilleure lisibilité */
+      line-height: 1.35;
     }
   }
 
@@ -38,7 +38,7 @@
   }
 
   .infos-recette {
-    background-color: rgba(255, 255, 255, 0.06); /* contraste légèrement renforcé */
+    background-color: rgba(255, 255, 255, 0.06);
     padding: 1.5rem;
     border-radius: 1rem;
     max-width: 700px;
@@ -60,7 +60,7 @@
 
       li {
         margin-bottom: 0.5rem;
-        color: #e6e6e6; /* lisibilité renforcée */
+        color: #e6e6e6;
         font-size: 1.05rem;
         line-height: 1.5;
       }
@@ -81,13 +81,12 @@
     p {
       color: #ddd;
       font-size: 1.05rem;
-      line-height: 1.6; /* meilleure lisibilité */
+      line-height: 1.6;
       max-width: 700px;
       margin: 0 auto;
     }
   }
 
-  /* --- Encadré connexion --- */
   .bloc-connexion-recette {
     background-color: rgba(255, 255, 255, 0.06);
     padding: 1.5rem;
@@ -100,13 +99,12 @@
 
     .texte-connexion {
       margin-bottom: 1rem;
-      font-size: 1.15rem; /* lisibilité renforcée */
+      font-size: 1.15rem;
       color: #e6e6e6;
       line-height: 1.55;
     }
   }
 
-  /* --- Boutons favoris (desktop) --- */
   .favori-recette {
     display: flex;
     justify-content: center;
@@ -132,6 +130,7 @@
 
     display: none;
 
+    display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 1.1rem;
@@ -141,13 +140,13 @@
 
     button,
     a {
-      padding: 1rem 1.2rem; /* zones tactiles plus larges */
+      padding: 1rem 1.2rem;
       font-size: 1.05rem;
       border-radius: 0.7rem;
+      white-space: nowrap;
     }
   }
 
-  /* --- Ingrédients & étapes --- */
   .ingredients-recette,
   .etapes-recette {
     margin-bottom: 2rem;
@@ -179,7 +178,6 @@
     }
   }
 
-  /* --- Bouton retour --- */
   .navigation-recette {
     text-align: center;
     margin-top: 2rem;
@@ -189,7 +187,7 @@
       background-color: #ff6b6b;
       color: #fff;
       font-weight: 600;
-      padding: 1rem 1.6rem; /* zone tactile agrandie */
+      padding: 1rem 1.6rem;
       border-radius: 0.7rem;
       text-decoration: none;
       transition: background-color 0.3s ease;
@@ -203,10 +201,9 @@
 }
 
 /* -------------------------------------------------------------------
-   Gestion Desktop / Mobile (favoris)
+   Desktop / Mobile (favoris)
 -------------------------------------------------------------------- */
 
-/* affichage par défaut */
 .desktop-only {
   display: block;
 }
@@ -215,7 +212,6 @@
   display: none;
 }
 
-/* version mobile (iPhone SE) */
 @media (max-width: 480px) {
   .desktop-only {
     display: none !important;
@@ -225,23 +221,41 @@
     display: flex !important;
   }
 
-  /* image optimisée mobile */
   .recette .image-recette img {
-    height: 260px; /* meilleure expérience mobile */
+    height: 260px;
   }
 
-  /* padding mobile */
   .recette {
     padding: 1.6rem 1rem;
   }
 
-  /* titres */
   .recette h1 {
     font-size: 1.6rem;
   }
 
   .recette h2 {
     font-size: 1.35rem;
+  }
+
+  /* 🎯 Correction du problème boutons sur 2 lignes */
+  .actions-recette-mobile {
+    flex-wrap: nowrap;
+    gap: .8rem;
+
+    a,
+    button {
+      padding: 0.75rem 0.9rem;
+      font-size: 0.95rem;
+      min-width: auto;
+      white-space: nowrap;
+    }
+  }
+}
+
+/* ≦ 400px */
+@media (max-width: 400px) {
+  .recette {
+    padding: 1.4rem 0.9rem;
   }
 }
 
@@ -285,11 +299,4 @@
 
 .lightbox-close:hover {
   background: #ff3232;
-}
-
-/* --- Responsive iPhone SE ultra petit (≤ 400px) --- */
-@media (max-width: 400px) {
-  .recette {
-    padding: 1.4rem 0.9rem;
-  }
 }
