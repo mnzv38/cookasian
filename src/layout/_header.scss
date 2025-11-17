@@ -24,7 +24,7 @@
 
 .logo-site .lien-logo {
   font-family: $font-titre;
-  font-size: $font-size-xl;
+  font-size: 2rem; // rendu plus lisible pour un logo
   color: $couleur-primaire;
   text-decoration: none;
 }
@@ -96,7 +96,7 @@
   }
 
   .logo-site .lien-logo {
-    font-size: $font-size-lg;
+    font-size: 1.6rem; // version mobile agréable
   }
 
   .menu-principal,
