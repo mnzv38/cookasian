@@ -1,4 +1,5 @@
-<section class="page-auth">
+<!-- <section class="page-auth"> -->
+<section class="page-auth page-auth-inscription">
     <article class="carte-auth">
         <h1 class="titre-page">Inscription</h1>
 
@@ -49,7 +50,7 @@
                        type="password"
                        name="confirmation"
                        required
-                       placeholder="Confirme ton mot de passe"
+                       placeholder="Mot de passe"
                        autocomplete="new-password">
 
                 <span class="icone-mdp">

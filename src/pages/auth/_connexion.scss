@@ -75,7 +75,7 @@
       svg {
         width: 22px;
         height: 22px;
-        stroke: $couleur-texte;
+        stroke: $couleur-fond !important; // noir, ici !important permet que le noir prenne le dessus
       }
     }
   }

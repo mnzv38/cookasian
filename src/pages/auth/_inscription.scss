@@ -53,6 +53,7 @@
     border-radius: $rayon-md;
     border: 1px solid rgba(255, 255, 255, 0.1);
     background-color: rgba(255, 255, 255, 0.05);
+
     color: $couleur-texte;
 
     &:focus {
@@ -73,10 +74,12 @@
       align-items: center;
       justify-content: center;
 
+
       svg {
         width: 22px;
         height: 22px;
         stroke: $couleur-texte;
+
       }
     }
   }
@@ -128,6 +131,14 @@
     width: 19px;
     height: 19px;
   }
+
+  /* Passage du texte sur 2 lignes */
+  .lien-alternatif p {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+    text-align: center;
+  }
 }
 
 .lien-alternatif {
@@ -143,10 +154,16 @@
   }
 }
 
+
 .message-erreur {
   color: #ff7b7b;
   background-color: rgba(255, 0, 0, 0.1);
   border-radius: $rayon-md;
   padding: $espace-sm;
   margin-bottom: $espace-md;
+}
+
+/* Permet icône svg blanche uniquement sur la page INSCRIPTION */
+.page-auth.page-auth-inscription .champ-mdp-container .icone-mdp svg {
+  stroke: $couleur-texte !important; // ici !important permet que le blanc prenne le dessus
 }
