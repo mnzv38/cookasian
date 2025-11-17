@@ -59,25 +59,28 @@
     }
   }
 
-  .groupe-champ {
-    display: flex;
-    align-items: center;
-    gap: $espace-xs;
+  /* === Champ mot de passe avec SVG intégré === */
+  .champ-mdp-container {
+    position: relative;
 
-    .champ {
-      flex: 1;
-    }
-
-    .btn-oeil {
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: $couleur-texte;
-      padding: 0 $espace-sm;
-      border-radius: $rayon-md;
+    .icone-mdp {
+      position: absolute;
+      right: 0.8rem;
+      top: 2.45rem;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        width: 22px;
+        height: 22px;
+        stroke: $couleur-texte;
+      }
     }
   }
 
+  /* Texte d’aide */
   .aide {
     display: block;
     margin-top: $espace-2xs;
@@ -85,6 +88,7 @@
     font-size: 0.9rem;
   }
 
+  /* Case à cocher */
   .bloc-choix {
     display: flex;
     align-items: center;
@@ -94,11 +98,13 @@
       width: 1rem;
       height: 1rem;
     }
+
     .texte-choix {
       text-align: left;
     }
   }
 
+  /* Bouton principal */
   .bouton {
     background-color: $couleur-primaire;
     color: $couleur-texte;
@@ -114,11 +120,21 @@
   }
 }
 
+/* === Responsive iPhone SE (375px) === */
+@media (max-width: 380px) {
+  .champ-mdp-container .icone-mdp svg {
+    width: 19px;
+    height: 19px;
+  }
+}
+
 .lien-alternatif {
   font-size: $font-size-base;
+
   a {
     color: $couleur-primaire;
     text-decoration: none;
+
     &:hover {
       text-decoration: underline;
     }

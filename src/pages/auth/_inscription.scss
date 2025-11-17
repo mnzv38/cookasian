@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   min-height: 80vh;
-  padding: $espace-3xl $espace-md; // 🔹 Ajout : espace au-dessus et en dessous pour ne pas passer sous le header
+  padding: $espace-3xl $espace-md;
   background: linear-gradient(
     180deg,
     color.adjust($couleur-secondaire, $lightness: 5%),
@@ -60,22 +60,24 @@
     }
   }
 
-  .groupe-champ {
-    display: flex;
-    align-items: center;
-    gap: $espace-xs;
+  /* === Champ mot de passe + icône === */
+  .champ-mdp-container {
+    position: relative;
 
-    .champ {
-      flex: 1;
-    }
-
-    .btn-oeil {
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: $couleur-texte;
-      padding: 0 $espace-sm;
-      border-radius: $rayon-md;
+    .icone-mdp {
+      position: absolute;
+      right: 0.8rem;
+      top: 2.45rem;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        width: 22px;
+        height: 22px;
+        stroke: $couleur-texte;
+      }
     }
   }
 
@@ -86,6 +88,7 @@
     font-size: 0.9rem;
   }
 
+  /* Politique confidentialité */
   .bloc-choix {
     display: flex;
     align-items: center;
@@ -95,11 +98,15 @@
       width: 1rem;
       height: 1rem;
     }
+
     .texte-choix {
       text-align: left;
+      font-size: 0.78rem;
+      line-height: 1;
     }
   }
 
+  /* Bouton principal */
   .bouton {
     background-color: $couleur-primaire;
     color: $couleur-texte;
@@ -115,11 +122,21 @@
   }
 }
 
+/* iPhone SE */
+@media (max-width: 380px) {
+  .champ-mdp-container .icone-mdp svg {
+    width: 19px;
+    height: 19px;
+  }
+}
+
 .lien-alternatif {
   font-size: $font-size-base;
+
   a {
     color: $couleur-primaire;
     text-decoration: none;
+
     &:hover {
       text-decoration: underline;
     }
