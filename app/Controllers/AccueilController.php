@@ -5,27 +5,27 @@ use Cookasian\Controller;
 use Cookasian\Models\RecettesModel;
 
 /**
- * Contrôleur de la page d'accueil Cookasian
- * Affiche les recettes populaires et le texte d'introduction.
+ * Contrôleur de ma page d'accueil.
+ * C’est ici que je prépare les données que je veux afficher sur l'écran.
  */
 class AccueilController extends Controller
 {
     public function index(): void
     {
-        // 🔥 Titre propre pour SEO (le header ajoutera automatiquement " - Cookasian")
+        // Je prépare mon titre pour la balise <title>
         $pageTitle = 'Accueil';
 
-        // Meta description SEO
+        // Ma petite description pour le SEO
         $pageDescription = 'Découvrez les meilleures recettes de cuisine asiatique : ramen, sushi, pad thaï et bien plus encore.';
 
-        // Le modèle gère sa propre connexion à la base
+        // J'appelle mon modèle pour récupérer les recettes populaires
         $model = new RecettesModel();
         $recettesPopulaires = $model->getRecettesPopulaires(3);
 
-        // Envoi des données à la vue
+        // J'envoie toutes mes données à la vue correspondante
         $this->render('accueil/accueil', [
-            'pageTitle'      => $pageTitle,
-            'pageDescription'=> $pageDescription,
+            'pageTitle'          => $pageTitle,
+            'pageDescription'    => $pageDescription,
             'recettesPopulaires' => $recettesPopulaires
         ]);
     }
