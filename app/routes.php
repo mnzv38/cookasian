@@ -1,7 +1,7 @@
 <?php
 /**
- * Fichier de définition des routes COOKASIAN
- * Centralise toutes les routes du site
+ * Ici je liste toutes les routes de mon site.
+ * Ça me permet de voir tout d’un coup et de m’y retrouver plus facilement.
  */
 
 use Cookasian\Router;
@@ -57,6 +57,7 @@ $router->get('/contact', 'ContactController', 'index');
 $router->post('/contact', 'ContactController', 'index');
 
 // ==============================
-// 🔁 Retourne l'objet Router
+// Je retourne le routeur pour que index.php puisse l'utiliser
 // ==============================
 return $router;
+?>
