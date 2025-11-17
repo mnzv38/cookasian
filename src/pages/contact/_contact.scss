@@ -30,13 +30,22 @@
     align-items: flex-start;
     gap: $espace-3xl;
 
+    /* 🌐 Fenêtres étroites (481px → 990px)
+       On met les coordonnées SOUS le formulaire,
+       sans toucher au rendu mobile SE (≤ 480px) */
+    @media (min-width: 481px) and (max-width: 990px) {
+      flex-direction: column;
+      align-items: center;
+      gap: $espace-2xl;
+    }
+
     /* 📱 Correction ciblée iPhone SE */
     @media (max-width: 480px) {
       flex-direction: column;
       gap: $espace-xl;
-      padding-bottom: 5rem; /* la nav apparaît tout de suite */
+      padding-bottom: 5rem; /* nav mobile visible immédiatement */
       width: 100%;
-      overflow-x: hidden; /* empêche tout débordement */
+      overflow-x: hidden;
     }
   }
 
@@ -55,6 +64,11 @@
       max-width: 100%;
       width: 100%;
       padding: $espace-lg;
+    }
+
+    /* 🌐 Éviter tout écrasement 481–990px */
+    @media (min-width: 481px) and (max-width: 990px) {
+      max-width: 100%;
     }
   }
 
@@ -104,7 +118,13 @@
     max-width: 350px;
     margin: 0 auto;
 
-    /* 📱 Correction anti-débordement mobile */
+    /* 🌐 Entre 481px et 990px : largeur 100% */
+    @media (min-width: 481px) and (max-width: 990px) {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    /* 📱 Correction anti-débordement mobile SE */
     @media (max-width: 480px) {
       max-width: 100%;
       width: 100%;

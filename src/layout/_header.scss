@@ -24,7 +24,7 @@
 
 .logo-site .lien-logo {
   font-family: $font-titre;
-  font-size: 2rem; // rendu plus lisible pour un logo
+  font-size: 2rem;
   color: $couleur-primaire;
   text-decoration: none;
 }
@@ -84,7 +84,36 @@
 }
 
 // ========================================
-// 📱 MOBILE
+// 🌐 BREAKPOINT 990px
+// ========================================
+
+@media (max-width: 990px) {
+
+  .entete-site {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.2rem 1rem;
+  }
+
+  .logo-site .lien-logo {
+    font-size: 1.8rem;
+  }
+
+  .menu-principal .liste-nav {
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .zone-utilisateur {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+  }
+}
+
+// ========================================
+// 📱 MOBILE 480px
 // ========================================
 
 @media (max-width: 480px) {
@@ -96,7 +125,7 @@
   }
 
   .logo-site .lien-logo {
-    font-size: 1.6rem; // version mobile agréable
+    font-size: 1.6rem;
   }
 
   .menu-principal,
