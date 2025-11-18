@@ -3,7 +3,7 @@
   top: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #ff5757;
+  background-color: #e05b5b; // couleur par défaut
   color: #fff;
   padding: 0.8rem 1.6rem;
   border-radius: 0.6rem;
@@ -12,6 +12,46 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   z-index: 200;
   animation: fadeOut 3s ease forwards;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* supprime la marge par défaut du <p> */
+.flash-message p {
+  margin: 0;
+}
+
+/* bouton X */
+.fermer-toast {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  margin-left: auto;
+  line-height: 1;
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fermer-toast:hover {
+  opacity: 1;
+}
+
+/* 🟢 Quand on AJOUTE aux favoris */
+.flash-ajout {
+  background-color: #2ecc71 !important; // vert
+  color: #0d3b1e !important;            // très lisible
+}
+
+/* 🔴 Quand on SUPPRIME des favoris */
+.flash-suppression {
+  background-color: #e05b5b !important; // ton rouge doux, moins saturé
+  color: #ffffff !important;
 }
 
 @keyframes fadeOut {

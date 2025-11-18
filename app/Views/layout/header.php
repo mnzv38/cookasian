@@ -36,8 +36,15 @@
 <body>
 
 <?php if (!empty($_SESSION['flash_message'])): ?>
-    <div class="flash-message">
-        <?= htmlspecialchars($_SESSION['flash_message']) ?>
+    <?php
+        $flashMessage = (string) $_SESSION['flash_message'];
+        $flashClass = str_contains($flashMessage, 'ajoutée')
+            ? 'flash-ajout'
+            : 'flash-suppression';
+    ?>
+    <div class="flash-message <?= $flashClass ?>">
+        <p><?= htmlspecialchars($flashMessage) ?></p>
+        <button class="fermer-toast">×</button>
     </div>
     <?php unset($_SESSION['flash_message']); ?>
 <?php endif; ?>
@@ -63,7 +70,7 @@
     <div class="zone-utilisateur">
         <?php if (!empty($_SESSION['utilisateur'])): ?>
             <p class="nom-utilisateur">
-                <?= htmlspecialchars($_SESSION['utilisateur']['name']) ?> 👋
+                <?= htmlspecialchars($_SESSION['utilisateur']['name']) ?> 🟢
             </p>
             <a class="btn-deconnexion" href="<?= $baseUrl ?>/deconnexion">Déconnexion</a>
         <?php else: ?>
@@ -73,3 +80,12 @@
 </header>
 
 <?php require __DIR__ . '/nav-mobile.php'; ?>
+
+
+<script>
+document.addEventListener("click", function(e) {
+  if (e.target.classList.contains("fermer-toast")) {
+      e.target.parentElement.style.display = "none";
+  }
+});
+</script>
