@@ -1,20 +1,24 @@
 <nav class="nav-mobile">
+    <!-- Menu du bas pour la version mobile du site -->
     <ul class="nav-mobile-liste">
 
-        <!-- Accueil -->
+        <!-- Lien Accueil -->
         <li>
             <a href="/" class="nav-mobile-lien <?= ($pageActive ?? '') === 'accueil' ? 'actif' : '' ?>">
+                <!-- Petite icône en forme de maison -->
                 <svg class="icone-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M3 12L12 3l9 9" />
                     <path d="M5 10v10h5v-5h4v5h5V10" />
                 </svg>
+                <!-- Texte du lien -->
                 <span class="nav-mobile-texte">Accueil</span>
             </a>
         </li>
 
-        <!-- Recettes -->
+        <!-- Lien Recettes -->
         <li>
             <a href="/recettes" class="nav-mobile-lien <?= ($pageActive ?? '') === 'recettes' ? 'actif' : '' ?>">
+                <!-- Icône “bol de soupe” pour les recettes -->
                 <svg class="icone-nav soup-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z"/>
                     <path d="M7 21h10"/>
@@ -27,9 +31,10 @@
             </a>
         </li>
 
-        <!-- Histoire -->
+        <!-- Lien Notre histoire -->
         <li>
             <a href="/notre-histoire" class="nav-mobile-lien <?= ($pageActive ?? '') === 'histoire' ? 'actif' : '' ?>">
+                <!-- Icône livre ouvert -->
                 <svg class="icone-nav book-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 7v14"/>
                     <path d="M16 12h2"/>
@@ -42,10 +47,12 @@
             </a>
         </li>
 
-        <!-- Compte -->
+        <!-- Lien Compte
+             J’affiche soit “Mon compte”, soit “Connexion”, selon l’état de connexion -->
         <?php if (!empty($_SESSION['utilisateur'])): ?>
             <li>
                 <a href="/mon-compte" class="nav-mobile-lien <?= ($pageActive ?? '') === 'compte' ? 'actif' : '' ?>">
+                    <!-- Icône utilisateur -->
                     <svg class="icone-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                         <circle cx="12" cy="8" r="4"/>
                         <path d="M4 20c1.7-4 4.5-6 8-6s6.3 2 8 6"/>
@@ -56,6 +63,7 @@
         <?php else: ?>
             <li>
                 <a href="/connexion" class="nav-mobile-lien <?= ($pageActive ?? '') === 'connexion' ? 'actif' : '' ?>">
+                    <!-- Même icône utilisateur pour garder la cohérence -->
                     <svg class="icone-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                         <circle cx="12" cy="8" r="4"/>
                         <path d="M4 20c1.7-4 4.5-6 8-6s6.3 2 8 6"/>
@@ -65,9 +73,10 @@
             </li>
         <?php endif; ?>
 
-        <!-- Contact -->
+        <!-- Lien Contact -->
         <li>
             <a href="/contact" class="nav-mobile-lien <?= ($pageActive ?? '') === 'contact' ? 'actif' : '' ?>">
+                <!-- Icône d’enveloppe -->
                 <svg class="icone-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
                     <rect x="3" y="5" width="18" height="14" rx="2"/>
                     <path d="M3 7l9 6 9-6"/>

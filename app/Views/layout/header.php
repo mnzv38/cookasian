@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <?php
+    // Je prépare ici mon titre et ma meta description pour le SEO
     $meta = isset($metaDescription) ? (string)$metaDescription : "Cookasian - Blog de recettes asiatiques authentiques";
     $pageName = isset($title) ? (string)$title : "Accueil";
     $ttl = $pageName . " - Cookasian";
@@ -14,6 +15,7 @@
     <meta name="description" content="<?= htmlspecialchars($meta) ?>">
     <title><?= htmlspecialchars($ttl) ?></title>
 
+    <!-- Petite icône du site -->
     <link 
         rel="icon"
         href="data:image/svg+xml,
@@ -22,21 +24,22 @@
         </svg>"
     >
 
+    <!-- Préchargement et chargement du CSS principal -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link rel="preload" href="<?= $baseUrl ?>/assets/css/main.css" as="style">
     <link rel="stylesheet" href="<?= $baseUrl ?>/assets/css/main.css">
 
+    <!-- Petit script pour la lightbox (rien de compliqué) -->
     <script src="/assets/js/lightbox.js" defer></script>
-
-
 </head>
 
 <body>
 
 <?php if (!empty($_SESSION['flash_message'])): ?>
     <?php
+        // Je récupère mon message temporaire pour l’afficher en haut de la page
         $flashMessage = (string) $_SESSION['flash_message'];
         $flashClass = str_contains($flashMessage, 'ajoutée')
             ? 'flash-ajout'
@@ -51,10 +54,12 @@
 
 <header class="entete-site">
 
+    <!-- Mon logo en version simple -->
     <figure class="logo-site">
         <a href="<?= $baseUrl ?>/" class="lien-logo">🥢 Cookasian</a>
     </figure>
 
+    <!-- Menu principal du site -->
     <nav class="menu-principal">
         <ul class="liste-nav">
             <li><a href="<?= $baseUrl ?>/" class="lien-nav <?= ($pageActive ?? '') === 'accueil' ? 'actif' : '' ?>">Accueil</a></li>
@@ -67,6 +72,7 @@
         </ul>
     </nav>
 
+    <!-- Petite zone utilisateur (connecté / pas connecté) -->
     <div class="zone-utilisateur">
         <?php if (!empty($_SESSION['utilisateur'])): ?>
             <p class="nom-utilisateur">
@@ -81,8 +87,8 @@
 
 <?php require __DIR__ . '/nav-mobile.php'; ?>
 
-
 <script>
+// Petit script fermer le message flash correspondant au toast
 document.addEventListener("click", function(e) {
   if (e.target.classList.contains("fermer-toast")) {
       e.target.parentElement.style.display = "none";
