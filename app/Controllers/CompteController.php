@@ -94,6 +94,9 @@ class CompteController extends Controller
                 // Je mets aussi la session à jour pour rester connecté(e)
                 $_SESSION['utilisateur']['email'] = $newEmail;
 
+                // Je mets aussi à jour le nom stocké dans la session sinon le header garde l'ancien
+                $_SESSION['utilisateur']['name'] = $nom;
+
                 // Message de confirmation
                 $success = "Informations mises à jour avec succès.";
 
