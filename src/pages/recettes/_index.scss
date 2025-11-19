@@ -181,11 +181,11 @@
         background-color: #b71c1c;
         background-image: none;
         background-image: none;
-        box-shadow: none !important; /* ⭐ supprime l’ombre héritée */
+        box-shadow: none !important; /* supprime l’ombre héritée */
         position: relative;
-        isolation: isolate; /* ⭐ empêche la fusion avec l’ombre parent */
+        isolation: isolate; /* empêche la fusion avec l’ombre parent */
         z-index: 3;
-        /* ⭐ contraste validé Lighthouse mais invisible visuellement */
+        /* contraste validé Lighthouse mais invisible visuellement */
         color: #ffffff;
         border: 1px solid rgba(255, 255, 255, 0.20);
 

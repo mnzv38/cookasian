@@ -34,22 +34,22 @@
 
 .bouton.secondaire {
   border: 2px solid #b71c1c;
-  color: #ffffff; /* ✔ Correction contraste */
-  background-color: rgba(183, 28, 28, 0.22); /* ✔ WCAG compatible */
+  color: #ffffff;
+  background-color: rgba(183, 28, 28, 0.22);
 
   &:hover {
-    background-color: #b71c1c;
+    background-color: #6a1a1a;
     color: #ffffff;
   }
 }
 
 .bouton.clair {
   background-color: #ffffff;
-  color: #7a0d0d;
+  color: #5a0000;
 
   &:hover {
     background-color: #f8dcdc;
-    color: #5c0000;
+    color: #3f0000;
   }
 
   &:focus-visible {
@@ -58,10 +58,23 @@
   }
 }
 
+.recettes-populaires .bouton.clair {
+  background-color: #ffffff;
+  color: #5a0000;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+
+  &:hover {
+    background-color: #f8dcdc;
+    color: #5c0000;
+  }
+}
+
+
+
 /* Bouton Connexion dans le header */
 .btn-connexion {
   background-color: #ffffff;
-  color: #7a0d0d;
+  color: #5a0000;
   padding: 0.6rem 1rem;
   border-radius: 0.6rem;
   font-weight: 600;
