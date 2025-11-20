@@ -1,25 +1,37 @@
 @use "../../utils/variables" as *;
 @use "sass:color";
 
+/* ============================================================
+   PAGE 404 — Quand un contenu n’existe pas ou plus.
+   Objectif : un petit écran clair, rassurant, propre et centré.
+   Design volontairement simple pour ne pas “agresser” l’utilisateur.
+============================================================ */
+
 .page-404 {
-  min-height: 100vh;
+  min-height: 100vh;                  // occupe tout l’écran
   display: flex;
   align-items: center;
   justify-content: center;
   padding: $espace-xl;
-  background-color: $couleur-fond;
+  background-color: $couleur-fond;    // fond sombre du site (cohérence globale)
 }
 
+/* ------------------------------------------------------------
+   Carte blanche au centre — comme un petit carton d’erreur
+------------------------------------------------------------- */
 .carte-404 {
-  background-color: #ffffff;
+  background-color: #ffffff;          // contraste fort avec la page sombre
   padding: $espace-2xl $espace-xl;
   border-radius: $rayon-lg;
   box-shadow: $ombre-lg;
   max-width: 420px;
   text-align: center;
-  animation: fadeIn 0.4s ease;
+  animation: fadeIn 0.4s ease;        // petite apparition douce
 }
 
+/* ------------------------------------------------------------
+   Titre principal (404)
+------------------------------------------------------------- */
 .carte-404 h1 {
   font-family: $font-titre;
   color: $couleur-primaire;
@@ -27,25 +39,34 @@
   margin-bottom: $espace-md;
 }
 
-/* Paragraphe générique */
+/* ------------------------------------------------------------
+   Texte générique de la carte
+------------------------------------------------------------- */
 .carte-404 p {
   font-size: $font-size-base;
   line-height: $line-height-relaxed;
 }
 
-/* 🔥 Phrase principale en gras et très lisible */
+/* ------------------------------------------------------------
+   Phrase forte — lisible ET un peu plus “humaine”
+------------------------------------------------------------- */
 .texte-principale-404 {
-  color: #222222;
-  font-weight: 700; /* gras réel */
+  color: #222222;        // très lisible sur fond blanc
+  font-weight: 700;      // vrai gras
   margin-bottom: $espace-sm;
 }
 
-/* 🌙 Phrase secondaire plus douce */
+/* ------------------------------------------------------------
+   Phrase d’explication — plus douce
+------------------------------------------------------------- */
 .texte-secondaire-404 {
   color: #555555;
   margin-bottom: $espace-xl;
 }
 
+/* ------------------------------------------------------------
+   Illustration — petit visuel optionnel
+------------------------------------------------------------- */
 .illustration-404 img {
   width: 200px;
   margin: 0 auto $espace-xl auto;
@@ -53,7 +74,9 @@
   box-shadow: $ombre-sm;
 }
 
-/* 🔥 Bouton clairement lisible au hover */
+/* ------------------------------------------------------------
+   Bouton retour — simple, clair, lisible, cohérent avec ton site
+------------------------------------------------------------- */
 .bouton-retour {
   display: inline-block;
   background-color: $couleur-primaire;
@@ -64,11 +87,14 @@
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: color.adjust($couleur-primaire, $lightness: 8%); /* plus clair = plus lisible */
-    color: #fff; /* garde le blanc */
+    background-color: color.adjust($couleur-primaire, $lightness: 8%);
+    color: #fff; 
   }
 }
 
+/* ------------------------------------------------------------
+   Petite animation d’apparition (effet doux)
+------------------------------------------------------------- */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -79,4 +105,3 @@
     transform: translateY(0);
   }
 }
-

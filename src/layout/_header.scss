@@ -33,7 +33,7 @@
   text-decoration: none;
 
   &:hover {
-    text-decoration: none; // volontairement sobre pour rester élégant
+    text-decoration: none; 
   }
 }
 
@@ -66,7 +66,7 @@
   // État actif = micro-ajustement pour cohérence design system
   &.actif {
     background-color: rgba(255, 255, 255, 0.12);
-    color: color.adjust($couleur-primaire, $lightness: -10%); // 🔧 remplace #e53935 pour cohérence
+    color: color.adjust($couleur-primaire, $lightness: -10%); 
     font-weight: 700;
     text-decoration: underline;
   }
