@@ -1,54 +1,70 @@
 @use "../../utils/variables" as *;
 @use "sass:color";
 
+/* ============================================================
+   PAGE CONTACT
+   Ici je gère le formulaire, les coordonnées et le responsive.
+   Tout est centré, lisible, et pensé pour l’iPhone SE.
+============================================================ */
+
 .page-contact {
   background-color: $couleur-secondaire;
   color: $couleur-texte;
   padding: $espace-3xl $espace-md;
 
+  /* --- Conteneur global (largeur max + centrage) --- */
   .contenu-contact {
     width: 100%;
     max-width: 1100px;
     margin: 0 auto;
   }
 
+  /* --- Titre principal de la page --- */
   .titre-page {
     text-align: center;
     color: $couleur-primaire;
     margin-bottom: $espace-md;
   }
 
+  /* --- Petit texte d'introduction --- */
   .texte-intro {
     text-align: center;
     color: $couleur-texte-secondaire;
     margin-bottom: $espace-2xl;
   }
 
+  /* ============================================================
+     WRAPPER PRINCIPAL : FORMULAIRE + COORDONNÉES
+     - Desktop → côte à côte
+     - Tablet 481–990px → alignés sous forme de colonne
+     - iPhone SE (≤480px) → colonne compacte + anti-débordement
+  ============================================================= */
   .bloc-contact {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: $espace-3xl;
 
-    /* 🌐 Fenêtres étroites (481px → 990px)
-       On met les coordonnées SOUS le formulaire,
-       sans toucher au rendu mobile SE (≤ 480px) */
     @media (min-width: 481px) and (max-width: 990px) {
       flex-direction: column;
       align-items: center;
       gap: $espace-2xl;
     }
 
-    /* 📱 Correction ciblée iPhone SE */
     @media (max-width: 480px) {
       flex-direction: column;
       gap: $espace-xl;
-      padding-bottom: 5rem; /* nav mobile visible immédiatement */
+      padding-bottom: 5rem;   /* laisse respirer la nav mobile */
       width: 100%;
-      overflow-x: hidden;
+      overflow-x: hidden;     /* empêche tout débordement horizontal */
     }
   }
 
+  /* ============================================================
+     FORMULAIRE DE CONTACT
+     - Style sombre, lisible, arrondi discret
+     - Largeur maîtrisée pour toutes résolutions
+  ============================================================= */
   .formulaire-contact {
     flex: 2;
     background-color: color.adjust($couleur-secondaire, $lightness: 5%);
@@ -59,19 +75,17 @@
     max-width: 600px;
     margin: 0 auto;
 
-    /* 📱 Empêcher débordement en 375px */
     @media (max-width: 480px) {
       max-width: 100%;
-      width: 100%;
       padding: $espace-lg;
     }
 
-    /* 🌐 Éviter tout écrasement 481–990px */
     @media (min-width: 481px) and (max-width: 990px) {
       max-width: 100%;
     }
   }
 
+  /* --- Un champ = label + input/textarea --- */
   .champ {
     display: flex;
     flex-direction: column;
@@ -95,12 +109,14 @@
       }
     }
 
+    /* Textarea plus grande + redimensionnement vertical */
     .zone-texte {
       min-height: 140px;
       resize: vertical;
     }
   }
 
+  /* --- Placement bouton Envoyer --- */
   .actions-formulaire {
     text-align: right;
 
@@ -109,6 +125,9 @@
     }
   }
 
+  /* ============================================================
+     COORDONNÉES (carte claire, lisible)
+  ============================================================= */
   .coordonnees-contact {
     flex: 1;
     background-color: color.adjust($couleur-secondaire, $lightness: 8%);
@@ -117,14 +136,13 @@
     box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     max-width: 350px;
     margin: 0 auto;
+    text-align: left;
 
-    /* 🌐 Entre 481px et 990px : largeur 100% */
     @media (min-width: 481px) and (max-width: 990px) {
       max-width: 100%;
       width: 100%;
     }
 
-    /* 📱 Correction anti-débordement mobile SE */
     @media (max-width: 480px) {
       max-width: 100%;
       width: 100%;
@@ -136,8 +154,6 @@
       margin-bottom: $espace-sm;
       text-align: center;
     }
-
-    text-align: left;
 
     .nom-structure {
       font-weight: 600;
@@ -167,6 +183,7 @@
     }
   }
 
+  /* --- Messages succès / erreurs du formulaire --- */
   .message-succes {
     text-align: center;
     color: #4ef8a2;
