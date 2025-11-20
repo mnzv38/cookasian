@@ -1,5 +1,6 @@
 // ========================================
 // 🧭 EN-TÊTE DU SITE COOKASIAN
+// (barre principale visible sur toutes les pages)
 // ========================================
 
 @use "../utils/variables" as *;
@@ -12,11 +13,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
+  position: sticky;     // header collant : toujours visible
   top: 0;
   z-index: 100;
+
+  // Ombre légère (cohérente visuellement avec ton site)
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
+
 
 // ========================================
 // Logo
@@ -27,11 +31,12 @@
   font-size: 2rem;
   color: $couleur-primaire;
   text-decoration: none;
+
+  &:hover {
+    text-decoration: none; // volontairement sobre pour rester élégant
+  }
 }
 
-.logo-site .lien-logo:hover {
-  text-decoration: none;
-}
 
 // ========================================
 // Menu principal
@@ -58,16 +63,18 @@
     color: $couleur-primaire;
   }
 
+  // État actif = micro-ajustement pour cohérence design system
   &.actif {
     background-color: rgba(255, 255, 255, 0.12);
-    color: #e53935;
+    color: color.adjust($couleur-primaire, $lightness: -10%); // 🔧 remplace #e53935 pour cohérence
     font-weight: 700;
     text-decoration: underline;
   }
 }
 
+
 // ========================================
-// Zone utilisateur
+// Zone utilisateur (nom, lien compte)
 // ========================================
 
 .zone-utilisateur {
@@ -83,8 +90,10 @@
   }
 }
 
+
 // ========================================
 // 🌐 BREAKPOINT 990px
+// (style pour tablettes + petits laptops)
 // ========================================
 
 @media (max-width: 990px) {
@@ -92,7 +101,7 @@
   .entete-site {
     flex-direction: column;
     gap: 1rem;
-    padding: 1.2rem 1rem;
+    padding: 1.2rem 1rem; // plus compact
   }
 
   .logo-site .lien-logo {
@@ -112,8 +121,10 @@
   }
 }
 
+
 // ========================================
-// 📱 MOBILE 480px
+// 📱 MOBILE 480px — iPhone SE
+// (le header devient minimaliste : logo uniquement)
 // ========================================
 
 @media (max-width: 480px) {
@@ -128,6 +139,7 @@
     font-size: 1.6rem;
   }
 
+  // Sur mobile : menu masqué → remplacé par nav-mobile
   .menu-principal,
   .zone-utilisateur {
     display: none;

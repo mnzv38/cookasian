@@ -1,9 +1,16 @@
-// 🧩 Ce sont des blocs de code réutilisables, comme des “recettes”.
+// ========================================
+// 🧩 MIXINS SASS — Cookasian
+// (Blocs réutilisables : comme des petites "recettes")
+// ========================================
 
 @use "sass:color";
-@use "variables" as vars;
+@use "utils/variables" as vars; // 🔧 chemin corrigé pour correspondre à ton tree
 
-/* === MIXIN — CENTRER FLEX === */
+
+// -----------------------------------------------------
+// 🌟 FLEX — Centrage rapide
+// (Pratique pour aligner des éléments proprement)
+// -----------------------------------------------------
 @mixin flex-center($direction: row, $gap: 0) {
   display: flex;
   flex-direction: $direction;
@@ -12,7 +19,11 @@
   gap: $gap;
 }
 
-/* === MIXIN — BOUTON STYLÉ === */
+
+// -----------------------------------------------------
+// 🎛️ BOUTON — Style de base
+// (Couleurs dynamiques liées au design system)
+// -----------------------------------------------------
 @mixin bouton($fond: vars.$couleur-primaire, $texte: vars.$couleur-texte) {
   background-color: $fond;
   color: $texte;
@@ -28,7 +39,11 @@
   }
 }
 
-/* === MIXIN — TEXTE AVEC TRONCATURE === */
+
+// -----------------------------------------------------
+// ✂️ TRONCATURE DE TEXTE
+// (Limiter l'affichage d'un texte à X lignes)
+// -----------------------------------------------------
 @mixin texte-tronque($lignes: 2) {
   display: -webkit-box;
   -webkit-line-clamp: $lignes;

@@ -1,28 +1,32 @@
 // ========================================
-// PIED DE PAGE — COOKASIAN
+// 🦶 PIED DE PAGE — COOKASIAN
+// (zone finale présente sur tout le site)
 // ========================================
 
-@use "../utils/variables" as *;   /* ✅ AJOUT NECESSAIRE */
+@use "../utils/variables" as *;
 @use "sass:color";
 
+
 // ========================================
-// 1. STYLE GENERAL DU FOOTER
+// 1. STYLE GLOBAL DU FOOTER
 // ========================================
 
 .footer-site {
-  background-color: $couleur-fond;
+  background-color: $couleur-fond;          
   color: $couleur-texte-clair;
   padding: $espace-2xl $espace-md;
   text-align: center;
   font-size: $font-size-sm;
   border-top: none;
   margin-top: 0;
+
   position: relative;
-  z-index: 1;
   width: 100%;
+  z-index: 1; // sous le header et nav-mobile
   box-shadow: none;
 }
 
+// Petite ligne "tampon" pour une transition nette avec le contenu
 .footer-site::before {
   content: "";
   position: absolute;
@@ -34,14 +38,15 @@
   z-index: 3;
 }
 
+
 // ========================================
-// 2. LIENS
+// 2. LIENS DU FOOTER
 // ========================================
 
 .footer-site a {
   color: $couleur-primaire;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color $transition;
 
   &:hover {
     text-decoration: underline;
@@ -49,8 +54,9 @@
   }
 }
 
+
 // ========================================
-// 3. TEXTE
+// 3. TEXTES
 // ========================================
 
 .footer-site p {
@@ -58,6 +64,7 @@
   margin-bottom: $espace-sm;
   color: $couleur-texte-principal;
 }
+
 
 // ========================================
 // 4. NAVIGATION DU FOOTER
@@ -68,19 +75,23 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+
   gap: $espace-md;
   list-style: none;
   padding: 0;
   margin: $espace-sm 0 0 0;
 }
 
+
 // ========================================
-// 5. RESPONSIVE MOBILE
+// 5. RESPONSIVE MOBILE — iPhone SE
+// (juste un ajustement de padding + direction)
 // ========================================
 
 @media (max-width: $mobile) {
+
   .footer-site {
-    padding: $espace-xl $espace-md;
+    padding: $espace-xl $espace-md; // un peu plus compact
   }
 
   .footer-site nav ul {

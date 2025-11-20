@@ -2,6 +2,7 @@
 
 // ========================================
 // 🧱 MODULES SASS
+// (Chargement des outils nécessaires : variables, mixins, fonctions)
 // ========================================
 
 @use "sass:color";
@@ -9,15 +10,19 @@
 @use "utils/mixins" as *;
 @use "utils/functions" as *;
 
+
 // ========================================
 // 🔄 RESET & BASE
+// (Reset CSS + styles de base généraux du site)
 // ========================================
 
 @use "layout/reset";
 @use "layout/base";
 
+
 // ========================================
 // 🧩 LAYOUT
+// (Header / Navigation mobile / Footer communs à toutes les pages)
 // ========================================
 
 @use "layout/header";
@@ -27,14 +32,17 @@
 
 // ========================================
 // 🎨 COMPONENTS
+// (Petites briques réutilisables partout dans le site)
 // ========================================
 
 @use "components/commun/bouton";
 @use "components/commun/carte-recette";
-@use "components/commun/flash";   // ✅ AJOUT OBLIGATOIRE
+@use "components/commun/flash";   // Petit toast d'information
+
 
 // ========================================
 // 📄 PAGES
+// (Styles spécifiques pour chaque page du site)
 // ========================================
 
 // Accueil
@@ -59,14 +67,13 @@
 // Contact
 @use "pages/contact/contact";
 
-
 // Erreurs
 @use "pages/erreurs/erreur-404";
 
 
-
 // ========================================
 // 🌍 STYLES GLOBAUX
+// (Ce qui s'applique partout sur le site)
 // ========================================
 
 // Réinitialisation universelle
@@ -76,22 +83,27 @@
   box-sizing: border-box;
 }
 
-// Comportement de défilement fluide
+// Défilement fluide
 html {
   scroll-behavior: smooth;
 }
 
-// Style général du body
+// Style global du body
 body {
   font-family: $font-principale;
   background-color: $couleur-fond;
   color: $couleur-texte;
   line-height: 1.6;
+
+  // ⚠ Utile pour éviter le scroll horizontal
+  // (à surveiller : masque aussi d'éventuels débordements)
   overflow-x: hidden;
 }
 
+
 // ========================================
 // 🧱 UTILITAIRES
+// (Classes très simples utilisées à différents endroits)
 // ========================================
 
 .container {
@@ -100,9 +112,11 @@ body {
   margin: 0 auto;
 }
 
+// Classe utilitaire globale
 .hidden {
-  display: none !important;
+  display: none !important; // utilisé pour masquer totalement un élément
 }
+
 
 // ========================================
 // 🔗 LIENS GLOBAUX
@@ -154,12 +168,14 @@ p {
   line-height: $line-height-normal;
 }
 
+
 // ========================================
 // 🖼️ IMAGES
+// (Comportement global des images sur le site)
 // ========================================
 
 img {
   max-width: 100%;
   display: block;
-  border-radius: 4px;
+  border-radius: 4px; // petit arrondi léger commun
 }

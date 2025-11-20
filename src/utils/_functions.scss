@@ -1,19 +1,31 @@
-// 🧮 C’est ta calculatrice intelligente.
-// Tu peux créer des mini formules pour automatiser des choses.
+// ========================================
+// 🧮 FUNCTIONS SASS — Cookasian
+// (Mini-outils pour manipuler les couleurs
+//  et générer facilement des dégradés)
+// ========================================
 
 @use "sass:color";
 
-/* === FUNCTION — RENDRE UNE COULEUR PLUS CLAIRE === */
+// -----------------------------------------------------
+// ✨ Éclaircir une couleur
+// (Pratique pour créer un hover plus doux)
+// -----------------------------------------------------
 @function eclaircir($couleur, $pourcentage) {
   @return color.adjust($couleur, $lightness: $pourcentage);
 }
 
-/* === FUNCTION — RENDRE UNE COULEUR PLUS FONCÉE === */
+// -----------------------------------------------------
+// 🌑 Assombrir une couleur
+// (Utile pour les ombres ou les focus)
+// -----------------------------------------------------
 @function assombrir($couleur, $pourcentage) {
   @return color.adjust($couleur, $lightness: -$pourcentage);
 }
 
-/* === FUNCTION — GÉNÉRER UN DÉGRADÉ EN DEUX COULEURS === */
+// -----------------------------------------------------
+// 🎨 Générer un dégradé
+// (Angle par défaut : 45° pour rester cohérent avec ton style)
+// -----------------------------------------------------
 @function degrade($couleur1, $couleur2, $angle: 45deg) {
   @return linear-gradient($angle, $couleur1, $couleur2);
 }

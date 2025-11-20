@@ -1,24 +1,32 @@
 @use "../utils/variables" as *;
 @use "sass:color";
 
-/* === MENU MOBILE === */
+/* ========================================
+   📱 MENU MOBILE (NAV-BOTTOM)
+   Affiché uniquement sur iPhone SE et petits écrans
+======================================== */
 
 .nav-mobile {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #fafafa;
-  border-top: 1px solid #e0e0e0;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
-  display: none;
-  z-index: 500;
+
+  // Fond très clair spécifique au mobile
+  background-color: color.adjust($couleur-texte, $lightness: 95%);
+
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
+
+  display: none; // activé uniquement en mobile
+  z-index: 500;  // volontairement haut (passe au-dessus du header)
 }
 
 .nav-mobile-liste {
   list-style: none;
   margin: 0;
   padding: 0.6rem 0.2rem;
+
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -29,19 +37,21 @@
   flex: 1;
   min-width: 0;
   text-decoration: none;
-  color: #222;
+  color: $couleur-secondaire;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+
   font-size: 1.2rem;
 }
 
-/* Texte sous l'icône */
+/* Texte sous l’icône */
 .nav-mobile-texte {
   font-size: 0.70rem;
   margin-top: 0.2rem;
-  color:#555555; 
+  color: color.adjust($couleur-secondaire, $lightness: 30%);
 }
 
 /* Lien actif */
@@ -53,46 +63,60 @@
   }
 }
 
-/* === ICÔNES SVG INLINE === */
-/* Base alignée */
+/* ========================================
+   Icônes inline SVG
+======================================== */
+
 .icone-nav {
   width: 26px;
   height: 26px;
-  stroke: #222;
+  stroke: $couleur-secondaire;
   display: block;
   margin: 0 auto 0.30rem auto;
-  transform: translateY(1px); /* équilibre général */
+
+  // Alignement légèrement remonté pour l’équilibre visuel
+  transform: translateY(1px);
 }
 
-/* Icône Histoire (SVG plus haut visuellement) */
+/* Icone Histoire → naturellement placée un peu plus haut */
 .icone-nav.book-open {
-  transform: translateY(3px); /* descend légèrement l’icône */
+  transform: translateY(3px);
 }
 
-/* Icône Recettes (trop basse visuellement) */
+/* Icone Recettes → légèrement trop basse */
 .icone-nav.soup-icon {
-  transform: translateY(-1px); /* remonte légèrement */
+  transform: translateY(-1px);
 }
 
-/* === RESPONSIVE : iPhone SE et petits écrans === */
+
+/* ========================================
+   RESPONSIVE — iPhone SE / 480px
+======================================== */
 @media (max-width: 480px) {
 
   .nav-mobile {
     display: block;
   }
 
+  // On masque le menu desktop pour ne garder QUE le menu mobile
   .menu-principal,
   .zone-utilisateur {
     display: none !important;
   }
 
   footer.footer-site {
-    display: none !important;
+    display: none !important; // évite les conflits footer/menu mobile
   }
 }
 
-/* iPhone SE spécifiquement (375px) */
+
+/* ========================================
+   Spécifique iPhone SE 375px
+   (petit ajustement typographique)
+======================================== */
+
 @media (max-width: 375px) {
+
   .icone-nav {
     width: 22px;
     height: 22px;

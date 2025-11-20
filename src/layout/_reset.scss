@@ -2,12 +2,13 @@
 
 // ========================================
 // 🔄 RESET CSS MODERNE — COOKASIAN
-// Égalise le rendu sur tous les navigateurs
+// Remet tous les navigateurs au même niveau
 // ========================================
 
 
 // ========================================
 // 1. BASES UNIVERSELLES
+// (On neutralise les styles imposés par les navigateurs)
 // ========================================
 
 *,
@@ -18,13 +19,14 @@
   box-sizing: border-box;
 }
 
+
 // ========================================
 // 2. HTML & BODY
 // ========================================
 
 html {
-  font-size: 100%;
-  -webkit-text-size-adjust: 100%;
+  font-size: 100%;                // base 16px → parfait pour le rem
+  -webkit-text-size-adjust: 100%; // empêche Safari de gonfler les textes
   scroll-behavior: smooth;
 }
 
@@ -33,10 +35,13 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  // Cohérence avec le design system global
   background-color: $couleur-fond;
   color: $couleur-texte;
   line-height: 1.5;
 }
+
 
 // ========================================
 // 3. TYPOGRAPHIE
@@ -49,8 +54,8 @@ h4,
 h5,
 h6,
 p {
-  margin: 0;
-  font-weight: inherit;
+  margin: 0;            // les resets suppriment les marges natives
+  font-weight: inherit; // laissé au thème global
 }
 
 h1,
@@ -66,13 +71,14 @@ p {
   line-height: 1.6;
 }
 
+
 // ========================================
 // 4. LIENS, LISTES, TABLES
 // ========================================
 
 a {
   text-decoration: none;
-  color: inherit;
+  color: inherit; // laisse les couleurs au thème principal
 }
 
 ul,
@@ -84,6 +90,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
 
 // ========================================
 // 5. FORMULAIRES
@@ -110,8 +117,9 @@ input[type="search"] {
 }
 
 textarea {
-  resize: vertical;
+  resize: vertical; // évite le casse-design horizontal
 }
+
 
 // ========================================
 // 6. IMAGES & MÉDIAS
@@ -126,6 +134,7 @@ svg {
   max-width: 100%;
   height: auto;
 }
+
 
 // ========================================
 // 7. AUTRES ÉLÉMENTS
@@ -145,23 +154,26 @@ legend {
   padding: 0;
 }
 
-// ✅ Suppression définitive des lignes horizontales parasites
+// Suppression des lignes horizontales parasites
 hr {
-  display: none; // <— plus aucune ligne insérée ni visible
+  display: none;
   border: 0;
   margin: 0;
   height: 0;
 }
 
+
 // ========================================
 // 8. ACCESSIBILITÉ
 // ========================================
 
+// Style de focus accessible (cohérent avec ton design rouge)
 :focus {
   outline: 2px solid $couleur-primaire;
   outline-offset: 3px;
 }
 
+// Si l’utilisateur demande moins d’animations
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;

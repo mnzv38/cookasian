@@ -3,12 +3,12 @@
 // Styles fondamentaux partagés sur tout le site
 // ========================================
 
-// Import des variables
 @use "../utils/variables" as *;
 @use "sass:color";
 
 // ========================================
 // 1. STRUCTURE DE PAGE
+// (mise en page générale : body → header → main → footer)
 // ========================================
 
 html,
@@ -16,14 +16,15 @@ body {
   height: 100%;
 }
 
+// Structure en colonne : header → contenu → footer
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100vh;   // le footer reste en bas même sans contenu
 }
 
 main.contenu-principal {
-  flex: 1 0 auto;
+  flex: 1 0 auto;       // prend toute la hauteur disponible
   padding-bottom: $espace-3xl;
   background-color: $couleur-fond;
   position: relative;
@@ -31,6 +32,7 @@ main.contenu-principal {
   width: 100%;
 }
 
+// Petit correctif visuel (transition propre entre sections)
 main.contenu-principal::after {
   content: "";
   position: absolute;
@@ -43,42 +45,52 @@ main.contenu-principal::after {
   pointer-events: none;
 }
 
+// Footer jamais écrasé
 .footer-site {
   flex-shrink: 0;
 }
 
+// Dernière section espacée naturellement
 main.contenu-principal > section:last-of-type {
   margin-bottom: $espace-3xl;
 }
+
 
 // ========================================
 // 1B. RÈGLES GÉNÉRALES DE STRUCTURE
 // ========================================
 
 html {
-  font-size: 100%;
+  font-size: 100%;                    // base rem = 16px
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
 
+// Style général du body
 body {
   font-family: $font-principale;
   color: $couleur-texte-principal;
   background-color: $couleur-fond;
   line-height: $line-height-normal;
   font-weight: $font-weight-normal;
+
+  // ⚠ Utile pour éviter débordements horizontaux
   overflow-x: hidden;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+// Toutes les sections occupent naturellement 100%
 section {
   width: 100%;
   display: block;
 }
 
+
 // ========================================
 // 2. TEXTES GÉNÉRAUX
+// (Paragraphes + titres standardisés pour tout le site)
 // ========================================
 
 p {
@@ -94,7 +106,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $font-titre;
+  font-family: $font-titre;        // cohérence Cookasian
   color: $couleur-primaire;
   font-weight: $font-weight-bold;
   line-height: $line-height-tight;
@@ -116,6 +128,7 @@ small {
   color: $couleur-texte-secondaire;
 }
 
+
 // ========================================
 // 3. LIENS & BOUTONS
 // ========================================
@@ -128,10 +141,11 @@ a {
   &:hover,
   &:focus {
     color: color.adjust($couleur-primaire, $lightness: 5%);
-    text-decoration: underline;
+    text-decoration: underline;     // lisibilité + accessibilité
   }
 }
 
+// Tous les boutons héritent du font global
 button {
   cursor: pointer;
   font-family: inherit;
@@ -145,6 +159,7 @@ button {
     outline-offset: 2px;
   }
 }
+
 
 // ========================================
 // 4. IMAGES & MÉDIAS
@@ -160,6 +175,7 @@ svg {
   height: auto;
   border: 0;
 }
+
 
 // ========================================
 // 5. FORMULAIRES DE BASE
@@ -186,7 +202,10 @@ select:focus {
   background-color: rgba(255, 255, 255, 0.08);
 }
 
-::placeholder { color: $couleur-texte-secondaire; }
+::placeholder {
+  color: $couleur-texte-secondaire;
+}
+
 
 // ========================================
 // 6. LISTES & BLOCS D’INFORMATIONS
@@ -205,6 +224,7 @@ li {
   color: $couleur-texte-principal;
 }
 
+// Bloc informations : utilisé dans mon compte
 .bloc-infos {
   display: flex;
   flex-direction: column;
@@ -241,6 +261,7 @@ li {
   }
 }
 
+// Version compacte
 .bloc-infos.compacte {
   padding: 1rem;
 
@@ -260,6 +281,7 @@ li {
   }
 }
 
+
 // ========================================
 // 7. UTILITAIRES
 // ========================================
@@ -274,10 +296,10 @@ li {
 
 // ========================================
 // 📱 AFFICHAGE MOBILE / DESKTOP – COOKASIAN
-// (Ajout pour gérer ce qui doit s’afficher selon la taille d’écran)
+// (Exactement les mêmes règles que dans _variables.scss)
 // ========================================
 
-// Par défaut (desktop)
+// Desktop par défaut
 .mobile-only {
   display: none;
 }
@@ -286,7 +308,7 @@ li {
   display: inline-flex;
 }
 
-// iPhone SE et mobiles ≤ 480px
+// iPhone SE + mobiles ≤ 480px
 @media (max-width: 480px) {
 
   .mobile-only {
@@ -297,4 +319,3 @@ li {
     display: none;
   }
 }
-

@@ -1,22 +1,25 @@
 // ========================================
-// 🎨 DESIGN SYSTEM COOKASIAN (version complete et coherente)
+// 🎨 DESIGN SYSTEM COOKASIAN
+// (Version complète, stable, et pensée mobile-first)
 // ========================================
+
 
 // ----------------------------------------
 // 🎨 COULEURS
 // ----------------------------------------
 
-$couleur-primaire: #ff5757;      // Rouge asiatique principal
-$couleur-secondaire: #1e1e24;    // Noir bleute (fond principal)
-$couleur-accent: #ffa726;        // Dore/orange pour les details
+$couleur-primaire: #ff5757;      // Rouge signature Cookasian
+$couleur-secondaire: #1e1e24;    // Fond sombre principal
+$couleur-accent: #ffa726;        // Doré/orange pour les details
 
-$couleur-texte: #ffffff;               // Texte clair par defaut
-$couleur-texte-secondaire: #cccccc;    // Texte gris clair secondaire
-$couleur-texte-principal: #e6e6e6;     // Texte lisible sur fond sombre
-$couleur-texte-clair: #ffffff;         // Alias pratique pour textes sur fond colore
+$couleur-texte: #ffffff;               // Texte clair (par défaut)
+$couleur-texte-secondaire: #cccccc;    // Texte gris pour sous-infos
+$couleur-texte-principal: #e6e6e6;     // Texte plus lisible sur sombre
+$couleur-texte-clair: #ffffff;         // Alias pratique (utile dans les cartes)
 
-$couleur-fond: #1e1e24;                // Fond general du site
-$couleur-carte: rgba(255, 255, 255, 0.05); // Fond semi-transparent des cartes
+$couleur-fond: #1e1e24;                // Fond global du site
+$couleur-carte: rgba(255, 255, 255, 0.05); // Fond semi-transparent (effet verre)
+
 
 // ----------------------------------------
 // ✍️ TYPOGRAPHIE
@@ -37,17 +40,18 @@ $font-size-4xl: 3rem;     // 48px
 $font-size-5xl: 3.5rem;   // 56px
 
 // Interlignes
-$line-height-tight: 1.1;      // compact
-$line-height-normal: 1.5;     // standard
-$line-height-relaxed: 1.8;    // plus aere
+$line-height-tight: 1.1;        // style "hero"
+$line-height-normal: 1.5;       // par défaut
+$line-height-relaxed: 1.8;      // textes plus aérés
 
 // Poids
 $font-weight-normal: 400;
 $font-weight-medium: 500;
 $font-weight-bold: 700;
 
+
 // ----------------------------------------
-// 📏 ESPACEMENTS
+// 📏 ESPACEMENTS (mobile-first)
 // ----------------------------------------
 
 $espace-2xs: 0.125rem;  // 2px
@@ -58,6 +62,7 @@ $espace-lg: 1.5rem;     // 24px
 $espace-xl: 2rem;       // 32px
 $espace-2xl: 3rem;      // 48px
 $espace-3xl: 4rem;      // 64px
+
 
 // ----------------------------------------
 // 🟦 FORMES ET OMBRES
@@ -73,44 +78,49 @@ $ombre-md: 0 4px 6px rgba(0, 0, 0, 0.3);
 $ombre-lg: 0 6px 12px rgba(0, 0, 0, 0.35);
 $ombre-xl: 0 8px 16px rgba(0, 0, 0, 0.4);
 
+
 // ----------------------------------------
 // ⏱️ TRANSITIONS
 // ----------------------------------------
 
 $transition: 0.3s ease;
 
+
 // ----------------------------------------
 // 📱 BREAKPOINTS
+// (Mobile-first — iPhone SE = taille de référence)
 // ----------------------------------------
 
-$mobile: 375px;     // iPhone SE — breakpoint officiel du projet
-$desktop: 1200px;   // Largeur desktop standard
+$mobile: 375px;       // taille exacte iPhone SE
+$desktop: 1200px;     // grille desktop
+
+// NB : le breakpoint 480px sert pour les écrans mobiles un peu plus larges
+// (utilisé dans plusieurs composants)
 
 
 // ========================================
-// 📱 AFFICHAGE MOBILE / DESKTOP — COOKASIAN
-// (Ajout utile pour afficher/cacher proprement ce qu'il faut)
+// 📱 AFFICHAGE MOBILE / DESKTOP
+// (Classes globales utilisées partout dans les vues)
 // ========================================
 
-// Par défaut : tout ce qui est mobile-only est caché en desktop
+// Par défaut, le site est pensé pour desktop
+.desktop-only {
+  display: inline-flex; // logique sur tes boutons
+}
+
 .mobile-only {
   display: none;
 }
 
-// Par défaut : tout ce qui est desktop-only apparaît
-.desktop-only {
-  display: inline-flex;
-}
-
-// iPhone SE + tous écrans ≤ 480px
+// iPhone SE + petits mobiles
 @media (max-width: 480px) {
 
-  // Sur mobile on affiche ce qui est prévu pour mobile
+  // Mobile : on affiche les éléments pensés pour mobile
   .mobile-only {
     display: inline-flex;
   }
 
-  // Et on cache le contenu prévu uniquement pour desktop
+  // Et on masque les éléments desktop
   .desktop-only {
     display: none;
   }
