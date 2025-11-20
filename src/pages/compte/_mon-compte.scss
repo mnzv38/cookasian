@@ -1,9 +1,15 @@
 @use "../../utils/variables" as *;   
 @use "sass:color";
 
-/* =========================================
-   PAGE MON COMPTE
-========================================= */
+/* ============================================================
+   PAGE : MON COMPTE
+   Ici j'affiche les infos de l’utilisateur + la liste de ses favoris.
+   Le style reste cohérent avec Mes Favoris et Modifier Compte :
+   - centrage
+   - fonds sombres
+   - arrondis doux
+   - typographies Playfair / Quicksand
+============================================================ */
 
 .page-compte {
   display: flex;
@@ -15,7 +21,8 @@
 }
 
 /* =========================================
-   INFOS UTILISATEUR
+    BLOC : Informations utilisateur
+   (email, nom, etc.)
 ========================================= */
 
 .infos-utilisateur {
@@ -44,7 +51,7 @@
 }
 
 /* =========================================
-   BOUTON DÉCONNEXION — MOBILE SEULEMENT
+   Bouton "Déconnexion" — uniquement visible sur mobile
 ========================================= */
 
 .infos-utilisateur .bouton.secondaire.bouton-deconnexion-mobile {
@@ -58,7 +65,7 @@
   border: 1px solid #fff;
   border-radius: 0.5rem;
   text-decoration: none;
-  display: none;
+  display: none;   /* affiché seulement en mobile */
   justify-content: center;
 }
 
@@ -69,7 +76,7 @@
 }
 
 /* =========================================
-   FAVORIS UTILISATEUR
+   BLOC : Favoris utilisateur
 ========================================= */
 
 .favoris-utilisateur h2 {
@@ -89,6 +96,7 @@
 
 /* =========================================
    CARTE FAVORITE
+   (j'utilise la carte recette globale, mais adaptée ici)
 ========================================= */
 
 .page-compte .carte-recette {
@@ -144,7 +152,7 @@
 }
 
 /* =========================================
-   VISIBILITÉ RESPONSIVE
+   VISIBILITÉ Desktop / Mobile
 ========================================= */
 
 .desktop-only {
@@ -164,6 +172,7 @@
     display: inline-flex !important;
   }
 
+   /* Le bouton déconnexion mobile apparaît ici */
   .infos-utilisateur .bouton.secondaire.bouton-deconnexion-mobile {
     display: inline-flex;
   }
@@ -185,7 +194,7 @@
 }
 
 /* =========================================
-   MOBILE — TAILLE MAX
+   MOBILE — TAILLE MAX largeur contrôlée
 ========================================= */
 
 @media (max-width: $mobile) {

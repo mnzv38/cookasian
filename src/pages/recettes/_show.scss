@@ -1,6 +1,21 @@
-/* === PAGE RECETTE (show.php) === */
+/* ================================================================
+   🥢 PAGE RECETTE (show.php)
+   Fichier dédié à l’affichage d’une seule recette :
+   - titre
+   - image principale + zoom/lightbox
+   - informations (temps, portions, pays)
+   - description
+   - favoris (desktop / mobile)
+   - ingrédients + étapes
+   - bouton de retour
+   Style sobre, lisible et cohérent avec tout le site.
+================================================================ */
 
-/* --- Structure générale --- */
+/* ------------------------------------------------------------
+   STRUCTURE GLOBALE DE LA PAGE
+   Le conteneur central .recette englobe absolument tout.
+------------------------------------------------------------ */
+
 .recette {
   max-width: 900px;
   margin: 0 auto;
@@ -8,6 +23,9 @@
   color: #fff;
   font-family: "Quicksand", sans-serif;
 
+    /* -------------------------------
+     TITRE PRINCIPAL
+  ------------------------------- */
   .entete-recette {
     text-align: center;
     margin-bottom: 2rem;
@@ -20,6 +38,10 @@
     }
   }
 
+  /* ------------------------------------------------------------
+     IMAGE PRINCIPALE + LIGHTBOX
+     → arrondie, centrée, avec ombre douce
+  ------------------------------------------------------------ */
   .image-recette {
     max-width: 700px;
     margin: 0 auto 2rem auto;
@@ -33,10 +55,14 @@
       height: 380px;
       object-fit: cover;
       display: block;
-      cursor: zoom-in;
+      cursor: zoom-in; /* indique la lightbox */
     }
   }
 
+
+/* ------------------------------------------------------------
+     BLOC INFORMATIONS (origine, difficulté, temps, portions…)
+  ------------------------------------------------------------ */
   .infos-recette {
     background-color: rgba(255, 255, 255, 0.06);
     padding: 1.5rem;
@@ -67,6 +93,9 @@
     }
   }
 
+    /* ------------------------------------------------------------
+     DESCRIPTION GÉNÉRALE DE LA RECETTE
+  ------------------------------------------------------------ */
   .description-recette {
     text-align: center;
     margin-bottom: 2rem;
@@ -87,6 +116,9 @@
     }
   }
 
+    /* ------------------------------------------------------------
+     MESSAGE INVITANT À SE CONNECTER (si non connecté)
+  ------------------------------------------------------------ */
   .bloc-connexion-recette {
     background-color: rgba(255, 255, 255, 0.06);
     padding: 1.5rem;
@@ -105,6 +137,9 @@
     }
   }
 
+    /* ------------------------------------------------------------
+     BOUTONS FAVORIS – VERSION DESKTOP
+  ------------------------------------------------------------ */
   .favori-recette {
     display: flex;
     justify-content: center;
@@ -126,14 +161,17 @@
     }
   }
 
-  /* --- Boutons favoris version mobile --- */
+    /* ------------------------------------------------------------
+     BOUTONS FAVORIS – VERSION MOBILE
+     Masqué par défaut → visible uniquement <480px
+  ------------------------------------------------------------ */
   .actions-recette-mobile {
     max-width: 700px;
     width: 100%;
     margin: 2rem auto;
     padding: 1.4rem;
 
-    display: none;
+    display: none;  /* affiché via media query */
 
     flex-direction: row;
     justify-content: center;
@@ -147,10 +185,13 @@
       padding: 1rem 1.2rem;
       font-size: 1.05rem;
       border-radius: 0.7rem;
-      white-space: nowrap;
+      white-space: nowrap;  /* empêche les sauts */
     }
   }
 
+    /* ------------------------------------------------------------
+     INGRÉDIENTS + ÉTAPES
+  ------------------------------------------------------------ */
   .ingredients-recette,
   .etapes-recette {
     margin-bottom: 2rem;
@@ -182,6 +223,9 @@
     }
   }
 
+    /* ------------------------------------------------------------
+     BOUTON RETOUR
+  ------------------------------------------------------------ */
   .navigation-recette {
     text-align: center;
     margin-top: 2rem;
@@ -204,9 +248,9 @@
   }
 }
 
-/* -------------------------------------------------------------------
-   Desktop / Mobile (favoris)
--------------------------------------------------------------------- */
+/* =============================================================
+   GESTION DES VERSIONS DESKTOP / MOBILE
+============================================================= */
 
 .desktop-only {
   display: block;
@@ -216,6 +260,7 @@
   display: none;
 }
 
+/* ---- Mobile ≤ 480px ---- */
 @media (max-width: 480px) {
   .desktop-only {
     display: none !important;
@@ -241,7 +286,7 @@
     font-size: 1.35rem;
   }
 
-  /* 🎯 Correction du problème boutons sur 2 lignes */
+    /* Boutons favoris → éviter les 2 lignes */
   .actions-recette-mobile {
     flex-wrap: nowrap;
     gap: .8rem;
@@ -256,14 +301,16 @@
   }
 }
 
-/* ≦ 400px */
+/* ---- Mobile très petit ≤ 400px ---- */
 @media (max-width: 400px) {
   .recette {
     padding: 1.4rem 0.9rem;
   }
 }
 
-/* === LIGHTBOX === */
+/* =============================================================
+   LIGHTBOX (zoom image)
+============================================================= */
 .lightbox {
   position: fixed;
   inset: 0;
@@ -271,12 +318,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0;
-  pointer-events: none;
+  opacity: 0;  /* masqué de base */
+  pointer-events: none;  /* non interactif */
   transition: opacity .3s ease;
   z-index: 9999;
 }
 
+/* Classe ajoutée en JS */
 .lightbox-active {
   opacity: 1;
   pointer-events: auto;

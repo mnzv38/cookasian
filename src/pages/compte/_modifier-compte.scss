@@ -1,15 +1,23 @@
 @use "../../utils/variables" as *;
 
-/* =================================================
+/* ============================================================
    PAGE : MODIFIER MON COMPTE
-   ================================================= */
+   Ici l’utilisateur peut changer son nom, email, ou mot de passe.
+   J’ai gardé la même ambiance visuelle que sur Mes Favoris :
+   - fond sombre léger
+   - cartes arrondies
+   - typographie Quicksand + Playfair
+   ============================================================ */
 .page-modif-compte {
   padding: 3rem 1rem;
   color: #fff;
   text-align: center;
 }
 
-/* 🟢 Bloc principal centré */
+/* ------------------------------------------------------------
+   Bloc principal centré
+   (ma “carte” de formulaire)
+------------------------------------------------------------ */
 .page-modif-compte .contenu-modif-compte {
   background-color: rgba(255, 255, 255, 0.05);
   padding: 2rem 2.5rem;
@@ -17,12 +25,13 @@
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 
   max-width: 600px;
-  margin: 0 auto;   /* 💥 centre horizontalement */
+  margin: 0 auto;   /* centre horizontalement la carte */
 }
 
-/* ===========================
-   En-tête
-   =========================== */
+/* ------------------------------------------------------------
+   En-tête du formulaire
+   (titre + messages de succès ou d’erreur)
+------------------------------------------------------------ */
 .entete-modif {
   margin-bottom: 1.5rem;
 }
@@ -35,7 +44,7 @@
 }
 
 .entete-modif .message-succes {
-  color: #4ef8a2;
+  color: #4ef8a2;  /* vert succès lisible */
   font-weight: 600;
   margin-bottom: 0.8rem;
 }
@@ -47,14 +56,14 @@
 }
 
 .entete-modif .liste-erreurs .message-erreur {
-  color: #ffb3b3;
+  color: #ffb3b3;  /* rouge erreur doux */
   font-weight: 600;
   margin: 0.4rem 0;
 }
 
-/* ===========================
-   Formulaire
-   =========================== */
+/* ------------------------------------------------------------
+   Formulaire (labels + inputs)
+------------------------------------------------------------ */
 .formulaire-modif {
   width: 100%;
   display: flex;
@@ -82,6 +91,15 @@
   padding: 0.8rem 1rem;
   font-family: "Quicksand", sans-serif;
   transition: border-color 0.3s ease, background-color 0.3s ease;
+
+  // retirer cette partie si ça casse ❌❌❌
+/* micro-ajustement cohérent avec les autres pages */
+  &:focus {
+    outline: none;
+    border-color: $couleur-primaire;
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
 }
 
 .formulaire-modif .champ input:focus {
@@ -90,6 +108,9 @@
   background-color: rgba(255, 255, 255, 0.08);
 }
 
+/* ------------------------------------------------------------
+   Boutons (Modifier, Annuler)
+------------------------------------------------------------ */
 .actions-formulaire {
   margin-top: 1.5rem;
   display: flex;
@@ -98,9 +119,9 @@
   flex-wrap: wrap;
 }
 
-/* ===========================
-   Conseils
-   =========================== */
+/* ------------------------------------------------------------
+   Petit texte d’aide
+------------------------------------------------------------ */
 .texte-conseil {
   font-size: 0.95rem;
   color: #ccc;
@@ -108,12 +129,13 @@
   font-family: "Quicksand", sans-serif;
 }
 
-/* ===========================
-   Mobile
-   =========================== */
+/* ------------------------------------------------------------
+   Version mobile 
+   (iPhone SE compris)
+------------------------------------------------------------ */
 @media (max-width: 600px) {
   .page-modif-compte .contenu-modif-compte {
-    padding: 1.5rem;
+    padding: 1.5rem;  /* un peu plus respirant en mobile */
   }
 
   .entete-modif .titre-page {

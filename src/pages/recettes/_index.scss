@@ -1,8 +1,13 @@
 @use "../../utils/variables" as *;  
 @use "sass:color";
 
-/* === PAGE LISTE DES RECETTES === */
+/* ================================================
+   PAGE LISTE DES RECETTES
+   Ici je gère toute la page "recettes" : le tri,
+   l'affichage des cartes, et le responsive.
+================================================ */
 
+/* Bloc général */
 .section-recettes {
   max-width: 1200px;
   margin: 0 auto;
@@ -10,7 +15,9 @@
   background-color: #1e1e24;
   color: #fff;
 
-  /* En-tête */
+  /* --------------------------------------------
+     EN-TÊTE (titre + description + sélecteur tri)
+  -------------------------------------------- */
   .entete-recettes {
     text-align: center;
     margin-bottom: 3rem;
@@ -29,6 +36,8 @@
       margin-bottom: 1.2rem;
     }
 
+
+    /* Formulaire du tri */
     .form-tri-recettes {
       display: flex;
       justify-content: center;
@@ -36,13 +45,14 @@
       gap: 0.6rem;
       flex-wrap: wrap;
 
+       /* Label "Trier par :" */
       label {
         font-family: "Quicksand", sans-serif;
         font-weight: 600;
         color: #fff;
       }
 
-      /* label englobant */
+      /* Label englobant (texte + select) */
       .label-tri-recettes {
         font-size: 0.95rem;
         display: inline-flex;
@@ -54,6 +64,7 @@
         font-size: 0.95rem;
       }
 
+      /* Select du tri */
       select {
         appearance: none;
         background-color: #2c2c35;
@@ -91,7 +102,9 @@
     }
   }
 
-  /* Liste des recettes */
+   /* --------------------------------------------
+     LISTE DES RECETTES (grid responsive)
+  -------------------------------------------- */
   .liste-recettes {
     list-style: none;
     display: grid;
@@ -101,7 +114,9 @@
     padding: 0;
   }
 
-  /* Carte recette */
+  /* --------------------------------------------
+     CARTE RECETTE
+  -------------------------------------------- */
   .carte-recette {
     display: flex;
     flex-direction: column;
@@ -116,6 +131,7 @@
       box-shadow: 0 4px 20px rgba(255, 87, 87, 0.4);
     }
 
+    /* Image + figcaption */
     .image-recette {
       position: relative;
 
@@ -141,6 +157,7 @@
       }
     }
 
+     /* Contenu : description + infos + bouton */
     .contenu-recette {
       flex: 1;
       display: flex;
@@ -166,6 +183,7 @@
         }
       }
 
+      /* Bouton "Voir la recette" */
       .lien-recette {
         display: flex;
         justify-content: center;
@@ -181,6 +199,8 @@
         background-color: #b71c1c;
         background-image: none;
         background-image: none;
+
+        /* Isolation visuelle pour éviter les ombres du parent */
         box-shadow: none !important; /* supprime l’ombre héritée */
         position: relative;
         isolation: isolate; /* empêche la fusion avec l’ombre parent */
@@ -208,7 +228,7 @@
   }
 
 
-  /* Aucune recette disponible */
+    /* Message "Aucune recette" */
   p {
     text-align: center;
     color: #bbb;
@@ -216,9 +236,9 @@
   }
 }
 
-/* =========================================
-   RESPONSIVE
-========================================= */
+/* --------------------------------------------
+   RESPONSIVE TABLETTE (≤ 768px)
+-------------------------------------------- */
 
 @media (max-width: 768px) {
   .section-recettes {
@@ -247,7 +267,9 @@
   }
 }
 
-/* ⭐ Mobile iPhone SE */
+/* --------------------------------------------
+   MOBILE iPhone SE (≤ 375px)
+-------------------------------------------- */
 @media (max-width: $mobile) {
   .section-recettes {
     padding: 1rem;

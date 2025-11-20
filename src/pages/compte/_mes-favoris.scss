@@ -1,6 +1,13 @@
 @use "../../utils/variables" as *;
 
-/* === PAGE MES FAVORIS === */
+/* ============================================================
+   PAGE : MES FAVORIS
+   Ici j'affiche toutes les recettes que l'utilisateur a ajoutées.
+   Organisation :
+   - titre
+   - message si aucun favori
+   - liste de cartes (3 max en desktop)
+   ============================================================ */
 
 .page-favoris {
   display: flex;
@@ -17,6 +24,7 @@
     max-width: 1200px;
   }
 
+    /* --- Titre principal de la page --- */
   .titre-page {
     font-size: 2rem;
     font-family: "Playfair Display", serif;
@@ -31,6 +39,10 @@
     font-size: 1.1rem;
   }
 
+    /* ------------------------------------------------------------
+     Cas où l'utilisateur n'a aucun favori
+     → petit bloc centré, propre et lisible
+     ------------------------------------------------------------ */
   .bloc-aucun-favori {
     background-color: rgba(255,255,255,0.05);
     padding: 2rem;
@@ -58,7 +70,8 @@
   }
 
   /* ======================================================
-     Liste des favoris avec 3 colonnes MAX — layout desktop
+     Liste des cartes favoris (3 colonnes maximum)
+     Layout pensé pour desktop → centré + homogène
      ====================================================== */
   .liste-favoris {
     display: grid !important;
@@ -72,7 +85,7 @@
     li {
       list-style: none;
       width: 100%;
-      max-width: 360px;
+      max-width: 360px;  /* largeur confortable */
     }
 
     .carte-recette {
@@ -82,16 +95,16 @@
       box-shadow: 0 3px 8px rgba(0,0,0,0.3);
       transition: transform 0.3s ease;
 
-      &:hover { transform: translateY(-4px); }
+      &:hover { transform: translateY(-4px); }  /* petit mouvement discret */
 
-      figure { margin: 0; }
+      figure { margin: 0; }  /* suppression des marges automatiques */
 
       img {
         width: 100%;
         border-radius: 0.5rem;
         margin-bottom: 1rem;
         object-fit: cover;
-        height: 180px;
+        height: 180px;  /* hauteur uniforme entre les cartes */
       }
 
       .contenu-recette {
@@ -104,6 +117,7 @@
         margin: .5rem 0 1rem 0;
       }
 
+      /* --- Boutons d'action (voir / retirer) --- */
       .bouton {
         display: inline-block;
         background-color: #ff5757;
@@ -113,14 +127,16 @@
         text-decoration: none;
 
         &:hover { background-color: #ff3232; }
+        /* Ajout d'un petit espace entre les deux boutons */
         &:not(:last-child) { margin-right: .5rem; }
       }
     }
   }
 
-  /* ==========================
-     Responsive mobile iPhone SE
-     ========================== */
+  /* ======================================================
+     Responsive iPhone SE (375px)
+     → passage à une seule colonne
+     ====================================================== */
   @media (max-width: $mobile) {
     .liste-favoris {
       grid-template-columns: 1fr !important;
