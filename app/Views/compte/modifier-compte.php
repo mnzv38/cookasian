@@ -72,7 +72,7 @@
             </footer>
         </form>
 
-        <!-- Petit message conseil -->
+        <!-- Message conseil qui indique une importance -->
         <p class="texte-conseil">
             💡 <em>Astuce : un mot de passe sûr contient au moins 8 caractères, une majuscule, un chiffre et un symbole.</em>
         </p>

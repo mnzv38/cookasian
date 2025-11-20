@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Page non trouvée - Cookasian">
+    <!-- Description de la page (SEO minimal pour une 404) -->
+
     <title>Page introuvable | Cookasian</title>
 
+    <!-- Favicon emoji (même méthode que les autres pages) -->
     <link rel="icon" href="data:image/svg+xml,
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
         <text y='0.9em' font-size='90'>🥢</text>
@@ -16,6 +19,8 @@
 </head>
 
 <!-- CONTEXTE CSS GLOBAL -->
+
+<!-- Classe spécifique pour adapter le style global -->
 <body class="page-erreur">
 
 <main class="page-404">
@@ -35,7 +40,7 @@
 
         <figure class="illustration-404">
 
-            <!-- 🔥 IMAGE OPTIMISÉE RESPONSIVE -->
+            <!-- IMAGE OPTIMISÉE RESPONSIVE -->
             <img
                 src="/assets/images/erreurs/400/erreur-404.webp"
                 srcset="
@@ -52,9 +57,10 @@
 
         </figure>
 
+        <!-- Lien retour à l’accueil -->
         <nav>
             <a href="/" class="bouton-retour">
-                Retour à l’accueil 🥢
+                ← Retour à l’accueil
             </a>
         </nav>
 
