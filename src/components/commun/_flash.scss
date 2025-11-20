@@ -1,36 +1,46 @@
+/* ========================================
+   🔔 FLASH MESSAGE (toast notification)
+   Affiche un petit message temporaire en haut de la page
+   → utilisé pour “ajout aux favoris”, “suppression”, “erreurs”
+======================================== */
+
 .flash-message {
   position: fixed;
   top: 2rem;
   left: 50%;
-  transform: translateX(-50%);
-  background-color: #e05b5b; // couleur par défaut
+  transform: translateX(-50%);   /* Centrage horizontal propre */
+  background-color: #e05b5b; 
   color: #fff;
   padding: 0.8rem 1.6rem;
   border-radius: 0.6rem;
   font-family: "Quicksand", sans-serif;
   font-weight: 600;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  z-index: 200;
-  animation: fadeOut 3s ease forwards;
-  display: flex;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Petite ombre pour la lisibilité */
+  z-index: 200;  /* Passe au-dessus du contenu */
+  animation: fadeOut 3s ease forwards;   /* Fait disparaître le toast automatiquement */
+  display: flex;   /* Alignement avec le texte + X */
   align-items: center;
   gap: 1rem;
 }
 
-/* supprime la marge par défaut du <p> */
+/* --------------------------------------------------
+   Le <p> à l’intérieur n’a pas besoin de marge
+-------------------------------------------------- */
 .flash-message p {
   margin: 0;
 }
 
-/* bouton X */
+/* --------------------------------------------------
+   Bouton pour fermer manuellement le toast (croix)
+-------------------------------------------------- */
 .fermer-toast {
   background: transparent;
   border: none;
-  color: inherit;
+  color: inherit;   /* Même couleur que le texte du toast */
   font-size: 1.2rem;
   cursor: pointer;
   padding: 0;
-  margin-left: auto;
+  margin-left: auto;   /* Pousse la croix à droite */
   line-height: 1;
   opacity: 0.8;
   display: flex;
@@ -39,30 +49,39 @@
 }
 
 .fermer-toast:hover {
-  opacity: 1;
+  opacity: 1;  /* Légère mise en avant au survol */
 }
 
-/* 🟢 Quand on AJOUTE aux favoris */
+/* --------------------------------------------------
+   🟢 Toast “Ajout aux favoris”
+   → vert pour un feedback positif
+-------------------------------------------------- */
 .flash-ajout {
   background-color: #2ecc71 !important; // vert
   color: #0d3b1e !important;            // très lisible
 }
 
-/* 🔴 Quand on SUPPRIME des favoris */
+/* --------------------------------------------------
+   🔴 Toast “Suppression des favoris”
+-------------------------------------------------- */
 .flash-suppression {
   background-color: #e05b5b !important; // ton rouge doux, moins saturé
   color: #ffffff !important;
 }
 
+
+/* --------------------------------------------------
+   Animation de disparition progressive du toast
+-------------------------------------------------- */
 @keyframes fadeOut {
   0% {
     opacity: 1;
   }
   80% {
-    opacity: 1;
+    opacity: 1;  /* Reste visible longtemps */
   }
   100% {
-    opacity: 0;
-    top: 0;
+    opacity: 0;  /* Disparition progressive */
+    top: 0;   /* Se déplace un peu vers le haut */
   }
 }

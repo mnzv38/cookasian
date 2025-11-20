@@ -1,80 +1,112 @@
-/* === BOUTONS === */
+/* ========================================
+   🎛️ BOUTONS — COOKASIAN
+   Boutons génériques + variations principales
+   (bouton primaire / secondaire / clair)
+======================================== */
 
+@use "../../utils/variables" as *;
+@use "sass:color";
+
+
+/* ----------------------------------------
+   Style de base du bouton
+---------------------------------------- */
 .bouton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   padding: 0.7rem 1.2rem;
-  font-family: "Quicksand", sans-serif;
+  font-family: $font-principale;
   font-weight: 600;
+
   border-radius: 0.6rem;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  // Animation cohérente avec tout le site
+  transition: background-color $transition, transform 0.2s ease;
 
   &:hover {
     transform: translateY(-2px);
   }
 
   &:focus-visible {
-    outline: 2px solid #ff5757;
+    outline: 2px solid $couleur-primaire;
     outline-offset: 3px;
     transform: none;
   }
 }
 
+
+/* ----------------------------------------
+   Bouton primaire (rouge foncé)
+---------------------------------------- */
 .bouton.primaire {
-  background-color: #b71c1c;
-  color: #ffffff;
+  background-color: color.adjust($couleur-primaire, $lightness: -25%); // équivalent #b71c1c
+  color: $couleur-texte-clair;
 
   &:hover {
-    background-color: #8b0000;
+    background-color: color.adjust($couleur-primaire, $lightness: -40%); // équivalent #8b0000
   }
 }
 
+
+/* ----------------------------------------
+   Bouton secondaire (contour rouge)
+---------------------------------------- */
 .bouton.secondaire {
-  border: 2px solid #b71c1c;
-  color: #ffffff;
+  border: 2px solid color.adjust($couleur-primaire, $lightness: -25%); // eq. #b71c1c
+  color: $couleur-texte-clair;
+
   background-color: rgba(183, 28, 28, 0.22);
 
   &:hover {
-    background-color: #6a1a1a;
-    color: #ffffff;
+    background-color: color.adjust($couleur-primaire, $lightness: -45%); // eq. #6a1a1a
   }
 }
 
+
+/* ----------------------------------------
+   Bouton clair (fond blanc)
+---------------------------------------- */
 .bouton.clair {
   background-color: #ffffff;
-  color: #5a0000;
+  color: color.adjust($couleur-primaire, $lightness: -45%);
 
   &:hover {
     background-color: #f8dcdc;
-    color: #3f0000;
+    color: color.adjust($couleur-primaire, $lightness: -55%);
   }
 
   &:focus-visible {
-    outline: 2px solid #ff5757;
+    outline: 2px solid $couleur-primaire;
     outline-offset: 3px;
   }
 }
 
+
+/* ----------------------------------------
+   Situation spécifique : accueil > recettes populaires
+---------------------------------------- */
 .recettes-populaires .bouton.clair {
   background-color: #ffffff;
-  color: #5a0000;
+  color: color.adjust($couleur-primaire, $lightness: -45%);
   border: 1px solid rgba(0, 0, 0, 0.25);
 
   &:hover {
     background-color: #f8dcdc;
-    color: #5c0000;
+    color: color.adjust($couleur-primaire, $lightness: -55%);
   }
 }
 
 
-
-/* Bouton Connexion dans le header */
+/* ----------------------------------------
+   Bouton Connexion (header)
+---------------------------------------- */
 .btn-connexion {
   background-color: #ffffff;
-  color: #5a0000;
+  color: color.adjust($couleur-primaire, $lightness: -45%);
   padding: 0.6rem 1rem;
   border-radius: 0.6rem;
   font-weight: 600;
@@ -82,16 +114,19 @@
 
   &:hover {
     background-color: #f8dcdc;
-    color: #5c0000;
+    color: color.adjust($couleur-primaire, $lightness: -55%);
   }
 
   &:focus-visible {
-    outline: 2px solid #ff5757;
+    outline: 2px solid $couleur-primaire;
     outline-offset: 3px;
   }
 }
 
-/* Bouton Déconnexion */
+
+/* ----------------------------------------
+   Bouton Déconnexion (header)
+---------------------------------------- */
 .btn-deconnexion {
   background-color: transparent;
   color: #ffffff;
@@ -103,15 +138,19 @@
 
   &:hover {
     background-color: #ffffff;
-    color: #5c0000;
+    color: color.adjust($couleur-primaire, $lightness: -55%);
   }
 
   &:focus-visible {
-    outline: 2px solid #ff5757;
+    outline: 2px solid $couleur-primaire;
     outline-offset: 3px;
   }
 }
 
+
+/* ----------------------------------------
+   Variants : tailles / largeurs
+---------------------------------------- */
 .bouton.grand {
   font-size: 1.1rem;
   padding: 1rem 2rem;
@@ -121,6 +160,10 @@
   width: 100%;
 }
 
+
+/* ----------------------------------------
+   Réduction des animations si demandée
+---------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   .bouton {
     transition: none;
@@ -128,7 +171,10 @@
   }
 }
 
-/* === Boutons mobile === */
+
+/* ----------------------------------------
+   Spécifique aux boutons mobiles
+---------------------------------------- */
 .boutons-mobile a {
   width: 100%;
   margin-bottom: 0.6rem;
