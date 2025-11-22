@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tableau CCP1 - Cookasian RNCP</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 40px 20px;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1600px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 20px;
+        padding: 50px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .header h1 {
+        font-size: 3em;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 15px;
+      }
+
+      .header .subtitle {
+        font-size: 1.3em;
+        color: #4a5568;
+        font-weight: 500;
+      }
+
+      .intro {
+        background: linear-gradient(135deg, #f6f8fb 0%, #e9ecef 100%);
+        padding: 30px;
+        border-radius: 15px;
+        margin-bottom: 40px;
+        border-left: 6px solid #667eea;
+        text-align: center;
+      }
+
+      .intro p {
+        color: #2d3748;
+        font-size: 1.2em;
+        line-height: 1.6;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin-top: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        overflow: hidden;
+      }
+
+      thead {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+
+      thead th {
+        color: white;
+        font-size: 1.4em;
+        font-weight: 600;
+        padding: 25px 20px;
+        text-align: left;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      thead th:first-child {
+        border-radius: 15px 0 0 0;
+      }
+
+      thead th:last-child {
+        border-radius: 0 15px 0 0;
+      }
+
+      tbody tr {
+        transition: all 0.3s ease;
+      }
+
+      tbody tr:hover {
+        background: #f7fafc;
+        transform: scale(1.02);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+      }
+
+      tbody tr:nth-child(even) {
+        background: #fafbfc;
+      }
+
+      tbody td {
+        padding: 30px 20px;
+        border-bottom: 1px solid #e2e8f0;
+        vertical-align: top;
+      }
+
+      tbody tr:last-child td:first-child {
+        border-radius: 0 0 0 15px;
+      }
+
+      tbody tr:last-child td:last-child {
+        border-radius: 0 0 15px 0;
+      }
+
+      .competence-cell {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .numero {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5em;
+        font-weight: bold;
+        flex-shrink: 0;
+        box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+      }
+
+      .competence-text {
+        flex: 1;
+      }
+
+      .competence-text strong {
+        color: #2d3748;
+        font-size: 1.2em;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .tag {
+        display: inline-block;
+        background: #667eea;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.75em;
+        font-weight: 600;
+        margin-top: 5px;
+      }
+
+      .realisation-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .realisation-list li {
+        padding: 12px 0;
+        position: relative;
+        padding-left: 35px;
+        color: #4a5568;
+        font-size: 1.05em;
+        line-height: 1.6;
+      }
+
+      .realisation-list li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        top: 12px;
+        width: 24px;
+        height: 24px;
+        background: #48bb78;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 0.9em;
+      }
+
+      .realisation-list li strong {
+        color: #2d3748;
+      }
+
+      .footer {
+        margin-top: 50px;
+        text-align: center;
+      }
+
+      .badge-container {
+        display: inline-block;
+        background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+        padding: 20px 40px;
+        border-radius: 50px;
+        box-shadow: 0 10px 30px rgba(72, 187, 120, 0.3);
+      }
+
+      .badge-container p {
+        color: white;
+        font-size: 1.3em;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      @media print {
+        body {
+          background: white;
+          padding: 0;
+        }
+
+        .container {
+          box-shadow: none;
+        }
+
+        tbody tr:hover {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>⭐ CCP1 — Développer la partie Front-End</h1>
+        <p class="subtitle">
+          Activité type 1 — HTML, CSS/SCSS, JS, maquettes, accessibilité
+        </p>
+      </div>
+
+      <div class="intro">
+        <p>
+          Ce projet m'a permis de mettre en pratique l'ensemble des compétences
+          essentielles du Titre Professionnel DWWM. Voici comment
+          <strong>Cookasian</strong> répond concrètement aux attentes du
+          référentiel <strong>CCP1</strong>.
+        </p>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>🎯 Compétence RNCP</th>
+            <th>✅ Ce que j'ai réalisé dans Cookasian</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="competence-cell">
+                <div class="numero">1</div>
+                <div class="competence-text">
+                  <strong>Installer et configurer l'environnement</strong>
+                  <span class="tag">RNCP CCP1</span>
+                </div>
+              </div>
+            </td>
+            <td>
+              <ul class="realisation-list">
+                <li>
+                  <strong>Docker complet</strong> (PHP 8.2, Nginx, MySQL, Node)
+                </li>
+                <li><strong>Composer</strong> pour l'autoload PSR-4</li>
+                <li>
+                  <strong>Sass en mode watch</strong> pour compilation
+                  automatique
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="competence-cell">
+                <div class="numero">2</div>
+                <div class="competence-text">
+                  <strong>Maquetter une interface web responsive</strong>
+                  <span class="tag">RNCP CCP1</span>
+                </div>
+              </div>
+            </td>
+            <td>
+              <ul class="realisation-list">
+                <li>
+                  <strong>Maquettes Figma</strong> mobile-first (iPhone SE
+                  375px)
+                </li>
+                <li><strong>Structure des pages</strong> définie en amont</li>
+                <li>
+                  <strong>Navigation claire</strong> et composants réutilisables
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="competence-cell">
+                <div class="numero">3</div>
+                <div class="competence-text">
+                  <strong>Réaliser une interface statique</strong>
+                  <span class="tag">RNCP CCP1</span>
+                </div>
+              </div>
+            </td>
+            <td>
+              <ul class="realisation-list">
+                <li>
+                  <strong>HTML sémantique strict</strong> (header, nav, main,
+                  article, section)
+                </li>
+                <li>
+                  <strong>SCSS organisé</strong> (utils, layout, components,
+                  pages)
+                </li>
+                <li>
+                  <strong>Design par cartes</strong> pour une meilleure
+                  lisibilité
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="competence-cell">
+                <div class="numero">4</div>
+                <div class="competence-text">
+                  <strong>Mettre en œuvre une interface responsive</strong>
+                  <span class="tag">RNCP CCP1</span>
+                </div>
+              </div>
+            </td>
+            <td>
+              <ul class="realisation-list">
+                <li><strong>Approche mobile-first</strong> exclusivement</li>
+                <li><strong>Optimisation iPhone SE</strong> (375px)</li>
+                <li>
+                  <strong>Grilles flexibles</strong> et images adaptatives
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="competence-cell">
+                <div class="numero">5</div>
+                <div class="competence-text">
+                  <strong>Développer des interactions simples</strong>
+                  <span class="tag">RNCP CCP1</span>
+                </div>
+              </div>
+            </td>
+            <td>
+              <ul class="realisation-list">
+                <li><strong>JavaScript natif</strong> sans framework</li>
+                <li><strong>Menu mobile interactif</strong> (hamburger)</li>
+                <li>
+                  <strong>Gestion des favoris</strong> avec feedback visuel
+                </li>
+                <li><strong>Messages toast</strong> pour les notifications</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="competence-cell">
+                <div class="numero">6</div>
+                <div class="competence-text">
+                  <strong>Prendre en compte l'accessibilité</strong>
+                  <span class="tag">RNCP CCP1</span>
+                </div>
+              </div>
+            </td>
+            <td>
+              <ul class="realisation-list">
+                <li><strong>Contrastes WCAG AA</strong> respectés</li>
+                <li><strong>Polices lisibles</strong> et taille adaptée</li>
+                <li>
+                  <strong>Structure logique</strong> avec hiérarchie de titres
+                </li>
+                <li><strong>Labels associés</strong> aux formulaires</li>
+                <li><strong>Navigation au clavier</strong> fonctionnelle</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="footer">
+        <div class="badge-container">
+          <p>
+            ✓ Toutes les 6 compétences du CCP1 validées dans le projet Cookasian
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
