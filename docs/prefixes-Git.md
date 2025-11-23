@@ -3,6 +3,8 @@
 Ils servent à indiquer l’intention du travail dans le nom d’une branche ou d’un commit,
 ce qui permet à toute l’équipe (ou au jury) de comprendre ton workflow au premier coup d’œil.
 
+**git commit -m** suivi de "feat: maj" par exemple.
+
 | Préfixe         | Signification                                    | Quand l’utiliser                                                                                                                   |
 | --------------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
 | **`feat/`**     | _feature_ → nouvelle fonctionnalité              | quand tu ajoutes une **nouvelle partie fonctionnelle** (ex : une page, un composant, une logique métier)                           |
